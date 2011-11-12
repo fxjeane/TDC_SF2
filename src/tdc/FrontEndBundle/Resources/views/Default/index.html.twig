@@ -1,0 +1,47 @@
+{% extends 'tdcFrontEndBundle:Default:layout.html.twig' %}
+
+{#% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets  
+     debug=true
+    'public/css/logedIn.cssX' 
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock %#}
+
+{% block title %}Welcome to TD Channel{% endblock %}
+
+{% block contentArea%}
+    <div id="navBar">
+        <div id="iconHolder">
+            <img src="{{ path('tdc_front_homepage') }}../public/images/tdcLogo.png"/>
+        </div>
+        <h2><a href="{{ path('tdc_front_about')}}">About</a></h2>
+        <h2><a href="{{ path('tdc_front_catalog')}}">Catalog</a></h2>
+        <h2><a href="{{ path('tdc_front_faq')}}">F.A.Q.</a></h2>
+    </div>
+    <div id="contentArea">
+    {% block body %}{% endblock %}
+    </div>
+    <div id="lowerContent" class="grayGradient07">
+        <div id="quoteBlurb" class="lowerContentBlurb">
+            <img src="{{ path('tdc_front_homepage') }}../public/images/quoters/omarGarcia.png"/>
+            <p>It's a great feeling when you write a script for your own tasks, But when you do it at a major animation studio and it works ... what a great feeling! Thanks Rudy for being my teacher! I owe it all to you.</p> 
+            <span class="quoteSig">Omar</span>
+        </div>
+        <div id="blurb02" class="lowerContentBlurb">
+
+        </div>
+        <div id="blurb03" class="lowerContentBlurb">
+            <h3>Register Now</h3>
+            <center>
+                <div>
+                    <img src="{{ path('tdc_front_homepage') }}../public/images/registernow.png" width="150px">
+               </div>
+            </center>
+            <p>And gain access to our free tutorials and
+            user community</p>
+        </div>
+    </div>
+{% endblock %}

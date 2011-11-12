@@ -1,0 +1,14 @@
+tdc\VideoBundle\Entity\Rating:
+    type: entity
+    table: rating
+    id:
+        id:
+            type: integer
+            generator: { strategy : AUTO }
+    manyToOne:
+        video:
+            targetEntity: Video
+            inversedBy: ratings
+        user:
+            targetEntity: tdc\UserBundle\Entity\User
+            inversedBy: ratings

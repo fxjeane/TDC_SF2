@@ -1,0 +1,32 @@
+tdc_front_homepage:
+    pattern:  /
+    defaults: { _controller: tdcFrontEndBundle:Front:index }
+
+tdc_front_catalog:
+    pattern: /catalog
+    defaults: { _controller: tdcFrontEndBundle:Front:catalog }
+
+tdc_front_video:
+    pattern: /catalog/{id}
+    defaults: { _controller: tdcFrontEndBundle:Front:video }
+    requirements:
+        id: \d+
+
+tdc_front_catalog_json:
+    pattern: /catalogJson/{start}/{max}
+    defaults: { _controller: tdcFrontEndBundle:Front:catalogJson, start: 0, max: 10 }
+    requirements:
+        start: \d+
+        max: \d+
+
+tdc_front_about:
+    pattern: /about
+    defaults: { _controller: tdcFrontEndBundle:Front:about }
+
+tdc_front_faq:
+    pattern: /faq
+    defaults: { _controller: tdcFrontEndBundle:Front:faq }
+
+tdc_logedin_home:
+    pattern: /home
+    defaults: { _controller: tdcFrontEndBundle:Front:home }

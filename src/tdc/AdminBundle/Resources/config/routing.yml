@@ -1,0 +1,15 @@
+tdc_admin:
+    pattern:  /
+    defaults: { _controller: tdcAdminBundle:Admin:index }
+
+tdc_admin_videos:
+    pattern:  /videos
+    defaults: { _controller: tdcAdminBundle:Admin:video, id:-1 }
+
+tdc_admin_video_view:
+    pattern:  /video/{id}
+    defaults: { _controller: tdcAdminBundle:Admin:video }
+
+tdc_admin_video_edit:
+    pattern:  /video/edit/{id}
+    defaults: { _controller: tdcAdminBundle:Admin:videoEdit }

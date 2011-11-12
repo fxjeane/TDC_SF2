@@ -1,0 +1,55 @@
+{% extends 'tdcFrontEndBundle:Default:index.html.twig' %}
+
+{% block title %}TDC::Video::{{video.name}}{% endblock %}
+
+{% block header_javascripts %}
+    {{ parent() }}
+    {% javascripts
+        debug=true
+        'public/js/jquery/jquery-ui-1.8.16.custom.min.js'
+        'public/js/tdc/tdc.js'
+        'public/js/tdc/tdc.browser.js'
+    %}
+    <script src="{{ asset_url }}" type="text/javascript"  /></script>
+    {% endjavascripts %}
+{% endblock header_javascripts %}
+
+{% block contentArea %}
+    <div id="contentHolder" >
+        {% block body %}
+        <div id="videoHeader" >
+            <span class="videoTitle">{{ video.name }}</span>
+        </div>
+        <center>
+            <!-- <img src="{{ path('tdc_front_homepage') }}../public/images/icons/{{video.icon }}" /> -->
+            <table id="courseInfo" class="grayGradient04">
+                <td rowspan="6" width="150">
+                    <img id="courseLargeIcon" src="{{ path('tdc_front_homepage') }}../public/images/tdcLogo.png" />
+                </td>
+                <tr>
+                    <td width="150">Name:</td> <td>{{ video.name }}</td>
+                </tr>
+                <tr>
+                    <td>Author:</td> <td>{{ video.author }}</td>
+                </tr>
+                <tr>
+                    <td>Running Time:</td> <td>{{ video.trt }}</td>
+                </tr>
+                <tr>
+                    <td>Categories:</td>
+                    <td>{% for cat in video.categories %}
+                            <a href="{{cat.id}}">{{ cat.name }}</a></br>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Rating:</td> <td>4.25</td>
+                </tr>
+                <tr>
+                    <td colspan="3">{{ video.description|raw }}</td>
+                </tr>
+            </table>
+        </center>
+        {% endblock body %}
+    </div>
+{% endblock contentArea %}

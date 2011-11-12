@@ -1,0 +1,35 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+    {% if error %}
+        <div>{{ error }}</div>
+    {% endif %}
+
+    <form name="tdcLogin" action="{{ path("fos_user_security_check") }}" method="post">
+        <label for="username">Username</label>
+        </br>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+        </br>
+        <label for="password">Password</label>
+        </br>
+        <input type="password" id="password" name="_password" />
+        </br>
+        <input type="checkbox" id="remember_me" name="_remember_me" class="styled" value="on" />
+        <label for="remember_me">Remember Me</label>
+        </br>
+        </br>
+        <input type="submit" class="tdcButton blueBtnGradient" id="_submit" name="_submit" value="Login" /> 
+    </form>
+{% endblock fos_user_content %}
+
+
+{% block javascripts %}
+    <script src="{{ path('tdc_front_homepage') }}../public/js/custom-form-elements.js"></script>
+    <script type="text/javascript">
+    function submitform()
+    {
+      document.tdcLogin.submit();
+    }
+    </script>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        {% block header_javascripts %}
+            {% javascripts
+                debug=false
+                'public/js/jquery/jquery-1.6.4.min.js'
+            %}
+            <script src="{{ asset_url }}" type="text/javascript"  /></script>
+            {% endjavascripts %}
+        {% endblock header_javascripts %}
+
+        {% block stylesheets %}
+            {% stylesheets  
+             debug=true
+            'public/css/main.css' 
+            %}
+            <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+            {% endstylesheets %}
+        {% endblock %}
+    </head>
+    <body>
+        <div id="mainFrame">
+            {% block headerBar %}
+                <div id="headerBar" class="grayGradient03" >
+                    <a href="{{ path( "tdc_front_homepage" ) }}" target="_blank">
+                        <div id="tdcBtn" class="loginBarBtn"></div>
+                    </a>
+                    <a href="http://www.facebook.com/pages/TD-Channel/136759419761676" target="_blank">
+                        <div id="facebookBtn" class="loginBarBtn"></div>
+                   </a>
+                   <a href="https://twitter.com/#!/TDChannel" target="_blank">
+                        <div id="twitterBtn" class="loginBarBtn"></div>
+                    </a>
+                    <div id="youtubeBtn" class="loginBarBtn"></div>
+                    <div id="loginBar">
+                        {% block loginBar %}
+                        {% endblock %}
+                    </div>
+                </div>
+            {% endblock %}
+            <div id="contentFrame" class="grayGradient02">
+                {% block contentArea%}{% endblock %}
+            </div>
+            {% block footerBar %}
+                <div id="footer" class="grayGradient01">
+                    <div class="footerBlurb">
+                        <h3>About</h3>
+                        <p>TD Channel is an online learning resource designed
+                        for those ready to take the next step on their CG carrer</p>
+                    </div>
+                    <div class="footerBlurb">
+                        <h3>Site Map</h3>
+                        <table width="100%" cellspacing="4px">
+                        <tr>
+                            <td><a href="{{ path("tdc_front_homepage") }}">Home</a></td>
+                            <td><a href="{{ path("tdc_front_faq") }}">FAQ</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="{{ path("tdc_front_about") }}">About</a></td>
+                            <td><a href="{{ path("tdc_front_catalog") }}">Catalog</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="{{ path("fos_user_security_login") }}">Login</a></td>
+                            <td></td>
+                        </tr>
+                        </table>
+                    </div>
+                    <div class="footerBlurb">
+                        <h3>Contact
+                        </h3>
+                    </div>
+                    <div id="copyright">All Content Copyright 2011 Rudy Cortes</div>
+                </div>
+            {% endblock %}
+        </div>
+        {% block javascripts %}{% endblock %}
+
+    </body>
+</html>

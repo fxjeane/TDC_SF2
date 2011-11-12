@@ -1,0 +1,48 @@
+tdc\VideoBundle\Entity\Video:
+    type: entity
+    table: video
+    id:
+        id:
+            type: integer
+            generator: { strategy : AUTO }
+    fields:
+        name:
+            type: string
+            length: 100
+        author:
+            type: string
+            length: 100
+        summary:
+            type: string
+            length: 250
+            nullable: true
+        description:
+            type: text
+            nullable: true
+        toc:
+            type: string
+            nullable: true
+        status:
+            type: integer
+            size: 3
+            default: 0
+            nullable: true
+        views:
+            type: integer
+            nullable: true
+        icon:
+            type: string
+            nullable: true
+            length: 250
+        trt:
+            type: string
+            nullable: true
+            lenght: 30
+
+    manyToMany:
+        categories:
+            targetEntity: Category
+    oneToMany:
+        ratings:
+            targetEntity: Rating
+            mappedBy: video

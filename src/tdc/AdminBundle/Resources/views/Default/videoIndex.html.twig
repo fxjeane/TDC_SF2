@@ -1,0 +1,31 @@
+{% extends 'tdcAdminBundle::layout.html.twig' %}
+
+{% block title %}TDC::Admin::Videos{% endblock %}
+
+{% block header %} {% endblock %}	
+
+{% block body %}
+{#
+<script type="text/javascript">
+    var data = {{ json|raw }};
+    alert(data.length);
+</script>
+#}
+
+<h1>Videos</h1>
+<table width="90%">
+    <th>Title</th><th>Author</th>
+    {% set row = 0 %}
+    {% for item in videos %}
+        <tr class="row_{{row}}">
+            <td>
+                <a href="{{ path("tdc_admin_video_view", 
+                                 {'id': item.id})}}">{{ item.name }}</a>
+            </td>
+            <td>{{ item.author }}</td>
+        </tr>
+        {% set row = 1 - row %}
+    {% endfor %}
+</table>
+
+{% endblock %}

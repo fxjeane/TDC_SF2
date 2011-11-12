@@ -1,0 +1,49 @@
+{% extends 'tdcFrontEndBundle:Default:index.html.twig' %}
+
+{% block header_javascripts %}
+    {{ parent() }}
+    {% javascripts
+        debug=true
+        'public/js/jquery/jquery-ui-1.8.16.custom.min.js'
+        'public/js/tdc/tdc.js'
+        'public/js/tdc/tdc.browser.js'
+    %}
+    <script src="{{ asset_url }}" type="text/javascript"  /></script>
+    {% endjavascripts %}
+{% endblock header_javascripts %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets  
+     debug=true
+    'public/css/browser.css' 
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block title %}TDC::Catalog{% endblock %}
+
+{% block contentArea %}
+    {% block body %}
+        <div id="contentHolder">
+            <h1>Catalog</h1>
+
+            {#% for item in videos %}
+                <li><a href="{{ item.name }}">{{ item.name }}</a></li>
+            {% endfor %#}
+            <div id="tdc_browser"></div>
+        </div>
+    {% endblock body %}
+{% endblock contentArea %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script >
+        $('#tdc_browser').tdcBrowser({
+                    dataUrl:"{{ path("tdc_front_homepage") }}catalogJson",
+                    videosUrl:"{{ path("tdc_front_homepage") }}catalog"
+                    });
+    </script>
+
+{% endblock javascripts %}

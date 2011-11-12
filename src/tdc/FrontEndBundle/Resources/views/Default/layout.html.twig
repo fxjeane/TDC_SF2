@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+
+{% block loginBar %}
+    {% if app.user == "" %}
+        <form name="tdcLogin" action="{{ path("fos_user_security_check") }}" method="post">
+            <label>user</label>
+            <input id="username" name="_username" ></input>
+            <label>pass</label>
+            <input type="password" id="password" name="_password"></input>
+             <input type="hidden" name="_target_path" value="tdc_logedin_home" />
+            <input type="submit" class="tdcButton blueBtnGradient" id="_submit" name="_submit" value="login" />
+            <a id="loginHelpBtn" class="grayGradient02 blueHoverGradient">?</a>
+        </form>
+        <div id="loginHelp">
+            <a id="resetUserName">forgot username</a>
+            <a>forgot password</a>
+        </div>
+    {% else %}
+        logged in as <strong>{{ app.user ? app.user.username : 'Anonymous' }}</strong> - 
+        <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+    {% endif %}
+{% endblock loginBar %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+    $('#loginHelpBtn').click(function(){
+        var header = $('#headerBar');
+        if (header.height() < 40) {
+            $('#headerBar').animate({"height":"60px"},500);
+            $('#loginHelp').fadeIn(500);
+        } else {
+            $('#loginHelp').fadeOut(500);
+            $('#headerBar').animate({"height":"32px"},500);
+        }
+    });
+    </script>
+{% endblock javascripts %}

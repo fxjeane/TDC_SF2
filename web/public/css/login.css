@@ -1,0 +1,39 @@
+/**
+ * Login Page
+ **/
+#loginArea {
+    padding:1.0em 0em;
+    width:100%; 
+    border:1px solid #505050;
+    border-top-color:#6E6E6E;
+    border-bottom-color: #323232;
+
+    background: rgb(125,125,125);
+    background: -moz-linear-gradient(top,  rgb(125,125,125) 0%, rgb(96,96,96) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(125,125,125)), color-stop(100%,rgb(96,96,96)));
+    background: -webkit-linear-gradient(top,  rgb(125,125,125) 0%,rgb(96,96,96) 100%);
+    background: -o-linear-gradient(top,  rgb(125,125,125) 0%,rgb(96,96,96) 100%);
+    background: -ms-linear-gradient(top,  rgb(125,125,125) 0%,rgb(96,96,96) 100%);
+    background: linear-gradient(top,  rgb(125,125,125) 0%,rgb(96,96,96) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7d7d', endColorstr='#606060',GradientType=0 );
+}
+#loginArea input {
+    height: 30px;
+    width: 280px;
+    border-radius: 6px;
+    background-color: rgb(60,60,60);
+    border-width: 0px;
+    box-shadow: 0px 0px 1px 0px rgb(210,210,210), 0px -1px 0px 1px black;
+    margin: 10px;
+    padding:0px 10px;
+    color: rgb(200,200,200);
+    font-family:arial;
+    font-size:1.25em;
+    text-align:center;
+}
+#loginArea label {
+    font-family: arial;
+    font-size:1.6em;
+    color:rgb(60,60,60);
+    text-shadow: 0px 1px 0px rgb(200,200,200);
+}

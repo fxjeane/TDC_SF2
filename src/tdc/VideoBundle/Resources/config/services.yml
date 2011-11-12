@@ -1,0 +1,7 @@
+parameters:
+#    tdc_members.example.class: tdc\MembersBundle\Example
+
+services:
+#    tdc_members.example:
+#        class: %tdc_members.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

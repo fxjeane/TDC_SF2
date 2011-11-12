@@ -1,0 +1,29 @@
+{% extends 'tdcAdminBundle::layout.html.twig' %}
+
+{% block title %}TDC::Admin::Video::{{video.name}}{% endblock %}
+
+{% block header %} {% endblock %}	
+
+{% block body %}
+<h1>{{ video.name }}</h1>
+<table width="90%">
+    <tr>
+        <td >Name:</td> <td>{{ video.name }}</td>
+    </tr>
+    <tr>
+        <td>Author:</td> <td>{{ video.author }}</td>
+    </tr>
+    <tr>
+        <td>Description:</td> <td>{{ video.description }}</td>
+    </tr>
+    <tr>
+        <td>Categories:</td>
+        <td>{% for cat in video.categories %}
+                {{ cat.name }}</br>
+            {% endfor %}
+        </td>
+    </tr>
+</table>
+<a href="{{ path("tdc_admin_video_edit", {"id": video.id}) }}">Edit</a>
+
+{% endblock %}

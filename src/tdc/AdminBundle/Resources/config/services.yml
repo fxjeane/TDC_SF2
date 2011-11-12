@@ -1,0 +1,7 @@
+parameters:
+#    tdc_admin.example.class: tdc\AdminBundle\Example
+
+services:
+#    tdc_admin.example:
+#        class: %tdc_admin.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,44 @@
+{% extends 'tdcAdminBundle::layout.html.twig' %}
+
+{% block title %}TDC::Admin{% endblock %}
+
+{% block header %} {% endblock %}	
+
+{% block body %}
+    <h1>Videos</h1>
+    <table width="70%">
+        <th>Title</th><th>Author</th><th>Category</th><th>Views</th>
+        {% set row = 0 %}
+        {% for item in videos %}
+            <tr class="row_{{row}}">
+                <td>
+                    <a href="{{ path("tdc_admin_video_view", 
+                                     {'id': item.id})}}">{{ item.name }}</a>
+                </td>
+                <td>{{ item.author }}</td>
+                <td>{% for cat in item.categories %}
+                        {{ cat.name }}
+                    {% endfor %}
+                </td>
+                <td>{{ item.views }}</td>
+            </tr>
+            {% set row = 1 - row %}
+        {% endfor %}
+    </table>
+    <h1>Users</h1>
+    <table width="70%">
+        <th>User Name</th><th>Name</th><th>Last Name</th>
+        {% set row = 0 %}
+        {% for item in users %}
+            <tr class="row_{{row}}">
+                <td>
+                    <a href="{{ path("tdc_admin_video_view", 
+                                     {'id': item.id})}}">{{ item.username }}</a>
+                </td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.lastname }}</td>
+            </tr>
+            {% set row = 1 - row %}
+        {% endfor %}
+    </table>
+{% endblock body%}

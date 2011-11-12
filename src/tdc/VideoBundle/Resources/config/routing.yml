@@ -1,0 +1,7 @@
+#tdcMembers_homepage:
+#    pattern:  /members
+#    defaults: { _controller: tdcMembersBundle:Front:index }
+
+
+
+

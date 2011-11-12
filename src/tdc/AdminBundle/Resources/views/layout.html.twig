@@ -1,0 +1,41 @@
+{% extends 'tdcFrontEndBundle:Default:layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets  
+     debug=true
+    'public/css/admin.css' 
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block contentArea %}
+    <div id="adminNavBar">
+        <ul>
+            <li>Videos</li>
+            <li>Categories</li>
+            <li>Users</li>
+        </ul>
+    </div>
+    <div id="adminContent">
+    {% block body%} {% endblock body %}
+    </div>
+{% endblock contentArea %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            var contentArea = $("#contentFrame");
+            var navBar = $("#adminNavBar");
+            var adminContent = $("#adminContent");
+            var navLinks = $("#adminNavBar li");
+
+            navBar.height(contentArea.height());
+            adminContent.height(contentArea.height() - 20);
+            adminContent.width(contentArea.width() - navBar.width() - 22);
+            navLinks.first().css("border-top-width","0px");
+        });
+    </script>
+{% endblock %}
