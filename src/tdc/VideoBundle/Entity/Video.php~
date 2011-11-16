@@ -272,4 +272,29 @@ class Video
     {
         return $this->icon;
     }
+    /**
+     * @var string $trt
+     */
+    private $trt;
+
+
+    /**
+     * Set trt
+     *
+     * @param string $trt
+     */
+    public function setTrt($trt)
+    {
+        $this->trt = $trt;
+    }
+
+    /**
+     * Get trt
+     *
+     * @return string 
+     */
+    public function getTrt()
+    {
+        return $this->trt;
+    }
 }

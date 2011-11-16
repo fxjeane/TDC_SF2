@@ -3,21 +3,16 @@ tdc_front_homepage:
     defaults: { _controller: tdcFrontEndBundle:Front:index }
 
 tdc_front_catalog:
-    pattern: /catalog
-    defaults: { _controller: tdcFrontEndBundle:Front:catalog }
-
-tdc_front_video:
     pattern: /catalog/{id}
-    defaults: { _controller: tdcFrontEndBundle:Front:video }
+    defaults: { _controller: tdcFrontEndBundle:Front:catalog, id:-1 }
     requirements:
         id: \d+
 
-tdc_front_catalog_json:
-    pattern: /catalogJson/{start}/{max}
-    defaults: { _controller: tdcFrontEndBundle:Front:catalogJson, start: 0, max: 10 }
+tdc_front_category:
+    pattern: /category/{id} 
+    defaults: { _controller: tdcFrontEndBundle:Front:category, id:-1 }
     requirements:
-        start: \d+
-        max: \d+
+        id: \d+
 
 tdc_front_about:
     pattern: /about

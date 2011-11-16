@@ -199,7 +199,7 @@
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient5358"
-       id="radialGradient4239"
+       id="radialGradient3522"
        gradientUnits="userSpaceOnUse"
        cx="275.33929"
        cy="201.21519"
@@ -209,7 +209,7 @@
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient5858"
-       id="radialGradient4251"
+       id="radialGradient3534"
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(1.4292904,0.01234496,-0.01159473,1.3424304,-115.92193,-84.249063)"
        cx="286.1102"
@@ -354,9 +354,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.6793652"
-     inkscape:cx="379.24791"
-     inkscape:cy="573.40407"
+     inkscape:zoom="1.1874905"
+     inkscape:cx="348.29348"
+     inkscape:cy="618.76856"
      inkscape:document-units="px"
      inkscape:current-layer="layer4"
      showgrid="false"
@@ -396,7 +396,7 @@
          inkscape:export-ydpi="12.124507"
          inkscape:export-xdpi="12.124507"
          inkscape:export-filename="/Users/rudy/Dropbox/web/Symfony/web/public/images/icons/facebookIcon.png"
-         d="m 381.77177,200.01521 c 0,60.96221 -49.41964,110.38185 -110.38185,110.38185 -60.96221,0 -110.38184,-49.41964 -110.38184,-110.38185 0,-60.96221 49.41963,-110.381841 110.38184,-110.381841 60.96221,0 110.38185,49.419631 110.38185,110.381841 z"
+         d="m 381.77177,200.01521 a 110.38184,110.38184 0 1 1 -220.76369,0 110.38184,110.38184 0 1 1 220.76369,0 z"
          sodipodi:ry="110.38184"
          sodipodi:rx="110.38184"
          sodipodi:cy="200.01521"
@@ -410,7 +410,7 @@
          inkscape:export-xdpi="12.124507"
          inkscape:export-filename="/Users/rudy/Dropbox/web/Symfony/web/public/images/icons/facebookIcon.png"
          transform="matrix(1.0174189,0,0,1.0174189,-4.8707652,-5.4528956)"
-         d="m 381.77177,200.01521 c 0,60.96221 -49.41964,110.38185 -110.38185,110.38185 -60.96221,0 -110.38184,-49.41964 -110.38184,-110.38185 0,-60.96221 49.41963,-110.381841 110.38184,-110.381841 60.96221,0 110.38185,49.419631 110.38185,110.381841 z"
+         d="m 381.77177,200.01521 a 110.38184,110.38184 0 1 1 -220.76369,0 110.38184,110.38184 0 1 1 220.76369,0 z"
          sodipodi:ry="110.38184"
          sodipodi:rx="110.38184"
          sodipodi:cy="200.01521"
@@ -423,7 +423,7 @@
          inkscape:export-xdpi="12.124507"
          inkscape:export-filename="/Users/rudy/Dropbox/web/Symfony/web/public/images/icons/facebookIcon.png"
          transform="matrix(1.014016,0,0,1,-3.891036,-0.9689257)"
-         d="m 381.77177,200.01521 c 0,60.96221 -49.41964,110.38185 -110.38185,110.38185 -60.96221,0 -110.38184,-49.41964 -110.38184,-110.38185 0,-60.96221 49.41963,-110.381841 110.38184,-110.381841 60.96221,0 110.38185,49.419631 110.38185,110.381841 z"
+         d="m 381.77177,200.01521 a 110.38184,110.38184 0 1 1 -220.76369,0 110.38184,110.38184 0 1 1 220.76369,0 z"
          sodipodi:ry="110.38184"
          sodipodi:rx="110.38184"
          sodipodi:cy="200.01521"
@@ -466,7 +466,7 @@
          sodipodi:cy="200.01521"
          sodipodi:rx="110.38184"
          sodipodi:ry="110.38184"
-         d="m 381.77177,200.01521 c 0,60.96221 -49.41964,110.38185 -110.38185,110.38185 -60.96221,0 -110.38184,-49.41964 -110.38184,-110.38185 0,-60.96221 49.41963,-110.381841 110.38184,-110.381841 60.96221,0 110.38185,49.419631 110.38185,110.381841 z" />
+         d="m 381.77177,200.01521 a 110.38184,110.38184 0 1 1 -220.76369,0 110.38184,110.38184 0 1 1 220.76369,0 z" />
     </g>
     <g
        id="g6041"
@@ -587,19 +587,6 @@
        inkscape:export-filename="/Users/rudy/Dropbox/web/Symfony/web/public/images/icons/youTubeIcon.png"
        inkscape:export-xdpi="15.253412"
        inkscape:export-ydpi="15.253412" />
-    <path
-       transform="translate(-113.17439,251.87617)"
-       d="m 381.77177,200.01521 a 110.38184,110.38184 0 1 1 -220.76369,0 110.38184,110.38184 0 1 1 220.76369,0 z"
-       sodipodi:ry="110.38184"
-       sodipodi:rx="110.38184"
-       sodipodi:cy="200.01521"
-       sodipodi:cx="271.38992"
-       id="path6071"
-       style="fill:url(#radialGradient6085);fill-opacity:1;stroke:none"
-       sodipodi:type="arc"
-       inkscape:export-filename="/Users/rudy/Dropbox/web/Symfony/web/public/images/icons/youTubeIcon.png"
-       inkscape:export-xdpi="15.253412"
-       inkscape:export-ydpi="15.253412" />
     <g
        id="g6143"
        style="fill:#e6e6e6"
@@ -664,10 +651,10 @@
          inkscape:connector-curvature="0" />
     </g>
     <g
-       id="g4397"
-       inkscape:export-filename="/Users/rudy/Dropbox/web/Symfony/web/public/images/icons/tdchannelIcon.png"
-       inkscape:export-xdpi="15.253411"
-       inkscape:export-ydpi="15.253411">
+       id="g5761"
+       inkscape:export-filename="/Users/rudy/Dropbox/web/tdchannel/web/public/images/icons/tdchannelIcon.png"
+       inkscape:export-xdpi="15.253413"
+       inkscape:export-ydpi="15.253413">
       <path
          inkscape:export-ydpi="12.124507"
          inkscape:export-xdpi="12.124507"
@@ -677,113 +664,130 @@
          sodipodi:rx="110.38184"
          sodipodi:cy="200.01521"
          sodipodi:cx="271.38992"
-         id="path4223"
+         id="path3506"
          style="fill:#ececec;fill-opacity:1;stroke:none;filter:url(#filter5953)"
          sodipodi:type="arc"
-         transform="matrix(1.0174199,0,0,1.0174199,177.29184,229.20953)" />
+         transform="matrix(1.0174199,0,0,1.0174199,174.75524,256.38146)" />
       <path
          inkscape:export-ydpi="12.124507"
          inkscape:export-xdpi="12.124507"
          inkscape:export-filename="/Users/rudy/Dropbox/web/Symfony/web/public/images/icons/twitterIcon.png"
-         transform="matrix(1.0174189,0,0,1.0174189,177.17967,221.20988)"
+         transform="matrix(1.0174189,0,0,1.0174189,174.64307,248.38181)"
          d="m 381.77177,200.01521 a 110.38184,110.38184 0 1 1 -220.76369,0 110.38184,110.38184 0 1 1 220.76369,0 z"
          sodipodi:ry="110.38184"
          sodipodi:rx="110.38184"
          sodipodi:cy="200.01521"
          sodipodi:cx="271.38992"
-         id="path4225"
+         id="path3508"
          style="fill:#282828;fill-opacity:1;stroke:none;filter:url(#filter5949)"
          sodipodi:type="arc" />
       <path
          inkscape:export-ydpi="12.124507"
          inkscape:export-xdpi="12.124507"
          inkscape:export-filename="/Users/rudy/Dropbox/web/Symfony/web/public/images/icons/twitterIcon.png"
-         transform="matrix(1.014016,0,0,1,178.1594,225.69385)"
+         transform="matrix(1.014016,0,0,1,175.6228,252.86578)"
          d="m 381.77177,200.01521 a 110.38184,110.38184 0 1 1 -220.76369,0 110.38184,110.38184 0 1 1 220.76369,0 z"
          sodipodi:ry="110.38184"
          sodipodi:rx="110.38184"
          sodipodi:cy="200.01521"
          sodipodi:cx="271.38992"
-         id="path4227"
-         style="fill:url(#radialGradient4239);fill-opacity:1;stroke:none"
+         id="path3510"
+         style="fill:url(#radialGradient3522);fill-opacity:1;stroke:none"
          sodipodi:type="arc" />
+      <g
+         transform="matrix(1.0897321,0,0,1.0897321,-40.452712,-40.637962)"
+         id="g3896">
+        <g
+           transform="matrix(0.46308644,0,0,0.46308644,226.79764,356.94237)"
+           id="g3880"
+           style="fill:#333333">
+          <g
+             inkscape:label="Layer 1"
+             id="g3882"
+             style="fill:#333333;display:inline" />
+          <g
+             id="g3884"
+             inkscape:label="Layer"
+             style="fill:#333333;display:inline">
+            <path
+               inkscape:connector-curvature="0"
+               inkscape:export-ydpi="61.121548"
+               inkscape:export-xdpi="61.121548"
+               inkscape:export-filename="/Users/rudy/Dropbox/web/Symfony/web/public/images/tdcLogo_login.png"
+               id="path3886"
+               d="m 301.36115,104.41583 0,42.375 65.375,0 0,154.5 50.78125,0 0,-154.5 33.5,0 29.875,0 50.75,0 18.125,0 0.0625,0 c 20.83239,0 36.69392,5.11615 47.59375,15.3125 10.89956,10.19663 16.37484,21.04863 16.375,40.5625 -1.6e-4,19.60198 -5.51254,34.52816 -16.5,44.8125 -10.89984,10.28445 -26.72426,15.4375 -47.46875,15.4375 l -18.1875,0 0,-82.59375 -50.75,0 0,120.96875 53.53125,0 c 29.53458,0 51.67002,-2.1245 66.4375,-6.34375 14.76719,-4.30713 27.42047,-11.55348 37.96875,-21.75 9.2294,-8.87795 16.11061,-19.11579 20.59375,-30.71875 4.48274,-11.69075 6.71854,-24.95716 6.71875,-39.8125 -2.1e-4,-14.67933 -2.23601,-27.83446 -6.71875,-39.4375 -4.48314,-11.60277 -11.36435,-21.8406 -20.59375,-30.71875 -10.46038,-10.19632 -23.00821,-17.40557 -37.6875,-21.625 -14.59167,-4.30695 -36.83256,-6.46875 -66.71875,-6.46875 l -51.65625,0 -1.875,0 -179.53125,0 z"
+               style="font-size:270.03149414px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#333333;fill-opacity:1;stroke:none;display:inline;font-family:Al Bayan;-inkscape-font-specification:Al Bayan Bold" />
+          </g>
+        </g>
+        <g
+           style="fill:#f9f9f9"
+           transform="matrix(0.46308644,0,0,0.46308644,226.79764,360.94237)"
+           id="g3888">
+          <g
+             inkscape:label="Layer 1"
+             id="g3890"
+             style="fill:#f9f9f9;display:inline" />
+          <g
+             id="g3892"
+             inkscape:label="Layer"
+             style="fill:#f9f9f9;display:inline">
+            <path
+               inkscape:connector-curvature="0"
+               inkscape:export-ydpi="61.121548"
+               inkscape:export-xdpi="61.121548"
+               inkscape:export-filename="/Users/rudy/Dropbox/web/Symfony/web/public/images/tdcLogo_login.png"
+               id="path3894"
+               d="m 301.36115,104.41583 0,42.375 65.375,0 0,154.5 50.78125,0 0,-154.5 33.5,0 29.875,0 50.75,0 18.125,0 0.0625,0 c 20.83239,0 36.69392,5.11615 47.59375,15.3125 10.89956,10.19663 16.37484,21.04863 16.375,40.5625 -1.6e-4,19.60198 -5.51254,34.52816 -16.5,44.8125 -10.89984,10.28445 -26.72426,15.4375 -47.46875,15.4375 l -18.1875,0 0,-82.59375 -50.75,0 0,120.96875 53.53125,0 c 29.53458,0 51.67002,-2.1245 66.4375,-6.34375 14.76719,-4.30713 27.42047,-11.55348 37.96875,-21.75 9.2294,-8.87795 16.11061,-19.11579 20.59375,-30.71875 4.48274,-11.69075 6.71854,-24.95716 6.71875,-39.8125 -2.1e-4,-14.67933 -2.23601,-27.83446 -6.71875,-39.4375 -4.48314,-11.60277 -11.36435,-21.8406 -20.59375,-30.71875 -10.46038,-10.19632 -23.00821,-17.40557 -37.6875,-21.625 -14.59167,-4.30695 -36.83256,-6.46875 -66.71875,-6.46875 l -51.65625,0 -1.875,0 -179.53125,0 z"
+               style="font-size:270.03149414px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#f9f9f9;fill-opacity:1;stroke:none;display:inline;font-family:Al Bayan;-inkscape-font-specification:Al Bayan Bold" />
+          </g>
+        </g>
+        <g
+           id="g3875"
+           transform="matrix(0.46308644,0,0,0.46308644,226.79764,358.94237)"
+           style="fill:#cccccc">
+          <g
+             style="fill:#cccccc;display:inline"
+             id="layer1-0"
+             inkscape:label="Layer 1" />
+          <g
+             style="fill:#cccccc;display:inline"
+             inkscape:label="Layer"
+             id="layer2">
+            <path
+               style="font-size:270.03149414px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#cccccc;fill-opacity:1;stroke:none;display:inline;font-family:Al Bayan;-inkscape-font-specification:Al Bayan Bold"
+               d="m 301.36115,104.41583 0,42.375 65.375,0 0,154.5 50.78125,0 0,-154.5 33.5,0 29.875,0 50.75,0 18.125,0 0.0625,0 c 20.83239,0 36.69392,5.11615 47.59375,15.3125 10.89956,10.19663 16.37484,21.04863 16.375,40.5625 -1.6e-4,19.60198 -5.51254,34.52816 -16.5,44.8125 -10.89984,10.28445 -26.72426,15.4375 -47.46875,15.4375 l -18.1875,0 0,-82.59375 -50.75,0 0,120.96875 53.53125,0 c 29.53458,0 51.67002,-2.1245 66.4375,-6.34375 14.76719,-4.30713 27.42047,-11.55348 37.96875,-21.75 9.2294,-8.87795 16.11061,-19.11579 20.59375,-30.71875 4.48274,-11.69075 6.71854,-24.95716 6.71875,-39.8125 -2.1e-4,-14.67933 -2.23601,-27.83446 -6.71875,-39.4375 -4.48314,-11.60277 -11.36435,-21.8406 -20.59375,-30.71875 -10.46038,-10.19632 -23.00821,-17.40557 -37.6875,-21.625 -14.59167,-4.30695 -36.83256,-6.46875 -66.71875,-6.46875 l -51.65625,0 -1.875,0 -179.53125,0 z"
+               id="path4666"
+               inkscape:export-filename="/Users/rudy/Dropbox/web/Symfony/web/public/images/tdcLogo_login.png"
+               inkscape:export-xdpi="61.121548"
+               inkscape:export-ydpi="61.121548"
+               inkscape:connector-curvature="0" />
+          </g>
+        </g>
+      </g>
       <path
          sodipodi:type="arc"
-         style="fill:url(#radialGradient4251);fill-opacity:1;stroke:none"
-         id="path4237"
+         style="fill:url(#radialGradient3534);fill-opacity:1;stroke:none"
+         id="path3520"
          sodipodi:cx="271.38992"
          sodipodi:cy="200.01521"
          sodipodi:rx="110.38184"
          sodipodi:ry="110.38184"
          d="m 381.77177,200.01521 a 110.38184,110.38184 0 1 1 -220.76369,0 110.38184,110.38184 0 1 1 220.76369,0 z"
-         transform="translate(181.9632,225.69385)" />
-      <g
-         style="fill:#333333"
-         id="g4381"
-         transform="matrix(0.5125404,-0.20593009,0.20593009,0.5125404,171.41255,417.87928)">
-        <g
-           style="fill:#333333;display:inline"
-           id="g4383"
-           inkscape:label="Layer 1" />
-        <g
-           style="fill:#333333;display:inline"
-           inkscape:label="Layer"
-           id="g4385">
-          <path
-             style="font-size:270.03149414px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#333333;fill-opacity:1;stroke:none;display:inline;font-family:Al Bayan;-inkscape-font-specification:Al Bayan Bold"
-             d="m 301.36115,104.41583 0,42.375 65.375,0 0,154.5 50.78125,0 0,-154.5 33.5,0 29.875,0 50.75,0 18.125,0 0.0625,0 c 20.83239,0 36.69392,5.11615 47.59375,15.3125 10.89956,10.19663 16.37484,21.04863 16.375,40.5625 -1.6e-4,19.60198 -5.51254,34.52816 -16.5,44.8125 -10.89984,10.28445 -26.72426,15.4375 -47.46875,15.4375 l -18.1875,0 0,-82.59375 -50.75,0 0,120.96875 53.53125,0 c 29.53458,0 51.67002,-2.1245 66.4375,-6.34375 14.76719,-4.30713 27.42047,-11.55348 37.96875,-21.75 9.2294,-8.87795 16.11061,-19.11579 20.59375,-30.71875 4.48274,-11.69075 6.71854,-24.95716 6.71875,-39.8125 -2.1e-4,-14.67933 -2.23601,-27.83446 -6.71875,-39.4375 -4.48314,-11.60277 -11.36435,-21.8406 -20.59375,-30.71875 -10.46038,-10.19632 -23.00821,-17.40557 -37.6875,-21.625 -14.59167,-4.30695 -36.83256,-6.46875 -66.71875,-6.46875 l -51.65625,0 -1.875,0 -179.53125,0 z"
-             id="path4387"
-             inkscape:export-filename="/Users/rudy/Dropbox/web/Symfony/web/public/images/tdcLogo_login.png"
-             inkscape:export-xdpi="61.121548"
-             inkscape:export-ydpi="61.121548"
-             inkscape:connector-curvature="0" />
-        </g>
-      </g>
-      <g
-         id="g4389"
-         transform="matrix(0.5125404,-0.20593009,0.20593009,0.5125404,171.41255,421.87928)"
-         style="fill:#ffffff">
-        <g
-           style="fill:#ffffff;display:inline"
-           id="g4391"
-           inkscape:label="Layer 1" />
-        <g
-           style="fill:#ffffff;display:inline"
-           inkscape:label="Layer"
-           id="g4393">
-          <path
-             style="font-size:270.03149414px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;display:inline;font-family:Al Bayan;-inkscape-font-specification:Al Bayan Bold"
-             d="m 301.36115,104.41583 0,42.375 65.375,0 0,154.5 50.78125,0 0,-154.5 33.5,0 29.875,0 50.75,0 18.125,0 0.0625,0 c 20.83239,0 36.69392,5.11615 47.59375,15.3125 10.89956,10.19663 16.37484,21.04863 16.375,40.5625 -1.6e-4,19.60198 -5.51254,34.52816 -16.5,44.8125 -10.89984,10.28445 -26.72426,15.4375 -47.46875,15.4375 l -18.1875,0 0,-82.59375 -50.75,0 0,120.96875 53.53125,0 c 29.53458,0 51.67002,-2.1245 66.4375,-6.34375 14.76719,-4.30713 27.42047,-11.55348 37.96875,-21.75 9.2294,-8.87795 16.11061,-19.11579 20.59375,-30.71875 4.48274,-11.69075 6.71854,-24.95716 6.71875,-39.8125 -2.1e-4,-14.67933 -2.23601,-27.83446 -6.71875,-39.4375 -4.48314,-11.60277 -11.36435,-21.8406 -20.59375,-30.71875 -10.46038,-10.19632 -23.00821,-17.40557 -37.6875,-21.625 -14.59167,-4.30695 -36.83256,-6.46875 -66.71875,-6.46875 l -51.65625,0 -1.875,0 -179.53125,0 z"
-             id="path4395"
-             inkscape:export-filename="/Users/rudy/Dropbox/web/Symfony/web/public/images/tdcLogo_login.png"
-             inkscape:export-xdpi="61.121548"
-             inkscape:export-ydpi="61.121548"
-             inkscape:connector-curvature="0" />
-        </g>
-      </g>
-      <g
-         style="fill:#cccccc"
-         transform="matrix(0.5125404,-0.20593009,0.20593009,0.5125404,171.41255,419.87928)"
-         id="g4376">
-        <g
-           inkscape:label="Layer 1"
-           id="layer1-4"
-           style="display:inline;fill:#cccccc" />
-        <g
-           id="layer2"
-           inkscape:label="Layer"
-           style="display:inline;fill:#cccccc">
-          <path
-             inkscape:connector-curvature="0"
-             inkscape:export-ydpi="61.121548"
-             inkscape:export-xdpi="61.121548"
-             inkscape:export-filename="/Users/rudy/Dropbox/web/Symfony/web/public/images/tdcLogo_login.png"
-             id="path4666"
-             d="m 301.36115,104.41583 0,42.375 65.375,0 0,154.5 50.78125,0 0,-154.5 33.5,0 29.875,0 50.75,0 18.125,0 0.0625,0 c 20.83239,0 36.69392,5.11615 47.59375,15.3125 10.89956,10.19663 16.37484,21.04863 16.375,40.5625 -1.6e-4,19.60198 -5.51254,34.52816 -16.5,44.8125 -10.89984,10.28445 -26.72426,15.4375 -47.46875,15.4375 l -18.1875,0 0,-82.59375 -50.75,0 0,120.96875 53.53125,0 c 29.53458,0 51.67002,-2.1245 66.4375,-6.34375 14.76719,-4.30713 27.42047,-11.55348 37.96875,-21.75 9.2294,-8.87795 16.11061,-19.11579 20.59375,-30.71875 4.48274,-11.69075 6.71854,-24.95716 6.71875,-39.8125 -2.1e-4,-14.67933 -2.23601,-27.83446 -6.71875,-39.4375 -4.48314,-11.60277 -11.36435,-21.8406 -20.59375,-30.71875 -10.46038,-10.19632 -23.00821,-17.40557 -37.6875,-21.625 -14.59167,-4.30695 -36.83256,-6.46875 -66.71875,-6.46875 l -51.65625,0 -1.875,0 -179.53125,0 z"
-             style="font-size:270.03149414000000661px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#cccccc;fill-opacity:1;stroke:none;display:inline;font-family:Al Bayan;-inkscape-font-specification:Al Bayan Bold" />
-        </g>
-      </g>
+         transform="translate(179.4266,252.86578)" />
     </g>
+    <path
+       transform="translate(-113.17439,251.87617)"
+       d="m 381.77177,200.01521 a 110.38184,110.38184 0 1 1 -220.76369,0 110.38184,110.38184 0 1 1 220.76369,0 z"
+       sodipodi:ry="110.38184"
+       sodipodi:rx="110.38184"
+       sodipodi:cy="200.01521"
+       sodipodi:cx="271.38992"
+       id="path6071"
+       style="fill:url(#radialGradient6085);fill-opacity:1;stroke:none"
+       sodipodi:type="arc"
+       inkscape:export-filename="/Users/rudy/Dropbox/web/Symfony/web/public/images/icons/youTubeIcon.png"
+       inkscape:export-xdpi="15.253412"
+       inkscape:export-ydpi="15.253412" />
   </g>
   <g
      inkscape:groupmode="layer"

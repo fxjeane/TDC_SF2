@@ -33,7 +33,6 @@
             wframe.append(iconModeBtn);
 
             // sort
-            /*
             var sortModeBtn = $("<div id=\"tdcBrowserSortCbx\"></div>");
             sortModeBtn.addClass("tdcGenericGutter");
             sortModeBtn.width(200).height(24);
@@ -50,7 +49,7 @@
             sortModeBtn.append(sortBtn);
 
             wframe.append(sortModeBtn);
-            */
+
             // Append frame to element
             el.append(wframe);
 

@@ -13,32 +13,48 @@ class FrontController extends Controller
         return $this->render('tdcFrontEndBundle:Default:index.html.twig');
     }
 
-    public function catalogAction()
+    public function catalogAction($id)
     {
-        $videos = $this->getdoctrine()
-            ->getrepository('tdcVideoBundle:Video')
-            ->findall();
-        return $this->render('tdcFrontEndBundle:Default:catalog.html.twig',
-                             array("videos"=>$videos));
-    }
-
-    public function catalogJsonAction($start,$max)
-    {
-        $dql = 'SELECT p FROM tdc\VideoBundle\Entity\Video p ' .
-               'ORDER BY p.name DESC';
-                               
-        $query = $this->getDoctrine()->getEntityManager()->createQuery($dql);
-        $query->setMaxResults($max);
-        $query->setFirstResult($start);
-
-        $videos = $query->getResult();
-        $json = array();
-        foreach ($videos as $vid) {
-            $json[]= $vid->asArray();
+        if ($id == -1 ) {
+            $videos = $this->getdoctrine()
+                ->getrepository('tdcVideoBundle:Video')
+                ->findall();
+            return $this->render('tdcFrontEndBundle:Default:catalog.html.twig',
+                                 array("videos"=>$videos));
         }
-        //return new Response(get_class($videos));
-        return new Response(json_encode($json));
+        else
+        {
+            $video = $this->getDoctrine()
+                ->getRepository('tdcVideoBundle:Video')
+                ->find($id);
+            return $this->render('tdcFrontEndBundle:Default:video.html.twig',
+                    array("video"=>$video));
+        }
     }
+
+    public function categoryAction($id)
+    {
+        if ($id == -1 ) {
+            $categories = $this->getDoctrine()
+                ->getrepository('tdcVideoBundle:Category')
+                ->findall();
+            return $this->render('tdcFrontEndBundle:Default:category.html.twig',
+                                 array("index"=>true,"category"=>$categories));
+        }
+        else
+        {
+            $categories = $this->getDoctrine()
+                ->getRepository('tdcVideoBundle:Category')
+                ->find($id);
+            $video = $categories->getVideos();
+
+            return $this->render('tdcFrontEndBundle:Default:category.html.twig',
+                    array("index"=>false,
+                          "category"=>$categories,
+                          "video"=>$video));
+        }
+    }
+
     public function aboutAction()
     {
         return $this->render('tdcFrontEndBundle:Default:about.html.twig');
@@ -47,14 +63,6 @@ class FrontController extends Controller
     public function faqAction()
     {
         return $this->render('tdcFrontEndBundle:Default:faq.html.twig');
-    }
-    public function videoAction($id)
-    {
-        $video = $this->getDoctrine()
-            ->getRepository('tdcVideoBundle:Video')
-            ->find($id);
-        return $this->render('tdcFrontEndBundle:Default:video.html.twig',
-                array("video"=>$video));
     }
     
     public function homeAction()

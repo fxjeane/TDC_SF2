@@ -21,7 +21,6 @@
             <span class="videoTitle">{{ video.name }}</span>
         </div>
         <center>
-            <!-- <img src="{{ path('tdc_front_homepage') }}../public/images/icons/{{video.icon }}" /> -->
             <table id="courseInfo" class="grayGradient04">
                 <td rowspan="6" width="150">
                     <img id="courseLargeIcon" src="{{ path('tdc_front_homepage') }}../public/images/tdcLogo.png" />
@@ -38,7 +37,7 @@
                 <tr>
                     <td>Categories:</td>
                     <td>{% for cat in video.categories %}
-                            <a href="{{cat.id}}">{{ cat.name }}</a></br>
+                            <a href="{{ path('tdc_front_homepage') }}category/{{cat.id}}">{{ cat.name }}</a></br>
                         {% endfor %}
                     </td>
                 </tr>

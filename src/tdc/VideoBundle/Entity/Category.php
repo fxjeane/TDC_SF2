@@ -9,6 +9,12 @@ class Category
     protected $status;
     protected $children;
     protected $parent;
+
+
+    public function asArray() {
+        return get_object_vars($this);
+    }
+
     /**
      * @var integer $id
      */
@@ -147,5 +153,40 @@ class Category
     public function getParent()
     {
         return $this->parent;
+    }
+    /**
+     * @var tdc\VideoBundle\Entity\Video
+     */
+    private $videos;
+
+
+    /**
+     * Set videos
+     *
+     * @param tdc\VideoBundle\Entity\Video $videos
+     */
+    public function setVideos(\tdc\VideoBundle\Entity\Video $videos)
+    {
+        $this->videos = $videos;
+    }
+
+    /**
+     * Get videos
+     *
+     * @return tdc\VideoBundle\Entity\Video 
+     */
+    public function getVideos()
+    {
+        return $this->videos;
+    }
+
+    /**
+     * Add videos
+     *
+     * @param tdc\VideoBundle\Entity\Video $videos
+     */
+    public function addVideo(\tdc\VideoBundle\Entity\Video $videos)
+    {
+        $this->videos[] = $videos;
     }
 }

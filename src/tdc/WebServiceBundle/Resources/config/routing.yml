@@ -1,0 +1,31 @@
+tdc_ws_video_list:
+    pattern: /videolist/{start}/{max}/{category}
+    defaults:
+        _controller: tdcWebServiceBundle:Default:videoList
+        start: 0
+        max: -1
+        category: -1 
+    requirements:
+        start: \d+
+        max: \d+
+        category: \d+
+
+tdc_ws_video:
+    pattern: /video/{id}
+    defaults:
+        _controller: tdcWebServiceBundle:Default:video
+
+tdc_ws_categorylist:
+    pattern: /categorylist/{start}/{max}
+    defaults:
+        _controller: tdcWebServiceBundle:Default:categoryList
+        start: 0
+        max: -1
+    requirements:
+        start: \d+
+        max: \d+
+
+tdc_ws_category:
+    pattern: /category/{id}
+    defaults:
+        _controller: tdcWebServiceBundle:Default:category

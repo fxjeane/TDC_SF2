@@ -1,0 +1,7 @@
+parameters:
+#    tdc_web_service.example.class: tdc\WebServiceBundle\Example
+
+services:
+#    tdc_web_service.example:
+#        class: %tdc_web_service.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

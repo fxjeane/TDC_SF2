@@ -29,3 +29,7 @@ tdc\VideoBundle\Entity\Category:
         parent:
             targetEntity: Category
             inversedBy: children
+    manyToMany:
+        videos:
+            targetEntity: Video
+            mappedBy: categories

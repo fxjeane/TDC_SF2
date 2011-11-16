@@ -97,6 +97,7 @@ table .row_1 {
 }
 #loginBar label {
 }
+
 #loginBar input {
     color:rgb(200,200,200);
     border-radius: 5px;
@@ -215,15 +216,20 @@ table .row_1 {
 #contentHolder {
     margin:2.0em;
 }
-#contentHolder .videoTitle {
-    font-size: 4em;
+#contentHolder .videoTitle, 
+#contentHolder .categoryTitle {
+    font-size: 3em;
     position: relative;
     font-weight: bold;
-    text-shadow: 0px 1px 1px white;
-    margin-bottom:1em;
+    text-shadow: 0px 1px 1px rgb(40,40,40);
+    margin:0.25em 0.0em;
+    color:rgb(200,200,200);
 }
 #courseLargeIcon {
     float:left;
+}
+#categoryHeader {
+    margin:1em 0em;
 }
 #courseInfo {
     width:80%;
@@ -231,6 +237,12 @@ table .row_1 {
     border-radius: 10px;
     padding: 15px;
     font-size: 1.15em;
+}
+#tdcCategoryContent {
+    width:100%;
+}
+#tdcCategoryContent td {
+    padding:10px;
 }
 /*********************
  * Footer Bar
@@ -296,9 +308,9 @@ table .row_1 {
     border-radius: 4px;
     box-shadow: 0px 1px 0px 0px rgb(220,220,220),0px -0px 1px 1px rgb(30,30,30);
     border-top: 1px solid #CCF1FF;
-    color: #505050 !important;
-    color: rgb(64, 64, 64) !important;
-    text-shadow: 0px 1px rgb(240,240,240);
+    color: rgb(217,217,217) !important;
+    text-shadow: 0px 1px rgb(25,25,25);
+    border-top: 1px solid #7DB4FF !important;
     font-family: arial;
     font-size: 1.0em;
     border-bottom: 1px solid #195066;
@@ -379,6 +391,16 @@ table .row_1 {
     background: -ms-linear-gradient(top, #7ABCFF 0%,#60ABF8 44%,#4096EE 100%);
     background: linear-gradient(top, #7ABCFF 0%,#60ABF8 44%,#4096EE 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=0 );
+
+    background: rgb(0,102,255);
+    background: -moz-linear-gradient(top,  rgb(0,102,255) 0%, rgb(45,125,255) 44%, rgb(64,150,238) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(0,102,255)), color-stop(44%,rgb(45,125,255)), color-stop(100%,rgb(64,150,238)));
+    background: -webkit-linear-gradient(top,  rgb(0,102,255) 0%,rgb(45,125,255) 44%,rgb(64,150,238) 100%);
+    background: -o-linear-gradient(top,  rgb(0,102,255) 0%,rgb(45,125,255) 44%,rgb(64,150,238) 100%);
+    background: -ms-linear-gradient(top,  rgb(0,102,255) 0%,rgb(45,125,255) 44%,rgb(64,150,238) 100%);
+    background: linear-gradient(top,  rgb(0,102,255) 0%,rgb(45,125,255) 44%,rgb(64,150,238) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0066ff', endColorstr='#4096ee',GradientType=0 );
+
 }
 .blueBtnGradient:hover,
 .blueHoverGradient:hover {
@@ -390,5 +412,15 @@ table .row_1 {
     background: -ms-linear-gradient(top,  rgb(157,206,255) 0%,rgb(136,193,250) 44%,rgb(112,177,242) 100%);
     background: linear-gradient(top,  rgb(157,206,255) 0%,rgb(136,193,250) 44%,rgb(112,177,242) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9dceff', endColorstr='#70b1f2',GradientType=0 );
+
+    background: rgb(39,125,255);
+    background: -moz-linear-gradient(top,  rgb(39,125,255) 0%, rgb(77,145,255) 44%, rgb(93,167,241) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(39,125,255)), color-stop(44%,rgb(77,145,255)), color-stop(100%,rgb(93,167,241)));
+    background: -webkit-linear-gradient(top,  rgb(39,125,255) 0%,rgb(77,145,255) 44%,rgb(93,167,241) 100%);
+    background: -o-linear-gradient(top,  rgb(39,125,255) 0%,rgb(77,145,255) 44%,rgb(93,167,241) 100%);
+    background: -ms-linear-gradient(top,  rgb(39,125,255) 0%,rgb(77,145,255) 44%,rgb(93,167,241) 100%);
+    background: linear-gradient(top,  rgb(39,125,255) 0%,rgb(77,145,255) 44%,rgb(93,167,241) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#277dff', endColorstr='#5da7f1',GradientType=0 );
+
 }
 

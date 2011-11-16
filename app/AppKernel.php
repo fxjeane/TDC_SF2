@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new tdc\FrontEndBundle\tdcFrontEndBundle(),
             new tdc\UserBundle\tdcUserBundle(),
             new tdc\AdminBundle\tdcAdminBundle(),
+            new tdc\WebServiceBundle\tdcWebServiceBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
