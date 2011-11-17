@@ -13,23 +13,22 @@ class FrontController extends Controller
         return $this->render('tdcFrontEndBundle:Default:index.html.twig');
     }
 
-    public function catalogAction($id)
+    public function catalogListAction($entity,$start,$max)
     {
-        if ($id == -1 ) {
-            $videos = $this->getdoctrine()
-                ->getrepository('tdcVideoBundle:Video')
-                ->findall();
+        $rep = $this->getdoctrine()->getrepository('tdcVideoBundle:'.
+                                                    ucfirst($entity));
+            
+        $values = $rep->createQueryBuilder('p')
+                      ->setFirstResult(($start - 1) * $max)
+                      ->setMaxResults($max)
+                      ->getQuery()
+                      ->getResult();
+
             return $this->render('tdcFrontEndBundle:Default:catalog.html.twig',
-                                 array("videos"=>$videos));
-        }
-        else
-        {
-            $video = $this->getDoctrine()
-                ->getRepository('tdcVideoBundle:Video')
-                ->find($id);
-            return $this->render('tdcFrontEndBundle:Default:video.html.twig',
-                    array("video"=>$video));
-        }
+                                 array("entity"=>$entity,
+                                       "start"=>$start,
+                                       "max"=>$max,
+                                       "values"=>$values));
     }
 
     public function categoryAction($id)

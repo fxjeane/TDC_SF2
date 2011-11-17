@@ -6,7 +6,7 @@
         debug=true
         'public/js/jquery/jquery-ui-1.8.16.custom.min.js'
         'public/js/tdc/tdc.js'
-        'public/js/tdc/tdc.browser.js'
+        'public/js/tdc/tdc.paginator.js'
     %}
     <script src="{{ asset_url }}" type="text/javascript"  /></script>
     {% endjavascripts %}
@@ -16,33 +16,93 @@
     {{ parent() }}
     {% stylesheets  
      debug=true
-    'public/css/browser.css' 
+    'public/css/catalog.css' 
     %}
     <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
     {% endstylesheets %}
 {% endblock %}
 
-{% block title %}TDC::Catalog{% endblock %}
+{% block title %}
+    TDC::Catalog::
+    {% if entity == "video" %}
+        Videos
+    {% else %}
+        Categories
+    {% endif %}
+{% endblock %}
 
 {% block contentArea %}
     {% block body %}
         <div id="contentHolder">
-            <h1>Catalog</h1>
-
-            {#% for item in videos %}
-                <li><a href="{{ item.name }}">{{ item.name }}</a></li>
-            {% endfor %#}
-            <div id="tdc_browser"></div>
+            <h1>
+            {% if entity == "video" %}
+                Videos
+            {% else %}
+                Categories
+            {% endif %}
+            </h1>
+           <center> 
+            <div id="paginatorTop" class="paginator"></div>
+            <table id="catalogTable">
+                {% if entity == "video" %}
+                    <th colspan="2">Video</th>
+                    <th>Summary</th>
+                    <th>Views</th>
+                    <th>Rating</th>
+                    {% set i = 0 %}
+                    {% for item in values %}
+                        <tr class="row_{{ cycle(['0', '1'], i) }}">
+                            <td class="icon">
+                                <a href="{{path("tdc_front_catalog_item",{'entity':'video','id':item.id})}}">
+                                    <img src={{path("tdc_front_homepage")}}../public/images/icons/{{ item.icon }} />
+                                </a>
+                            </td>
+                            <td class="info">
+                                <a class="video" href="{{path("tdc_front_catalog_item",{'entity':'video','id':item.id})}}">
+                                    {{ item.name }}
+                                </a>
+                                <label class="author">Author: {{item.author}}</label>
+                                <label class="trt">Trt: {{item.trt}}</label>
+                            </td>
+                            <td class="summary">{{ item.summary }}</td>
+                            <td class="views">{{ item.views }}</td>
+                            <td class="rating">{{ item.views }}</td>
+                        </tr>
+                        {% set i = i + 1 %}
+                    {% endfor %}
+                {% else %}
+                    
+                {% endif %}
+            </table>
+            <div id="paginatorBottom" class="paginator"></div>
+            </center>
         </div>
     {% endblock body %}
 {% endblock contentArea %}
 
+
 {% block javascripts %}
     {{ parent() }}
     <script >
+    $('.paginator').tdcPaginator({
+                start:{{start}},
+                max:{{max}},
+                lastLabel:">>",
+                firstLabel: "<<",
+                trailLinks: 3,
+                {% if entity == "video" %}
+                    queryUrl:'{{ path("tdc_ws_video_list")}}',
+                {% else %}
+                    queryUrl:'{{ path("tdc_ws_category_list")}}',
+                {% endif %}
+                targetUrl:'{{ path("tdc_front_catalog_list")}}'+'/{{entity}}'
+                });
+
+    /*
         $('#tdc_browser').tdcBrowser({
                     dataUrl:"{{ path("tdc_front_homepage") }}catalogJson",
                     videosUrl:"{{ path("tdc_front_homepage") }}catalog"
                     });
-    </script>
+   */
+   </script>
 {% endblock javascripts %}

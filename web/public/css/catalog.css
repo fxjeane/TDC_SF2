@@ -1,0 +1,44 @@
+#catalogTable {
+    width:100%;
+    margin:1.0em 0.0em;
+}
+
+#catalogTable td {
+    padding:8px;
+    text-align:left;
+}
+
+#catalogTable td.icon {
+    width:60px;
+    padding-left:20px;
+    padding-right:20px;
+}
+
+#catalogTable td.info {
+}
+
+#catalogTable td.summary {
+    text-align:justify;
+    width:35%;
+    font-size: 0.85em;
+}
+
+#catalogTable td.views,
+#catalogTable td.rating {
+    text-align:center;
+    width:50px;
+}
+#catalogTable td a.video {
+    font-size:1.5em;
+    margin-bottom:0.15em;
+    display:block;
+}
+
+#catalogTable td label.author,
+#catalogTable td label.trt {
+    font-size:0.8em;
+}
+
+#catalogTable td label.author {
+    display:block;
+}

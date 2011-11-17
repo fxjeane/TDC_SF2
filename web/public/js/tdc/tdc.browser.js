@@ -32,23 +32,6 @@
             wframe.append(listModeBtn);
             wframe.append(iconModeBtn);
 
-            // sort
-            var sortModeBtn = $("<div id=\"tdcBrowserSortCbx\"></div>");
-            sortModeBtn.addClass("tdcGenericGutter");
-            sortModeBtn.width(200).height(24);
-            
-            var sortLabel = $('<div id="tdcBrowserSortLbl">sort</div>');
-            sortLabel.width(50).height(24);
-            sortLabel.addClass("blueGradient01");
-            sortModeBtn.append(sortLabel);
-
-        
-            var sortBtn = $('<div id="tdcBrowserSortBtn">^</div>');
-            sortBtn.width(25).height(24);
-            sortBtn.addClass("blueBtnGradient");
-            sortModeBtn.append(sortBtn);
-
-            wframe.append(sortModeBtn);
 
             // Append frame to element
             el.append(wframe);

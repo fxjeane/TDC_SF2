@@ -1,31 +1,45 @@
 tdc_ws_video_list:
-    pattern: /videolist/{start}/{max}/{category}
+    pattern: /videolist/{start}/{max}/{category}.{_format}
     defaults:
         _controller: tdcWebServiceBundle:Default:videoList
         start: 0
         max: -1
         category: -1 
+        _format: json
     requirements:
         start: \d+
         max: \d+
         category: \d+
+        _method:  GET
+        _format: JSON
 
-tdc_ws_video:
-    pattern: /video/{id}
+tdc_ws_video_item:
+    pattern: /video/{id}.{_format}
     defaults:
         _controller: tdcWebServiceBundle:Default:video
+        _format: json
+    requirements:
+        _method:  GET
+        _format: JSON
 
-tdc_ws_categorylist:
-    pattern: /categorylist/{start}/{max}
+tdc_ws_category_list:
+    pattern: /categorylist/{start}/{max}.{_format}
     defaults:
         _controller: tdcWebServiceBundle:Default:categoryList
         start: 0
         max: -1
+        _format: json
     requirements:
         start: \d+
         max: \d+
+        _method:  GET
+        _format: JSON
 
-tdc_ws_category:
-    pattern: /category/{id}
+tdc_ws_category_item:
+    pattern: /category/{id}.{_format}
     defaults:
         _controller: tdcWebServiceBundle:Default:category
+        _format: json
+    requirements:
+        _method:  GET
+        _format: JSON

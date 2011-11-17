@@ -2,11 +2,26 @@ tdc_front_homepage:
     pattern:  /
     defaults: { _controller: tdcFrontEndBundle:Front:index }
 
-tdc_front_catalog:
-    pattern: /catalog/{id}
-    defaults: { _controller: tdcFrontEndBundle:Front:catalog, id:-1 }
+tdc_front_catalog_item:
+    pattern: /catalog/{entity}/{id}
+    defaults:
+        _controller: tdcFrontEndBundle:Front:catalogItem
+        entity: "video"
     requirements:
         id: \d+
+
+tdc_front_catalog_list:
+    pattern: /catalog/{entity}/{start}/{max}
+    defaults:
+        _controller: tdcFrontEndBundle:Front:catalogList
+        entity: "video" 
+        start: 1
+        max: 10
+    requirements:
+        entity: \w+
+        start: \d+
+        max: \d+
+
 
 tdc_front_category:
     pattern: /category/{id} 

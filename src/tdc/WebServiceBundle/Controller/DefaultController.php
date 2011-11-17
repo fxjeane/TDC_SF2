@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
-    
     public function indexAction($name)
     {
         return $this->render('tdcWebServiceBundle:Default:index.html.twig', array('name' => $name));
