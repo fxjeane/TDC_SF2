@@ -1,0 +1,26 @@
+tdc\UserBundle\Entity\Subscription:
+    type: entity
+    table: subscription
+    id:
+        id:
+            type: integer
+            generator: { strategy : AUTO }
+    fields:
+        created:    
+            type: date
+        expires:
+            type: date
+        transaction:
+            type: string
+            length: 255
+        duration:
+            type: string
+            length: 100
+    oneToOne:
+        user_subscription:
+            targetEntity: User
+            inversedBy: subscription
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+

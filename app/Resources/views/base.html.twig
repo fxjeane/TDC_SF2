@@ -2,7 +2,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>
+        {% block title %}
+            TDC::
+            {% block titleName %}{% endblock titleName %}
+        {% endblock title %}
+        </title>
 
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
         {% block header_javascripts %}
@@ -16,8 +21,10 @@
 
         {% block stylesheets %}
             {% stylesheets  
-             debug=true
-            'public/css/main.css' 
+             debug=false
+            'bundles/tdcfrontend/css/main.css' 
+            filter='cssrewrite'
+            output='css/*.css'
             %}
             <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
             {% endstylesheets %}
@@ -65,8 +72,17 @@
                             <td><a href="{{ path("tdc_front_catalog_list") }}">Catalog</a></td>
                         </tr>
                         <tr>
+                        {% if app.user == "" %}
                             <td><a href="{{ path("fos_user_security_login") }}">Login</a></td>
-                            <td></td>
+                            <td><a href="{{ path("fos_user_registration_register") }}">Register</a></td>
+                        {% else %}
+                            <td><a href="{{ path("fos_user_security_logout") }}">Logout</a></td>
+                            <td>
+                                {% if app.user.subscription|length == 0 %}
+                                <a href="{{ path("tdc_front_subscribe") }}">Subscribe</a>
+                                {% endif %}
+                            </td>
+                        {% endif %}
                         </tr>
                         </table>
                     </div>

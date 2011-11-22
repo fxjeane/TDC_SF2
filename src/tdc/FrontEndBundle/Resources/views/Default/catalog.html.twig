@@ -1,4 +1,4 @@
-{% extends 'tdcFrontEndBundle:Default:index.html.twig' %}
+{% extends 'tdcFrontEndBundle:Default:layout.html.twig' %}
 
 {% block header_javascripts %}
     {{ parent() }}
@@ -22,14 +22,14 @@
     {% endstylesheets %}
 {% endblock %}
 
-{% block title %}
-    TDC::Catalog::
+{% block titleName %}
+    Catalog::
     {% if entity == "video" %}
         Videos
     {% else %}
         Categories
     {% endif %}
-{% endblock %}
+{% endblock titleName %}
 
 {% block contentArea %}
     {% block body %}

@@ -98,4 +98,29 @@ class User extends BaseUser
     {
         return $this->ratings;
     }
+    /**
+     * @var tdc\UserBundle\Entity\Subscription
+     */
+    private $subscription;
+
+
+    /**
+     * Set subscription
+     *
+     * @param tdc\UserBundle\Entity\Subscription $subscription
+     */
+    public function setSubscription(\tdc\UserBundle\Entity\Subscription $subscription)
+    {
+        $this->subscription = $subscription;
+    }
+
+    /**
+     * Get subscription
+     *
+     * @return tdc\UserBundle\Entity\Subscription 
+     */
+    public function getSubscription()
+    {
+        return $this->subscription;
+    }
 }

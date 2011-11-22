@@ -1,3 +1,6 @@
+# all vim backup files
+*~
+
 # Bootstrap
 app/bootstrap*
 
@@ -7,6 +10,9 @@ vendor/*
 */cache/*
 web/uploads/*
 web/bundles/*
-
+web/css
+web/css/*
+web/js
+web/js/*
 # Configuration files
 app/config/parameters.ini

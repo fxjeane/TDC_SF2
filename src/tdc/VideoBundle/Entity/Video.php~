@@ -11,13 +11,14 @@ class Video
     protected $status;
     protected $views;
 
+    public function asArray() {
+        return get_object_vars($this);
+    }
+
     /**
      * @var integer $id
      */
     private $id;
-    public function asArray() {
-        return get_object_vars($this);
-    }
 
     /**
      * Get id

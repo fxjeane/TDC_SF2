@@ -2,6 +2,22 @@ tdcWebServiceBundle:
     resource: "@tdcWebServiceBundle/Resources/config/routing.yml"
     prefix:   /ws
 
+tdcUserBundle:
+    resource: "@tdcUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+tdcFrontEndBundle:
+    resource: "@tdcFrontEndBundle/Resources/config/routing.yml"
+    prefix:   /
+
+tdcVideoBundle:
+    resource: "@tdcVideoBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+tdcAdminBundle:
+    resource: "@tdcAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
@@ -20,24 +36,9 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /change-password
-
-tdcUserBundle:
-    resource: "@tdcUserBundle/Resources/config/routing.yml"
-    prefix:   /
-
-tdcFrontEndBundle:
-    resource: "@tdcFrontEndBundle/Resources/config/routing.yml"
-    prefix:   /
-
-tdcVideoBundle:
-    resource: "@tdcVideoBundle/Resources/config/routing.yml"
-    prefix:   /
-    
-tdcAdminBundle:
-    resource: "@tdcAdminBundle/Resources/config/routing.yml"
-    prefix:   /admin
     
 # Internal routing configuration to handle ESI
 #_internal:
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
 #   prefix:   /_internal
+

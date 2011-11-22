@@ -10,27 +10,27 @@
     {% endstylesheets %}
 {% endblock %}
 
+{% block loginBar %}
+    {% if app.user != "" %}
+        logged in as <strong>{{ app.user ? app.user.username : 'Anonymous' }}</strong> - 
+        <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+    {% endif %}
+{% endblock loginBar %}
+
 {% block contentArea %}
 <center>
     <div id='loginArea'>
         <img src="{{ path('tdc_front_homepage') }}../public/images/tdcLogo_login.png" style="margin:20px;margin-top:0px" />
         <div>
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                ##FIGURE OUT HOW TO REPLACE THIS </br/></br>
-                <a href="{{ path('fos_user_security_logout') }}">
-                    Logout
-                </a>
-                </br>
-                </br>
-            {% else %}
-                <div>
-                    {% block fos_user_content %}
-                    {% endblock fos_user_content %}
-                </div>
-                </br>
-                </br>
-                <!-- <a href="javascript(void());">Login</a> -->
-            {% endif %}
+            <div>
+                {% block fos_user_content %}
+                {% endblock fos_user_content %}
+            </div>
+            <!-- <a href="{{ path('fos_user_security_logout') }}">
+                Logout
+            </a> -->
+            </br>
+            </br>
         </div>
 
         {% for key, message in app.session.getFlashes() %}

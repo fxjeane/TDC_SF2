@@ -31,27 +31,23 @@ class FrontController extends Controller
                                        "values"=>$values));
     }
 
-    public function categoryAction($id)
+    public function catalogItemAction($entity,$id)
     {
-        if ($id == -1 ) {
-            $categories = $this->getDoctrine()
-                ->getrepository('tdcVideoBundle:Category')
-                ->findall();
-            return $this->render('tdcFrontEndBundle:Default:category.html.twig',
-                                 array("index"=>true,"category"=>$categories));
-        }
-        else
-        {
-            $categories = $this->getDoctrine()
-                ->getRepository('tdcVideoBundle:Category')
-                ->find($id);
-            $video = $categories->getVideos();
+        $item = $this->getdoctrine()->getrepository('tdcVideoBundle:'.
+                                                    ucfirst($entity))
+                     ->find($id);
+        return $this->render('tdcFrontEndBundle:Default:item.html.twig',
+                             array("item"=>$item,"entity"=>$entity));
+    }
 
-            return $this->render('tdcFrontEndBundle:Default:category.html.twig',
-                    array("index"=>false,
-                          "category"=>$categories,
-                          "video"=>$video));
-        }
+    public function subscribeAction()
+    {
+        $userObj = $this->container->get('security.context')
+                    ->getToken()
+                    ->getUser();
+         
+        return $this->render('tdcFrontEndBundle:Default:subscribe.html.twig',
+                            array("user"=>$userObj));
     }
 
     public function aboutAction()

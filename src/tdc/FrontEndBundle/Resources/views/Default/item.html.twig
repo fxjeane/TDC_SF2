@@ -1,0 +1,92 @@
+{% extends 'tdcFrontEndBundle:Default:index.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets  
+     debug=true
+    'public/css/item.css' 
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block titleName %}
+    {% if entity == "video" %}
+        Videos
+    {% else %}
+        Categories
+    {% endif %}
+    ::{{item.name}}
+{% endblock %}
+
+{% block contentArea %}
+    <div id="contentHolder" >
+        {% block body %}
+        <center>
+            <table id="itemInfo" class="grayGradient04">
+            {% if entity == "video" %}
+                <td rowspan="6" width="150">
+                    <img id="courseLargeIcon" src="{{ path('tdc_front_homepage') }}../public/images/tdcLogo.png" />
+                </td>
+                <tr>
+                    <td width="150">Name:</td> <td>{{ item.name }}</td>
+                </tr>
+                <tr>
+                    <td>Author:</td> <td>{{ item.author }}</td>
+                </tr>
+                <tr>
+                    <td>Running Time:</td> <td>{{ item.trt }}</td>
+                </tr>
+                {% if item.categories|length > 0 %}
+                <tr>
+                    <td>Categories:</td>
+                    <td>{% for cat in item.categories %}
+                            <a href="{{ path('tdc_front_catalog_item',{"id":cat.id,"entity":"category"})}}">{{ cat.name }}</a></br>
+                        {% endfor %}
+                    </td>
+                </tr>
+                {% endif %}
+                <tr>
+                    <td>Rating:</td> <td>4.25</td>
+                </tr>
+                <tr>
+                    <td colspan="3">{{ item.description|raw }}</td>
+                </tr>
+            {% else %}
+                <td rowspan="4" width="150">
+                    <img id="courseLargeIcon" src="{{ path('tdc_front_homepage') }}../public/images/tdcLogo.png" />
+                </td>
+                <tr>
+                    <td>Name:</td>
+                    <td>{{item.name}}</td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td>{{item.description}}</td>
+                </tr>
+                <tr>
+                    {% if item.children|length > 0 %}
+                        <td>Sub-Categories:</td>
+                        <td>{% for cat in item.children %}
+                                <a href="{{ path('tdc_front_catalog_item',{"id":cat.id,"entity":"category"})}}">{{ cat.name }}</a></br>
+                            {% endfor %}
+                        </td>
+                    {% endif %}
+                </tr>
+                {% if item.videos|length > 0 %}
+                    <tr>
+                        <td>Videos</td>
+                    </tr>
+                    <tr>
+                    {% for vid in item.videos %}
+                        <td>{{vid.name}}</td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+            </table>
+        </center>
+        {% endblock body %}
+    </div>
+{% endblock contentArea %}
+

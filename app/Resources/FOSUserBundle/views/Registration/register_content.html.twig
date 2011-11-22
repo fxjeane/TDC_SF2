@@ -1,0 +1,26 @@
+{% form_theme form theme %}
+
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+    {#{ form_widget(form) }#}
+    {{ form_errors(form) }}
+    <div>
+        {{ form_label(form.username) }}
+        </br>
+        {{ form_widget(form.username) }}
+        </br>
+        {{ form_label(form.email) }}
+        </br>
+        {{ form_widget(form.email) }}
+        </br>
+        {{ form_label(form.plainPassword.first) }}
+        </br>
+        {{ form_widget(form.plainPassword.first,{"label":" foo"}) }}
+        </br>
+        {{ form_label(form.plainPassword.second) }}
+        </br>
+        {{ form_widget(form.plainPassword.second,{"label":" foo"}) }}
+    </div>
+    <div>
+        <input type="submit" class="blueBtnGradient blueGradient01" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
+    </div>
+</form>

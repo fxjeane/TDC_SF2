@@ -22,13 +22,6 @@ tdc_front_catalog_list:
         start: \d+
         max: \d+
 
-
-tdc_front_category:
-    pattern: /category/{id} 
-    defaults: { _controller: tdcFrontEndBundle:Front:category, id:-1 }
-    requirements:
-        id: \d+
-
 tdc_front_about:
     pattern: /about
     defaults: { _controller: tdcFrontEndBundle:Front:about }
@@ -38,5 +31,13 @@ tdc_front_faq:
     defaults: { _controller: tdcFrontEndBundle:Front:faq }
 
 tdc_logedin_home:
-    pattern: /home
+    pattern: /profile
     defaults: { _controller: tdcFrontEndBundle:Front:home }
+
+tdc_logedin_profile:
+    pattern: /profile
+    defaults: { _controller: tdcFrontEndBundle:Front:home }
+
+tdc_front_subscribe:
+    pattern: /subscribe
+    defaults: { _controller: tdcFrontEndBundle:Front:subscribe }

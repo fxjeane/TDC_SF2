@@ -4,11 +4,14 @@
  *
  ********************/
 body {
-    background-color:rgb(65,65,65)
+    background-color:rgb(65,65,65);
+    color:rgb(220,220,220);
+    text-shadow: 0px -1px 0px rgb(30,30,30);
 }
 
 a {
     text-decoration:none;
+    color: #E4BC44;
 }
 table {
     border-spacing:0px;
@@ -59,23 +62,23 @@ table .row_1 {
 
 }
 #tdcBtn {
-    background-image: url(../../public/images/icons/tdchannelIcon.png);
+    background-image: url(../../../public/images/icons/tdchannelIcon.png);
     background-repeat: no-repeat;
     float:left;
     margin-left:25px
 }
 #facebookBtn {
-    background-image: url(../../public/images/icons/facebookIcon.png);
+    background-image: url(../../../public/images/icons/facebookIcon.png);
     background-repeat: no-repeat;
     float:left;
 }
 #twitterBtn {
-    background-image: url(../../public/images/icons/twitterIcon.png);
+    background-image: url(../../../public/images/icons/twitterIcon.png);
     background-repeat: no-repeat;
     float:left;
 }
 #youtubeBtn {
-    background-image: url(../../public/images/icons/youTubeIcon.png);
+    background-image: url(../../../public/images/icons/youTubeIcon.png);
     background-repeat: no-repeat;
     float:left;
 }
@@ -162,7 +165,6 @@ table .row_1 {
     margin-top:0px
 }
 #contentFrame {
-    color: rgb(40,40,40);
     width: 100%;
     font-family: arial;
     min-height:400px;
@@ -174,7 +176,7 @@ table .row_1 {
     padding:1px 0px;
     width: 100%;
     height:450px;
-    background-image: url(../../public/images/contentbg.jpg);
+    background-image: url(../../../public/images/contentbg.jpg);
     border-bottom:1px solid #323232;
 }
 #lowerContent {
@@ -231,18 +233,17 @@ table .row_1 {
 #categoryHeader {
     margin:1em 0em;
 }
-#courseInfo {
-    width:80%;
-    margin: 1em;
-    border-radius: 10px;
-    padding: 15px;
-    font-size: 1.15em;
-}
 #tdcCategoryContent {
     width:100%;
 }
 #tdcCategoryContent td {
     padding:10px;
+}
+
+li.question {
+    list-style:none;
+    font-size:1.25em;
+    font-weight:bold;
 }
 /*********************
  * Footer Bar
@@ -323,12 +324,12 @@ table .row_1 {
  /***** Gray ********/
  .grayGradient01 {
     background: rgb(80,80,80);
-    background-image:url(../../public/images/footerbg.png),-moz-linear-gradient(top,  rgb(80,80,80) 0%, rgb(50,50,50) 100%);
-    background-image: url(../../public/images/footerbg.png),-webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(80,80,80)), color-stop(100%,rgb(50,50,50)));
-    background-image:url(../../public/images/footerbg.png), -webkit-linear-gradient(top,  rgb(80,80,80) 0%,rgb(50,50,50) 100%);
-    background-image:url(../../public/images/footerbg.png), -o-linear-gradient(top,  rgb(80,80,80) 0%,rgb(50,50,50) 100%);
-    background-image:url(../../public/images/footerbg.png), -ms-linear-gradient(top,  rgb(80,80,80) 0%,rgb(50,50,50) 100%);
-    background-image:url(../../public/images/footerbg.png), linear-gradient(top,  rgb(80,80,80) 0%,rgb(50,50,50) 100%);
+    background-image:url(../../../public/images/footerbg.png),-moz-linear-gradient(top,  rgb(80,80,80) 0%, rgb(50,50,50) 100%);
+    background-image: url(../../../public/images/footerbg.png),-webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(80,80,80)), color-stop(100%,rgb(50,50,50)));
+    background-image:url(../../../public/images/footerbg.png), -webkit-linear-gradient(top,  rgb(80,80,80) 0%,rgb(50,50,50) 100%);
+    background-image:url(../../../public/images/footerbg.png), -o-linear-gradient(top,  rgb(80,80,80) 0%,rgb(50,50,50) 100%);
+    background-image:url(../../../public/images/footerbg.png), -ms-linear-gradient(top,  rgb(80,80,80) 0%,rgb(50,50,50) 100%);
+    background-image:url(../../../public/images/footerbg.png), linear-gradient(top,  rgb(80,80,80) 0%,rgb(50,50,50) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#505050', endColorstr='#323232',GradientType=0 );
  }
  .grayGradient02 {
@@ -343,12 +344,12 @@ table .row_1 {
  }
  .grayGradient03 {
     background: rgb(81,81,81);
-    background: url(../../public/images/footerbg.png), -moz-linear-gradient(top,  rgb(81,81,81) 0%, rgb(114,114,114) 100%);
-    background: url(../../public/images/footerbg.png), -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(81,81,81)), color-stop(100%,rgb(114,114,114)));
-    background: url(../../public/images/footerbg.png), -webkit-linear-gradient(top,  rgb(81,81,81) 0%,rgb(114,114,114) 100%);
-    background: url(../../public/images/footerbg.png), -o-linear-gradient(top,  rgb(81,81,81) 0%,rgb(114,114,114) 100%);
-    background: url(../../public/images/footerbg.png), -ms-linear-gradient(top,  rgb(81,81,81) 0%,rgb(114,114,114) 100%);
-    background: url(../../public/images/footerbg.png), linear-gradient(top,  rgb(81,81,81) 0%,rgb(114,114,114) 100%);
+    background: url(../../../public/images/footerbg.png), -moz-linear-gradient(top,  rgb(81,81,81) 0%, rgb(114,114,114) 100%);
+    background: url(../../../public/images/footerbg.png), -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(81,81,81)), color-stop(100%,rgb(114,114,114)));
+    background: url(../../../public/images/footerbg.png), -webkit-linear-gradient(top,  rgb(81,81,81) 0%,rgb(114,114,114) 100%);
+    background: url(../../../public/images/footerbg.png), -o-linear-gradient(top,  rgb(81,81,81) 0%,rgb(114,114,114) 100%);
+    background: url(../../../public/images/footerbg.png), -ms-linear-gradient(top,  rgb(81,81,81) 0%,rgb(114,114,114) 100%);
+    background: url(../../../public/images/footerbg.png), linear-gradient(top,  rgb(81,81,81) 0%,rgb(114,114,114) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#515151', endColorstr='#727272',GradientType=0 );
  }
  .grayGradient04 {

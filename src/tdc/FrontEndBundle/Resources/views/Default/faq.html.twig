@@ -1,9 +1,39 @@
 {% extends 'tdcFrontEndBundle:Default:index.html.twig' %}
 
-{% block title %}FAQ{% endblock %}
+{% block titleName %}FAQ{% endblock %}
 
 {% block contentArea %}
+    <div id="contentHolder" >
     {% block body %}
         <h1>FAQ</h1>
+        
+        <h2><a name="about"/>About TD Channel</a></h2>
+        <li class="question">What is TD Channel?</li>
+        <p>TD Channel is an online  learning resource designed to provide high quality educational content with strong enphasis on concepts instead of "recipes".</p>
+        
+        <li class="question">How does TD Channel work?</li>
+        <p>TD Channel is a subscription service. For a very small fee, subscribed users can access the entire TD Channel library, as well as access to our Q&A system and our topic request form.</p>
+        <p>The video library is available 24/7/365 and can be accessed from any computer with internet access.</p>
+
+        <h2><a name="about"/>About Videos</a></h2>
+        <li class="question">How are the videos delivered?</li>
+        <p>All TD Channel videos are delivered through on our streamming netwok that is scattered through several locations around the world</p>
+
+        <li class="question">Can I download the videos?</li>
+        <p>The video library is available 24/7/365 and can be viewed as many times as you want. For this reason, and to protect our content from piracy, we do not provide a download option for any of our videos</p>
+
+        <li class="question">Are any mobile devices supported?</li>
+        <p>At this moment we only support streamming to computers. We do have plans to support the most popular mobile devices in the future, so stay tuned.</p>
+
+        <h2><a name="payments"/>About Payments</a></h2>
+        <li class="question">What are my payment options?</li>
+        <p>All TD Channel payments are handled through a <a href="http://paypal.com" target="_blank">Paypal</a> subscription service. We ofer monthly, 3 months, 6 months and yearly subscriptions.
+        <li class="question">Can I cancel any time?</li>
+        <p>Absolutely! There are no contracts here at TD Channel. Do keep in mind that when you cancel your current active subscription, the subscription will remain active until its expiration date. So if you cancel a 3 month subscription one month into it, the subscription will continue to be active for another 2 months.</p>
+        <li class="question">What is the refund policy?</li>
+        <p>If for some reason you are not satisfied with out service, you can request a refund. Refunds will be calculated the following way:</p>
+        <p>(cost of subscription / subscription length) * remainder of subscription.</p>
+        <p>For example: User signs up for a 12 month subscription, but 3 months into the year decides to cancel it. If the subscription cost a total of 100 USD, the refund would be</br></br><center>100 (cost) / 12 (months) = 8.33 (cost per month) * 9 (remaining months) = 74.97 refund</center> </p>
     {% endblock %}
+    </div>
 {% endblock contentArea %}

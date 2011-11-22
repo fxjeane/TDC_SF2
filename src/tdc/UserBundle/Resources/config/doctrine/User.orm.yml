@@ -18,3 +18,8 @@ tdc\UserBundle\Entity\User:
         ratings:
             targetEntity: \tdc\VideoBundle\Entity\Rating
             mappedBy: user
+    oneToOne:
+        subscription:
+            targetEntity: Subscription
+            mappedBy: user_subscription
+

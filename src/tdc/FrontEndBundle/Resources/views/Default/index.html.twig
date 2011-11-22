@@ -10,7 +10,7 @@
     {% endstylesheets %}
 {% endblock %#}
 
-{% block title %}Welcome to TD Channel{% endblock %}
+{% block titleName %}Welcome{% endblock %}
 
 {% block contentArea%}
     <div id="navBar">
@@ -18,7 +18,7 @@
             <img src="{{ path('tdc_front_homepage') }}../public/images/tdcLogo.png"/>
         </div>
         <h2><a href="{{ path('tdc_front_about')}}">About</a></h2>
-        <h2><a href="{{ path('tdc_front_catalog')}}">Catalog</a></h2>
+        <h2><a href="{{ path('tdc_front_catalog_list')}}">Catalog</a></h2>
         <h2><a href="{{ path('tdc_front_faq')}}">F.A.Q.</a></h2>
     </div>
     <div id="contentArea">
