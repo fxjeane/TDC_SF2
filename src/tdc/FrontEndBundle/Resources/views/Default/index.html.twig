@@ -1,15 +1,5 @@
 {% extends 'tdcFrontEndBundle:Default:layout.html.twig' %}
 
-{#% block stylesheets %}
-    {{ parent() }}
-    {% stylesheets  
-     debug=true
-    'public/css/logedIn.cssX' 
-    %}
-    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
-    {% endstylesheets %}
-{% endblock %#}
-
 {% block titleName %}Welcome{% endblock %}
 
 {% block contentArea%}

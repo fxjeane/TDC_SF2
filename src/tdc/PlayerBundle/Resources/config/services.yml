@@ -1,0 +1,7 @@
+parameters:
+#    tdc_player.example.class: tdc\PlayerBundle\Example
+
+services:
+#    tdc_player.example:
+#        class: %tdc_player.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

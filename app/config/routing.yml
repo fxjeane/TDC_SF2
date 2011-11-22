@@ -1,3 +1,7 @@
+tdcPlayerBundle:
+    resource: "@tdcPlayerBundle/Resources/config/routing.yml"
+    prefix:   /
+
 tdcWebServiceBundle:
     resource: "@tdcWebServiceBundle/Resources/config/routing.yml"
     prefix:   /ws
