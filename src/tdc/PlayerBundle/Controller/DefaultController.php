@@ -4,8 +4,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+    public function indexAction($id)
     {
-        return $this->render('tdcPlayerBundle:Default:index.html.twig');
+        $newId = 1;
+        if ($id == -1) {
+            // create random selection
+            $newId = 1;
+        } else {
+            $newId = $id;
+        }
+
+        return $this->render('tdcPlayerBundle:Default:index.html.twig',
+                            array("videoId"=>$newId));
     }
 }

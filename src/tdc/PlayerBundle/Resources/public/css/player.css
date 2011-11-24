@@ -1,0 +1,108 @@
+#mainFrame {
+    width:800px;
+    font-family:arial;
+}
+
+#headerBar,
+#footerBar {
+    width:100%;
+    padding:5px 0px;
+    line-height:30px;
+    color:rgb(200,200,200);
+    font-size:1.1em;
+}
+#headerBar {
+    overflow:hidden;
+}
+#tdcVideoInfo {
+    margin:10px;
+}
+#tdcVideoInfo tr {
+    vertical-align:top;
+    font-size:0.85em;
+}
+#headerBar span.videoTitle {
+    margin-left:20px;
+}
+#headerBar span.videoTitleName {
+    color:rgb(200,200,50);
+    cursor:pointer;
+}
+#footerBar {
+    text-align:right;
+    line-height:30px;
+    font-size:0.7em;
+    border-radius:0px 0px 10px 10px;
+    box-shadow: 0px 1px 2px -1px white;
+    color:rgb(200,200,200);
+    border-top:1px solid #6E6E6E;
+    border-bottom:1px solid #323232;
+}
+#footerBar span {
+    margin-right:20px;
+}
+
+#tdcVideoScreen {
+    box-shadow: 0px 1px 1px 0px white,0px -1px 1px 1px black;
+}
+
+#tdcNavBar {
+    /*border:1px solid black;*/
+    font-family:arial;
+    color:rgb(240,240,240);
+    text-shadow:0px -1px 0px rgb(50,50,50);
+    box-shadow: 0px 1px 1px 0px white,0px -1px 1px 1px black;
+}
+#tdcTabBar {
+    border-bottom:1px solid rgb(50,50,50);
+}
+#tdcIndexTab {
+    border-right:1px solid rgb(200,200,200);
+    border-top:1px solid rgb(200,200,200);
+}
+#tdcNotesTab {
+    border-left:1px solid rgb(50,50,50);
+    border-top:1px solid rgb(200,200,200);
+}
+.tdcTabBarBtn {
+    background-color:rgb(200,100,50);
+}
+.tdcTabBarBtn:hover {
+    background-color:rgb(220,120,70);
+}
+.tdcTabBarBtnSelected {
+    background-color:rgb(68, 87, 207);
+}
+.tdcTabBarBtnSelected:hover {
+    background-color:rgb(88, 107, 227);
+}
+#tdcIndexCnt,
+#tdcNotesCnt {
+color:black;
+      text-shadow:none;
+}
+#tdcIndexCnt li {
+padding:6px;
+        list-style:none;
+}
+#tdcIndexCnt a {
+    text-decoration:none;   
+}
+.row1 {
+    background-color:rgb(200,200,200);
+}
+.row0 {
+    background-color:rgb(180,180,180);
+}
+.row1:hover,
+.row0:hover {
+    background-color:rgb(50,50,200);
+}
+.tdcScrollbarGutter{
+    box-shadow:inset 2px 0px 5px 0px black;   
+}
+.tdcScrollbarHandle {
+    background-color:rgb(150,150,150);
+border:1px solid black;
+       border-right:0px solid;
+}

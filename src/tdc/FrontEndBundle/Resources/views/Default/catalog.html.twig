@@ -53,7 +53,7 @@
                     {% for item in values %}
                         <tr class="row_{{ cycle(['0', '1'], i) }}">
                             <td class="icon">
-                                <a href="{{path("tdc_front_catalog_item",{'entity':'video','id':item.id})}}">
+                                <a href="{{path("tdc_player_home",{'id':item.id})}}">
                                     <img src={{path("tdc_front_homepage")}}../public/images/icons/{{ item.icon }} />
                                 </a>
                             </td>

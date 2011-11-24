@@ -46,7 +46,7 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/home, role: ROLE_USER }
+        - { path: ^/profile, role: ROLE_USER }
         - { path: ^/player, role: ROLE_USER }
-        - { path: ^/home/*, role: ROLE_USER }
+        - { path: ^/profile/*, role: ROLE_USER }
         - { path: ^/admin, role: ROLE_ADMIN }

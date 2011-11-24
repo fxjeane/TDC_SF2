@@ -1,3 +1,5 @@
 tdc_player_home:
-    pattern:  /player
-    defaults: { _controller: tdcPlayerBundle:Default:index }
+    pattern:  /player/{id}
+    defaults:
+        _controller: tdcPlayerBundle:Default:index
+        id: -1

@@ -1,1 +1,33 @@
-{% extends 'tdcFrontEndBundle:Default:layout.html.twig' %}
+{% extends 'tdcPlayerBundle:Default:layout.html.twig' %}
+
+{% block titleName %}Player{% endblock %}
+
+{% block headerBar %}
+  <div id="headerBar" class="grayGradient01">
+    <span class="videoTitle">Now Playing: <span class="videoTitleName"></span></span>
+    <div id="tdcVideoInfo"></div>
+  </div>  
+{% endblock headerBar %}
+
+{% block contentArea %}
+    <div id="tdcPlayerRoot">
+        <div id="tdcVideoScreen"></div>
+    </div>
+{% endblock contentArea %}
+
+{% block footerBar %}
+  <div id="footerBar" class="grayGradient01">
+    <span>TDC Player - version 0.1.0</span>
+  </div>  
+{% endblock footerBar %}
+
+{% block javascripts %}
+    $(document).ready(function() {
+        var player = $("#tdcPlayerRoot").tdcPlayer({
+            pageRoot:"{{path("tdc_front_homepage")}}",
+            videoId:{{videoId}},
+            cornerRadius:"10px"
+        });
+    });
+{% endblock %}
+

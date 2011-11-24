@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>
+        {% block title %}
+            TDC::
+            {% block titleName %}{% endblock titleName %}
+        {% endblock title %}
+        </title>
+
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        {% block header_javascripts %}
+            {% javascripts
+                debug=false
+                'public/js/jquery/jquery-1.6.4.min.js'
+                'public/js/jquery/jquery-ui-1.8.16.custom.min.js'
+                'public/js/tdc/tdc.js'
+                '@tdcPlayerBundle/Resources/public/js/tdc/tdc.player.js'
+                '@tdcPlayerBundle/Resources/public/js/tdc/tdc.navbar.js'
+            %}
+            <script src="{{ asset_url }}" type="text/javascript"  /></script>
+            <script type="text/javascript" src="http://static.flowplayer.org/js/flowplayer-3.2.6.min.js"></script>
+            {% endjavascripts %}
+        {% endblock header_javascripts %}
+
+        {% block stylesheets %}
+            {% stylesheets  
+             debug=false
+            '@tdcFrontEndBundle/Resources/public/css/main.css' 
+            '@tdcPlayerBundle/Resources/public/css/player.css' 
+            filter='cssrewrite'
+            output='css/*.css'
+            %}
+            <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+            {% endstylesheets %}
+        {% endblock %}
+    </head>
+    <body>
+        <div id="mainFrame">
+            {% block headerBar %}
+            {% endblock %}
+
+            <div id="contentFrame" class="grayGradient02">
+                {% block contentArea%}{% endblock %}
+            </div>
+
+            {% block footerBar %}
+            {% endblock %}
+        </div>
+        <script>
+        {% block javascripts %}{% endblock %}
+        </script>
+    </body>
+</html>

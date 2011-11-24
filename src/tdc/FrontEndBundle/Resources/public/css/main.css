@@ -7,6 +7,16 @@ body {
     background-color:rgb(65,65,65);
     color:rgb(220,220,220);
     text-shadow: 0px -1px 0px rgb(30,30,30);
+
+    background: rgb(145,145,145);
+    background: -moz-radial-gradient(center, ellipse cover,  rgb(145,145,145) 0%, rgb(51,51,51) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgb(145,145,145)), color-stop(100%,rgb(51,51,51)));
+    background: -webkit-radial-gradient(center, ellipse cover,  rgb(145,145,145) 0%,rgb(51,51,51) 100%);
+    background: -o-radial-gradient(center, ellipse cover,  rgb(145,145,145) 0%,rgb(51,51,51) 100%);
+    background: -ms-radial-gradient(center, ellipse cover,  rgb(145,145,145) 0%,rgb(51,51,51) 100%);
+    background: radial-gradient(center, ellipse cover,  rgb(145,145,145) 0%,rgb(51,51,51) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#919191', endColorstr='#333333',GradientType=1 );
+
 }
 
 a {
