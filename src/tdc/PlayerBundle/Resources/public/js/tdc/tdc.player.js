@@ -2,6 +2,7 @@
     $.widget( "tdc.tdcPlayer", {
         options:{
             videoId:null,
+            splashImage:"bundles/tdcplayer/images/screenBG.jpg",
             pageRoot:"",
             spacer:5,
             cornerRadius:"5px",
@@ -17,10 +18,15 @@
             var e = this.element;
             var o = this.options;
 
+            /////////////////
+            //
+            // Navigation bar 
+            //
+            /////////////////
             // Create the nav bar
             var navBar = $('<div id="tdcNavBar">');
             navBar.hide();
-            navBar.css("margin",o.spacer);
+            navBar.css("margin", "0px "+o.spacer+"px");
             e.prepend(navBar);
             $(navBar).tdcNavbar({
                 width:o.navBar.width,
@@ -28,6 +34,11 @@
                 cornerRadius:o.cornerRadius
             });
 
+            /////////////////
+            //
+            // Video Player 
+            //
+            /////////////////
             // Create the video player
             rootUrl = o.pageRoot;
             rootUrl = rootUrl.substring(0,rootUrl.lastIndexOf("/"));
@@ -42,14 +53,18 @@
                     {
                         backgroundColor: '#000000',
                         backgroundGradient: 'none',
-                        borderRadius:'22',
+                        backgroundImage:rootUrl+"/"+o.splashImage,
+                        borderRadius:'20',
                         border:'0px solid #000000' 
                     },
                     "clip":
                     {
                         "url":"http://vod01.netdna.com/vod/demo.flowplayer/Extremists.flv",
                         "scaling":"fit",
-                        "autoPlay":false
+                        "autoPlay":false,
+                        onStart: function() {
+                           this.getPlugin("canvas").css({backgroundImage: ""}); 
+                        }
                     },
                     "plugins":
                     {
@@ -59,7 +74,6 @@
                             "url":"flowplayer.rtmp-3.2.3.swf"
                         },
                         "controls": {
-
                               // location of the controlbar plugin
                              url: 'flowplayer.controls-3.2.5.swf',
                              // display properties such as size, location and opacity
@@ -110,6 +124,25 @@
             // load the video
             self.loadVideo(o.videoId);
             this.toggleNavBar();
+
+            /////////////////
+            //
+            // Quick browser
+            //
+            /////////////////
+            var browser = $("<div id='tdcQuickBrowserRoot'>");
+            e.append(browser);
+            // apply the plugin
+            $(browser).tdcQuickBrowser({
+                spacer:o.spacer,
+                borderRadius:o.cornerRadius,
+                navbar:{
+                    controlRadius:o.cornerRadius
+                },
+                content:{
+                    pageRoot:o.pageRoot
+                }
+            });
         },
         toggleNavBar: function(){
             var e = this.element;
@@ -137,11 +170,11 @@
             }
         },
         toggleVideoInfo: function() {
-            var showSize = 150;
+            var showSize = 170;
             var header = $("#headerBar");
             if (header.height() < showSize) {
                 header.animate({
-                    height:150
+                    height:showSize
                 });
             } else {
                 header.animate({

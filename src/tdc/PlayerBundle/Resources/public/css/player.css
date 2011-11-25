@@ -1,18 +1,26 @@
 #mainFrame {
     width:800px;
     font-family:arial;
+    border-radius:10px;
 }
-
+#contentFrame {
+    width:800px;
+    border-width:0px;
+    border-top:1px solid white;
+    border-bottom:1px solid black;
+}
 #headerBar,
 #footerBar {
-    width:100%;
+    width:800px;
     padding:5px 0px;
     line-height:30px;
     color:rgb(200,200,200);
     font-size:1.1em;
 }
 #headerBar {
+    width:798px;
     overflow:hidden;
+    border-bottom:1px solid black;
 }
 #tdcVideoInfo {
     margin:10px;
@@ -41,17 +49,22 @@
 #footerBar span {
     margin-right:20px;
 }
+#tdcPlayerRoot {
+    margin:10px 0px;
+}
 
-#tdcVideoScreen {
-    box-shadow: 0px 1px 1px 0px white,0px -1px 1px 1px black;
+#mainFrame,
+#tdcVideoScreen,
+#tdcNavBar,
+#tdcQuickBrowserRoot,
+.gutter {
+    box-shadow: 0px -1px 1px 1px black, 0px 1px 1px 0px white;
 }
 
 #tdcNavBar {
-    /*border:1px solid black;*/
     font-family:arial;
     color:rgb(240,240,240);
     text-shadow:0px -1px 0px rgb(50,50,50);
-    box-shadow: 0px 1px 1px 0px white,0px -1px 1px 1px black;
 }
 #tdcTabBar {
     border-bottom:1px solid rgb(50,50,50);
@@ -64,7 +77,9 @@
     border-left:1px solid rgb(50,50,50);
     border-top:1px solid rgb(200,200,200);
 }
-.tdcTabBarBtn {
+.tdcTabBarBtn,
+.tdcQuickBrowserNavBar,
+#tdcQuickBrowserPaginator {
     background-color:rgb(200,100,50);
 }
 .tdcTabBarBtn:hover {
@@ -103,6 +118,82 @@ padding:6px;
 }
 .tdcScrollbarHandle {
     background-color:rgb(150,150,150);
-border:1px solid black;
-       border-right:0px solid;
+    border:1px solid black;
+    border-right:0px solid;
+}
+
+#tdcQuickBrowserRoot {
+    padding:1px;
+}
+
+#tdcQuickBrowserRoot .tdcQuickBrowserNavBar {
+    border-bottom:1px solid black;
+    margin:0px;
+    padding:5px;
+}
+#tdcQuickBrowserRoot .tdcQuickBrowserNavBar .button {
+    margin:1px 0px;
+    float:left; 
+    padding:0px 9px;
+}
+#tdcQBNBSearchBarIcon,
+#tdcQuickBrowserRoot .tdcQuickBrowserNavBar,
+#tdcQuickBrowserRoot .tdcQuickBrowserNavBar .button,
+#tdcQuickBrowserPaginator {
+    box-shadow: 0px -1px 0px 0px white, 0px 1px 0px 0px black;
+}
+.leftEndBtn {
+    border-right:1px solid white;
+}
+.rightEndBtn {
+    border-left:1px solid black;
+}
+
+#tdcQBNBDisplayModeButtons.gutter {
+    margin-left:10px
+}
+#tdcQuickBrowserRoot .tdcQuickBrowserNavBar .button:hover {
+    background-color:rgb(200,200,200);
+    cursor:pointer;
+}
+
+#tdcQuickBrowserRoot .tdcQuickBrowserNavBar .label {
+    border:0px solid;
+    float:left; 
+}
+
+
+#tdcQBNBSearchBar.gutter {
+    margin-right:10px
+}
+#tdcQBNBSearchBarIcon {
+    border-right:1px solid white;
+}
+
+#tdcQuickBrowserRoot .tdcQuickBrowserNavBar #searchField {
+    border-width:0px;
+   border-left:1px solid black;
+   outline-width: 0;
+   box-shadow:inset 0px 0px 6px 0px black;
+}
+
+#tdcQuickBrowserRoot .content {
+    margin-bottom:1px;
+    padding:0px;
+    overflow:hidden;
+    border-top:1px solid white;
+    border-bottom:1px solid black;
+}
+
+#tdcQuickBrowserPaginator {
+border:1px solid transparent;
+margin:0px;
+padding:5px;
+}
+
+#itemsList {
+margin:0px;
+}
+#itemsList td {
+padding:10px 5px;
 }

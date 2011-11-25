@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>
         {% block title %}
-            TDC::
+            TDC:
             {% block titleName %}{% endblock titleName %}
         {% endblock title %}
         </title>
@@ -13,11 +13,14 @@
         {% block header_javascripts %}
             {% javascripts
                 debug=false
-                'public/js/jquery/jquery-1.6.4.min.js'
+                'public/js/jquery/jquery-1.7.min.js'
+                'public/js/jquery/jquery.mousewheel.js'
                 'public/js/jquery/jquery-ui-1.8.16.custom.min.js'
                 'public/js/tdc/tdc.js'
+                '@tdcPlayerBundle/Resources/public/js/tdc/tdc.scrollbar.js'
                 '@tdcPlayerBundle/Resources/public/js/tdc/tdc.player.js'
                 '@tdcPlayerBundle/Resources/public/js/tdc/tdc.navbar.js'
+                '@tdcPlayerBundle/Resources/public/js/tdc/tdc.quickbrowser.js'
             %}
             <script src="{{ asset_url }}" type="text/javascript"  /></script>
             <script type="text/javascript" src="http://static.flowplayer.org/js/flowplayer-3.2.6.min.js"></script>
@@ -48,6 +51,7 @@
             {% block footerBar %}
             {% endblock %}
         </div>
+        <div id="console"></div>
         <script>
         {% block javascripts %}{% endblock %}
         </script>

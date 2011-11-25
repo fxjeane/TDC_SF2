@@ -19,7 +19,7 @@
         padLeft = parseInt(e.css("margin-left"));
         padRight = parseInt(e.css("margin-right"));
         e.width(parseInt(o.width) - padLeft - padRight);
-        e.height(parseInt(o.height) - padTop - padBot);
+        e.height(parseInt(o.height));// - padTop - padBot);
 
         /////////////////////////
         //
@@ -123,7 +123,8 @@
                state = $f().getState();
                if (state != 3) {
                     $f().play();
-                    if (state === 3) {
+                    state = $f().getState();
+                    if (state === 2) {
                         $f().getClip().onStart(function(){
                             $f().seek(e.data);
                         });
