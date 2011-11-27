@@ -6,7 +6,7 @@
     ////////////////////////    
     $.widget("tdc.tdcScrollBar", {
         options:{
-            width:"15px",
+            width:"20px",
             handleMinHeight:"30px",
             cornerRadius:"0px"
         },
@@ -30,7 +30,8 @@
             // add handle
             var handle = $("<div>");
             handle.addClass("tdcScrollbarHandle")
-                handle.css("border-radius", o.cornerRadius);
+            handle.css("border-radius", o.cornerRadius);
+            handle.css("cursor", "row-resize");
             var handleHeight = Math.max(parseInt(o.handleMinHeight),
                     gutter.height() * (gutter.height() / e.height()));
             handle.height(handleHeight + "px");
@@ -50,54 +51,28 @@
                     }
             });
 
-    /*            
             e.bind('mousewheel', function(ev,delta) {
-                var el = $(ev.delegateTarget);
-                scrollGutter = el.siblings().last();
-                scrollHandle = scrollGutter.children().first();
-
-                pos = el.css("top");
-                if (pos === "auto")
-                    pos = 0;
-                pos = parseInt(pos);
-                ratio = parent.height() - el.outerHeight();
-                // set content pos
-                el.css("top", Math.max(Math.min(0,pos + delta),ratio));
-
-                handlePos = scrollHandle.css("top");
-                if (handlePos === "auto")
-                    handlePos = 0;
-                handlePos = parseInt(handlePos);
-                handleRatio = scrollGutter.height() / scrollHandle.height();
-                handleMax = parent.height() - handle.outerHeight();
-                handleNewPos = (handlePos - (delta * handleRatio))
-                // set handle pos
-                scrollHandle.css("top", Math.min(Math.max(0,handleNewPos),handleMax));
-            });
-            e.click(function(){
-                $("#console").html();
-                e.bind('mousewheel', function(ev) {
-                    var remap= function(value,low1,high1,low2,high2){
-                        return low2 + (value - low1) * (high2 - low2) / (high1 - low1)
-                    };
+                    event.preventDefault();
+                    delta *= 10;
 
                     var el = $(ev.delegateTarget);
-
                     scrollGutter = el.siblings().last();
                     scrollHandle = scrollGutter.children().first();
-                        
-                    repos = (ev.pageY - parent.offset().top); 
-                    relativePos = repos /parent.height();
-                    ratio = parent.height() - handle.outerHeight();
-                    diff = el.height() - parent.height();
-                    
-                    el.css("top", -(relativePos * diff));
-                    // scroll pos
-                    scrollPos =remap(repos,0,el.height(),0,ratio ) / ratio;
-                    scrollHandle.css("top", Math.min((scrollPos * diff),ratio));
-                });
+
+                    pos = el.css("top");
+                    if (pos === "auto")
+                    pos = 0;
+                    pos = parseInt(pos);
+                    ratio = parent.height() - el.outerHeight();
+                    el.css("top", Math.max(Math.min(0,pos + delta),ratio));
+
+                    percent = Math.abs(parseInt(el.css("top")) / parseInt(el.outerHeight() - parent.outerHeight()));
+
+                    handleMax = parent.height() - handle.outerHeight();
+                    handleNewPos = percent * handleMax;
+                    scrollHandle.css("top", Math.min(Math.max(0,handleNewPos),handleMax));
             });
-*/
+
         gutter.append(handle);
         }
     });

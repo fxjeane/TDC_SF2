@@ -28,7 +28,7 @@
 
         // set the root;
         e.height(o.height);
-        e.addClass("tdcQuickBrowserNavBar");
+        e.addClass("tdcQuickBrowserNavBar windowBar");
         e.css("border-radius", o.borderRadius + " " + o.borderRadius + " 0px 0px");
         
         ///////////////
@@ -45,49 +45,47 @@
             // list button
             if (o.listButton) {
                 var listButton = $('<div id="listBtn">');
-                listButton.addClass('button');
+                listButton.addClass('button widgetControlActive');
                 listButton.html("li");
                 dispModeButtons.append(listButton);
                 listButton.css("border-top-left-radius", o.controlRadius);
                 listButton.css("border-bottom-left-radius", o.controlRadius);
                 listButton.css("position", "relative");
                 listButton.css("float", "left");
-                listButton.css("top", "-1px");
                 if (!o.thumbnailButton) {
                     listButton.css("border-top-right-radius", o.controlRadius);
                     listButton.css("border-bottom-right-radius", o.controlRadius);
                 } else {
                     listButton.addClass("leftEndBtn");
                 }
-                listButton.click({
-                        "root": e.parent()
-                        }, self._displayList);
-                bl = parseInt(listButton.css("border-left-width"));            
-                br = parseInt(listButton.css("border-right-width"));            
+                listButton.click({"root": e.parent() }, self._displayList);
+
+                bl = parseInt(listButton.css("border-top-width"));            
+                br = parseInt(listButton.css("border-bottom-width"));            
                 listButton.height(e.height() - bl - br);
                 listButton.css("line-height", listButton.height() + "px");
             }
             // thumbnail button
             if (o.thumbnailButton) {
                 var thumbButton = $('<div id="thumbnailBtn">');
-                thumbButton.addClass('button');
+                thumbButton.addClass('button widgetControlGray');
                 thumbButton.html("th");
                 dispModeButtons.append(thumbButton);
                 thumbButton.css("border-top-right-radius", o.controlRadius);
                 thumbButton.css("border-bottom-right-radius", o.controlRadius);
                 thumbButton.css("float", "left");
                 thumbButton.css("position", "relative");
-                thumbButton.css("top", "-1px");
                 if (!o.listButton) {
                     thumbButton.css("border-top-left-radius", o.controlRadius);
                     thumbButton.css("border-bottom-left-radius", o.controlRadius);
                 } else {
                     thumbButton.addClass("rightEndBtn");
                 }
-                bl = parseInt(thumbButton.css("border-left-width"));            
-                br = parseInt(thumbButton.css("border-right-width"));            
+                bl = parseInt(thumbButton.css("border-top-width"));            
+                br = parseInt(thumbButton.css("border-top-width"));            
                 thumbButton.height(e.height() - bl - br);
                 thumbButton.css("line-height", thumbButton.height() + "px");
+                thumbButton.click( self._displayThumb);
             }
             labelWidth -= dispModeButtons.outerWidth(true);
         }
@@ -115,6 +113,7 @@
 
             // search bar icon
             var searchBarIcon = $('<div id="tdcQBNBSearchBarIcon">');
+            searchBarIcon.addClass("widgetControlGray");
             searchBar.append(searchBarIcon);
             searchBarIcon.css("float", "left");
             searchBarIcon.css("padding", "0px 4px");
@@ -140,7 +139,7 @@
             searchField.css("position", "relative");
             searchField.css("top", "-1px");
 
-            searchField.height((searchBar.height() - 3) + "px");
+            searchField.height((searchBar.height() - 1) + "px");
             searchField.width(searchForm.width()+2);
             searchForm.append(searchField);
 
@@ -154,10 +153,25 @@
     // Functions
     ////
     _displayList: function(e) {
-                      var rootId = e.data.root.attr("id");
-                      var content = $("#" + rootId + " #content");
-                      content.html("foo");
-                  }
+        //var rootId = e.data.root.attr("id");
+        //var content = $("#" + rootId + " #content");
+        //content.html("foo");
+
+        listButton = $("#listBtn");
+        listButton.addClass("tdcButtonSelected widgetControlActive");
+        listButton.height(listButton.height() +1);
+        thumbButton = $("#thumbnailBtn");
+        thumbButton.removeClass("tdcButtonSelected widgetControlActive");
+        thumbButton.height(thumbButton.height() - 1);
+    },
+    _displayThumb: function(e) {
+        listButton = $("#listBtn");
+        listButton.removeClass("tdcButtonSelected widgetControlActive");
+        listButton.height(listButton.height() -1);
+        thumbButton = $("#thumbnailBtn");
+        thumbButton.addClass("tdcButtonSelected widgetControlActive");
+        thumbButton.height(thumbButton.height() + 1);
+    }
 });
 
 ////////////////////////////
@@ -188,16 +202,27 @@ $.widget("tdc.tdcBrowserContent", {
         var o = data.options;
 
         if (o.mode === "browse") {
+            listButton = $("#listBtn");
+            listButton.addClass("tdcButtonSelected"); 
+            listButton.height(listButton.height()+1);
+
             var service = o.pageRoot+"ws/videolist/0/10";
             $.getJSON(service, function(data) {
                 if (data.length > 0) {
                     var listTable = $("<table width='100%' id='itemsList'>");
                     listTable.css("position","relative");
+                    listTable.css("z-index","10");
                     var rowclass = 0;
                     for (i = 0; i < data.length; i += 1) {
                         item = data[i];
                         tr = $("<tr>");
                         tr.addClass("row" + rowclass);
+                        td = $("<td>");
+                        img = $("<img>");
+                        img.attr("src",o.pageRoot+"../public/images/icons/"+item.icon);
+                        td.append(img);
+                        tr.append(td);
+                        
                         td = $("<td>");
                         td.html(item.name);
                         tr.append(td);
@@ -236,7 +261,7 @@ $.widget("tdc.tdcBrowserPaginator", {
 
         // set the root;
         e.width(o.width);
-        e.addClass("tdcQBNDPaginator");
+        e.addClass("tdcQBNDPaginator windowBar");
         e.height(o.height);
         e.css("border-bottom-left-radius", o.borderRadius);
         e.css("border-bottom-right-radius", o.borderRadius);

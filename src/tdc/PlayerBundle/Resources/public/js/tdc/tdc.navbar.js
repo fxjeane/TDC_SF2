@@ -34,8 +34,8 @@
         e.append(tabBar);
         // Index Tab
         var index = $("<div id='tdcIndexTab'>");
-        index.addClass("tdcTabBarBtn");
-        index.addClass("tdcTabBarBtnSelected");
+        index.addClass("tdcTabBarBtn widgetControlGray");
+        index.addClass("tdcTabBarBtnSelected widgetControlActive");
         index.css("float", "left");
         index.css("border-top-left-radius", o.cornerRadius);
         index.css("line-height", (parseInt(o.tabHeight) - 1) + "px");
@@ -44,9 +44,10 @@
         index.html("Index");
         tabBar.append(index);
         index.click(e, self.showIndex);
+
         // Notes Tab
         var notes = $("<div id='tdcNotesTab'>");
-        notes.addClass("tdcTabBarBtn");
+        notes.addClass("tdcTabBarBtn widgetControlGray");
         notes.css("float", "left");
         notes.css("border-top-right-radius", o.cornerRadius);
         notes.css("line-height", (parseInt(o.tabHeight) - 1) + "px");
@@ -69,6 +70,7 @@
 
         // holder of all links
         var linkHolder = $("<div id='tdcIndexCntHolder'>");
+        linkHolder.addClass("contentHolder");
         indexCnt.append(linkHolder);
 
         if (o.videoObject) {
@@ -91,8 +93,8 @@
                    var notesBtn = $("#tdcNotesTab");
                    index.hide();
                    notes.show();
-                   notesBtn.addClass("tdcTabBarBtnSelected");
-                   indexBtn.removeClass("tdcTabBarBtnSelected");
+                   notesBtn.addClass("tdcTabBarBtnSelected widgetControlActive");
+                   indexBtn.removeClass("tdcTabBarBtnSelected widgetControlActive");
     },
     showIndex: function(ev) {
                    var e = ev.data;
@@ -102,8 +104,8 @@
                    var notesBtn = $("#tdcNotesTab");
                    index.show();
                    notes.hide();
-                   indexBtn.addClass("tdcTabBarBtnSelected");
-                   notesBtn.removeClass("tdcTabBarBtnSelected");
+                   indexBtn.addClass("tdcTabBarBtnSelected widgetControlActive");
+                   notesBtn.removeClass("tdcTabBarBtnSelected widgetControlActive");
     },
     loadIndex: function(index){
         var e = this.element;
