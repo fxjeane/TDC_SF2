@@ -43,3 +43,26 @@ tdc_ws_category_item:
     requirements:
         _method:  GET
         _format: JSON
+
+tdc_ws_question_list:
+    pattern: /questionlist/{start}/{max}.{_format}
+    defaults:
+        _controller: tdcWebServiceBundle:Default:questionList
+        start: 0
+        max: -1
+        _format: json
+    requirements:
+        start: \d+
+        max: \d+
+        _method:  GET
+        _format: JSON
+
+tdc_ws_question_item:
+    pattern: /question/{id}.{_format}
+    defaults:
+        _controller: tdcWebServiceBundle:Default:question
+        _format: json
+    requirements:
+        _method:  GET
+        _format: JSON
+

@@ -118,4 +118,29 @@ class Rating
     {
         $this->video = $video;
     }
+    /**
+     * @var integer $value
+     */
+    private $value;
+
+
+    /**
+     * Set value
+     *
+     * @param integer $value
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+    }
+
+    /**
+     * Get value
+     *
+     * @return integer 
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
 }

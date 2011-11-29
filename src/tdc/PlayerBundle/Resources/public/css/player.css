@@ -3,12 +3,14 @@
     font-family:arial;
     border-radius:10px;
 }
+
 #contentFrame {
     width:800px;
     border-width:0px;
     border-top:1px solid rgb(194, 194, 194);
     border-bottom:1px solid black;
 }
+
 #headerBar,
 #footerBar {
     width:800px;
@@ -17,25 +19,31 @@
     color:rgb(200,200,200);
     font-size:1.1em;
 }
+
 #headerBar {
     width:798px;
     overflow:hidden;
     border-bottom:1px solid black;
 }
+
 #tdcVideoInfo {
     margin:10px;
 }
+
 #tdcVideoInfo tr {
     vertical-align:top;
     font-size:0.85em;
 }
+
 #headerBar span.videoTitle {
     margin-left:20px;
 }
+
 #headerBar span.videoTitleName {
     color:rgb(228, 188, 68); 
     cursor:pointer;
 }
+
 #footerBar {
     text-align:right;
     line-height:30px;
@@ -46,9 +54,11 @@
     border-top:1px solid #6E6E6E;
     border-bottom:1px solid #323232;
 }
+
 #footerBar span {
     margin-right:20px;
 }
+
 #tdcPlayerRoot {
     margin:10px 0px;
 }
@@ -104,10 +114,11 @@
 #tdcIndexCnt,
 #tdcNotesCnt {
     color: rgb(240,240,240);
-    text-shadow: 0px 1px 0px rgb(10,10,10);
+    text-shadow: 0px -1px 0px rgb(10,10,10);
     background-image:url("../../../bundles/tdcplayer/images/verticalStripes.png");
 }
-#tdcIndexCnt li {
+#tdcIndexCnt li,
+#tdcNotesCnt li {
     padding:6px;
     list-style:none;
 }
@@ -116,12 +127,16 @@
 }
 .row1 {
     background-color:rgb(102,102,102);
+    border:1px solid rgb(102,102,102)
 }
 .row0 {
     background-color:rgb(112,112,112);
+    border:1px solid rgb(112,112,112);
 }
-.row1:hover,
-.row0:hover {
+#tdcNavBar .row1:hover,
+#tdcNavBar .row0:hover {
+    border-top:1px solid rgb(250,238,118);
+    border-bottom:1px solid rgb(158,118,18);
     background-color:rgb(228, 188, 68);
     color:rgb(60,60,60);
     text-shadow:0px 1px 0px rgb(220,220,220);
@@ -196,8 +211,35 @@
     overflow:hidden;
     border-top:1px solid rgb(194, 194, 194);
     border-bottom:1px solid rgb(50,50,50);
-    text-shadow:none;
+    text-shadow:0px -1px 0px rgb(30,30,30);
     color:rgb(240,240,240);
+}
+
+#tdcQuickBrowserRoot .icon { 
+    width:80px;
+    text-align:center;
+    padding:6px 8px;
+}
+
+#tdcQuickBrowserRoot .viewsRating { 
+    width:110px;
+}
+
+#tdcQuickBrowserRoot .videoName { 
+    font-size: 1.5em;
+    margin-bottom: 0.15em;
+    display: block;
+    cursor:pointer;
+}
+
+#tdcQuickBrowserRoot .author,
+#tdcQuickBrowserRoot .views { 
+    display:block;
+}
+
+#tdcQuickBrowserRoot .author,
+#tdcQuickBrowserRoot .trt { 
+    font-size: 0.8em;
 }
 
 #tdcQuickBrowserPaginator {

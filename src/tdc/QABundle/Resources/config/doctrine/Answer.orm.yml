@@ -1,0 +1,22 @@
+tdc\QABundle\Entity\Answer:
+    type: entity
+    table: answer
+    id:
+        id:
+            type: integer
+            generator: { strategy : AUTO }
+    fields:
+        text:
+            type: text
+        created:    
+            type: datetime
+        updated:
+            type: datetime
+    manyToOne:
+        question:
+            targetEntity: Question
+            inversedBy: answers
+        user:
+            targetEntity: tdc\UserBundle\Entity\User
+            inversedBy: answers
+

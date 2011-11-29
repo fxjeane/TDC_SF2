@@ -1,3 +1,4 @@
+
 tdcPlayerBundle:
     resource: "@tdcPlayerBundle/Resources/config/routing.yml"
     prefix:   /
@@ -21,6 +22,10 @@ tdcVideoBundle:
 tdcAdminBundle:
     resource: "@tdcAdminBundle/Resources/config/routing.yml"
     prefix:   /admin
+
+tdcQABundle:
+    resource: "@tdcQABundle/Resources/config/routing.yml"
+    prefix:   /qa
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

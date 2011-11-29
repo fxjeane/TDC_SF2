@@ -181,6 +181,7 @@
 ////////////////////////////    
 $.widget("tdc.tdcBrowserContent", {
     options: {
+        player:null,
         height: "300px",
         pageRoot:"",
         mode: "browse"
@@ -217,15 +218,44 @@ $.widget("tdc.tdcBrowserContent", {
                         item = data[i];
                         tr = $("<tr>");
                         tr.addClass("row" + rowclass);
-                        td = $("<td>");
+                        td = $("<td >");
+                        td.addClass("icon");
                         img = $("<img>");
                         img.attr("src",o.pageRoot+"../public/images/icons/"+item.icon);
                         td.append(img);
                         tr.append(td);
                         
                         td = $("<td>");
-                        td.html(item.name);
+                        var aa = $("<a>");
+                        aa.addClass("videoName");
+                        aa.html(item.name);
+                        aa.click(item.id,function(ev){
+                            $(o.player).tdcPlayer("loadVideo",ev.data)
+                        });
+                        td.append(aa);
+                        lab = $("<label>");
+                        lab.addClass("author");
+                        lab.html("Author: "+item.author);
+                        td.append(lab);
+                        lab = $("<label>");
+                        lab.addClass("trt");
+                        lab.html("Trt: "+item.trt);
+                        td.append(lab);
                         tr.append(td);
+
+                        td = $("<td>");
+                        td.addClass("viewsRating");
+                        lab = $("<label>");
+                        lab.addClass("views");
+                        lab.html("Views: "+item.views);
+                        td.append(lab);
+                        lab = $("<label>");
+                        lab.addClass("rating");
+                        lab.html("Rating: "+item.views);
+                        td.append(lab);
+                        
+                        tr.append(td);
+                        
                         listTable.append(tr);
                         rowclass = 1 - rowclass;
                     }
@@ -233,7 +263,7 @@ $.widget("tdc.tdcBrowserContent", {
 
                     // do we need a scroll bar?
                     if (tr.height() * data.length > e.height()) {
-                        $(listTable).tdcScrollBar();
+                        $(listTable).tdcScrollBar({scrollSpeed:15});
                     }
                 }
             });

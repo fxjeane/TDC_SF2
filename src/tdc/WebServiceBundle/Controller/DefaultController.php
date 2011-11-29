@@ -15,7 +15,6 @@ class DefaultController extends Controller
 
     public function videoListAction($start,$max,$category)
     {
-
         $repository = $this->getDoctrine()
                       ->getRepository('tdcVideoBundle:Video');
         
@@ -51,7 +50,6 @@ class DefaultController extends Controller
 
     public function categoryListAction($start,$max)
     {
-
         $repository = $this->getDoctrine()
                       ->getRepository('tdcVideoBundle:Category');
         
@@ -87,6 +85,47 @@ class DefaultController extends Controller
         foreach ($category->getVideos() as $vid)
             $videos[] = $vid->asArray();
         $json['videos'] = $videos;
+        
+        return new Response(json_encode($json));
+    }
+
+    public function questionListAction($start,$max)
+    {
+        $repository = $this->getDoctrine()
+                      ->getRepository('tdcQABundle:Question');
+        
+        $query = $repository->createQueryBuilder('p');
+
+        if ($max != -1) 
+            $query->setFirstResult($start)
+                  ->setMaxResults($max);
+
+        $questions = $query->getQuery()->getResult();
+        
+        # prepare output
+        $json = array();
+        foreach ($questions as $quest) {
+            $tmp= $quest->asArray();
+            $answers = array();
+            foreach ($quest->getAnswers() as $ans)
+                $answers[] = $ans->asArray();
+            $tmp['answers'] = $answers;
+            $json[] = $tmp;
+        }
+
+        return new Response(json_encode($json));
+    }
+
+    public function questionAction($id)
+    {
+        $question = $this->getDoctrine()
+            ->getRepository('tdcQABundle:Question')
+            ->find($id);
+        $json = $question->asArray();
+        $answers = array();
+        foreach ($question->getAnswers() as $ans)
+            $answers[] = $ans->asArray();
+        $json['answers'] = $answers;
         
         return new Response(json_encode($json));
     }

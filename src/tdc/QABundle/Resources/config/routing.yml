@@ -1,0 +1,3 @@
+tdc_qa_homepage:
+    pattern:  /
+    defaults: { _controller: tdcQABundle:Default:index }

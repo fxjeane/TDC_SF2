@@ -7,6 +7,7 @@
     $.widget("tdc.tdcScrollBar", {
         options:{
             width:"20px",
+            scrollSpeed:5,
             handleMinHeight:"30px",
             cornerRadius:"0px"
         },
@@ -53,7 +54,7 @@
 
             e.bind('mousewheel', function(ev,delta) {
                     event.preventDefault();
-                    delta *= 10;
+                    delta *= o.scrollSpeed;
 
                     var el = $(ev.delegateTarget);
                     scrollGutter = el.siblings().last();

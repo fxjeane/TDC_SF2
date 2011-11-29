@@ -1,0 +1,7 @@
+parameters:
+#    tdc_qa.example.class: tdc\QABundle\Example
+
+services:
+#    tdc_qa.example:
+#        class: %tdc_qa.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

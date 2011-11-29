@@ -140,6 +140,7 @@
                     controlRadius:o.cornerRadius
                 },
                 content:{
+                    player:e,
                     pageRoot:o.pageRoot
                 }
             });
@@ -185,6 +186,7 @@
         loadVideo: function(id){
             var self = this;
             var service = this.options.pageRoot+"ws/video/"+id;
+
             $.getJSON(service, function(data) {
                 // set the title of the video
                 $(".videoTitleName").html(data.name);
@@ -214,20 +216,23 @@
                 infoTbl.append(tr);
 
                 // create the navigation object
-                tocTokens = data.toc.split(",");
                 navobj = {};
-                links = [];
-                for (i = 0; i<tocTokens.length;i+=1){
-                    itemTokens = tocTokens[i].split("%");
-                    linkName = itemTokens[0]
-                    linkTimeTokens = itemTokens[1].split(":");
-                    hours = parseInt(linkTimeTokens[0]) * 60 * 60;
-                    minutes = parseInt(linkTimeTokens[1]) * 60;
-                    seconds = parseInt(linkTimeTokens[2]);
-                    linkTime = hours + minutes + seconds;
-                    links.push({"title":linkName,"link":linkTime});
+                if ((data.toc !== "") && (data.toc.indexOf(",") !== -1)) {
+                    tocTokens = data.toc.split(",");
+                    links = [];
+                    for (i = 0; i<tocTokens.length;i+=1){
+                        itemTokens = tocTokens[i].split("%");
+                        linkName = itemTokens[0]
+                        linkTimeTokens = itemTokens[1].split(":");
+                        hours = parseInt(linkTimeTokens[0]) * 60 * 60;
+                        minutes = parseInt(linkTimeTokens[1]) * 60;
+                        seconds = parseInt(linkTimeTokens[2]);
+                        linkTime = hours + minutes + seconds;
+                        links.push({"title":linkName,"link":linkTime});
+                    }
+                    navobj["index"] = links;
                 }
-                navobj["index"] = links;
+
                 $("#tdcNavBar").tdcNavbar("loadData",navobj);
             });
         }

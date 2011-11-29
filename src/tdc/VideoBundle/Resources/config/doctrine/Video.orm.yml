@@ -20,7 +20,7 @@ tdc\VideoBundle\Entity\Video:
             type: text
             nullable: true
         toc:
-            type: string
+            type: text 
             nullable: true
         status:
             type: integer
@@ -55,3 +55,9 @@ tdc\VideoBundle\Entity\Video:
         ratings:
             targetEntity: Rating
             mappedBy: video
+        questions:
+            targetEntity: tdc\QABundle\Entity\Question
+            mappedBy: user
+        answers:
+            targetEntity: tdc\QABundle\Entity\Answer 
+            mappedBy: user

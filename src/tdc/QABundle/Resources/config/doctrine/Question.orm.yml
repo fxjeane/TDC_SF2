@@ -1,0 +1,24 @@
+tdc\QABundle\Entity\Question:
+    type: entity
+    table: question
+    id:
+        id:
+            type: integer
+            generator: { strategy : AUTO }
+    fields:
+        text:
+            type: text
+        created:    
+            type: datetime
+        updated:
+            type: datetime
+    manyToOne:
+        user:
+            targetEntity: tdc\UserBundle\Entity\User
+            inversedBy: questions
+    oneToMany:
+        answers:
+            targetEntity: Answer
+            mappedBy: question
+
+

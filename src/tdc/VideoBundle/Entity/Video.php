@@ -298,4 +298,54 @@ class Video
     {
         return $this->trt;
     }
+    /**
+     * @var tdc\QABundle\Entity\Question
+     */
+    private $questions;
+
+    /**
+     * @var tdc\QABundle\Entity\Answer
+     */
+    private $answers;
+
+
+    /**
+     * Add questions
+     *
+     * @param tdc\QABundle\Entity\Question $questions
+     */
+    public function addQuestion(\tdc\QABundle\Entity\Question $questions)
+    {
+        $this->questions[] = $questions;
+    }
+
+    /**
+     * Get questions
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
+
+    /**
+     * Add answers
+     *
+     * @param tdc\QABundle\Entity\Answer $answers
+     */
+    public function addAnswer(\tdc\QABundle\Entity\Answer $answers)
+    {
+        $this->answers[] = $answers;
+    }
+
+    /**
+     * Get answers
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getAnswers()
+    {
+        return $this->answers;
+    }
 }

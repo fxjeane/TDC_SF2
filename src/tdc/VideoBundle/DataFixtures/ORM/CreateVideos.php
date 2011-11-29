@@ -12,9 +12,6 @@ class LoadVideoData implements FixtureInterface
 {
     public function load($manager)
     {
-        //$entityManager = $this->get('doctrine.orm.entity_manager');
-        //$article = $entityManager->find('Article', $id);
-
         // Create video categories
         $cat1 = new Category();
         $cat1->setName("Programming");

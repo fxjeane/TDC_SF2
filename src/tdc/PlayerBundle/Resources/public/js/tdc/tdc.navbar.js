@@ -78,9 +78,12 @@
         } // if o.videoObject
 
         var notesCnt = $("<div id='tdcNotesCnt'>");
-        notesCnt.html("notes");
         notesCnt.hide();
         e.append(notesCnt);
+        // holder of all links
+        var notesHolder = $("<div id='tdcNotesCntHolder'>");
+        notesHolder.addClass("contentHolder");
+        notesCnt.append(notesHolder);
         topPad = parseInt(notesCnt.css("padding-top"));
         botPad = parseInt(notesCnt.css("padding-bottom"));
         notesCnt.height(e.height() - tabBar.height() - topPad - botPad);
@@ -112,51 +115,74 @@
         var indexCnt = $("#tdcIndexCnt");
         var linkHolder = $("#tdcIndexCntHolder");
         var tabBar =$("tdcTabBar");
-        var links = index;
-        var row = 0;
-        for (var i in links) {
-            var li = $("<li>");
-            li.addClass("row" + row);
-            li.css("cursor","pointer");
-            row = 1 - row;
-            li.html(links[i].title);
-            linkHolder.append(li);
-            li.click(links[i].link,function(e) {
-               state = $f().getState();
-               if (state != 3) {
-                    $f().play();
-                    state = $f().getState();
-                    if (state === 2) {
-                        $f().getClip().onStart(function(){
+        if (index != undefined) {
+            var links = index;
+            var row = 0;
+            for (var i in links) {
+                var li = $("<li>");
+                li.addClass("row" + row);
+                li.css("cursor","pointer");
+                row = 1 - row;
+                li.html(links[i].title);
+                linkHolder.append(li);
+                // index click event
+                li.click(links[i].link,function(e) {
+                   state = $f().getState();
+                   // if not playing
+                   if (state != 3) {
+                        $f().play();
+                        state = $f().getState();
+                        // if buffering
+                        if (state === 2) {
+                            $f().getClip().onStart(function(){
+                                $f().seek(e.data);
+                            });
+                        }
+                        // if pause
+                        if (state === 4) {
                             $f().seek(e.data);
-                        });
-                    }
-                    if (state === 4) {
+                        }
+                    } else {
                         $f().seek(e.data);
                     }
-                } else {
-                    $f().seek(e.data);
-                }
-            });
-        }
-        topPad = parseInt(indexCnt.css("padding-top"));
-        botPad = parseInt(indexCnt.css("padding-bottom"));
-        indexCnt.height(e.height() - tabBar.height() - topPad - botPad - 1);
-        // compare against the size of the first link
-        liTopPad = parseInt(li.css("padding-top"));
-        liBotPad = parseInt(li.css("padding-top"));
-        if (((liTopPad + liBotPad + li.height()) * 
-            links.length) > indexCnt.height()) {
-            /*
-            $(linkHolder).tdcScrollBar({
-                    container:indexCnt,
-                    cornerRadius:o.cornerRadius
                 });
-            */
+            }
+            topPad = parseInt(indexCnt.css("padding-top"));
+            botPad = parseInt(indexCnt.css("padding-bottom"));
+            indexCnt.height(e.height() - tabBar.height() - topPad - botPad - 1);
+            // compare against the size of the first link
+            liTopPad = parseInt(li.css("padding-top"));
+            liBotPad = parseInt(li.css("padding-top"));
+            if (((liTopPad + liBotPad + li.height()) * 
+                links.length) > indexCnt.height()) {
+                /*
+                $(linkHolder).tdcScrollBar({
+                        container:indexCnt,
+                        cornerRadius:o.cornerRadius
+                    });
+                */
+            }
+        } else {
+            var li = $("<li>");
+            li.addClass("row0");
+            li.html("No index found");
+            linkHolder.html(li); 
         }
+    },
+    loadNotes: function(notes) {
+        var e = this.element;
+        var notesCnt = $("#tdcNotesCnt");
+        var notesHolder = $("#tdcNotesCntHolder");
+        var tabBar =$("tdcTabBar");
+        var li = $("<li>");
+        li.addClass("row0");
+        li.html("No notes found");
+        notesHolder.html(li); 
+
     },
     loadData: function(data){
         this.loadIndex(data.index);
+        this.loadNotes(data.notes);
     }
 });
 

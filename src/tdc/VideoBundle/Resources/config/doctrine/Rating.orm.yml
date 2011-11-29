@@ -5,6 +5,10 @@ tdc\VideoBundle\Entity\Rating:
         id:
             type: integer
             generator: { strategy : AUTO }
+    fields:
+        value:
+            type: integer
+            lenght: 10
     manyToOne:
         video:
             targetEntity: Video
