@@ -57,6 +57,8 @@ table .row_1 {
 #mainFrame {
     width:1100px;
     margin:20px auto;
+    border-radius: 10px;
+    box-shadow:0px 0px 25px 10px rgb(50,50,50);
 }
 /*********************
  * Header Bar
@@ -69,7 +71,6 @@ table .row_1 {
     border: 1px solid #505050;
     border-top-color: #6E6E6E;
     border-bottom-color: #323232;
-
 }
 #tdcBtn {
     background-image: url(../../../public/images/icons/tdchannelIcon.png);

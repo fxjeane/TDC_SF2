@@ -6,12 +6,45 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use tdc\UserBundle\Entity\User;
 use tdc\QABundle\Entity\Question;
 use tdc\QABundle\Entity\Answer;
+use tdc\QABundle\Entity\QuestionTag;
 
 class LoadVideoData implements FixtureInterface
 {
     public function load($manager)
     {
         $qb = $manager->createQueryBuilder();
+       /* 
+        $tags = array('programming','python','renderman','math','javascript',
+        'maya','shaders');
+        foreach($tags as $tag) {
+            $newt = new QuestionTag();
+            $newt->setValue($tag);
+            $manager->persist($newt);
+        }
+        */
+
+        $qb->add('select', 'u')
+           ->add('from', 'tdc\QABundle\Entity\Question u');
+        $query = $qb->getQuery();
+        $questions = $query->getResult();
+        
+        $qb = $manager->createQueryBuilder();
+        $qb->add('select', 'u')
+           ->add('from', 'tdc\QABundle\Entity\QuestionTag u');
+        $query = $qb->getQuery();
+        $tags = $query->getResult();
+
+        foreach ($questions as $qs) {
+            $tt = array_rand($tags,rand(2,count($tags) -1));
+            foreach ($tt as $t) {
+                $qs->addQuestionTag($tags[$t]);
+            }
+            $manager->persist($qs);
+            
+        }
+
+
+        /*
         $qb->add('select', 'u')
            ->add('from', 'tdc\UserBundle\Entity\User u');
         $query = $qb->getQuery();
@@ -46,7 +79,7 @@ class LoadVideoData implements FixtureInterface
             $a->setText("This is answer $i for question ".$q->getId());
             $manager->persist($a);
         }
-
+        */
         $manager->flush();
     }
 }

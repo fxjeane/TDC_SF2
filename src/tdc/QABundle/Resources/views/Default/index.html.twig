@@ -1,3 +1,38 @@
 {% extends 'tdcFrontEndBundle:Default:layout.html.twig' %}
 
+{% block titleName %}Q&A{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets  
+     debug=false
+    '@tdcQABundle/Resources/public/css/qa.css' 
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block contentArea%}
+    {% block body %}
+    <div id="contentHolder">
+        {% for item in questions %}
+        <div class='questionSummary'>
+            <div class="question"><a>{{item.text}}</a></div>
+            <div class="tags">
+                {% for tag in item.tags %}
+                <span class="tag">{{ tag.value }}</span>
+                {% endfor %}
+            </div>
+            <div class="author">author: 
+                <i>{{item.user}}</i>
+            </div>
+            <div class="updated">updated: 
+                <i>{{ item.updated|date("m/d/Y H:i:s") }}</i>
+            </div>
+            <div class="views">views: {{item.views}}</div>
+            <div class="answers">answers: {{item.answers|length}}</div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}
+{% endblock contentArea %}

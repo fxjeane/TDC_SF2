@@ -1,0 +1,15 @@
+tdc\QABundle\Entity\QuestionTag:
+    type: entity
+    table: questiontag
+    id:
+        id:
+            type: integer
+            generator: { strategy : AUTO }
+    fields:
+        value:
+            type: string
+            size: 100
+    manyToMany:
+        questions:
+            targetEntity: Question
+            mappedBy: tags

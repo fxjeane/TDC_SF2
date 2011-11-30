@@ -1,4 +1,3 @@
-
 tdcPlayerBundle:
     resource: "@tdcPlayerBundle/Resources/config/routing.yml"
     prefix:   /

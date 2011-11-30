@@ -150,4 +150,54 @@ class Question
     {
         return $this->text;
     }
+    /**
+     * @var integer $views
+     */
+    private $views;
+
+
+    /**
+     * Set views
+     *
+     * @param integer $views
+     */
+    public function setViews($views)
+    {
+        $this->views = $views;
+    }
+
+    /**
+     * Get views
+     *
+     * @return integer 
+     */
+    public function getViews()
+    {
+        return $this->views;
+    }
+    /**
+     * @var tdc\QABundle\Entity\QuestionTag
+     */
+    private $tags;
+
+
+    /**
+     * Add tags
+     *
+     * @param tdc\QABundle\Entity\QuestionTag $tags
+     */
+    public function addQuestionTag(\tdc\QABundle\Entity\QuestionTag $tags)
+    {
+        $this->tags[] = $tags;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
 }
