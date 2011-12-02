@@ -1,15 +1,27 @@
 {% extends 'tdcQABundle:Default:layout.html.twig' %}
 
-{% block titleName %}Knowledge Base{% endblock %}
+{% set num = tag|length %}
 
+{% block titleName %}Tag:
+    {% if num > 1 %}
+        Index
+    {% else %}
+        {{ tag.value|capitalize }}
+    {% endif %}
+{% endblock %}
 
 {% block contentArea%}
     {% block body %}
     <div id="contentHolder">
+    {% if num > 1 %}
+    
+    {% else %}
+        <div class="tagged">{{tag.value }} </div>
         <div id="paginatorTop" class="paginator"></div>
         {% for item in questions %}
         <div class='questionSummary'>
             <div class="questionTitle"><a href="{{path("tdc_qa_view",{'id': item.id}) }}">{{item.title}}</a></div>
+            <!--
             <div class="tags">
                 {% for tag in item.tags %}
                 <span class="tag">
@@ -17,6 +29,7 @@
                     </span>
                 {% endfor %}
             </div>
+            -->
             <div class="author">author: 
                 <i>{{item.user}}</i>
             </div>
@@ -28,6 +41,7 @@
         </div>
         {% endfor %}
         <div id="paginatorBottom" class="paginator"></div>
+    {% endif %}
     </div>
     {% endblock %}
 {% endblock contentArea %}
@@ -41,8 +55,8 @@
                 lastLabel:">>",
                 firstLabel: "<<",
                 trailLinks: 3,
-                queryUrl:'{{ path("tdc_ws_question_list")}}',
-                targetUrl:'{{ path("tdc_qa_homepage") }}'
+                queryUrl:'{{ path("tdc_ws_tagged_list",{'tag':tag.value}) }}',
+                targetUrl:'{{ path("tdc_qa_tagged",{"tag":tag.value}) }}'
                 });
    </script>
 {% endblock javascripts %}

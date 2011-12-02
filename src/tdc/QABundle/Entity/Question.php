@@ -200,4 +200,29 @@ class Question
     {
         return $this->tags;
     }
+    /**
+     * @var string $title
+     */
+    private $title;
+
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 }

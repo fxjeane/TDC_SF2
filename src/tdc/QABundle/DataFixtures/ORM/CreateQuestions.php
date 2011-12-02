@@ -24,23 +24,23 @@ class LoadVideoData implements FixtureInterface
         */
 
         $qb->add('select', 'u')
-           ->add('from', 'tdc\QABundle\Entity\Question u');
+           ->add('from', 'tdc\QABundle\Entity\Answer u');
         $query = $qb->getQuery();
         $questions = $query->getResult();
-        
+   /*     
         $qb = $manager->createQueryBuilder();
         $qb->add('select', 'u')
            ->add('from', 'tdc\QABundle\Entity\QuestionTag u');
         $query = $qb->getQuery();
         $tags = $query->getResult();
-
+    */
         foreach ($questions as $qs) {
-            $tt = array_rand($tags,rand(2,count($tags) -1));
-            foreach ($tt as $t) {
-                $qs->addQuestionTag($tags[$t]);
-            }
+            $qs->setTitle($qs->getText());
+            //$tt = array_rand($tags,rand(2,count($tags) -1));
+            //foreach ($tt as $t) {
+            //    $qs->addQuestionTag($tags[$t]);
+            //}
             $manager->persist($qs);
-            
         }
 
 

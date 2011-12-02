@@ -6,6 +6,9 @@ tdc\QABundle\Entity\Answer:
             type: integer
             generator: { strategy : AUTO }
     fields:
+        title:
+            type: string
+            length: 255
         text:
             type: text
         created:    

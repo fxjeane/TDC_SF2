@@ -80,7 +80,6 @@
     {% endblock body %}
 {% endblock contentArea %}
 
-
 {% block javascripts %}
     {{ parent() }}
     <script >
@@ -97,12 +96,5 @@
                 {% endif %}
                 targetUrl:'{{ path("tdc_front_catalog_list")}}'+'/{{entity}}'
                 });
-
-    /*
-        $('#tdc_browser').tdcBrowser({
-                    dataUrl:"{{ path("tdc_front_homepage") }}catalogJson",
-                    videosUrl:"{{ path("tdc_front_homepage") }}catalog"
-                    });
-   */
    </script>
 {% endblock javascripts %}

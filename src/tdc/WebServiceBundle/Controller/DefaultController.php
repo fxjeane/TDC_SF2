@@ -1,10 +1,7 @@
 <?php
-
 namespace tdc\WebServiceBundle\Controller;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-
 
 class DefaultController extends Controller
 {
@@ -127,6 +124,35 @@ class DefaultController extends Controller
             $answers[] = $ans->asArray();
         $json['answers'] = $answers;
         
+        return new Response(json_encode($json));
+    }
+
+    public function taggedListAction($tag,$start,$max)
+    {
+            $tagval = $this->getdoctrine()->getrepository('tdcQABundle:QuestionTag')
+                         ->findOneByValue($tag);
+            $json = array();
+            if ($tagval != null) {
+                $allQuestions = $tagval->getQuestions();
+                $startval = ($start) * $max;
+                $endval = min($startval + $max,count($allQuestions));
+                if ($max === -1) {
+                    $startval = 0;
+                    $endval = count($allQuestions);
+                }
+
+                $questions = array();
+                for ($i = $startval; $i < $endval;$i +=1) {
+                    $qq = $allQuestions[$i];
+                    $qqar = $qq->asArray();
+                    $ans = array();
+                    foreach ($qq->getAnswers() as $aa) {
+                        $qqar['answers'] = $aa->asArray();
+                    }
+                    $questions[] = $qqar;
+                }
+                $json=$questions;
+            }
         return new Response(json_encode($json));
     }
 }

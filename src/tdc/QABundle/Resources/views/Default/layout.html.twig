@@ -1,0 +1,23 @@
+{% extends 'tdcFrontEndBundle:Default:layout.html.twig' %}
+
+{% block header_javascripts %}
+    {{ parent() }}
+    {% javascripts
+        debug=true
+        'public/js/jquery/jquery-ui-1.8.16.custom.min.js'
+        'public/js/tdc/tdc.js'
+        'public/js/tdc/tdc.paginator.js'
+    %}
+    <script src="{{ asset_url }}" type="text/javascript"  /></script>
+    {% endjavascripts %}
+{% endblock header_javascripts %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets  
+     debug=false
+    '@tdcQABundle/Resources/public/css/qa.css' 
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock %}

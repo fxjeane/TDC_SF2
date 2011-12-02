@@ -1,0 +1,43 @@
+{% extends 'tdcQABundle:Default:layout.html.twig' %}
+
+{% block titleName %}{{question.title}}{% endblock %}
+
+{% block contentArea%}
+    {% block body %}
+    <div id="contentHolder">
+        <a href="{{ path("tdc_qa_homepage")}}">Knowledge Base</a>
+        <div class="questionArea">
+            <div class="questionTitle">{{ question.title }}</div>
+            <div class="questionText">{{question.text}}</div>
+            <div class="author">author: 
+                <i>{{question.user}}</i>
+            </div>
+            <div class="updated">updated: 
+                <i>{{ question.updated|date("m/d/Y H:i:s") }}</i>
+            </div>
+            <div class="views">views: {{question.views}}</div>
+            <div class="tags">
+                {% for tag in question.tags %}
+                <span class="tag">
+                    <a href="{{path("tdc_qa_tagged",{"tag":tag.value})}}">{{ tag.value }}</a>
+                </span>
+                {% endfor %}
+            </div>
+            <div class="answerArea">
+                {% for ans in question.answers %}
+                <div class="answerTitle">{{ans.title}}</div>
+                <div class="answerText">{{ans.title}}</div>
+                <div class="author">author: 
+                    <i>{{ans.user}}</i>
+                </div>
+                <div class="updated">updated: 
+                    <i>{{ ans.updated|date("m/d/Y H:i:s") }}</i>
+                </div>
+                <div class="questionEnd"></div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+{% endblock contentArea %}
+

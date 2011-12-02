@@ -66,3 +66,15 @@ tdc_ws_question_item:
         _method:  GET
         _format: JSON
 
+tdc_ws_tagged_list:
+    pattern: /taggedlist/{tag}/{start}/{max}.{_format}
+    defaults:
+        _controller: tdcWebServiceBundle:Default:taggedList
+        start: 0
+        max: -1
+        _format: json
+    requirements:
+        start: \d+
+        max: \d+
+        _method:  GET
+        _format: JSON
