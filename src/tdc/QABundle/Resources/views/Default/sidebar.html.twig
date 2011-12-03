@@ -1,0 +1,4 @@
+<div class="popularTags">Popular Tags</div>
+{% for item in tags %}
+<div>{{ item.value }} x {{item.tag_count}} </div>
+{% endfor %}

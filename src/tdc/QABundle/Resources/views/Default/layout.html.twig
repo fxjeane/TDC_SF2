@@ -21,3 +21,14 @@
     <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
     {% endstylesheets %}
 {% endblock %}
+
+{% block contentArea %}
+<div id="contentHolder">
+    <div class="questionArea">
+        {%block body %}{% endblock %}
+    </div>
+    <div id="sidebarArea">
+    {% block sidebar%}{% endblock sidebar %}
+    </div>
+</div>
+{% endblock contentArea %}

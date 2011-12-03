@@ -1,6 +1,11 @@
 <?php
 namespace tdc\QABundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Doctrine\ORM\Query\ResultSetMapping;
+
+class Foo {
+    public $id;
+};
 
 class DefaultController extends Controller
 {
@@ -14,9 +19,12 @@ class DefaultController extends Controller
                      ->orderBy('p.updated', 'DESC')
                      ->getQuery()
                      ->getResult(); 
-            
+        
+        $popularTags = $this->getPopularTags();
+
         return $this->render('tdcQABundle:Default:index.html.twig',
                               array('questions'=> $questions,
+                                    'tags'=>$popularTags,
                                     'start'=>$start,
                                     'max'=>$max));
     }
@@ -26,8 +34,10 @@ class DefaultController extends Controller
         $question = $this->getdoctrine()->getrepository('tdcQABundle:Question')
                     ->find($id);
 
+        $popularTags = $this->getPopularTags();
         return $this->render('tdcQABundle:Default:view.html.twig',
-                              array('question'=> $question));
+                              array('question'=> $question,
+                                    'tags'=>$popularTags));
     }
 
     public function taggedAction($tag,$start,$max)
@@ -59,5 +69,21 @@ class DefaultController extends Controller
                                     'questions'=>$questions,
                                     'start'=>$start,
                                     'max'=> $max));
+    }
+
+    private function getPopularTags() {
+      #SELECT COUNT(*) as cc,t.value  FROM `question_tags` qt LEFT JOIN `questiontag` t
+      #ON qt.tag_id = t.id GROUP BY qt.tag_id ORDER BY cc DESC
+        $rep = $this->getdoctrine()->getrepository('tdcQABundle:Question');
+
+        $tagval = $rep->createQueryBuilder('q')
+                     ->select('COUNT(q.id) as tag_count, t.value')
+                     ->innerJoin('q.tags','t')
+                     ->groupBy('t.value')
+                     ->orderBy('tag_count','DESC')
+                     ->getQuery()
+                     ->getResult(); 
+
+        return $tagval;
     }
 }

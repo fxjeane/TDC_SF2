@@ -2,12 +2,9 @@
 
 {% block titleName %}Knowledge Base{% endblock %}
 
-
-{% block contentArea%}
-    {% block body %}
-    <div id="contentHolder">
-        <div id="paginatorTop" class="paginator"></div>
-        {% for item in questions %}
+{% block body %}
+    <div id="paginatorTop" class="paginator"></div>
+    {% for item in questions %}
         <div class='questionSummary'>
             <div class="questionTitle"><a href="{{path("tdc_qa_view",{'id': item.id}) }}">{{item.title}}</a></div>
             <div class="tags">
@@ -26,11 +23,13 @@
             <div class="views">views: {{item.views}}</div>
             <div class="answers">answers: {{item.answers|length}}</div>
         </div>
-        {% endfor %}
-        <div id="paginatorBottom" class="paginator"></div>
-    </div>
-    {% endblock %}
-{% endblock contentArea %}
+    {% endfor %}
+    <div id="paginatorBottom" class="paginator"></div>
+{% endblock body%}
+
+{% block sidebar %}
+{% include 'tdcQABundle:Default:sidebar.html.twig' with {'tags': tags } %}
+{% endblock sidebar %}
 
 {% block javascripts %}
     {{ parent() }}
