@@ -129,9 +129,44 @@ class DefaultController extends Controller
 
     public function taggedListAction($tag,$start,$max)
     {
+        $json = array();
+        if ($tag == "all") {
+            $repository = $this->getDoctrine()
+                          ->getRepository('tdcQABundle:QuestionTag');
+            
+            $query = $repository->createQueryBuilder('p');
+
+            if ($max != -1) 
+                $query->setFirstResult($start)
+                      ->setMaxResults($max);
+            $tagvals = $query->getQuery()->getResult();
+            if ($tagvals != null) {
+                foreach ($tagvals as $tagval) {
+                    $allQuestions = $tagval->getQuestions();
+                    $startval = ($start) * $max;
+                    $endval = min($startval + $max,count($allQuestions));
+                    if ($max === -1) {
+                        $startval = 0;
+                        $endval = count($allQuestions);
+                    }
+
+                    $questions = array();
+                    for ($i = $startval; $i < $endval;$i +=1) {
+                        $qq = $allQuestions[$i];
+                        $qqar = $qq->asArray();
+                        $ans = array();
+                        foreach ($qq->getAnswers() as $aa) {
+                            $qqar['answers'] = $aa->asArray();
+                        }
+                        $questions[] = $qqar;
+                    }
+                    $json[$tagval->getValue()]=$questions;
+                }
+            }
+
+        } else {
             $tagval = $this->getdoctrine()->getrepository('tdcQABundle:QuestionTag')
                          ->findOneByValue($tag);
-            $json = array();
             if ($tagval != null) {
                 $allQuestions = $tagval->getQuestions();
                 $startval = ($start) * $max;
@@ -153,6 +188,7 @@ class DefaultController extends Controller
                 }
                 $json=$questions;
             }
+        }
         return new Response(json_encode($json));
     }
 }

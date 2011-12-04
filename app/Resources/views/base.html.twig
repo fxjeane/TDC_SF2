@@ -62,7 +62,7 @@
                     </div>
                     <div class="footerBlurb">
                         <h3>Site Map</h3>
-                        <table width="100%" cellspacing="4px">
+                        <table width="100%" cellspacing="4px" id="siteMap">
                         <tr>
                             <td><a href="{{ path("tdc_front_homepage") }}">Home</a></td>
                             <td><a href="{{ path("tdc_front_faq") }}">FAQ</a></td>
@@ -83,6 +83,10 @@
                                 {% endif %}
                             </td>
                         {% endif %}
+                        </tr>
+                        <tr>
+                            <td><a href="{{ path("tdc_qa_homepage") }}">Q & A</a></td>
+                            <td></td>
                         </tr>
                         </table>
                     </div>

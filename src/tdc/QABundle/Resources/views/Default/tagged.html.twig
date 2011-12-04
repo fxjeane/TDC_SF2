@@ -1,7 +1,6 @@
 {% extends 'tdcQABundle:Default:layout.html.twig' %}
 
 {% set num = tag|length %}
-
 {% block titleName %}Tag:
     {% if num > 1 %}
         Index
@@ -10,11 +9,12 @@
     {% endif %}
 {% endblock %}
 
-{% block contentArea%}
-    {% block body %}
-    <div id="contentHolder">
+{% block body %}
+<div class="questionArea">
     {% if num > 1 %}
-    
+    <div class="tagged">Tags</div>
+    <div id="paginatorTop" class="paginator"></div>
+    <div id="paginatorBottom" class="paginator"></div>
     {% else %}
         <div class="tagged">{{tag.value }} </div>
         <div id="paginatorTop" class="paginator"></div>
@@ -42,9 +42,14 @@
         {% endfor %}
         <div id="paginatorBottom" class="paginator"></div>
     {% endif %}
-    </div>
-    {% endblock %}
-{% endblock contentArea %}
+</div>
+{% endblock %}
+
+{% block sidebar %}
+    {% if num == 1 %}
+        {% include 'tdcQABundle:Default:sidebar.html.twig' with {'tags': tags } %}
+    {% endif %}
+{% endblock sidebar %}
 
 {% block javascripts %}
     {{ parent() }}
@@ -55,8 +60,13 @@
                 lastLabel:">>",
                 firstLabel: "<<",
                 trailLinks: 3,
-                queryUrl:'{{ path("tdc_ws_tagged_list",{'tag':tag.value}) }}',
-                targetUrl:'{{ path("tdc_qa_tagged",{"tag":tag.value}) }}'
+                {% if num > 1 %}
+                    queryUrl:'{{ path("tdc_ws_tagged_list",{'tag':"all"}) }}',
+                    targetUrl:'{{ path("tdc_qa_tagged",{"tag":'all'}) }}'
+                {% else %}
+                    queryUrl:'{{ path("tdc_ws_tagged_list",{'tag':tag.value}) }}',
+                    targetUrl:'{{ path("tdc_qa_tagged",{"tag":tag.value}) }}'
+                {% endif %}
                 });
    </script>
 {% endblock javascripts %}

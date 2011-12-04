@@ -28,7 +28,10 @@
 {% endblock body%}
 
 {% block sidebar %}
-{% include 'tdcQABundle:Default:sidebar.html.twig' with {'tags': tags } %}
+{% include 'tdcQABundle:Default:sidebar.html.twig' with 
+    { 'tags': tags,
+       'mode':'index'} 
+%}
 {% endblock sidebar %}
 
 {% block javascripts %}

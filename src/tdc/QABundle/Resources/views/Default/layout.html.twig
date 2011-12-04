@@ -32,3 +32,13 @@
     </div>
 </div>
 {% endblock contentArea %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script >
+    $("#sidebarArea").css("position","relative");
+    $("#sidebarArea").css("top",-$(".questionArea").outerHeight());
+    $("#sidebarArea").css("left",$(".questionArea").outerWidth());
+    $("#contentHolder").height($("#contentHolder").height() - $("#sidebarArea").outerHeight());
+   </script>
+{% endblock javascripts %}

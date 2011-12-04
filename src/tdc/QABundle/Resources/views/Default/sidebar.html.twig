@@ -1,4 +1,27 @@
+{% if mode =='index' %}
+<div class="newQuestionBtn tdcButton">
+    <a href="{{path("tdc_qa_ask")}}">Ask Question</a>
+</div>
+{% endif %}
+
 <div class="popularTags">Popular Tags</div>
+
 {% for item in tags %}
-<div>{{ item.value }} x {{item.tag_count}} </div>
+<div class='tags'>
+    <span class="tag">
+        <a href="{{path("tdc_qa_tagged",{"tag":item.value})}}">{{ item.value }}</a>
+    </span> 
+    x {{item.tag_count}} 
+</div>
 {% endfor %}
+
+{% block javascripts %}
+    <script >
+    $(".newQuestionBtn").mousedown(function(){
+        $(this).addClass("tdcButtonDown");
+    });
+    $(".newQuestionBtn").mouseup(function(){
+        $(this).removeClass("tdcButtonDown");
+    });
+   </script>
+{% endblock javascripts %}

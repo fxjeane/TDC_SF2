@@ -1,0 +1,15 @@
+{% extends 'tdcQABundle:Default:layout.html.twig' %}
+{% block titleName %}Ask Question{% endblock %}
+
+{% block body %}
+<div class="questionArea">
+    <a href="{{ path("tdc_qa_homepage")}}">Knowledge Base</a>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+{% include 'tdcQABundle:Default:sidebar.html.twig' with
+    {'tags': tags,
+     'mode': 'ask'} 
+%}
+{% endblock sidebar %}

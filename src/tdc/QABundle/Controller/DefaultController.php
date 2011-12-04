@@ -3,10 +3,6 @@ namespace tdc\QABundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\Query\ResultSetMapping;
 
-class Foo {
-    public $id;
-};
-
 class DefaultController extends Controller
 {
     public function indexAction($start,$max)
@@ -28,11 +24,15 @@ class DefaultController extends Controller
                                     'start'=>$start,
                                     'max'=>$max));
     }
-
+    
     public function viewAction($id)
     {
+        $em =  $this->getDoctrine()->getEntityManager();
         $question = $this->getdoctrine()->getrepository('tdcQABundle:Question')
                     ->find($id);
+
+        $question->setViews($question->getViews()+1);
+        $em->flush();
 
         $popularTags = $this->getPopularTags();
         return $this->render('tdcQABundle:Default:view.html.twig',
@@ -40,16 +40,23 @@ class DefaultController extends Controller
                                     'tags'=>$popularTags));
     }
 
+    public function askAction()
+    {
+        $popularTags = $this->getPopularTags();
+        return $this->render('tdcQABundle:Default:ask.html.twig',
+                              array('tags'=>$popularTags));
+    }
+
     public function taggedAction($tag,$start,$max)
     {
         $tagval = null;
+        $questions = array();
         if ($tag === "all") {
             $rep = $this->getdoctrine()->getrepository('tdcQABundle:QuestionTag');
 
             $tagval = $rep->createQueryBuilder('p')
                          ->setFirstResult(($start -1) * $max)
                          ->setMaxResults($max)
-                         ->orderBy('p.updated', 'DESC')
                          ->getQuery()
                          ->getResult(); 
         } else {
@@ -58,32 +65,31 @@ class DefaultController extends Controller
             $allQuestions = $tagval->getQuestions();
             $startval = ($start - 1) * $max;
             $endval = min($startval + $max,count($allQuestions));
-            $questions = array();
             for ($i = $startval; $i < $endval;$i +=1) {
                 $questions[] = $allQuestions[$i];
             }
         }
 
+        $popularTags = $this->getPopularTags();
         return $this->render('tdcQABundle:Default:tagged.html.twig',
                               array('tag'=> $tagval,
+                                    'tags'=>$popularTags,
                                     'questions'=>$questions,
                                     'start'=>$start,
                                     'max'=> $max));
     }
 
-    private function getPopularTags() {
-      #SELECT COUNT(*) as cc,t.value  FROM `question_tags` qt LEFT JOIN `questiontag` t
-      #ON qt.tag_id = t.id GROUP BY qt.tag_id ORDER BY cc DESC
+    private function getPopularTags($limit=5) {
         $rep = $this->getdoctrine()->getrepository('tdcQABundle:Question');
-
         $tagval = $rep->createQueryBuilder('q')
                      ->select('COUNT(q.id) as tag_count, t.value')
                      ->innerJoin('q.tags','t')
                      ->groupBy('t.value')
                      ->orderBy('tag_count','DESC')
+                     ->setFirstResult(0)
+                     ->setMaxResults($limit)
                      ->getQuery()
                      ->getResult(); 
-
         return $tagval;
     }
 }

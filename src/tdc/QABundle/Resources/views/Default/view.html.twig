@@ -1,5 +1,4 @@
 {% extends 'tdcQABundle:Default:layout.html.twig' %}
-
 {% block titleName %}{{question.title}}{% endblock %}
 
 {% block body %}
@@ -38,5 +37,8 @@
 {% endblock %}
 
 {% block sidebar %}
-{% include 'tdcQABundle:Default:sidebar.html.twig' with {'tags': tags } %}
+{% include 'tdcQABundle:Default:sidebar.html.twig' with
+    {'tags': tags,
+     'mode':'view'} 
+%}
 {% endblock sidebar %}

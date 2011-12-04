@@ -27,9 +27,15 @@ table {
     border-spacing:0px;
     border=none;
 }
+
 table tr {
     height:30px;
 }
+
+#siteMap tr {
+    height:22px;
+}
+
 table td {
     padding: 0px 10px;
 }
