@@ -2,6 +2,7 @@
 namespace tdc\QABundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Doctrine\ORM\Query\ResultSetMapping;
+use tdc\QABundle\Entity\Question;
 
 class DefaultController extends Controller
 {
@@ -42,9 +43,19 @@ class DefaultController extends Controller
 
     public function askAction()
     {
+        // create a task and give it some dummy data for this example
+        $question = new Question();
+        $question->setTitle('Title');
+
+        $form = $this->createFormBuilder($question)
+            ->add('title', 'text')
+            ->add('text', 'textarea')
+            ->getForm();
+
         $popularTags = $this->getPopularTags();
         return $this->render('tdcQABundle:Default:ask.html.twig',
-                              array('tags'=>$popularTags));
+                              array('tags'=>$popularTags,
+                                    'questionForm' => $form->createView()));
     }
 
     public function taggedAction($tag,$start,$max)

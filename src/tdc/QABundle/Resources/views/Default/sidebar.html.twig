@@ -1,7 +1,5 @@
 {% if mode =='index' %}
-<div class="newQuestionBtn tdcButton">
-    <a href="{{path("tdc_qa_ask")}}">Ask Question</a>
-</div>
+<div class="newQuestionBtn tdcButton">Ask Question</div>
 {% endif %}
 
 <div class="popularTags">Popular Tags</div>
@@ -22,6 +20,9 @@
     });
     $(".newQuestionBtn").mouseup(function(){
         $(this).removeClass("tdcButtonDown");
+    });
+    $(".newQuestionBtn").click(function(){
+       window.location = "{{path("tdc_qa_ask")}}";
     });
    </script>
 {% endblock javascripts %}

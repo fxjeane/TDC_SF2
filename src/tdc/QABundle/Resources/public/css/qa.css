@@ -68,6 +68,33 @@ span.tag {
 }
 /***************
 *
+* Create Question
+*
+***************/
+#questionForm table {
+    border-spacing:4px;
+}
+#questionForm tr {
+    vertical-align:top;
+}
+#questionForm input,
+#questionForm textarea {
+    background-color:rgb(80,80,80);
+    border-radius:10px;
+}
+
+#questionForm input[type=text],
+#questionForm textarea {
+    width:500px;
+    height:30px;
+    line-height:30px;
+}
+#questionForm textarea {
+    height:350px;
+}
+
+/***************
+*
 * Side Bar
 *
 ***************/

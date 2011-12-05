@@ -2,9 +2,23 @@
 {% block titleName %}Ask Question{% endblock %}
 
 {% block body %}
-<div class="questionArea">
-    <a href="{{ path("tdc_qa_homepage")}}">Knowledge Base</a>
-</div>
+<h2>Ask Question</h2>
+
+<form action="{{ path('tdc_qa_ask') }}" method="post" {{ form_enctype(questionForm) }} id="questionForm">
+    {#{ form_widget(questionForm) }#}
+    <table>
+        <tr>
+            <td>{{ form_label(questionForm.title) }}</td>
+            <td>{{ form_errors(questionForm.title) }}
+                {{ form_widget(questionForm.title) }}</td>
+        </tr>
+        <tr>
+            <td>{{ form_label(questionForm.text) }}</td>
+            <td>{{ form_widget(questionForm.text) }}</td>
+        </tr>
+    </table>
+    <input type="submit" />
+</form>
 {% endblock %}
 
 {% block sidebar %}
