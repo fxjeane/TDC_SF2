@@ -50,6 +50,7 @@ class DefaultController extends Controller
         $form = $this->createFormBuilder($question)
             ->add('title', 'text')
             ->add('text', 'textarea')
+            ->add('tags', 'text')
             ->getForm();
 
         $popularTags = $this->getPopularTags();

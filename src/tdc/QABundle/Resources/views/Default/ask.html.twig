@@ -1,23 +1,43 @@
 {% extends 'tdcQABundle:Default:layout.html.twig' %}
 {% block titleName %}Ask Question{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets  
+     debug=true
+    'public/css/themes/base/jquery.ui.all.css' 
+            filter='cssrewrite'
+            output='css/*.css'
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
 <h2>Ask Question</h2>
 
 <form action="{{ path('tdc_qa_ask') }}" method="post" {{ form_enctype(questionForm) }} id="questionForm">
-    {#{ form_widget(questionForm) }#}
     <table>
         <tr>
             <td>{{ form_label(questionForm.title) }}</td>
-            <td>{{ form_errors(questionForm.title) }}
+            <td colspan="2">{{ form_errors(questionForm.title) }}
                 {{ form_widget(questionForm.title) }}</td>
         </tr>
         <tr>
             <td>{{ form_label(questionForm.text) }}</td>
-            <td>{{ form_widget(questionForm.text) }}</td>
+            <td colspan="2">{{ form_widget(questionForm.text) }}</td>
+        </tr>
+        <tr id="tagsRow">
+            <td></td>
+            <td id="selectedTags" colspan="w"></td>
+        </tr>
+        <tr>
+            <td>{{ form_label(questionForm.tags) }}</td>
+            <td id="tagsField">{{ form_widget(questionForm.tags) }}</td>
+            <td><button class="tdcButton">Add</button></td>
         </tr>
     </table>
-    <input type="submit" />
+    <div class="submitBtn"><input type="submit" class="tdcButton" /></div>
 </form>
 {% endblock %}
 
@@ -27,3 +47,47 @@
      'mode': 'ask'} 
 %}
 {% endblock sidebar %}
+
+{% block javascripts %}
+    {{parent()}}
+    <script>
+    $('#form_tags').autocomplete({
+        source: function(request,response){
+            var jsonpath ='{{path("tdc_ws_tags")}}'; 
+            $.getJSON(jsonpath+"/"+request.term, function(data) {
+                response(data);
+            });
+
+           //getJSON.request.term; 
+        },
+        minLength: 2,
+        select: function(event, ui) {
+           // get existing
+           var exists = false;
+           $('.addedTag').each(function(index){
+                if ($(this).html() === ui.item.value)
+                    exists = true;
+           });
+           if (!exists) {
+               var sp = $('<span>');
+               sp.addClass('addedTag');
+               sp.html(ui.item.value);
+               $('#selectedTags').append(sp);
+               // clear the form
+           }
+           if ($('.addedTag').length > 0)
+               $('#tagsRow').show();
+        },
+        close: function(event,ui){
+           var exists = false;
+           $('.addedTag').each(function(index){
+                if ($('#form_tags').attr("value") === $(this).html())
+                    exists = true;
+           });
+
+           if (exists)
+               $('#form_tags').attr("value","");
+        }
+    });
+    </script>
+{% endblock %}

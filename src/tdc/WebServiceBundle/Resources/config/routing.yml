@@ -78,3 +78,17 @@ tdc_ws_tagged_list:
         max: \d+
         _method:  GET
         _format: JSON
+
+tdc_ws_tags:
+    pattern: /tags/{searchval}/{start}/{max}.{_format}
+    defaults:
+        _controller: tdcWebServiceBundle:Default:tags
+        searchval: "all"
+        start: 0
+        max: -1
+        _format: json
+    requirements:
+        start: \d+
+        max: \d+
+        _method:  GET
+        _format: JSON

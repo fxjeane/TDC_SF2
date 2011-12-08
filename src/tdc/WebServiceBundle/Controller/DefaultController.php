@@ -191,4 +191,48 @@ class DefaultController extends Controller
         }
         return new Response(json_encode($json));
     }
+
+    public function tagsAction($searchval,$start,$max)
+    {
+        $json = array();
+        if ($searchval == "all") {
+            $repository = $this->getDoctrine()
+                          ->getRepository('tdcQABundle:QuestionTag');
+            
+            $query = $repository->createQueryBuilder('p');
+
+            if ($max != -1) 
+                $query->setFirstResult($start)
+                      ->setMaxResults($max);
+            $tagvals = $query->getQuery()->getResult();
+
+            if ($tagvals != null) {
+                foreach ($tagvals as $tagval) {
+                    $json[]=$tagval->getValue();
+                }
+            }
+        }
+        else
+        {
+            $qb = $this->getdoctrine()
+                   ->getrepository('tdcQABundle:QuestionTag')
+                   ->createQueryBuilder('t');
+
+            $qb->where('t.value LIKE :wildcard')
+               ->setParameter('wildcard',"%".$searchval."%");
+
+            if ($max != -1) 
+                $qb->setFirstResult($start)
+                      ->setMaxResults($max);
+            
+            $tagvals = $qb->getQuery()->getResult();
+            
+            if ($tagvals != null) {
+                foreach ($tagvals as $tagval) {
+                    $json[]=$tagval->getValue();
+                }
+            }
+        }
+        return new Response(json_encode($json));
+    }
 }
