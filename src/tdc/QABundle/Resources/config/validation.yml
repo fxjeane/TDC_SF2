@@ -1,0 +1,16 @@
+tdc\QABundle\Entity\Question:
+    properties:
+        title:
+            - NotBlank: { message: "Title can not be left blank" }
+            - MinLength: { limit: 3, message: "A title must have 10 characters minimum" }
+        text:
+            - NotBlank: { message: "Question can not be left blank" }
+            - MinLength: { limit: 3, message: "A question must have 30 characters minimum" }
+        user:
+            - NotNull: ~ 
+        created:
+            - DateTime: ~ 
+        updated:
+            - DateTime: ~ 
+        views:
+            - NotNull: ~ 

@@ -72,14 +72,18 @@ span.addedTag {
 * Create Question
 *
 ***************/
-#questionForm table {
+#questionForm table,
+#answerForm table{
     border-spacing:4px;
 }
-#questionForm tr {
+#questionForm tr,
+#answerForm tr {
     vertical-align:top;
 }
 #questionForm input,
-#questionForm textarea {
+#questionForm textarea,
+#answerForm input,
+#answerForm textarea {
     background-color:rgb(80,80,80);
     border-radius:10px;
     border-width:0px;
@@ -91,28 +95,35 @@ span.addedTag {
 }
 
 #questionForm input[type=text],
-#questionForm textarea {
+#questionForm textarea,
+#answerForm input[type=text],
+#answerForm textarea{
     width:500px;
     height:30px;
     line-height:30px;
     outline:none;
 }
-#questionForm textarea {
+#questionForm textarea,
+#answerForm textarea {
     height:350px;
     resize: none;
 }
-#questionForm .submitBtn {
+#questionForm .submitBtn,
+#answerForm .submitBtn {
     width:585px;
     text-align:right;
     margin-top:5px;
 }
-#questionForm input[type=submit] {
+#questionForm input[type=submit],
+#answerForm input[type=submit] {
     padding:5px 10px;
 }
-#questionForm button {
+#questionForm button,
+#answerForm button {
     border-width:0px;
     font-size:0.9em;
 }
+#tagsField input[type=text],
 #tagsField input[type=text] {
     width:400px;
 }
@@ -125,6 +136,11 @@ span.addedTag {
 .addedTag {
 
 }
+label.error{
+    display:block;
+    margin:4px 0px;
+}
+
 /***************
 *
 * Side Bar

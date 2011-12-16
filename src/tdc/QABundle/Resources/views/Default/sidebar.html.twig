@@ -1,5 +1,7 @@
 {% if mode =='index' %}
-<div class="newQuestionBtn tdcButton">Ask Question</div>
+<div class="newQuestionBtn tdcButton" >Ask Question</div>
+{% elseif mode =='view' %}
+<div class="newQuestionBtn tdcButton" >Answer Question</div>
 {% endif %}
 
 <div class="popularTags">Popular Tags</div>
@@ -22,7 +24,11 @@
         $(this).removeClass("tdcButtonDown");
     });
     $(".newQuestionBtn").click(function(){
-       window.location = "{{path("tdc_qa_ask")}}";
+        {% if mode =='index' %}
+            window.location = "{{path("tdc_qa_ask")}}";
+        {% elseif mode =='view' %}
+            window.location = "{{path("tdc_qa_answer",{'id':question.id}) }}" 
+        {% endif %}
     });
    </script>
 {% endblock javascripts %}

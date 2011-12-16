@@ -16,6 +16,10 @@ tdc_qa_ask:
     pattern: /ask
     defaults: { _controller: tdcQABundle:Default:ask }
 
+tdc_qa_answer:
+    pattern: /answer/{id}
+    defaults: { _controller: tdcQABundle:Default:answer }
+
 tdc_qa_tagged:
     pattern: /tagged/{tag}/{start}/{max}
     defaults:

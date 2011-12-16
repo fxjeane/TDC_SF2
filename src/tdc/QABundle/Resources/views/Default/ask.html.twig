@@ -1,6 +1,16 @@
 {% extends 'tdcQABundle:Default:layout.html.twig' %}
 {% block titleName %}Ask Question{% endblock %}
 
+{% block header_javascripts %}
+    {{ parent() }}
+    {% javascripts
+        debug=true
+        'public/js/jquery/jquery.validate.min.js'
+    %}
+    <script src="{{ asset_url }}" type="text/javascript"  /></script>
+    {% endjavascripts %}
+{% endblock header_javascripts %}
+
 {% block stylesheets %}
     {{ parent() }}
     {% stylesheets  
@@ -16,16 +26,22 @@
 {% block body %}
 <h2>Ask Question</h2>
 
-<form action="{{ path('tdc_qa_ask') }}" method="post" {{ form_enctype(questionForm) }} id="questionForm">
+<form action="{{ path('tdc_qa_ask') }}" method="post" {{ form_enctype(questionForm) }}
+    id="questionForm" novalidate="novalidate" >
     <table>
         <tr>
             <td>{{ form_label(questionForm.title) }}</td>
-            <td colspan="2">{{ form_errors(questionForm.title) }}
-                {{ form_widget(questionForm.title) }}</td>
+            <td > 
+                {{ form_widget(questionForm.title) }}
+                {{ form_errors(questionForm.title) }}
+            </td>
         </tr>
         <tr>
             <td>{{ form_label(questionForm.text) }}</td>
-            <td colspan="2">{{ form_widget(questionForm.text) }}</td>
+            <td >
+                {{ form_widget(questionForm.text) }}<br/>
+                {{ form_errors(questionForm.text) }}
+            </td>
         </tr>
         <tr id="tagsRow">
             <td></td>
@@ -34,9 +50,9 @@
         <tr>
             <td>{{ form_label(questionForm.tags) }}</td>
             <td id="tagsField">{{ form_widget(questionForm.tags) }}</td>
-            <td><button class="tdcButton">Add</button></td>
         </tr>
     </table>
+    {{ form_rest(questionForm) }}
     <div class="submitBtn"><input type="submit" class="tdcButton" /></div>
 </form>
 {% endblock %}
@@ -51,43 +67,114 @@
 {% block javascripts %}
     {{parent()}}
     <script>
+    
+    $("#questionForm").validate({
+        rules:{
+            "form[tags]":{
+                required:false
+            },
+            "form[title]":{
+                required: true,
+                minlength: 10
+            },
+            "form[text]":{
+                required:true,
+                minlength:20
+            }
+        },
+        messages:{
+            "form[title]":{
+                required:"Please provide a title for the question",
+                minlength:"Title must have at least 10 characters"
+                },
+            "form[text]":{
+                required:"Please provide a text for the question",
+                minlength:"Question must have at least 20 characters"
+                }
+        }
+    });
+    
+
+    var addTag = function(value) {
+       var currentTags = $('input.addedTag');
+       /* 5 tag limit handler */
+       if (currentTags.length > 4 ) {
+            var war = $("<div id='tagNumberWarning'>");
+            war.addClass("warningText");
+            war.html("Only 5 tags per question allowed");
+           $('#selectedTags').append(war);
+           // clear the form
+           $('#form_tags').attr("value","");
+        return;
+       }
+
+       /* Create the span and input */
+       var sp = $('<span>');
+       var inp = $('<input type="hidden">');
+       inp.attr("name","tag_"+currentTags.length);
+       inp.attr("value",value);
+       sp.addClass('addedTag');
+       inp.addClass('addedTag');
+       sp.html(value);
+       var cl = $('<span>');
+       cl.css("cursor","pointer");
+       // remove handler
+       cl.click(function(ev){
+           var parent = $(this).parent().remove();
+
+           if ($('input.addedTag').length < 5) {
+                $("#tagNumberWarning").remove();
+           }
+           if ($('input.addedTag').length === 0)
+               $('#tagsRow').hide();
+       });
+
+       cl.html(" x ");
+       sp.append(cl);
+
+       // get existing to see if we can add it
+       var exists = false;
+       $('input.addedTag').each(function(index){
+            if ($(this).attr("value") === inp.attr("value"))
+                exists = true;
+       });
+
+       if (!exists) {
+           sp.append(inp);
+           $('#selectedTags').append(sp);
+       }
+       // clear the form
+       $('#form_tags').attr("value","");
+
+       if ($('input.addedTag').length > 0)
+           $('#tagsRow').show();
+
+    }; // addTag function
+    
+    $("#questionForm").bind("keypress", function(e) {
+        if (e.keyCode == 13) {
+            return false;
+        }
+    });
+
+    $("#form_tags").bind("keypress", function(e) {
+        if (e.keyCode == 13) {
+            insertVal = $('#form_tags').attr("value");
+            if (insertVal.length > 2){
+                addTag(insertVal);
+            }
+            return false;
+        }
+    });
+
     $('#form_tags').autocomplete({
         source: function(request,response){
             var jsonpath ='{{path("tdc_ws_tags")}}'; 
             $.getJSON(jsonpath+"/"+request.term, function(data) {
                 response(data);
             });
-
-           //getJSON.request.term; 
         },
-        minLength: 2,
-        select: function(event, ui) {
-           // get existing
-           var exists = false;
-           $('.addedTag').each(function(index){
-                if ($(this).html() === ui.item.value)
-                    exists = true;
-           });
-           if (!exists) {
-               var sp = $('<span>');
-               sp.addClass('addedTag');
-               sp.html(ui.item.value);
-               $('#selectedTags').append(sp);
-               // clear the form
-           }
-           if ($('.addedTag').length > 0)
-               $('#tagsRow').show();
-        },
-        close: function(event,ui){
-           var exists = false;
-           $('.addedTag').each(function(index){
-                if ($('#form_tags').attr("value") === $(this).html())
-                    exists = true;
-           });
-
-           if (exists)
-               $('#form_tags').attr("value","");
-        }
+        minLength: 3
     });
     </script>
 {% endblock %}

@@ -15,7 +15,8 @@
 {% block contentArea %}
 <div id="contentHolder" >
     <h1>
-    {% if user.subscription|length == 0 %}
+    
+    {% if app.user != "" and user.subscription|length == 0  %}
         Subscribe
     {% else %}
         Your active subscription
@@ -23,55 +24,12 @@
     </h1>
 
     {% block body %}
-        {% if user.subscription|length == 0 %}
-                <p>We are glad you have decided to join our community of learners. Please select the subscription method that best fits your needs. If you have any questions about our service please visit the <a href="{{path("tdc_front_faq")}}">F.A.Q.</a>, specially the <a href="{{path("tdc_front_faq")}}#payments">payments</a> section</p>
+        {% if app.user != "" and user.subscription|length == 0 %}
+               <p>We are glad you have decided to join our community of learners. Please select the subscription method that best fits your needs. If you have any questions about our service please visit the <a href="{{path("tdc_front_faq")}}">F.A.Q.</a>, specially the <a href="{{path("tdc_front_faq")}}#payments">payments</a> section</p>
         {% endif %}
 
         {% if app.user == "" %}
             <p> Before you can subscribe you need to <a href="{{path("fos_user_registration_register")}}">register</a>. Its free!</p>
-            <center>
-            <table id="subscribe">
-            <tr>
-                <td>
-                    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-                    <input type="hidden" name="cmd" value="_s-xclick">
-                    <input type="hidden" name="hosted_button_id" value="2WF3R4HJMDMLQ">
-                    <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                    <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                    <input type="hidden" name="image_url" value="https://twimg0-a.akamaihd.net/profile_images/1634844290/tdcLogo_whiteBG.png">
-                    <p>Monthly</p>
-                    </form>
-                </td>
-                <td>
-                <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-                <input type="hidden" name="cmd" value="_s-xclick">
-                <input type="hidden" name="hosted_button_id" value="FUG62BJANG4JA">
-                <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                    <p>3 Months</p>
-                </form>
-                </td>
-                <td>
-                    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-                    <input type="hidden" name="cmd" value="_s-xclick">
-                    <input type="hidden" name="hosted_button_id" value="UXJVMPWBSNXVN">
-                    <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                    <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                    <p>6 Months</p>
-                    </form>
-                </td>
-                <td>
-                <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-                <input type="hidden" name="cmd" value="_s-xclick">
-                <input type="hidden" name="hosted_button_id" value="EM9EBZ5GEQP6W">
-                <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                    <p>1 Year</p>
-                </form>
-                </td>
-            </tr>
-            </table>
-            </center>
         {% else %}
             {% if user.subscription|length == 0 %}
                 <center>

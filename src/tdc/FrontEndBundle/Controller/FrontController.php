@@ -43,7 +43,7 @@ class FrontController extends Controller
         $userObj = $this->container->get('security.context')
                     ->getToken()
                     ->getUser();
-         
+             
         return $this->render('tdcFrontEndBundle:Default:subscribe.html.twig',
                             array("user"=>$userObj));
     }

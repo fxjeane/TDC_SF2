@@ -1,0 +1,127 @@
+{% extends 'tdcQABundle:Default:layout.html.twig' %}
+{% block titleName %}Answer Question{% endblock %}
+
+{% block header_javascripts %}
+    {{ parent() }}
+    {% javascripts
+        debug=true
+        'public/js/jquery/jquery.validate.min.js'
+    %}
+    <script src="{{ asset_url }}" type="text/javascript"  /></script>
+    {% endjavascripts %}
+{% endblock header_javascripts %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets  
+     debug=true
+    'public/css/themes/base/jquery.ui.all.css' 
+            filter='cssrewrite'
+            output='css/*.css'
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+<h2>Answer Question</h2>
+<form action="{{ path('tdc_qa_answer',{'id':question.id}) }}" method="post" {{ form_enctype(answerForm) }}
+    id="answerForm" novalidate="novalidate" >
+    <table>
+        <tr>
+            <td>{{ form_label(answerForm.title) }}</td>
+            <td > 
+                {{ form_widget(answerForm.title) }}
+                {{ form_errors(answerForm.title) }}
+            </td>
+        </tr>
+        <tr>
+            <td>{{ form_label(answerForm.text) }}</td>
+            <td >
+                {{ form_widget(answerForm.text) }}<br/>
+                {{ form_errors(answerForm.text) }}
+            </td>
+        </tr>
+    </table>
+    {{ form_rest(answerForm) }}
+    <div class="submitBtn"><input type="submit" class="tdcButton" /></div>
+</form>
+
+    > <a href="{{ path("tdc_qa_homepage")}}">Q & A</a>
+    <div class="questionArea">
+        <div class="questionTitle">{{ question.title }}</div>
+        <div class="questionText">{{question.text}}</div>
+        <div class="author">author: 
+            <i>{{question.user}}</i>
+        </div>
+        <div class="updated">updated: 
+            <i>{{ question.updated|date("m/d/Y H:i:s") }}</i>
+        </div>
+        <div class="views">views: {{question.views}}</div>
+        <div class="tags">
+            {% for tag in question.tags %}
+            <span class="tag">
+                <a href="{{path("tdc_qa_tagged",{"tag":tag.value})}}">{{ tag.value }}</a>
+            </span>
+            {% endfor %}
+        </div>
+        <div class="answerArea">
+            {% for ans in question.answers %}
+            <div class="answerTitle">{{ans.title}}</div>
+            <div class="answerText">{{ans.text}}</div>
+            <div class="author">author: 
+                <i>{{ans.user}}</i>
+            </div>
+            <div class="updated">updated: 
+                <i>{{ ans.updated|date("m/d/Y H:i:s") }}</i>
+            </div>
+            <div class="questionEnd"></div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block sidebar %}
+{% include 'tdcQABundle:Default:sidebar.html.twig' with
+    {'tags': tags,
+     'mode': 'answer'} 
+%}
+{% endblock sidebar %}
+
+{% block javascripts %}
+    {{parent()}}
+    <script>
+    
+    $("#answerForm").validate({
+        rules:{
+            "form[title]":{
+                required: true,
+                minlength: 10
+            },
+            "form[text]":{
+                required:true,
+                minlength:20
+            }
+        },
+        messages:{
+            "form[title]":{
+                required:"Please provide a title for the question",
+                minlength:"Title must have at least 10 characters"
+                },
+            "form[text]":{
+                required:"Please provide a text for the question",
+                minlength:"Question must have at least 20 characters"
+                }
+        }
+    });
+    
+    $("#answerForm").bind("keypress", function(e) {
+        if (e.keyCode == 13) {
+            return false;
+        }
+    });
+
+    </script>
+{% endblock %}

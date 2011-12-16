@@ -1,8 +1,13 @@
 <?php
 namespace tdc\QABundle\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Doctrine\ORM\Query\ResultSetMapping;
+#use Doctrine\ORM\Query\ResultSetMapping;
 use tdc\QABundle\Entity\Question;
+use tdc\QABundle\Entity\Answer;
+use tdc\QABundle\Entity\QuestionTag;
+
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -41,11 +46,18 @@ class DefaultController extends Controller
                                     'tags'=>$popularTags));
     }
 
-    public function askAction()
+    public function askAction(Request $request)
     {
+        $userObj = $this->container->get('security.context')
+                    ->getToken()
+                    ->getUser();
         // create a task and give it some dummy data for this example
         $question = new Question();
-        $question->setTitle('Title');
+        $question->setUser($userObj);
+        $now   = new \DateTime('now');
+        $question->setCreated($now);
+        $question->setUpdated($now);
+        $question->setViews(0);
 
         $form = $this->createFormBuilder($question)
             ->add('title', 'text')
@@ -53,10 +65,85 @@ class DefaultController extends Controller
             ->add('tags', 'text')
             ->getForm();
 
+        if ($request->getMethod() == 'POST') {
+            $form->bindRequest($request);
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getEntityManager();
+                for ($i = 0;$i < 5; $i+=1) {
+                    $tagval = $request->get("tag_".$i);
+
+                    if ($tagval != "") {
+                        $foundTag = $this->getDoctrine()
+                        ->getRepository('tdcQABundle:QuestionTag')
+                        ->findByValue($tagval);
+                        if (!$foundTag) {
+                            $newt = new QuestionTag();
+                            $newt->setValue($tagval);
+                            $question->addQuestionTag($newt);
+                            $em->persist($newt);
+                        } else {
+                            $question->addQuestionTag($foundTag[0]);
+                        }
+                    }
+                }
+
+                $em->persist($question);
+                $em->flush();
+
+                // perform some action, such as saving the task to the database
+                return $this->redirect($this->generateUrl('tdc_qa_view',
+                                       array('id' => $question->getId())));
+            }
+        }
+
         $popularTags = $this->getPopularTags();
         return $this->render('tdcQABundle:Default:ask.html.twig',
                               array('tags'=>$popularTags,
                                     'questionForm' => $form->createView()));
+    }
+    
+    public function answerAction($id,Request $request) 
+    {
+        $userObj = $this->container->get('security.context')
+                    ->getToken()
+                    ->getUser();
+        $em =  $this->getDoctrine()->getEntityManager();
+        $question = $this->getdoctrine()
+                    ->getrepository('tdcQABundle:Question')
+                    ->find($id);
+
+        $answer = new Answer();
+        $answer->setTitle($question->getTitle());
+        $answer->setUser($userObj);
+        $now   = new \DateTime('now');
+        $answer->setCreated($now);
+        $answer->setUpdated($now);
+        $answer->setQuestion($question);
+
+        $form = $this->createFormBuilder($answer)
+            ->add('title', 'text')
+            ->add('text', 'textarea')
+            ->getForm();
+
+        if ($request->getMethod() == 'POST') {
+            $form->bindRequest($request);
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getEntityManager();
+                $question->addAnswer($answer);
+                $em->persist($answer);
+                $em->persist($question);
+                $em->flush();
+                // perform some action, such as saving the task to the database
+                return $this->redirect($this->generateUrl('tdc_qa_view',
+                                       array('id' => $question->getId())));
+            }
+        }
+
+        $popularTags = $this->getPopularTags();
+        return $this->render('tdcQABundle:Default:answer.html.twig',
+                            array('tags'=>$popularTags,
+                                  'question'=>$question,
+                                  'answerForm'=> $form->createView()));
     }
 
     public function taggedAction($tag,$start,$max)

@@ -2,7 +2,7 @@
 {% block titleName %}{{question.title}}{% endblock %}
 
 {% block body %}
-    <a href="{{ path("tdc_qa_homepage")}}">Knowledge Base</a>
+    > <a href="{{ path("tdc_qa_homepage")}}">Q & A</a>
     <div class="questionArea">
         <div class="questionTitle">{{ question.title }}</div>
         <div class="questionText">{{question.text}}</div>
@@ -23,7 +23,7 @@
         <div class="answerArea">
             {% for ans in question.answers %}
             <div class="answerTitle">{{ans.title}}</div>
-            <div class="answerText">{{ans.title}}</div>
+            <div class="answerText">{{ans.text}}</div>
             <div class="author">author: 
                 <i>{{ans.user}}</i>
             </div>
@@ -38,7 +38,6 @@
 
 {% block sidebar %}
 {% include 'tdcQABundle:Default:sidebar.html.twig' with
-    {'tags': tags,
-     'mode':'view'} 
+    {'mode':'view'} 
 %}
 {% endblock sidebar %}
