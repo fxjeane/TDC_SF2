@@ -53,6 +53,8 @@ swiftmailer:
     host:      %mailer_host%
     username:  %mailer_user%
     password:  %mailer_password%
+    encryption: ssl
+    auth_mode: login
 
 jms_security_extra:
     secure_controllers:  true
@@ -62,4 +64,10 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb'
     firewall_name: main
     user_class: tdc\UserBundle\Entity\User
-    
+    from_email:
+        address: webmaster@tdchannel.com
+        sender_name: Admin
+    registration:
+        confirmation:
+            enabled: true # change to true for required email confirmation
+            template: FOSUserBundle:Registration:email.txt.twig

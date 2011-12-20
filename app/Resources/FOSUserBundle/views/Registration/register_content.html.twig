@@ -19,6 +19,7 @@
         {{ form_label(form.plainPassword.second) }}
         </br>
         {{ form_widget(form.plainPassword.second,{"label":" foo"}) }}
+        {{ form_rest(form) }}
     </div>
     <div>
         <input type="submit" class="blueBtnGradient blueGradient01" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />

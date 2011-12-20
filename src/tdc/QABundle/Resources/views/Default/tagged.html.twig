@@ -47,7 +47,7 @@
 
 {% block sidebar %}
     {% if num == 1 %}
-        {% include 'tdcQABundle:Default:sidebar.html.twig' with {'tags': tags } %}
+        {% include 'tdcQABundle:Default:sidebar.html.twig' with {'mode':'tagged' } %}
     {% endif %}
 {% endblock sidebar %}
 

@@ -7,6 +7,9 @@
         'public/js/jquery/jquery-ui-1.8.16.custom.min.js'
         'public/js/tdc/tdc.js'
         'public/js/tdc/tdc.paginator.js'
+        "@tdcQABundle/Resources/public/js/syntaxhighlighter_3.0.83/scripts/shCore.js"
+        "@tdcQABundle/Resources/public/js/syntaxhighlighter_3.0.83/scripts/shBrushPython.js"
+        '@tdcQABundle/Resources/public/js/tinymce/jscripts/tiny_mce/jquery.tinymce.js'
     %}
     <script src="{{ asset_url }}" type="text/javascript"  /></script>
     {% endjavascripts %}
@@ -17,6 +20,8 @@
     {% stylesheets  
      debug=false
     '@tdcQABundle/Resources/public/css/qa.css' 
+    "@tdcQABundle/Resources/public/js/syntaxhighlighter_3.0.83/styles/shCore.css"
+    "@tdcQABundle/Resources/public/js/syntaxhighlighter_3.0.83/styles/shThemeDefault.css"
     %}
     <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
     {% endstylesheets %}
@@ -40,5 +45,9 @@
     $("#sidebarArea").css("top",-$(".questionArea").outerHeight());
     $("#sidebarArea").css("left",$(".questionArea").outerWidth());
     $("#contentHolder").height($("#contentHolder").height() - $("#sidebarArea").outerHeight());
+
+   $(document).ready(function(){
+       SyntaxHighlighter.all();
+   });
    </script>
 {% endblock javascripts %}

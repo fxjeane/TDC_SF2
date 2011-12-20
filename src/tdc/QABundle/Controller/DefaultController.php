@@ -23,12 +23,13 @@ class DefaultController extends Controller
                      ->getResult(); 
         
         $popularTags = $this->getPopularTags();
-
+        $popularQuestions = $this->getPopularQuestions();
         return $this->render('tdcQABundle:Default:index.html.twig',
                               array('questions'=> $questions,
                                     'tags'=>$popularTags,
                                     'start'=>$start,
-                                    'max'=>$max));
+                                    'max'=>$max,
+                                    'popularQuestions'=>$popularQuestions));
     }
     
     public function viewAction($id)
@@ -41,9 +42,11 @@ class DefaultController extends Controller
         $em->flush();
 
         $popularTags = $this->getPopularTags();
+        $popularQuestions = $this->getPopularQuestions();
         return $this->render('tdcQABundle:Default:view.html.twig',
                               array('question'=> $question,
-                                    'tags'=>$popularTags));
+                                    'tags'=>$popularTags,
+                                    'popularQuestions'=>$popularQuestions));
     }
 
     public function askAction(Request $request)
@@ -86,7 +89,6 @@ class DefaultController extends Controller
                         }
                     }
                 }
-
                 $em->persist($question);
                 $em->flush();
 
@@ -97,8 +99,10 @@ class DefaultController extends Controller
         }
 
         $popularTags = $this->getPopularTags();
+        $popularQuestions = $this->getPopularQuestions();
         return $this->render('tdcQABundle:Default:ask.html.twig',
                               array('tags'=>$popularTags,
+                                    'popularQuestions'=>$popularQuestions,
                                     'questionForm' => $form->createView()));
     }
     
@@ -130,6 +134,7 @@ class DefaultController extends Controller
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getEntityManager();
                 $question->addAnswer($answer);
+                $answer->setText(stripslashes($answer->getText()));
                 $em->persist($answer);
                 $em->persist($question);
                 $em->flush();
@@ -140,8 +145,10 @@ class DefaultController extends Controller
         }
 
         $popularTags = $this->getPopularTags();
+        $popularQuestions = $this->getPopularQuestions();
         return $this->render('tdcQABundle:Default:answer.html.twig',
                             array('tags'=>$popularTags,
+                                  'popularQuestions'=>$popularQuestions,
                                   'question'=>$question,
                                   'answerForm'=> $form->createView()));
     }
@@ -170,9 +177,11 @@ class DefaultController extends Controller
         }
 
         $popularTags = $this->getPopularTags();
+        $popularQuestions = $this->getPopularQuestions();
         return $this->render('tdcQABundle:Default:tagged.html.twig',
                               array('tag'=> $tagval,
                                     'tags'=>$popularTags,
+                                    'popularQuestions'=>$popularQuestions,
                                     'questions'=>$questions,
                                     'start'=>$start,
                                     'max'=> $max));
@@ -185,6 +194,18 @@ class DefaultController extends Controller
                      ->innerJoin('q.tags','t')
                      ->groupBy('t.value')
                      ->orderBy('tag_count','DESC')
+                     ->setFirstResult(0)
+                     ->setMaxResults($limit)
+                     ->getQuery()
+                     ->getResult(); 
+        return $tagval;
+    }
+    
+    private function getPopularQuestions($limit=5) {
+        $rep = $this->getdoctrine()->getrepository('tdcQABundle:Question');
+        $tagval = $rep->createQueryBuilder('q')
+                     ->select('q')
+                     ->orderBy('q.views','DESC')
                      ->setFirstResult(0)
                      ->setMaxResults($limit)
                      ->getQuery()

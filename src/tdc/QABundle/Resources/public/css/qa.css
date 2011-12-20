@@ -7,6 +7,9 @@
 .questionArea .questionSummary .questionTitle {
     border-bottom-width:0px;
 }
+.questionArea {
+    text-shadow:none;
+}
 
 .questionTitle, .answerTitle {
     color:rgb(228, 188, 68);

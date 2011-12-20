@@ -4,8 +4,14 @@
 <div class="newQuestionBtn tdcButton" >Answer Question</div>
 {% endif %}
 
-<div class="popularTags">Popular Tags</div>
+<div class="popularTags">Popular Questions</div>
+{% for item in popularQuestions %}
+<div class='tags'>
+        <a href="{{path("tdc_qa_view",{"id":item.id})}}">{{ item.title }}</a>
+</div>
+{% endfor %}
 
+<div class="popularTags">Popular Tags</div>
 {% for item in tags %}
 <div class='tags'>
     <span class="tag">
