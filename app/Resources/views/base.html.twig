@@ -79,7 +79,7 @@
                             <td><a href="{{ path("fos_user_security_logout") }}">Logout</a></td>
                             <td>
                                 {% if app.user.subscription|length == 0 %}
-                                <a href="{{ path("tdc_front_subscribe") }}">Subscribe</a>
+                                <a href="{{ path("tdc_user_subscribe") }}">Subscribe</a>
                                 {% endif %}
                             </td>
                         {% endif %}

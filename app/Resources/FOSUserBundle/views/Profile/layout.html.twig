@@ -15,17 +15,15 @@
 {% block contentArea%}
     <div id="userNavBar" class="grayGradient04" >
         <ul>
-            <li>Account</li>
-            <li>Activity</li>
+            <li linkto="{{path("fos_user_profile_edit")}}">Account</li>
+            <!-- li>Activity</li>
             <li>Play Lists</li>
-            <li>Notes</li>
-            <li>Browse</li>
+            <li>Notes</li -->
+            <li linkto="{{path("tdc_front_catalog_list")}}">Browse</li>
         </ul>
     </div>
     <div id="userContent">
-    {% block body %}
-        <h1> Welcome back {{ user.name|capitalize }}</h1>    
-    {% endblock body %}
+    {% block body %}{% endblock body %}
     </div>
 {% endblock contentArea %}
 
@@ -43,5 +41,14 @@
             userContent.width(contentArea.width() - navBar.width() - 22);
             navLinks.first().css("border-top-width","0px");
         });
+        
+        $('#userNavBar ul li').click(function(event){
+            var self = $(this);
+            var link = self.attr("linkto")
+            if (link) {
+                window.location = link;
+            }
+        });
+
     </script>
 {% endblock %}

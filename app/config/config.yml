@@ -67,7 +67,12 @@ fos_user:
     from_email:
         address: webmaster@tdchannel.com
         sender_name: Admin
+    profile:
+        form:
+            type: tdc_user_profile
     registration:
+        form:
+            type: tdc_user_registration
         confirmation:
             enabled: true # change to true for required email confirmation
             template: FOSUserBundle:Registration:email.txt.twig

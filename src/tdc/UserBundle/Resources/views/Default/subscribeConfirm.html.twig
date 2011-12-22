@@ -1,0 +1,25 @@
+{% extends 'tdcFrontEndBundle:Default:index.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets  
+     debug=true
+    'public/css/subscribe.css' 
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block titleName %}Subscribe{% endblock %}
+
+{% block contentArea %}
+<div id="contentHolder" >
+    <h1>Confirmation</h1>
+    {% if confData %}
+        {{confData}}
+    {% else %}
+    bar
+    {% endif %}
+
+</div>
+{% endblock contentArea %}

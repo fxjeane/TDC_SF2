@@ -38,15 +38,6 @@ class FrontController extends Controller
                              array("item"=>$item,"entity"=>$entity));
     }
 
-    public function subscribeAction()
-    {
-        $userObj = $this->container->get('security.context')
-                    ->getToken()
-                    ->getUser();
-             
-        return $this->render('tdcFrontEndBundle:Default:subscribe.html.twig',
-                            array("user"=>$userObj));
-    }
 
     public function aboutAction()
     {
@@ -58,7 +49,7 @@ class FrontController extends Controller
         return $this->render('tdcFrontEndBundle:Default:faq.html.twig');
     }
     
-    public function homeAction()
+    public function profileAction()
     {
         $userObj = $this->container->get('security.context')
                     ->getToken()
@@ -79,5 +70,21 @@ class FrontController extends Controller
             return $this->render('tdcFrontEndBundle:Default:home.html.twig',
                                 $data);
         }
+    }
+
+    public function profileEditAction()
+    {
+        $userObj = $this->container->get('security.context')
+                    ->getToken()
+                    ->getUser();
+
+            $user = $this->getdoctrine()
+                ->getrepository('tdcUserBundle:User')
+                ->findOneByUsername($userObj->getUsername());
+            
+            $data = array("user"=>$user);
+
+            return $this->render('tdcFrontEndBundle:Default:profileEdit.html.twig',
+                                $data);
     }
 }

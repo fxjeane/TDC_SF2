@@ -30,14 +30,15 @@ tdc_front_faq:
     pattern: /faq
     defaults: { _controller: tdcFrontEndBundle:Front:faq }
 
-tdc_logedin_home:
-    pattern: /profile
-    defaults: { _controller: tdcFrontEndBundle:Front:home }
+#tdc_logedin_home:
+#    pattern: /profile
+#    defaults: { _controller: tdcFrontEndBundle:Front:profile }
 
-tdc_logedin_profile:
-    pattern: /profile
-    defaults: { _controller: tdcFrontEndBundle:Front:home }
+#tdc_logedin_profile:
+#    pattern: /profile
+#    defaults: { _controller: tdcFrontEndBundle:Front:home }
 
-tdc_front_subscribe:
-    pattern: /subscribe
-    defaults: { _controller: tdcFrontEndBundle:Front:subscribe }
+#tdc_logedin_edit:
+#    pattern: /profile/edit
+#    defaults: { _controller: tdcFrontEndBundle:Front:profileEdit }
+
