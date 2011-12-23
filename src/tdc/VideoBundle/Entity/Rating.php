@@ -1,4 +1,4 @@
-<?
+<?php
 namespace tdc\VideoBundle\Entity;
 
 class Rating
