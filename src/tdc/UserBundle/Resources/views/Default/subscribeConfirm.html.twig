@@ -15,11 +15,12 @@
 {% block contentArea %}
 <div id="contentHolder" >
     <h1>Confirmation</h1>
-    {% if confData %}
+        {{confData}}
+    {#% if confData %}
         {{confData}}
     {% else %}
-    bar
-    {% endif %}
+        bar
+    {% endif %#}
 
 </div>
 {% endblock contentArea %}

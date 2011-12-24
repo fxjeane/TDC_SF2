@@ -19,7 +19,7 @@ function confirmSubscription() {
 
     if (!$fp) {
         // HTTP ERROR
-        return false;
+        return 'http error';
     } else {
         fputs ($fp, $header . $req);
         // read the body data
@@ -40,7 +40,6 @@ function confirmSubscription() {
         // parse the data
         $lines = explode("\n", $res);
         $keyarray = array();
-        return count($res);
 
         if (strcmp ($lines[0], "SUCCESS") == 0) {
             for ($i=1; $i<count($lines);$i++){
@@ -63,11 +62,11 @@ function confirmSubscription() {
             //echo ("<li>Item: $itemname</li>\n");
             //echo ("<li>Amount: $amount</li>\n");
             //echo ("");
-            return $keyarray;
+            return print_r($keyarray,true);
         }
         else if (strcmp ($lines[0], "FAIL") == 0) {
             // log for manual investigation
-            return false;
+            return 'FAIL';
         }
     }
     fclose ($fp);

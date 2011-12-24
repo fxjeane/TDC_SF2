@@ -13,6 +13,7 @@ tdc\UserBundle\Entity\Subscription:
         transaction:
             type: string
             length: 255
+            unique: true
         duration:
             type: string
             length: 100
