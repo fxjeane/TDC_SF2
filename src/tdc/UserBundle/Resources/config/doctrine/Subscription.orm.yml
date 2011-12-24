@@ -17,6 +17,9 @@ tdc\UserBundle\Entity\Subscription:
         duration:
             type: string
             length: 100
+        status:
+            type: string
+            length: 100
     oneToOne:
         user_subscription:
             targetEntity: User

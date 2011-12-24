@@ -21,16 +21,10 @@ class DefaultController extends Controller
 
     public function subscribeConfirmAction()
     {
-
-        #$request = explode("\n",Request::createFromGlobals());
-        #$uri = explode("?",$request[0]);
-        #$params = explode("HTTP",$uri[1]);
-        #$confirmUrl = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_notify-validate&".$params[0];
-
         // read the post from PayPal system and add 'cmd'
         $req = 'cmd=_notify-validate';
 
-        foreach ($_GET as $key => $value) {
+        foreach ($_POST as $key => $value) {
             $value = urlencode(stripslashes($value));
             $req .= "&$key=$value";
         }
@@ -42,14 +36,14 @@ class DefaultController extends Controller
         $fp = fsockopen ('ssl://www.sandbox.paypal.com', 443, $errno, $errstr, 30);
 
         // assign posted variables to local variables
-        $item_name = $_GET['item_name'];
-        $item_number = $_GET['item_number'];
-        $payment_status = $_GET['payment_status'];
-        $payment_amount = $_GET['mc_gross'];
-        $payment_currency = $_GET['mc_currency'];
-        $txn_id = $_GET['txn_id'];
-        $receiver_email = $_GET['receiver_email'];
-        $payer_email = $_GET['payer_email'];
+        $item_name = $_POST['item_name'];
+        $item_number = $_POST['item_number'];
+        $payment_status = $_POST['payment_status'];
+        $payment_amount = $_POST['mc_gross'];
+        $payment_currency = $_POST['mc_currency'];
+        $txn_id = $_POST['txn_id'];
+        $receiver_email = $_POST['receiver_email'];
+        $payer_email = $_POST['payer_email'];
 
         $retval  ="Transaction: ".$txn_id."\n";
         $retval .="Payer Email: ".$payer_email."\n";
@@ -69,10 +63,7 @@ class DefaultController extends Controller
             while (!feof($fp)) {
                 $res = fgets ($fp, 1024);
                 if (strcmp ($res, "VERIFIED") == 0) {
-                    // check the payment_status is Completed
-                    //if  (strtolower($payment_status) == "completed") {
-                         
-                        try {
+                    try {
                             $em =  $this->getDoctrine()->getEntityManager();
                             // check that txn_id has not been previously processed
                             $subscr = $this->getdoctrine()->getrepository('tdcUserBundle:Subscription')
@@ -92,6 +83,7 @@ class DefaultController extends Controller
                                 $subscr->setDuration($item_number);
                                 $subscr->setTransaction($txn_id);
                                 $subscr->setUserSubscription($userObj);
+                                $subscr->setStatus(strtolower($payment_status));
 
                                 $em->persist($subscr);
                                 $em->flush();
@@ -100,15 +92,9 @@ class DefaultController extends Controller
                         } catch (Exception $e) {
                             $reason ='Caught exception: '.$e->getMessage()."\n";
                         }
-
                         // check that receiver_email is your Primary PayPal email
                         // check that payment_amount/payment_currency are correct
                         // process payment
-                   /* }
-                    else
-                    {
-                        $reason = "Payment status is not \"completed\"\n";
-                    }*/
                 }
                 else if (strcmp ($res, "INVALID") == 0) {
                     // log for manual investigation
@@ -119,7 +105,7 @@ class DefaultController extends Controller
         }
 
         if ($reason != "") {
-            $fp = fopen('/home/bitnami/tdchannel/app/logs/'.$txn_id.'.txt', 'w');
+            $fp = fopen(getcwd().'/../app/logs/'.$txn_id.'.txt', 'w');
             fwrite($fp, $reason.$retval);
             fclose($fp);
         }

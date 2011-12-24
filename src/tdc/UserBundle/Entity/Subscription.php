@@ -167,4 +167,29 @@ class Subscription {
     {
         return $this->duration;
     }
+    /**
+     * @var string $status
+     */
+    private $status;
+
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
 }
