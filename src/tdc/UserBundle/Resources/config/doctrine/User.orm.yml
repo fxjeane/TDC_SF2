@@ -18,6 +18,12 @@ tdc\UserBundle\Entity\User:
         ratings:
             targetEntity: \tdc\VideoBundle\Entity\Rating
             mappedBy: user
+        questions:
+            targetEntity: \tdc\QABundle\Entity\Question
+            mappedBy: user
+        answers:
+            targetEntity: \tdc\QABundle\Entity\Answer
+            mappedBy: user
     oneToOne:
         subscription:
             targetEntity: Subscription

@@ -89,6 +89,8 @@ class DefaultController extends Controller
                         }
                     }
                 }
+                $question->setTitle(stripslashes($question->getTitle()));
+                $question->setText(stripslashes($question->getText()));
                 $em->persist($question);
                 $em->flush();
 
@@ -134,6 +136,7 @@ class DefaultController extends Controller
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getEntityManager();
                 $question->addAnswer($answer);
+                $answer->setTitle(stripslashes($answer->getTitle()));
                 $answer->setText(stripslashes($answer->getText()));
                 $em->persist($answer);
                 $em->persist($question);

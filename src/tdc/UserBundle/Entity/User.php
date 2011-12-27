@@ -123,4 +123,54 @@ class User extends BaseUser
     {
         return $this->subscription;
     }
+    /**
+     * @var tdc\QABundle\Entity\Question
+     */
+    private $questions;
+
+
+    /**
+     * Add questions
+     *
+     * @param tdc\QABundle\Entity\Question $questions
+     */
+    public function addQuestion(\tdc\QABundle\Entity\Question $questions)
+    {
+        $this->questions[] = $questions;
+    }
+
+    /**
+     * Get questions
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
+
+    /**
+     * Add questions
+     *
+     * @param tdc\QABundle\Entity\Answer $questions
+     */
+    public function addAnswer(\tdc\QABundle\Entity\Answer $questions)
+    {
+        $this->questions[] = $questions;
+    }
+    /**
+     * @var tdc\QABundle\Entity\Answer
+     */
+    private $answers;
+
+
+    /**
+     * Get answers
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getAnswers()
+    {
+        return $this->answers;
+    }
 }

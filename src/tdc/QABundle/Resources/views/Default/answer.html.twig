@@ -49,8 +49,8 @@
 
     > <a href="{{ path("tdc_qa_homepage")}}">Q & A</a>
     <div class="questionArea">
-        <div class="questionTitle">{{ question.title }}</div>
-        <div class="questionText">{{question.text}}</div>
+        <div class="questionTitle">{{ question.title|raw }}</div>
+        <div class="questionText">{{question.text|raw}}</div>
         <div class="author">author: 
             <i>{{question.user}}</i>
         </div>
@@ -67,8 +67,8 @@
         </div>
         <div class="answerArea">
             {% for ans in question.answers %}
-            <div class="answerTitle">{{ans.title}}</div>
-            <div class="answerText">{{ans.text}}</div>
+            <div class="answerTitle">{{ans.title|raw}}</div>
+            <div class="answerText">{{ans.text|raw}}</div>
             <div class="author">author: 
                 <i>{{ans.user}}</i>
             </div>

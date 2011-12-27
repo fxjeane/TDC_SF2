@@ -15,7 +15,7 @@
 {% block contentArea%}
     <div id="userNavBar" class="grayGradient04" >
         <ul>
-            <li linkto="{{path("fos_user_profile_edit")}}">Account</li>
+            <li linkto="{{path("fos_user_profile_edit")}}">Edit Account</li>
             <!-- li>Activity</li>
             <li>Play Lists</li>
             <li>Notes</li -->
@@ -28,6 +28,7 @@
 {% endblock contentArea %}
 
 {% block javascripts %}
+
     {{ parent() }}
     <script>
         $(document).ready(function() {
@@ -49,6 +50,5 @@
                 window.location = link;
             }
         });
-
     </script>
 {% endblock %}
