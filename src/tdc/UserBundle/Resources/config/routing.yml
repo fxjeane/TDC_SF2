@@ -1,6 +1,7 @@
 tdc_user_subscribe:
     pattern: /subscribe
     defaults: { _controller: tdcUserBundle:Default:subscribe }
+
 tdc_user_subscribe_confirm:
     pattern: /subscribe/confirm
     defaults: { _controller: tdcUserBundle:Default:subscribeConfirm }

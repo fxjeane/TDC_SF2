@@ -34,10 +34,13 @@ class ProfileController extends BaseController
                      ->getQuery()
                      ->getResult(); 
 
+        $justSubscribed = isset($_GET['txn_type']);
+
         return $this->container->get('templating')
                 ->renderResponse('FOSUserBundle:Profile:show.html.'.$this->container->getParameter('fos_user.template.engine'),
                 array('user' => $user,
                       'questions'=>$questions,
-                      'answers'=>$answers));
+                      'answers'=>$answers,
+                      'justSubscribed'=>$justSubscribed));
     }
 }

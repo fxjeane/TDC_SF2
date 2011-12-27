@@ -41,12 +41,7 @@
                         <input type="hidden" name="hosted_button_id" value="HCDR4XQSCF4YA">
                         <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
                         <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                        
-                        <input type="hidden" name="custom" value="{{user.id}}">
-                        <input type="hidden" name="return" value="{{completeUrl}}">
-                        <input type="hidden" name="notify_url" value="{{notifyUrl}}">
-                        <input type="hidden" name="cancel_return" value="{{cancelUrl}}">
-
+                        <input type="hidden" name="image_url" value="https://twimg0-a.akamaihd.net/profile_images/1634844290/tdcLogo_whiteBG.png">
                         </form>
                         <p>Monthly</p>
                     </td>
@@ -57,12 +52,7 @@
                         <input type="hidden" name="hosted_button_id" value="FCQDZAW6GX8LE">
                         <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
                         <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-
-                        <input type="hidden" name="custom" value="{{user.id}}">
-                        <input type="hidden" name="return" value="{{completeUrl}}">
-                        <input type="hidden" name="notify_url" value="{{notifyUrl}}">
-                        <input type="hidden" name="cancel_return" value="{{cancelUrl}}">
-                        
+                        <input type="hidden" name="notify_url" value="{{path("tdc_user_subscribe_confirm")}}">
                         </form>
                         <p>3 Months</p>
                     </form>

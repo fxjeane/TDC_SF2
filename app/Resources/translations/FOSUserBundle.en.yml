@@ -1,2 +1,4 @@
 fos_user_profile_form_user_name: "Name:"
 fos_user_profile_form_user_lastname: "Last Name:"
+fos_user_registration_form_name: "Name:"
+fos_user_registration_form_lastname: "Last Name:"

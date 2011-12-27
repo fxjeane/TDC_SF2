@@ -9,11 +9,32 @@
         {{ user.username }}
     {% endif %}        
 </h1>
+
+<h2>User Info</h2>
+Name: {{user.name|capitalize}} {{user.lastname|capitalize}}</br>
+Joined: 
 <h2>Subscription</h2>
-{% if user.subscription %}
-{% else %}
-You have no current subscriptions. Go to the <a href="{{path("tdc_user_subscribe")}}"> subscription page </a> if you would like access t our video library.
-{% endif %}
+    {% if user.subscription %}
+    You are currently on a
+    {% if user.subscription.duration == "m1" %}
+        monthly
+    {% elseif user.subscription.duration == "m3" %}
+        3 month
+    {% elseif user.subscription.duration == "m6" %}
+        6 month
+    {% elseif user.subscription.duration == "m12" %}
+        yearly
+    {% endif %}
+    subscription.</br>
+
+    Created: {{user.subscription.created|date("m/d/Y")}}</br>
+    Next Payment: {{user.subscription.expires|date("m/d/Y")}}</br>
+
+    {% elseif justSubscribed %}
+    You just subscribed. Wait 1 minute and refresh page
+    {% else %}
+    You have no current subscriptions. Go to the <a href="{{path("tdc_user_subscribe")}}"> subscription page </a> if you would like access t our video library.
+    {% endif %}
 
 {% if questions|length > 0 %}
 <h2> Your Questions </h2>
