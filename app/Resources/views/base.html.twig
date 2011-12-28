@@ -46,7 +46,26 @@
                     <div id="youtubeBtn" class="loginBarBtn"></div>
                     <div id="loginBar">
                         {% block loginBar %}
-                        {% endblock %}
+                            {% if app.user == "" %}
+                                <form name="tdcLogin" action="{{ path("fos_user_security_check") }}" method="post">
+                                    <label>user</label>
+                                    <input id="username" name="_username" ></input>
+                                    <label>pass</label>
+                                    <input type="password" id="password" name="_password"></input>
+                                     <input type="hidden" name="_target_path" value="fos_user_profile_show" />
+                                    <input type="submit" class="tdcButton blueBtnGradient" id="_submit" name="_submit" value="login" />
+                                    <a id="loginHelpBtn" class="grayGradient02 blueHoverGradient">?</a>
+                                </form>
+                                <div id="loginHelp">
+                                    <a id="resetUserName">forgot username</a>
+                                    <a>forgot password</a>
+                                </div>
+                            {% else %}
+                                Welcome <strong>{{ app.user ? app.user.username : 'Anonymous' }}</strong> | 
+                                <a href="{{ path('fos_user_profile_show') }}">Profile</a> | 
+                                <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+                            {% endif %}
+                        {% endblock loginBar %}
                     </div>
                 </div>
             {% endblock %}

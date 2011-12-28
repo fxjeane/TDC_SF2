@@ -3,6 +3,7 @@ namespace tdc\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use FOS\UserBundle\Util\UserManipulator;
 use tdc\UserBundle\Entity\Subscription;
 
 #require_once(dirname(__file__)."/../Lib/confirm.php");
@@ -98,6 +99,10 @@ class DefaultController extends Controller
                                 $em =  $this->getdoctrine()->getEntityManager();
                                 $em->persist($subscr);
                                 $em->flush();
+                                // add subscribed role to user
+                                $manip = new UserManipulator();
+                                $manip->addRole($user->getUserName(),'ROLE_SUBSCRIBER');
+
                             }
                         
                         // check that receiver_email is your Primary PayPal email

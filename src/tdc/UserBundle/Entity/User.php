@@ -12,6 +12,9 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+        if (!$this->joined){
+            $this->setJoined(new \DateTime('now'));
+        }
     }
 
     /**
@@ -172,5 +175,30 @@ class User extends BaseUser
     public function getAnswers()
     {
         return $this->answers;
+    }
+    /**
+     * @var date $joined
+     */
+    private $joined;
+
+
+    /**
+     * Set joined
+     *
+     * @param date $joined
+     */
+    public function setJoined($joined)
+    {
+        $this->joined = $joined;
+    }
+
+    /**
+     * Get joined
+     *
+     * @return date 
+     */
+    public function getJoined()
+    {
+        return $this->joined;
     }
 }

@@ -3,6 +3,7 @@ security:
         Symfony\Component\Security\Core\User\User: plaintext
 
     role_hierarchy:
+        ROLE_SUBSCRIBER:  ROLE_USER
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
@@ -26,28 +27,12 @@ security:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        #login:
-        #    pattern:  ^/demo/secured/login$
-        #    security: false
-
-        #secured_area:
-        #    pattern:    ^/demo/secured/
-        #    form_login:
-        #        check_path: /demo/secured/login_check
-        #        login_path: /demo/secured/login
-        #    logout:
-        #        path:   /demo/secured/logout
-        #        target: /demo/
-        #    anonymous: ~
-        #    http_basic:
-        #       realm: "Secured Demo Area"
-
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/qa/ask, role: ROLE_USER }
         - { path: ^/profile, role: ROLE_USER }
-        - { path: ^/player, role: ROLE_USER }
+        - { path: ^/player, role: ROLE_SUBSCRIBER }
         - { path: ^/profile/*, role: ROLE_USER }
         - { path: ^/admin, role: ROLE_ADMIN }

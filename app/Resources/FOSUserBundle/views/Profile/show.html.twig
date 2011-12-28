@@ -12,7 +12,8 @@
 
 <h2>User Info</h2>
 Name: {{user.name|capitalize}} {{user.lastname|capitalize}}</br>
-Joined: 
+Email: {{user.email}}</br>
+Joined: {{user.joined|date('m/d/Y')}}
 <h2>Subscription</h2>
     {% if user.subscription %}
     You are currently on a
