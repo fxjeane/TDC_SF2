@@ -47,10 +47,16 @@ doctrine:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
 
+# Parameters
+parameters:
+    tdc.liveTheme: Default
+
 # Services
-services:
-    tdcThemeSelector:
-        class: tdc\ThemeBundle\Selector
+#services:
+#    tdcThemeSelector:
+#        class: tdc\ThemeBundle\Selector
+#        arguments:  [%tdc.liveTheme%]
+
 
 # Swiftmailer Configuration
 swiftmailer:

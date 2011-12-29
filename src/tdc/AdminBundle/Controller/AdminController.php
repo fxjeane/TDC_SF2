@@ -21,7 +21,9 @@ class AdminController extends Controller
                      ->setMaxResults(5);
         $users = $query->getResult();
 
-        return $this->render('tdcAdminBundle:Default:index.html.twig',
+        return $this->render('tdcAdminBundle:'.
+                            $this->container->getParameter('tdc.liveTheme').
+                            ':index.html.twig',
                              array("videos"=> $videos,
                                    "users"=>$users)
                             );
@@ -47,7 +49,9 @@ class AdminController extends Controller
             $video = $this->getDoctrine()
                 ->getRepository('tdcVideoBundle:Video')
                 ->find($id);
-            return $this->render('tdcAdminBundle:Default:video.html.twig',
+            return $this->render('tdcAdminBundle:'.
+                                $this->container->getParameter('tdc.liveTheme').
+                                ':video.html.twig',
                                  array("video"=>$video));
         }
     }
@@ -56,7 +60,9 @@ class AdminController extends Controller
         $video = $this->getDoctrine()
             ->getRepository('tdcVideoBundle:Video')
             ->find($id);
-        return $this->render('tdcAdminBundle:Default:videoEdit.html.twig',
+        return $this->render('tdcAdminBundle:'.
+                            $this->container->getParameter('tdc.liveTheme').
+                            ':videoEdit.html.twig',
                              array("video"=>$video));
     }
 }

@@ -15,7 +15,9 @@ class DefaultController extends Controller
         $cancelurl = $router->generate('tdc_user_subscribe', array(),true);
         $notifyurl = $router->generate('tdc_user_subscribe_confirm', array(),true);
         $completeurl = $router->generate('fos_user_profile_show',array(), true);
-        return $this->render('tdcUserBundle:Default:subscribe.html.twig',
+        return $this->render('tdcUserBundle:'.
+                            $this->container->getParameter('tdc.liveTheme').
+                            ':subscribe.html.twig',
                             array("cancelUrl"=>$cancelurl,
                                   "notifyUrl"=>$notifyurl,
                                   "completeUrl"=>$completeurl));
