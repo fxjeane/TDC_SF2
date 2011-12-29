@@ -3,7 +3,6 @@ namespace tdc\UserBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use FOS\UserBundle\Util\UserManipulator;
 use tdc\UserBundle\Entity\Subscription;
 
 #require_once(dirname(__file__)."/../Lib/confirm.php");
@@ -12,16 +11,12 @@ class DefaultController extends Controller
 {
     public function subscribeAction()
     {
-        $userObj = $this->container->get('security.context')
-                    ->getToken()
-                    ->getUser();
         $router = $this->get('router');
         $cancelurl = $router->generate('tdc_user_subscribe', array(),true);
         $notifyurl = $router->generate('tdc_user_subscribe_confirm', array(),true);
         $completeurl = $router->generate('fos_user_profile_show',array(), true);
         return $this->render('tdcUserBundle:Default:subscribe.html.twig',
-                            array("user"=>$userObj,
-                                  "cancelUrl"=>$cancelurl,
+                            array("cancelUrl"=>$cancelurl,
                                   "notifyUrl"=>$notifyurl,
                                   "completeUrl"=>$completeurl));
     }
@@ -95,14 +90,11 @@ class DefaultController extends Controller
                                 $subscr->setTransaction($txn_id);
                                 $subscr->setUserSubscription($user);
                                 $subscr->setStatus(strtolower($payment_status));
+                                $subscr->setTdcStatus(1);
 
                                 $em =  $this->getdoctrine()->getEntityManager();
                                 $em->persist($subscr);
                                 $em->flush();
-                                // add subscribed role to user
-                                $manip = new UserManipulator();
-                                $manip->addRole($user->getUserName(),'ROLE_SUBSCRIBER');
-
                             }
                         
                         // check that receiver_email is your Primary PayPal email

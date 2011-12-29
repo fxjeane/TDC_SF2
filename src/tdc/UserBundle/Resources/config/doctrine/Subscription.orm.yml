@@ -20,6 +20,8 @@ tdc\UserBundle\Entity\Subscription:
         status:
             type: string
             length: 100
+        tdcStatus:
+            type: smallint
     oneToOne:
         user_subscription:
             targetEntity: User

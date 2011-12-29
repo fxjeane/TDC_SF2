@@ -192,4 +192,29 @@ class Subscription {
     {
         return $this->status;
     }
+    /**
+     * @var boolean $tdcStatus
+     */
+    private $tdcStatus;
+
+
+    /**
+     * Set tdcStatus
+     *
+     * @param boolean $tdcStatus
+     */
+    public function setTdcStatus($tdcStatus)
+    {
+        $this->tdcStatus = $tdcStatus;
+    }
+
+    /**
+     * Get tdcStatus
+     *
+     * @return boolean 
+     */
+    public function getTdcStatus()
+    {
+        return $this->tdcStatus;
+    }
 }
