@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new tdc\WebServiceBundle\tdcWebServiceBundle(),
             new tdc\PlayerBundle\tdcPlayerBundle(),
             new tdc\QABundle\tdcQABundle(),
+            new tdc\ThemeBundle\tdcThemeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

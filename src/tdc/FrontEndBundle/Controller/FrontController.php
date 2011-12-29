@@ -8,7 +8,9 @@ class FrontController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('tdcFrontEndBundle:Default:index.html.twig');
+        $themeSelector = $this->get('tdcThemeSelector');
+        return $this->render('tdcFrontEndBundle:Default:index.html.twig',
+                            array('os'=>php_uname('s')));
     }
 
     public function catalogListAction($entity,$start,$max)
