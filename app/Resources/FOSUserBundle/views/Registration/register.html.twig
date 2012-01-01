@@ -1,5 +1,15 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets  
+     debug=true
+    'public/css/TDC1/registerLogin.css' 
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block titleName %}Register{%endblock titleName %}
 
 {% block fos_user_content %}

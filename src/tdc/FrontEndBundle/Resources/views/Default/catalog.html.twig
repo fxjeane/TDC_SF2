@@ -23,7 +23,7 @@
 {% endblock %}
 
 {% block titleName %}
-    Catalog::
+    Catalog:
     {% if entity == "video" %}
         Videos
     {% else %}
@@ -80,9 +80,8 @@
     {% endblock body %}
 {% endblock contentArea %}
 
-{% block javascripts %}
+{% block javascript_post %}
     {{ parent() }}
-    <script >
     $('.paginator').tdcPaginator({
                 start:{{start}},
                 max:{{max}},
@@ -96,5 +95,4 @@
                 {% endif %}
                 targetUrl:'{{ path("tdc_front_catalog_list")}}'+'/{{entity}}'
                 });
-   </script>
-{% endblock javascripts %}
+{% endblock javascript_post %}

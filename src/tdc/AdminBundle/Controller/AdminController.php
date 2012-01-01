@@ -21,48 +21,48 @@ class AdminController extends Controller
                      ->setMaxResults(5);
         $users = $query->getResult();
 
-        return $this->render('tdcAdminBundle:'.
-                            $this->container->getParameter('tdc.liveTheme').
-                            ':index.html.twig',
+        return $this->render('tdcAdminBundle:Default:index.html.twig',
                              array("videos"=> $videos,
                                    "users"=>$users)
                             );
     }
 
-    public function videoAction($id)
+    public function videoAction($start,$max)
     {
-        if ($id == -1 ) {
-            $videos = $this->getDoctrine()
-                ->getRepository('tdcVideoBundle:Video')
-                ->findAll();
+        $rep = $this->getDoctrine()
+            ->getRepository('tdcVideoBundle:Video');
 
-            $foo = array();
-            foreach ($videos as $video) {
-                //$foo[$video->getId()] = $video->asArray();
-                $foo[] = $video->asArray();
-            }
-            return $this->render('tdcAdminBundle:Default:videoIndex.html.twig',
-                                 array("videos"=>$videos,
-                                       "json"=>json_encode($foo)));
+        $videos = $rep->createQueryBuilder('p')
+                      ->setFirstResult(($start - 1) * $max)
+                      ->setMaxResults($max)
+                      ->getQuery()
+                      ->getResult();
+        $foo = array();
+        foreach ($videos as $video) {
+            $foo[] = $video->asArray();
         }
-        else {
-            $video = $this->getDoctrine()
-                ->getRepository('tdcVideoBundle:Video')
-                ->find($id);
-            return $this->render('tdcAdminBundle:'.
-                                $this->container->getParameter('tdc.liveTheme').
-                                ':video.html.twig',
-                                 array("video"=>$video));
-        }
+        return $this->render('tdcAdminBundle:Default:videoIndex.html.twig',
+                             array("videos"=>$videos,
+                                   'start'=>$start,
+                                   'max'=>$max)
+                             );
     }
+
+    public function videoViewAction($id)
+    {
+        $video = $this->getDoctrine()
+            ->getRepository('tdcVideoBundle:Video')
+            ->find($id);
+        return $this->render('tdcAdminBundle:Default:video.html.twig',
+                             array("video"=>$video));
+    }
+
     public function videoEditAction($id)
     {
         $video = $this->getDoctrine()
             ->getRepository('tdcVideoBundle:Video')
             ->find($id);
-        return $this->render('tdcAdminBundle:'.
-                            $this->container->getParameter('tdc.liveTheme').
-                            ':videoEdit.html.twig',
+        return $this->render('tdcAdminBundle:Default:videoEdit.html.twig',
                              array("video"=>$video));
     }
 }

@@ -1,8 +1,19 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets  
+     debug=true
+    'public/css/TDC1/registerLogin.css' 
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block titleName %}Login{%endblock titleName %}
 
 {% block fos_user_content %}
+<div id="loginForm_hldr">
     {% if error %}
         <div>{{ error }}</div>
     {% endif %}
@@ -20,18 +31,20 @@
         <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
         </br>
         </br>
-        <input type="submit" class="tdcButton blueBtnGradient" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" /> 
+        <div id="formButton_hldr">
+            <div id="loginFormSubmit_btn" class="tdcButton">Submit</div>
+        </div>
+        
+        <!-- input type="submit" class="tdcButton blueBtnGradient" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" / --> 
     </form>
+</div>
+
 {% endblock fos_user_content %}
 
 
-{% block javascripts %}
-    <script src="{{ path('tdc_front_homepage') }}../public/js/custom-form-elements.js"></script>
-    <script type="text/javascript">
-    function submitform()
-    {
+{% block javascript_post %}
+    {{ parent() }}
+    $('#loginFormSubmit_btn').click(function(evt){
       document.tdcLogin.submit();
-    }
-    </script>
-
+    });
 {% endblock %}

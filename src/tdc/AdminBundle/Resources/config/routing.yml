@@ -3,12 +3,18 @@ tdc_admin:
     defaults: { _controller: tdcAdminBundle:Admin:index }
 
 tdc_admin_videos:
-    pattern:  /videos
-    defaults: { _controller: tdcAdminBundle:Admin:video, id:-1 }
+    pattern:  /videos/{start}/{max}
+    defaults: 
+        _controller: tdcAdminBundle:Admin:video
+        start: 1
+        max: 10
+    requirements:
+        start: \d+
+        max: \d+
 
 tdc_admin_video_view:
     pattern:  /video/{id}
-    defaults: { _controller: tdcAdminBundle:Admin:video }
+    defaults: { _controller: tdcAdminBundle:Admin:videoView }
 
 tdc_admin_video_edit:
     pattern:  /video/edit/{id}

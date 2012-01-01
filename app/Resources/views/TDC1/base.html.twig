@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>
+        {% block title %}
+            TDC:
+            {% block titleName %}{% endblock titleName %}
+        {% endblock title %}
+        </title>
+
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        {% block header_javascripts %}
+            {% javascripts
+                debug=false
+                'public/js/jquery/jquery-1.6.4.min.js'
+            %}
+            <script src="{{ asset_url }}" type="text/javascript"  /></script>
+            {% endjavascripts %}
+        {% endblock header_javascripts %}
+        
+        {% block stylesheets %}
+            {% stylesheets  
+            'public/css/TDC1/main.css'
+            %}
+            <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+            {% endstylesheets %}
+        {% endblock %}
+    </head>
+
+    <body>
+        <div id='mainContent_hdlr'>
+            <div id="socialBar">
+                <div id="socialIcons_hldr">Icons</div>
+                <div id="loginButtons_hldr">
+                {% block tdcLoginButtons %}
+                {% if app.user == "" %}
+                    <div id="login_btn" class='tdcButton'
+                     target="{{path("fos_user_security_login")}}">
+                        Login
+                    </div><div id="register_btn" class='tdcButton'
+                      target="{{path("fos_user_registration_register")}}">
+                        Register
+                    </div>
+                {% else %}
+                    <div id="profile_btn" class='tdcButton'
+                     target="{{path("fos_user_profile_show")}}">
+                        Profile
+                    </div><div id="logout_btn" class='tdcButton'
+                      target="{{path("fos_user_security_logout")}}">
+                        Logout
+                    </div>
+
+                {% endif %}
+                {% endblock tdcLoginButtons %}
+                </div>
+            </div>
+            <div id="header_hldr">
+                <div id="logo_hldr" >
+                    <img id="headerLogo" src="{{ path('tdc_front_homepage') }}../public/images/TDC1/tdcLogo_whiteBG.png"/>
+                </div>
+                <div id="nav_hldr">
+                    <div id="siteStats_hldr">Site Stats</div>
+                    <div id="beSocial_hldr">Be Social</div>
+                    <div id="navBar_hldr">
+                        <div id="home_btn" class='tdcButton tdcButtonBarFirst'
+                            target="{{path("tdc_front_homepage")}}">
+                            Home
+                        </div><div id="catalog_btn" class='tdcButton tdcButtonBar'
+                            target="{{path("tdc_front_catalog_list")}}">
+                            Catalog
+                        </div><div id="faq_btn" class='tdcButton tdcButtonBar'
+                            target="{{path("tdc_front_faq")}}">
+                            FAQ
+                        </div><div id="about_btn" class='tdcButton tdcButtonBar'
+                            target="{{path("tdc_front_about")}}">
+                            About
+                        </div><div id="contact_btn" class='tdcButton tdcButtonBarLast'>
+                            Contact
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="contentArea_hldr">
+                {% block contentArea %}{% endblock contentArea %}
+            </div>
+            
+            
+            <div id="footer_hldr">
+                <div id="sitemap_hldr">Site Map</div>
+                <div id="rss_hldr">RSS</div>
+                <div id="tagcloud_hldr">Tag Cloud</div>
+            </div>
+        </div>
+    </body>
+
+    <script>
+    {% block javascript_post %}
+        $(document).ready(function(){
+            $('.tdcButton').click(function(ev){
+                var src = $(this);
+                var target = src.attr('target');
+                if (target) document.location=target;
+            });
+        });
+    {% endblock javascript_post %}
+    </script>
+</html>

@@ -8,10 +8,7 @@ class FrontController extends Controller
 {
     public function indexAction()
     {
-        #$themeSelector = $this->get('tdcThemeSelector');
-        return $this->render('tdcFrontEndBundle:'.
-                            $this->container->getParameter('tdc.liveTheme').
-                            ':index.html.twig');
+        return $this->render('tdcFrontEndBundle:Default:index.html.twig');
     }
 
     public function catalogListAction($entity,$start,$max)
@@ -25,9 +22,7 @@ class FrontController extends Controller
                       ->getQuery()
                       ->getResult();
 
-            return $this->render('tdcFrontEndBundle:'.
-                                $this->container->getParameter('tdc.liveTheme').
-                                ':catalog.html.twig',
+            return $this->render('tdcFrontEndBundle:Default:catalog.html.twig',
                                  array("entity"=>$entity,
                                        "start"=>$start,
                                        "max"=>$max,
@@ -39,25 +34,19 @@ class FrontController extends Controller
         $item = $this->getdoctrine()->getrepository('tdcVideoBundle:'.
                                                     ucfirst($entity))
                      ->find($id);
-        return $this->render('tdcFrontEndBundle:'.
-                            $this->container->getParameter('tdc.liveTheme').
-                            ':item.html.twig',
+        return $this->render('tdcFrontEndBundle:Default:item.html.twig',
                              array("item"=>$item,"entity"=>$entity));
     }
 
 
     public function aboutAction()
     {
-        return $this->render('tdcFrontEndBundle:'.
-                            $this->container->getParameter('tdc.liveTheme').
-                             ':about.html.twig');
+        return $this->render('tdcFrontEndBundle:Default:about.html.twig');
     }
 
     public function faqAction()
     {
-        return $this->render('tdcFrontEndBundle:'.
-                            $this->container->getParameter('tdc.liveTheme').
-                            ':faq.html.twig');
+        return $this->render('tdcFrontEndBundle:Default:faq.html.twig');
     }
     
     public function profileAction()

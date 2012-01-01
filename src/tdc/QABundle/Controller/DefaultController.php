@@ -2,7 +2,6 @@
 namespace tdc\QABundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-#use Doctrine\ORM\Query\ResultSetMapping;
 use tdc\QABundle\Entity\Question;
 use tdc\QABundle\Entity\Answer;
 use tdc\QABundle\Entity\QuestionTag;
@@ -24,9 +23,7 @@ class DefaultController extends Controller
         
         $popularTags = $this->getPopularTags();
         $popularQuestions = $this->getPopularQuestions();
-        return $this->render('tdcQABundle:'.
-                            $this->container->getParameter('tdc.liveTheme').
-                            ':index.html.twig',
+        return $this->render('tdcQABundle:Default:index.html.twig',
                               array('questions'=> $questions,
                                     'tags'=>$popularTags,
                                     'start'=>$start,
@@ -45,9 +42,7 @@ class DefaultController extends Controller
 
         $popularTags = $this->getPopularTags();
         $popularQuestions = $this->getPopularQuestions();
-        return $this->render('tdcQABundle:'.
-                            $this->container->getParameter('tdc.liveTheme').
-                            ':view.html.twig',
+        return $this->render('tdcQABundle:Default:view.html.twig',
                               array('question'=> $question,
                                     'tags'=>$popularTags,
                                     'popularQuestions'=>$popularQuestions));
@@ -106,9 +101,7 @@ class DefaultController extends Controller
 
         $popularTags = $this->getPopularTags();
         $popularQuestions = $this->getPopularQuestions();
-        return $this->render('tdcQABundle:'.
-                            $this->container->getParameter('tdc.liveTheme').
-                            ':ask.html.twig',
+        return $this->render('tdcQABundle:Default:ask.html.twig',
                               array('tags'=>$popularTags,
                                     'popularQuestions'=>$popularQuestions,
                                     'questionForm' => $form->createView()));
@@ -155,9 +148,7 @@ class DefaultController extends Controller
 
         $popularTags = $this->getPopularTags();
         $popularQuestions = $this->getPopularQuestions();
-        return $this->render('tdcQABundle:'.
-                            $this->container->getParameter('tdc.liveTheme').
-                            ':answer.html.twig',
+        return $this->render('tdcQABundle:Default:answer.html.twig',
                             array('tags'=>$popularTags,
                                   'popularQuestions'=>$popularQuestions,
                                   'question'=>$question,
@@ -189,9 +180,7 @@ class DefaultController extends Controller
 
         $popularTags = $this->getPopularTags();
         $popularQuestions = $this->getPopularQuestions();
-        return $this->render('tdcQABundle:'.
-                            $this->container->getParameter('tdc.liveTheme').
-                            ':tagged.html.twig',
+        return $this->render('tdcQABundle:Default:tagged.html.twig',
                               array('tag'=> $tagval,
                                     'tags'=>$popularTags,
                                     'popularQuestions'=>$popularQuestions,

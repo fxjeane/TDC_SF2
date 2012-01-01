@@ -1,0 +1,132 @@
+body 
+{
+    background-color:rgb(220,220,220);
+    margin:0px;
+}
+#mainContent_hdlr {
+    width:960px;
+    margin:0px auto;
+}
+/******************
+* Social Bar
+******************/
+#socialBar {
+    width:100%;
+    height:42px;
+    background-color:rgb(200,200,200);
+}
+#socialIcons_hldr {
+    display: inline-block;
+    height: 42px;
+    width: 750px;
+}
+#loginButtons_hldr {
+    display: inline-block;
+    height: 42px;
+    position:relative;
+    top:0px;
+    left:6px;
+    width: 200px
+}
+#login_btn, #register_btn,
+#profile_btn, #logout_btn {
+    width:98px;
+    line-height:42px;
+}
+/******************
+* Header Holder
+******************/
+#header_hldr {
+    height:200px;
+    background-color:rgb(230,230,230);
+    border-bottom: 2px solid rgb(100,100,100);
+}
+#logo_hldr,
+#nav_hldr {
+    display:inline-block;
+}
+#navBar_hldr {
+    margin-left: 50px;
+    height: 50px;
+    background-color: #C8C8C8;
+    margin-top: 10px;
+}
+#home_btn, #catalog_btn,
+#faq_btn, #about_btn,
+#contact_btn {
+    line-height:50px;
+    width:127px;
+}
+.tdcButtonBar,
+.tdcButtonBarLast {
+    float:none;
+}
+.tdcButtonBarLast {
+}
+#logo_hldr {
+    float:left;
+}
+#headerLogo {
+    margin: 12px;
+    margin-left: 30px;
+    vertical-align:top;
+}
+#siteStats_hldr,
+#beSocial_hldr {
+    display:inline-block;
+    background-color:rgb(210,210,210);
+    height: 120px;
+    margin-top:20px;
+    width:320px;
+}
+#siteStats_hldr {
+    margin-left:50px;
+}
+/**********************
+* Content Area
+**********************/
+#contentArea_hldr {
+    background-color: rgb(180,180,180);
+    padding:10px;
+}
+
+/**********************
+* Footer
+**********************/
+#footer_hldr {
+    background-color: rgb(200,200,200);
+    height:250px;
+    padding:0px 10px;
+}
+#sitemap_hldr,
+#rss_hldr,
+#tagcloud_hldr {
+    display:inline-block;
+    background-color:rgb(180,180,180);
+    height:230px;
+    margin:10px 5px;
+}
+#sitemap_hldr,
+#tagcloud_hldr{
+    width:230px;
+}
+#rss_hldr {
+    width:442px;
+}
+/**********************
+* Generic Controls
+**********************/
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+    height:30px;
+    line-height:30px;
+}
+.tdcButton {
+    display:inline-block;
+    text-align:center;
+    border-left:1px solid grey;
+    border-right:1px solid white;
+    cursor:pointer;
+}
+

@@ -1,31 +1,67 @@
 {% extends 'tdcAdminBundle::layout.html.twig' %}
 
-{% block title %}TDC::Admin::Videos{% endblock %}
+{% block title %}TDC:Admin:Videos{% endblock %}
 
 {% block header %} {% endblock %}	
+{% block header_javascripts %}
+    {{ parent() }}
+    {% javascripts
+        debug=true
+        'public/js/jquery/jquery-ui-1.8.16.custom.min.js'
+        'public/js/tdc/tdc.js'
+        'public/js/tdc/tdc.paginator.js'
+    %}
+    <script src="{{ asset_url }}" type="text/javascript"  /></script>
+    {% endjavascripts %}
+{% endblock header_javascripts %}
 
 {% block body %}
-{#
-<script type="text/javascript">
-    var data = {{ json|raw }};
-    alert(data.length);
-</script>
-#}
-
 <h1>Videos</h1>
-<table width="90%">
-    <th>Title</th><th>Author</th>
-    {% set row = 0 %}
-    {% for item in videos %}
-        <tr class="row_{{row}}">
-            <td>
-                <a href="{{ path("tdc_admin_video_view", 
-                                 {'id': item.id})}}">{{ item.name }}</a>
-            </td>
-            <td>{{ item.author }}</td>
-        </tr>
-        {% set row = 1 - row %}
-    {% endfor %}
-</table>
+<center> 
+    <div id="paginatorTop" class="paginator"></div>
+        <table id="catalogTable">
+            <th colspan="2">Video</th>
+            <th>Summary</th>
+            <th>Views</th>
+            <th>Rating</th>
+            {% set i = 0 %}
+            {% for item in videos %}
+                <tr class="row_{{ cycle(['0', '1'], i) }}">
+                    <td class="icon">
+                        <a href="{{path("tdc_player_home",{'id':item.id})}}">
+                            <img src={{path("tdc_front_homepage")}}../public/images/icons/{{ item.icon }} />
+                        </a>
+                    </td>
+                    <td class="info">
+                        <a class="video" href="{{ path("tdc_admin_video_edit",{'id':item.id}) }}">
+                            {{ item.name }}
+                        </a></br>
+                        <label class="author">Author: {{item.author}}</label>
+                        <label class="trt">Trt: {{item.trt}}</label>
+                    </td>
+                    <td class="summary">{{ item.summary }}</td>
+                    <td class="views">{{ item.views }}</td>
+                    <td class="rating">{{ item.views }}</td>
+                </tr>
+                {% set i = i + 1 %}
+            {% endfor %}
+        </table>
+    <div id="paginatorBottom" class="paginator"></div>
+</center>
 
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script >
+    $('.paginator').tdcPaginator({
+                start:{{start}},
+                max:{{max}},
+                lastLabel:">>",
+                firstLabel: "<<",
+                trailLinks: 3,
+                queryUrl:'{{ path("tdc_ws_video_list")}}',
+                targetUrl:'{{ path("tdc_admin_videos")}}'
+                });
+   </script>
+{% endblock javascripts %}

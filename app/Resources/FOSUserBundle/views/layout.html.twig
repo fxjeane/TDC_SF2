@@ -1,39 +1,16 @@
-{% extends '::base.html.twig' %}
+{% extends  [':',tdcLiveTheme,':base.html.twig']|join  %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    {% stylesheets  
-     debug=true
-    'public/css/login.css' 
-    %}
-    <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
-    {% endstylesheets %}
-{% endblock %}
 
 {% block titleName %}Welcome{% endblock %}
 
 
 {% block contentArea %}
-<center>
-    <div id='loginArea'>
-        <img src="{{ path('tdc_front_homepage') }}../public/images/tdcLogo_login.png" style="margin:20px;margin-top:0px" />
-        <div>
-            <div>
-                {% block fos_user_content %}
-                {% endblock fos_user_content %}
-            </div>
-            <!-- <a href="{{ path('fos_user_security_logout') }}">
-                Logout
-            </a> -->
-            </br>
-            </br>
-        </div>
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
 
-        {% for key, message in app.session.getFlashes() %}
-        <div class="{{ key }}">
-            {{ message|trans({}, 'FOSUserBundle') }}
-        </div>
-        {% endfor %}
+    {% for key, message in app.session.getFlashes() %}
+    <div class="{{ key }}">
+        {{ message|trans({}, 'FOSUserBundle') }}
     </div>
-</center>
+    {% endfor %}
 {% endblock contentArea %}

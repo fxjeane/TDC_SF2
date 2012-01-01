@@ -1,0 +1,16 @@
+/**********************
+* Content Area
+**********************/
+#faqIndex_hldr,
+#faqContent_hldr {
+    display:inline-block;
+    padding:10px;
+}
+#faqIndex_hldr {
+    float:left;
+    background-color:rgb(230,230,230);
+    width:220px;
+}
+#faqContent_hldr {
+    width:680px;
+}

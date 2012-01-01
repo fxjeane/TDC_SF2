@@ -1,6 +1,6 @@
-{% extends ':Default:base.html.twig' %}
+{% extends  [':',tdcLiveTheme,':base.html.twig']|join  %}
 
-{% block javascripts %}
+{#% block javascripts %}
     {{ parent() }}
     <script>
     $('#loginHelpBtn').click(function(){
@@ -14,4 +14,5 @@
         }
     });
     </script>
-{% endblock javascripts %}
+{% endblock javascripts %#}
+

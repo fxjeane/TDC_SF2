@@ -18,6 +18,8 @@ framework:
 
 # Twig Configuration
 twig:
+    globals:
+        tdcLiveTheme: %tdc.liveTheme%
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
 
@@ -49,7 +51,7 @@ doctrine:
 
 # Parameters
 parameters:
-    tdc.liveTheme: Default
+    tdc.liveTheme: TDC1
 
 # Services
 #services:

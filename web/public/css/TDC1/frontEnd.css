@@ -1,0 +1,33 @@
+/**********************
+* Content Area
+**********************/
+#mainCarrousel_hldr {
+    background-color: rgb(220,220,220);
+    margin:20px;
+    height:425px;
+}
+#quote_hldr, #popularVideos_hldr {
+    display:inline-block;
+    width:445px;
+    height:250px;
+    background-color: rgb(190,190,190);
+    padding:10px;
+}
+#quote_hldr {
+    float:left;
+    margin-right:10px;
+}
+#quotePicture_hldr{
+    float:left;
+    width:150px;
+    height:250px;
+    background-color:rgb(170,170,170);
+    margin-right:5px;
+}
+#quotePicture_hldr img { 
+    width:150px;
+    height:200px;
+}
+#quoteSignature_hldr {
+    text-align:center;
+}

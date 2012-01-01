@@ -1,27 +1,44 @@
 {% form_theme form theme %}
+<h1>Registration</h1>
 
-<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
-    {#{ form_widget(form) }#}
-    {{ form_errors(form) }}
-    <div>
-        {{ form_label(form.username) }}
-        </br>
-        {{ form_widget(form.username) }}
-        </br>
-        {{ form_label(form.email) }}
-        </br>
-        {{ form_widget(form.email) }}
-        </br>
-        {{ form_label(form.plainPassword.first) }}
-        </br>
-        {{ form_widget(form.plainPassword.first,{"label":" foo"}) }}
-        </br>
-        {{ form_label(form.plainPassword.second) }}
-        </br>
-        {{ form_widget(form.plainPassword.second,{"label":" foo"}) }}
-        {{ form_rest(form) }}
-    </div>
-    <div>
-        <input type="submit" class="blueBtnGradient blueGradient01" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
-    </div>
-</form>
+<div id="registerForm_hldr">
+    <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+        {{ form_errors(form) }}
+        <table>
+        <tr><td>
+            {{ form_label(form.username) }}
+            </br>
+            {{ form_widget(form.username) }}
+        </td><td>
+            {{ form_label(form.email) }}
+            </br>
+            {{ form_widget(form.email) }}
+        </td></tr>
+        <tr><td>
+            {{ form_label(form.name) }}
+            </br>
+            {{ form_widget(form.name) }}
+        </td><td>
+            {{ form_label(form.lastname) }}
+            </br>
+            {{ form_widget(form.lastname) }}
+        </td></tr>
+        <tr><td>
+            {{ form_label(form.plainPassword.first) }}
+            </br>
+            {{ form_widget(form.plainPassword.first,{"label":" foo"}) }}
+        </td><td>
+            {{ form_label(form.plainPassword.second) }}
+            </br>
+            {{ form_widget(form.plainPassword.second,{"label":" foo"}) }}
+            {{ form_rest(form) }}
+        </td></tr>
+        </table>
+
+        <div id="formButton_hldr">
+            <div id="registerFormSubmit_btn" class="tdcButton">Submit</div>
+        </div>
+    </form>
+</div>
+
+<div id='registerHelp_hldr'>holder</div>

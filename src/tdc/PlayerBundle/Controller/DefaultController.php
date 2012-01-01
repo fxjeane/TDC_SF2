@@ -16,6 +16,7 @@ class DefaultController extends Controller
         $user = $this->container->get('security.context')
                     ->getToken()
                     ->getUser();
+        $roles = $user->getRoles();
 
         $router = $this->get('router');
         $cancelurl = $router->generate('tdc_user_subscribe', array(),true);
@@ -25,19 +26,24 @@ class DefaultController extends Controller
                             "notifyUrl"=>$notifyurl,
                             "completeUrl"=>$completeurl);
 
-        $subscription = $user->getSubscription();
-        if ($subscription){
-            if ($subscription->getTdcStatus() == 1)  {
-                return $this->render('tdcPlayerBundle:Default:index.html.twig',
-                                    array("videoId"=>$newId));
+        if (in_array("ROLE_ADMIN",$roles)) {
+            return $this->render('tdcPlayerBundle:Default:index.html.twig',
+                                array("videoId"=>$newId));
+        } else { 
+            $subscription = $user->getSubscription();
+            if ($subscription){
+                if ($subscription->getTdcStatus() == 1)  {
+                    return $this->render('tdcPlayerBundle:Default:index.html.twig',
+                                        array("videoId"=>$newId));
+                } else {
+                    $this->get('session')->setFlash('expiredSubscription', 'Your subscription has expired');
+                    return $this->render('tdcUserBundle:Default:subscribe.html.twig',
+                                        $paramArray);
+                }
             } else {
-                $this->get('session')->setFlash('expiredSubscription', 'Your subscription has expired');
                 return $this->render('tdcUserBundle:Default:subscribe.html.twig',
-                                    $paramArray);
+                                     $paramArray);
             }
-        } else {
-            return $this->render('tdcUserBundle:Default:subscribe.html.twig',
-                                 $paramArray);
         }
     }
 }
