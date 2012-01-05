@@ -25,4 +25,12 @@ class tdcQAExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }
+
+    public function serviceLoad($config, ContainerBuilder $container)
+    {      
+        #$loader = new XmlFileLoader($container, __DIR__.'/../Resources/config');
+        #$loader->load('hello.xml');
+
+        #$container->setParameter('hello.service.mood', isset($config['mood']));
+    }
 }

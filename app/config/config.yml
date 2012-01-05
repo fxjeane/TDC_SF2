@@ -55,9 +55,8 @@ parameters:
 
 # Services
 #services:
-#    tdcThemeSelector:
-#        class: tdc\ThemeBundle\Selector
-#        arguments:  [%tdc.liveTheme%]
+#    tdc.qaservice:
+#        class: tdc\QABundle\QAService
 
 
 # Swiftmailer Configuration

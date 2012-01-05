@@ -21,8 +21,8 @@ class DefaultController extends Controller
                      ->getQuery()
                      ->getResult(); 
         
-        $popularTags = $this->getPopularTags();
-        $popularQuestions = $this->getPopularQuestions();
+        $popularTags = $this->get('tdc.QAService')->getPopularTags();
+        $popularQuestions = $this->get('tdc.QAService')->getPopularQuestions();
         return $this->render('tdcQABundle:Default:index.html.twig',
                               array('questions'=> $questions,
                                     'tags'=>$popularTags,
@@ -40,8 +40,8 @@ class DefaultController extends Controller
         $question->setViews($question->getViews()+1);
         $em->flush();
 
-        $popularTags = $this->getPopularTags();
-        $popularQuestions = $this->getPopularQuestions();
+        $popularTags = $this->get('tdc.QAService')->getPopularTags();
+        $popularQuestions = $this->get('tdc.QAService')->getPopularQuestions();
         return $this->render('tdcQABundle:Default:view.html.twig',
                               array('question'=> $question,
                                     'tags'=>$popularTags,
@@ -99,8 +99,8 @@ class DefaultController extends Controller
             }
         }
 
-        $popularTags = $this->getPopularTags();
-        $popularQuestions = $this->getPopularQuestions();
+        $popularTags = $this->get('tdc.QAService')->getPopularTags();
+        $popularQuestions = $this->get('tdc.QAService')->getPopularQuestions();
         return $this->render('tdcQABundle:Default:ask.html.twig',
                               array('tags'=>$popularTags,
                                     'popularQuestions'=>$popularQuestions,
@@ -146,8 +146,8 @@ class DefaultController extends Controller
             }
         }
 
-        $popularTags = $this->getPopularTags();
-        $popularQuestions = $this->getPopularQuestions();
+        $popularTags = $this->get('tdc.QAService')->getPopularTags();
+        $popularQuestions = $this->get('tdc.QAService')->getPopularQuestions();
         return $this->render('tdcQABundle:Default:answer.html.twig',
                             array('tags'=>$popularTags,
                                   'popularQuestions'=>$popularQuestions,
@@ -178,8 +178,8 @@ class DefaultController extends Controller
             }
         }
 
-        $popularTags = $this->getPopularTags();
-        $popularQuestions = $this->getPopularQuestions();
+        $popularTags = $this->get('tdc.QAService')->getPopularTags();
+        $popularQuestions = $this->get('tdc.QAService')->getPopularQuestions();
         return $this->render('tdcQABundle:Default:tagged.html.twig',
                               array('tag'=> $tagval,
                                     'tags'=>$popularTags,
@@ -188,30 +188,10 @@ class DefaultController extends Controller
                                     'start'=>$start,
                                     'max'=> $max));
     }
-
-    private function getPopularTags($limit=5) {
-        $rep = $this->getdoctrine()->getrepository('tdcQABundle:Question');
-        $tagval = $rep->createQueryBuilder('q')
-                     ->select('COUNT(q.id) as tag_count, t.value')
-                     ->innerJoin('q.tags','t')
-                     ->groupBy('t.value')
-                     ->orderBy('tag_count','DESC')
-                     ->setFirstResult(0)
-                     ->setMaxResults($limit)
-                     ->getQuery()
-                     ->getResult(); 
-        return $tagval;
-    }
     
-    private function getPopularQuestions($limit=5) {
-        $rep = $this->getdoctrine()->getrepository('tdcQABundle:Question');
-        $tagval = $rep->createQueryBuilder('q')
-                     ->select('q')
-                     ->orderBy('q.views','DESC')
-                     ->setFirstResult(0)
-                     ->setMaxResults($limit)
-                     ->getQuery()
-                     ->getResult(); 
-        return $tagval;
+    public function tagCloudAction($limit) {
+        $popularTags = $this->get('tdc.QAService')->getPopularTags($limit);
+        return $this->render(':TDC1:tagcloud.html.twig',
+                            array('tags'=>$popularTags));
     }
 }

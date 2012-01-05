@@ -1,7 +1,7 @@
 parameters:
-#    tdc_front_end.example.class: tdc\FrontEndBundle\Example
+    tdc_front_end.service.class: tdc\FrontEndBundle\Service\FrontEndService
 
 services:
-#    tdc_front_end.example:
-#        class: %tdc_front_end.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    tdc.FrontEndService:
+        class: %tdc_front_end.service.class%
+        arguments: [@doctrine]

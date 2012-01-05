@@ -2,28 +2,59 @@
 
 {% block titleName %}Welcome{% endblock %}
 
+{% block header_javascripts %}
+    {{ parent() }}
+    {% javascripts
+        debug=false
+        'public/js/jquery/agile_carousel.alpha.js'
+    %}
+    <script src="{{ asset_url }}" type="text/javascript"  /></script>
+    {% endjavascripts %}
+{% endblock header_javascripts %}
+
 {% block stylesheets %}
     {{ parent() }}
     {% stylesheets  
     'public/css/TDC1/frontEnd.css'
+    'public/css/agile_carousel.css'
     %}
     <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
     {% endstylesheets %}
 {% endblock %}
 
 {% block contentArea%}
-    <div id="mainCarrousel_hldr">Main Carrousel</div>
+    <div id="mainCarousel_hldr"></div>
 
     <div id="quote_hldr" >
         <div id="quotePicture_hldr"> 
             <img src="{{ path('tdc_front_homepage') }}../public/images/quoters/omarGarcia.png"/ >
             <div id="quoteSignature_hldr">Omar</div>
         </div>
-        <p>
-            <h3>User Quotes</h3>
+            <div class="contentBlurbTitle">User Quotes</div>
             It's a great feeling when you write a script for your own tasks, But when you do it at a major animation studio and it works ... what a great feeling! Thanks Rudy for being my teacher! I owe it all to you.
-        </p> 
     </div>
-    <div id="popularVideos_hldr">Popular Videos</div>
-
+    
+    <div id="popularVideos_hldr">
+        <div class="contentBlurbTitle">Popular Videos</div>
+    </div>
 {% endblock contentArea %}
+
+{% block javascript_post %}
+   {{ parent() }}
+
+   $(document).ready(function(){
+           $("#mainCarousel_hldr").agile_carousel({
+                carousel_data: {{bannerImages|raw}},
+                carousel_outer_height: 425,
+                carousel_height: 425,
+                slide_height: 425,
+                carousel_outer_width: 880,
+                slide_width: 880,
+                transition_time: 500,
+                transition_type: "fade",
+                timer: 4000,
+                continuous_scrolling: true,
+                control_set_1: "numbered_buttons"
+                });
+           });
+{% endblock javascript_post %}

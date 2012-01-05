@@ -4,11 +4,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\HttpFoundation\Response;
 
+
 class FrontController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('tdcFrontEndBundle:Default:index.html.twig');
+        $bannerImages = glob(getcwd()."/public/images/TDC1/frontBanners/*.jpg");
+        $photoData = array();
+        foreach ($bannerImages as $bi) {
+            $image = substr($bi,strripos($bi,"/"));
+            $photo = array();
+            $photo["content"] = "<div class='slide_inner'><img class='photo' src='../public/images/TDC1/frontBanners$image' alt='Bike'></div>";
+            $photo["content_button"] = "<div class='thumb'></div><p>Agile Carousel Place Holder</p>";
+            $photoData[] = $photo;
+        }
+
+    
+        return $this->render('tdcFrontEndBundle:Default:index.html.twig',
+                            array('bannerImages'=>json_encode($photoData)));
     }
 
     public function catalogListAction($entity,$start,$max)
@@ -70,5 +83,17 @@ class FrontController extends Controller
             return $this->render('tdcFrontEndBundle:Default:home.html.twig',
                                 $data);
         }
+    }
+
+    public function siteStatsAction() {
+        $stats = $this->get('tdc.FrontEndService')->getStats();       
+        return $this->render(':TDC1:siteStats.html.twig',
+                            array("stats"=>$stats));
+    }
+
+    public function siteFeedAction() {
+        $twitter = $this->get('tdc.FrontEndService')->getTwitterFeed();
+        return $this->render(':TDC1:siteFeed.html.twig',
+                            array("tweets"=>$twitter));
     }
 }

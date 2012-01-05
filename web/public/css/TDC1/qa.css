@@ -1,0 +1,177 @@
+.questionSummary,
+.questionArea .questionTitle {
+    border-bottom:1px dotted rgb(194,194,194);
+    padding:10px;
+}
+
+.questionArea .questionSummary .questionTitle {
+    border-bottom-width:0px;
+}
+
+.questionTitle, .answerTitle {
+    color:rgb(228, 188, 68);
+}
+.questionArea {
+    width:665px;
+    display:inline-block;
+}
+
+.questionText, .answerText {
+    margin:15px;
+}
+.questionTitle, .answerTitle {
+    font-size:1.6em;
+}
+.questionEnd {
+    clear:both;
+}
+
+.author, .updated, .views, .answers {
+    font-size:0.85em;
+}
+.author, .updated, .views {
+    float:left;
+    margin-right:30px;
+}
+.tags {
+    margin:5px 0px;
+    padding:4px 0px;
+    clear:both;
+}
+.questionArea .tags {
+    padding-top:10px;
+}
+span.tag,
+span.addedTag {
+    font-size:0.85em;
+    background-color:rgb(50,100,200);
+    border-radius:5px;
+    padding:4px 6px;
+    box-shadow: 0px 1px 1px 0px rgb(40,40,40);
+    margin:2px 4px;
+}
+.tags .tag a {
+    color: rgb(220,220,220);
+}
+.questionArea .answerTitle {
+    border-top:1px dotted rgb(194,194,194);
+    padding:10px;
+}
+.answerArea {
+    margin-left:20px;
+}
+.answerTitle {
+    margin-top:20px;
+    font-style:italic;
+}
+#paginatorBottom {
+    padding:15px 0px;
+}
+/***************
+*
+* Create Question
+*
+***************/
+#questionForm table,
+#answerForm table{
+    border-spacing:4px;
+}
+#questionForm tr,
+#answerForm tr {
+    vertical-align:top;
+}
+#questionForm input,
+#questionForm textarea,
+#answerForm input,
+#answerForm textarea {
+    background-color:rgb(80,80,80);
+    border-radius:10px;
+    border-width:0px;
+    border-width: 0px;
+    box-shadow: 0px 1px 0px rgb(194,194,194), 0px -1px 0px rgb(40,40,40);
+    padding: 0px 5px;
+    color: rgb(194,194,194);
+    font-size: 1.0em;
+}
+
+#questionForm input[type=text],
+#questionForm textarea,
+#answerForm input[type=text],
+#answerForm textarea{
+    width:500px;
+    height:30px;
+    line-height:30px;
+    outline:none;
+}
+#questionForm textarea,
+#answerForm textarea {
+    height:350px;
+    resize: none;
+}
+#questionForm .submitBtn,
+#answerForm .submitBtn {
+    width:585px;
+    text-align:right;
+    margin-top:5px;
+}
+#questionForm input[type=submit],
+#answerForm input[type=submit] {
+    padding:5px 10px;
+}
+#questionForm button,
+#answerForm button {
+    border-width:0px;
+    font-size:0.9em;
+}
+#tagsField input[type=text],
+#tagsField input[type=text] {
+    width:400px;
+}
+#tagsRow {
+    display:none;
+}
+#selectedTags {
+    padding:10px 0px;
+}
+.addedTag {
+
+}
+label.error{
+    display:block;
+    margin:4px 0px;
+}
+
+/***************
+*
+* Side Bar
+*
+***************/
+#sidebarArea {
+    width:250px;
+    margin-left:20px;
+    display:inline-block;
+    float:right;
+}
+
+.newQuestionBtn {
+    margin-bottom:15px;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    display:block;
+    padding:0px;
+}
+
+.tdcButtonDown {
+    box-shadow: inset 0px 2px 9px 0px rgb(20,20,20);
+    border-top: 1px solid #323232 !important;
+    border-bottom: 1px solid #C2C2C2;
+}
+.popularTags {
+    font-size: 1.5em;
+    border-bottom: 1px dotted;
+    padding: 5px 0px;
+    margin: 5px 0px;
+    margin-bottom: 10px;
+}

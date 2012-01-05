@@ -1,7 +1,8 @@
 parameters:
-#    tdc_qa.example.class: tdc\QABundle\Example
+    tdc_qa.example.class: tdc\QABundle\Service\QAService
 
 services:
-#    tdc_qa.example:
-#        class: %tdc_qa.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    tdc.qaservice:
+        class: %tdc_qa.example.class%
+        arguments: [@doctrine]
+        #arguments: [@service_id, "plain_value", %parameter%]

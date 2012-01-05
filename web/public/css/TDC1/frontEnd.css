@@ -1,10 +1,11 @@
 /**********************
 * Content Area
 **********************/
-#mainCarrousel_hldr {
+#mainCarousel_hldr {
     background-color: rgb(220,220,220);
-    margin:20px;
+    margin:30px;
     height:425px;
+    box-shadow:0px 0px 40px 0px rgb(70,70,70);
 }
 #quote_hldr, #popularVideos_hldr {
     display:inline-block;

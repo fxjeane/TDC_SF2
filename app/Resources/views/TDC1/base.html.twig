@@ -14,6 +14,8 @@
             {% javascripts
                 debug=false
                 'public/js/jquery/jquery-1.6.4.min.js'
+                'public/js/jquery/jquery.mousewheel.js'
+                'public/js/jquery/jquery.jscrollpane.min.js'
             %}
             <script src="{{ asset_url }}" type="text/javascript"  /></script>
             {% endjavascripts %}
@@ -21,17 +23,44 @@
         
         {% block stylesheets %}
             {% stylesheets  
+            'public/css/jquery.jscrollpane.css'
             'public/css/TDC1/main.css'
             %}
             <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
             {% endstylesheets %}
         {% endblock %}
-    </head>
+
 
     <body>
+    <div id="fb-root"></div>
+    <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=285119854835053";
+              fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));
+    </script>
+
         <div id='mainContent_hdlr'>
+            
             <div id="socialBar">
-                <div id="socialIcons_hldr">Icons</div>
+                <div id="socialIcons_hldr">
+                    <div class="socialIcon">
+                        <a href="http://www.facebook.com/pages/TD-Channel/136759419761676">
+                            <img src="{{path("tdc_front_homepage")}}../public/images/TDC1/FaceBook_32.png"/>
+                        </a>
+                    </div>
+                    <div class="socialIcon">
+                        <a href="https://twitter.com/TDChannel">
+                            <img src="{{path("tdc_front_homepage")}}../public/images/TDC1/Twitter_32.png"/>
+                        </a>
+                    </div>
+                    <div class="socialIcon">
+                        <img src="{{path("tdc_front_homepage")}}../public/images/TDC1/Feeds_32.png"/>
+                    </div>
+                </div>
                 <div id="loginButtons_hldr">
                 {% block tdcLoginButtons %}
                 {% if app.user == "" %}
@@ -55,54 +84,159 @@
                 {% endblock tdcLoginButtons %}
                 </div>
             </div>
+
             <div id="header_hldr">
-                <div id="logo_hldr" >
-                    <img id="headerLogo" src="{{ path('tdc_front_homepage') }}../public/images/TDC1/tdcLogo_whiteBG.png"/>
+                <div id="logo_hldr">
+                    <img width="113px" id="headerLogo" 
+                        src="{{ path("tdc_front_homepage") }}../public/images/TDC1/tdcLogo_whiteBG.png"></img>
                 </div>
+
                 <div id="nav_hldr">
-                    <div id="siteStats_hldr">Site Stats</div>
-                    <div id="beSocial_hldr">Be Social</div>
-                    <div id="navBar_hldr">
-                        <div id="home_btn" class='tdcButton tdcButtonBarFirst'
-                            target="{{path("tdc_front_homepage")}}">
-                            Home
-                        </div><div id="catalog_btn" class='tdcButton tdcButtonBar'
-                            target="{{path("tdc_front_catalog_list")}}">
-                            Catalog
-                        </div><div id="faq_btn" class='tdcButton tdcButtonBar'
-                            target="{{path("tdc_front_faq")}}">
-                            FAQ
-                        </div><div id="about_btn" class='tdcButton tdcButtonBar'
-                            target="{{path("tdc_front_about")}}">
-                            About
-                        </div><div id="contact_btn" class='tdcButton tdcButtonBarLast'>
-                            Contact
-                        </div>
+                    <div id="siteStats_hldr">
+                        <div class="contentBlurbTitle">Stats</div>
+                        {% render "tdcFrontEndBundle:Front:siteStats" %}
+                    </div>
+
+                    <img src="{{path("tdc_front_homepage")}}../public/images/TDC1/vseparator.png" class="headerSeparator"/>
+
+                    <div id="beSocial_hldr">
+                        <div class="contentBlurbTitle">Be Social</div>
+
+                        <div class="fb-like" data-href="http://www.facebook.com/pages/TD-Channel/136759419761676"
+                                data-send="false"  data-width="300" data-show-faces="false" data-font="arial"></div>
+
+                        <a href="https://twitter.com/TDChannel" class="twitter-follow-button" 
+                            data-show-count="false" data-size="large">Follow @TDChannel</a>
+
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
                     </div>
                 </div>
+
+                <div id="navBarPre">
+                </div><div id="navBar_hldr">
+                            <div id="home_btn" class='tdcButton tdcButtonBarFirst'
+                                target="{{path("tdc_front_homepage")}}">
+                                Home
+                            </div><div id="catalog_btn" class='tdcButton tdcButtonBar'
+                                target="{{path("tdc_front_catalog_list")}}">
+                                Catalog
+                            </div><div id="faq_btn" class='tdcButton tdcButtonBar'
+                                target="{{path("tdc_front_faq")}}">
+                                FAQ
+                            </div><div id="qa_btn" class='tdcButton tdcButtonBar'
+                                target="{{path("tdc_qa_homepage")}}">
+                                Q&A
+                            </div><div id="about_btn" class='tdcButton tdcButtonBarLast'
+                                target="{{path("tdc_front_about")}}">
+                                About
+                            </div>
+                            
+                            <div id="menuMarker_hldr">
+                                <div id="home_mrkr" class="currentMenuMarker">
+                                </div><div id="catalog_mrkr" class="menuMarker">
+                                </div><div id="faq_mrkr" class="menuMarker">
+                                </div><div id="qa_mrkr" class="menuMarker">
+                                </div><div id="about_mrkr" class="menuMarker">
+                                </div>
+                            </div>
+                </div><div id="navBarPost"></div>
             </div>
-            
+            <div id="headerSeparator"></div>
             <div id="contentArea_hldr">
                 {% block contentArea %}{% endblock contentArea %}
             </div>
             
             
             <div id="footer_hldr">
-                <div id="sitemap_hldr">Site Map</div>
-                <div id="rss_hldr">RSS</div>
-                <div id="tagcloud_hldr">Tag Cloud</div>
+                <div id="sitemap_hldr">
+                    <div class="footerBlurbTitle">Site Map</div>
+                    <table id="siteMapTable">
+                        <tr>
+                        <td>
+                            <li>
+                                <a href="{{path("tdc_front_homepage")}}">
+                                Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{path("tdc_front_faq")}}">
+                                FAQ
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                Contact
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{path("fos_user_registration_register")}}">
+                                Register
+                                </a>
+                            </li>
+                        </td>
+                        <td>
+                            <li>
+                                <a href="{{path("tdc_front_catalog_list")}}">
+                                Catalog
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{path("tdc_front_about")}}">
+                                About
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{path("fos_user_security_login")}}">
+                                Login
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{path("tdc_user_subscribe")}}">
+                                Subscribe
+                                </a>
+                            </li>
+                        </td>
+                        </tr>
+                    </table>
+                </div>
+                <img src="{{path("tdc_front_homepage")}}../public/images/TDC1/footervseparator.png" class="footerSeparator"/ >
+                <div id="rss_hldr">
+                    <div class="footerBlurbTitle">@TDChannel</div>
+                    <div id="tweetFeed_hldr" class="scrollPane">
+                        {% render "tdcFrontEndBundle:Front:siteFeed" %}
+                    </div>
+                </div>
+                <img src="{{path("tdc_front_homepage")}}../public/images/TDC1/footervseparator.png" class="footerSeparator"/>
+                <div id="tagcloud_hldr">
+                    <div class="footerBlurbTitle">Tag Cloud</div>
+                    {% render "tdcQABundle:Default:tagCloud" with {'limit': 15} %}
+                </div>
+                <div id="copyright">All content copyright (c) 2012 - Rudy Cortes </div>
             </div>
+
         </div>
     </body>
 
     <script>
     {% block javascript_post %}
         $(document).ready(function(){
+            // button handler
             $('.tdcButton').click(function(ev){
                 var src = $(this);
                 var target = src.attr('target');
                 if (target) document.location=target;
             });
+            // scrollpanes
+            $(".scrollPane").jScrollPane();
+
+            // randomize tag cloud
+            $(".tagcloud").each(function(key,value){
+                var elem = $(value);
+                rand = 1 + Math.max(-0.15,Math.min(0.4,((Math.random() * 2)-1))); 
+                elem.css('font-size', rand+'em');
+            });
+
         });
     {% endblock javascript_post %}
     </script>

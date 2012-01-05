@@ -1,0 +1,7 @@
+{% for tweet in tweets %}
+    <li>
+        <img src="{{tweet.user.profile_image_url}}" />
+        <div class="tweetText">{{tweet.text}}</div>
+        <div class="tweetAuthor">{{tweet.user.name}}</div>
+    </li>
+{% endfor %}
