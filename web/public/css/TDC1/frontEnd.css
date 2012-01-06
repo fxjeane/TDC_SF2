@@ -7,24 +7,41 @@
     height:425px;
     box-shadow:0px 0px 40px 0px rgb(70,70,70);
 }
-#quote_hldr, #popularVideos_hldr {
+#quote_hldr, #popularVideos_hldr,
+#latestQuestions {
     display:inline-block;
     width:445px;
     height:250px;
     background-color: rgba(250,250,250,0.5);
     padding:10px;
     border-radius:8px;
+    vertical-align:top;
+
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.6)), color-stop(100%,rgba(255,255,255,0)));
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0) 100%);
+    background: -o-linear-gradient(top,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0) 100%);
+    background: -ms-linear-gradient(top,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0) 100%);
+    background: linear-gradient(top,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99ffffff', endColorstr='#00ffffff',GradientType=0 );
+
+background: -moz-linear-gradient(top,  rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.5)), color-stop(100%,rgba(255,255,255,0)));
+background: -webkit-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
+background: -o-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
+background: -ms-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
+background: linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', endColorstr='#00ffffff',GradientType=0 );
+
 }
 #quote_hldr {
-    float:left;
-    margin-right:10px;
+    margin-right:6px;
     font-family:cursive;
     font-style:italic;
 }
 #quotePicture_hldr{
     float:left;
     width:150px;
-    height:250px;
     margin-right:5px;
 }
 #quotePicture_hldr img { 
@@ -36,4 +53,8 @@
     font-family:cursive;
     font-style:italic;
     font-size:1.2em;
+}
+#latestQuestions {
+    width:700px;
+    height:300px;
 }

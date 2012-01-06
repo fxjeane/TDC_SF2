@@ -35,12 +35,12 @@
     <div id="fb-root"></div>
     <script>
     (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
+        var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
             js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=285119854835053";
-              fjs.parentNode.insertBefore(js, fjs);
-              }(document, 'script', 'facebook-jssdk'));
+            fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
     </script>
 
         <div id='mainContent_hdlr'>
@@ -92,28 +92,27 @@
                 </div>
 
                 <div id="nav_hldr">
-                    <div id="siteStats_hldr">
-                        <div class="contentBlurbTitle">Stats</div>
-                        {% render "tdcFrontEndBundle:Front:siteStats" %}
+                    <div id="userWelcome_hldr">
+                        {% if app.user != "" %}
+                        <div class="contentBlurbTitle">Welcome {{app.user.name}}</div>
+                        {% endif %}
                     </div>
 
+                    {% if app.user != "" %}
                     <img src="{{path("tdc_front_homepage")}}../public/images/TDC1/vseparator.png" class="headerSeparator"/>
-
+                    {% endif %}
+                    
                     <div id="beSocial_hldr">
-                        <div class="contentBlurbTitle">Be Social</div>
-
-                        <div class="fb-like" data-href="http://www.facebook.com/pages/TD-Channel/136759419761676"
-                                data-send="false"  data-width="300" data-show-faces="false" data-font="arial"></div>
-
-                        <a href="https://twitter.com/TDChannel" class="twitter-follow-button" 
-                            data-show-count="false" data-size="large">Follow @TDChannel</a>
-
-                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
+                        <div class="contentBlurbTitle">Lattest News</div>
                     </div>
-                </div>
+                </div></br>
 
                 <div id="navBarPre">
+                        <div class="fb-like" data-href="http://www.facebook.com/pages/TD-Channel/136759419761676" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false"  data-font="arial"></div>
+
+                        <a href="https://twitter.com/TDChannel" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @TDChannel</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
                 </div><div id="navBar_hldr">
                             <div id="home_btn" class='tdcButton tdcButtonBarFirst'
                                 target="{{path("tdc_front_homepage")}}">
@@ -201,6 +200,10 @@
                         </td>
                         </tr>
                     </table>
+                    <div id="siteStats_hldr">
+                        <div class="footerBlurbTitle">Stats</div>
+                        {% render "tdcFrontEndBundle:Front:siteStats" %}
+                    </div>
                 </div>
                 <img src="{{path("tdc_front_homepage")}}../public/images/TDC1/footervseparator.png" class="footerSeparator"/ >
                 <div id="rss_hldr">

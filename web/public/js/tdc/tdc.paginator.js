@@ -7,7 +7,8 @@
             targetUrl:"",
             trailLinks:2,
             firstLabel:"first",
-            lastLabel:"last"
+            lastLabel:"last",
+            currentPageColor: "red"
         },
         _create: function() { 
             var self = this,
@@ -38,7 +39,7 @@
                     li = num.append('<li>');
                     li.html(i);
                     if (i === curpage)
-                        li.css("color","red");
+                        li.css("color",o.currentPageColor);
                     el.append(num);
                     el.append(' ');
                 }

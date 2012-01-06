@@ -15,3 +15,41 @@
 {% block fos_user_content %}
 {% include "FOSUserBundle:Registration:register_content.html.twig" %}
 {% endblock fos_user_content %}
+
+{% block javascript_post %}
+   {{ parent() }}
+
+   $(document).ready(function(){
+        $('input').focus(function(ev){
+            var targ = $(this);
+            var tid = targ.attr("id");
+            var pointer = $('#helpBlurb_pointer');
+            var newy = "";
+            var message = "";
+            if (tid.search("form_username") !== -1){
+                newy = "407px";
+                message = "username";
+            } else if (tid.search("form_email") !== -1) {
+                newy = "407px";
+                message = "email";
+            } else if (tid.search("form_name") !== -1) {
+                newy = "477px";
+                message = "name";
+            } else if (tid.search("form_lastname") !== -1) {
+                newy = "477px";
+                message = "lastname";
+            } else if (tid.search("plainPassword_first") !== -1) {
+                newy = "545px";
+                message = "password";
+            } else if (tid.search("plainPassword_second") !== -1) {
+                newy = "545px";
+                message = "pwd confirm";
+            }
+            
+            pointer.animate({"top":newy},1000,function(){
+                    $("#helpBlurb_hldr").html(message);
+                    });
+
+        });
+           });
+{% endblock javascript_post %}

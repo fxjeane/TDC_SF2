@@ -13,6 +13,7 @@
 {% block titleName %}Login{%endblock titleName %}
 
 {% block fos_user_content %}
+<h1>Login</h1>
 <div id="loginForm_hldr">
     {% if error %}
         <div>{{ error }}</div>
@@ -39,6 +40,10 @@
     </form>
 </div>
 
+<!-- div id='loginHelp_hldr'>
+    <div id="helpBlurb_pointer"></div>
+    <div id="helpBlurb_hldr">help message</div>
+</div -->
 {% endblock fos_user_content %}
 
 

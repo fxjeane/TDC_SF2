@@ -3,7 +3,6 @@
 
 {% block body %}
     > <a href="{{ path("tdc_qa_homepage")}}">Q & A</a>
-    <div class="questionArea">
         <div class="questionTitle">{{ question.title }}</div>
         <div class="questionText">{{question.text|raw}}</div>
         <div class="author">author: 
@@ -21,19 +20,22 @@
             {% endfor %}
         </div>
         <div class="answerArea">
+            {% set i = 0 %}
             {% for ans in question.answers %}
-            <div class="answerTitle">{{ans.title}}</div>
-            <div class="answerText">{{ans.text|raw}}</div>
-            <div class="author">author: 
-                <i>{{ans.user}}</i>
+            <div class="row_{{ cycle(['0', '1'], i) }}">
+                <div class="answerTitle">{{ans.title}}</div>
+                <div class="answerText">{{ans.text|raw}}</div>
+                <div class="author">author: 
+                    <i>{{ans.user}}</i>
+                </div>
+                <div class="updated">updated: 
+                    <i>{{ ans.updated|date("m/d/Y H:i:s") }}</i>
+                </div>
+                <div class="questionEnd"></div>
             </div>
-            <div class="updated">updated: 
-                <i>{{ ans.updated|date("m/d/Y H:i:s") }}</i>
-            </div>
-            <div class="questionEnd"></div>
+            {% set i = i + 1 %}
             {% endfor %}
         </div>
-    </div>
 {% endblock %}
 
 {% block sidebar %}

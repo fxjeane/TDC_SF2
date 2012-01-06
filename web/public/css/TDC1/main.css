@@ -58,12 +58,13 @@ body
     box-shadow:-5px 0px 20px 0px rgb(30,30,30);
     border-right:1px solid rgb(153,153,153);
 }
-#register_btn {
+#register_btn,
+#profile_btn{
     border-left: 1px solid rgb(249, 235, 210);
     background: #ffd997;
     background: -moz-linear-gradient(top,  #ffd997 0%, #fed576 50%, #fec146 51%, #ffdc8b 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffd997), color-stop(50%,#fed576), color-stop(51%,#fec146), color-stop(100%,#ffdc8b));
-    background: -webkit-linear-gradient(top,  #ffd997 0%,#fed576 50%,#fec146 51%,#ffdc8b 100%);
+   background: -webkit-linear-gradient(top,  #ffd997 0%,#fed576 50%,#fec146 51%,#ffdc8b 100%);
     background: -o-linear-gradient(top,  #ffd997 0%,#fed576 50%,#fec146 51%,#ffdc8b 100%);
     background: -ms-linear-gradient(top,  #ffd997 0%,#fed576 50%,#fec146 51%,#ffdc8b 100%);
     background: linear-gradient(top,  #ffd997 0%,#fed576 50%,#fec146 51%,#ffdc8b 100%);
@@ -87,7 +88,6 @@ body
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d5d5d5', endColorstr='#ededed',GradientType=0 );
     position:relative;
 }
-#logo_hldr,
 #nav_hldr {
     display:inline-block;
 }
@@ -132,16 +132,27 @@ body
     background-position: 0px -0px;
 }
 #navBarPre {
-    width:205px;
+    width:235px;
     border-radius: 0px 10px 0px 0px;
     box-shadow: 2px 0px 5px 0px rgb(50,50,50);
 }
 #navBarPost {
-    width:64px;
+    width:34px;
     border-radius: 10px 0px 0px 0px;
     box-shadow: -2px 0px 5px 0px rgb(50,50,50);
 }
-
+.fb_edge_widget_with_comment,
+.twitter-follow-button {
+    position:absolute !important;
+}
+.fb-like {
+    top:17px;
+    left:35px;
+}
+.twitter-follow-button {
+    top:17px;
+    left:115px;
+}
 #home_btn, #catalog_btn,
 #faq_btn, #about_btn,
 #qa_btn {
@@ -179,29 +190,32 @@ body
 }
 .currentMenuMarker {
     background-color: orange;
-    width:141px !important;
+    width:143px !important;
 }
 .menuMarker {
     background-color: rgb(0,102,255);
 }
 #logo_hldr {
-    float:left;
+    width:142px;
+    height:168px;
+    display:inline-block;
+    vertical-align:top;
 }
 #headerLogo {
     margin: 12px;
     margin-left: 30px;
     vertical-align:top;
 }
-#siteStats_hldr,
+#userWelcome_hldr,
 #beSocial_hldr {
     display:inline-block;
-    height: 120px;
     margin-top:20px;
-    width:310px;
+    height: 120px;
+    width:350px;
     vertical-align:top;
 }
-#siteStats_hldr {
-    margin-left:50px;
+#userWelcome_hldr {
+    margin-left:60px;
 }
 .headerSeparator {
     margin:0px 10px;
@@ -211,10 +225,8 @@ body
 }
 .statsbox {
     font-size:0.78em;
-    display:inline-block;
     vertical-align:top;
     margin-top:7px;
-    width:135px;
 }
 .statsSeparator {
     margin:0px 10px;
@@ -254,7 +266,7 @@ body
 * Footer
 **********************/
 #footer_hldr {
-    height:300px;
+    height:310px;
     padding:0px 10px;
     border-top: 1px solid rgb(220, 220, 220);
     color:rgb(220,220,220);
@@ -288,7 +300,7 @@ body
     width: 456px;
 }
 #tweetFeed_hldr {
-    height: 215px;
+    height: 225px;
     overflow: hidden;
     background-color: rgba(89, 89, 89, 0.45);
     padding: 5px 0px;
@@ -392,6 +404,13 @@ a, a:visited {
     color: rgb(0,102,255);
     text-decoration:none;
 }
+h1 {
+    text-align: right;
+    border-bottom: 1px dotted;
+    padding-bottom: 4px;
+    font-weight: normal;
+    font-style: italic;
+}
 input[type='text'],
 input[type='email'],
 input[type='password'] {
@@ -440,4 +459,10 @@ input[type='password'] {
     box-shadow: inset 0px 0px 0.9px 0px black;
     border-image: initial;
     border-color: rgb(150, 150, 150);
+}
+.row_0 {
+    background: rgba(246,246,246,0.75);
+}
+.row_1 {
+background: rgba(239,239,239,0.75);
 }

@@ -16,7 +16,7 @@
     {{ parent() }}
     {% stylesheets  
      debug=true
-    'public/css/catalog.css' 
+    'public/css/TDC1/catalog.css' 
     %}
     <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
     {% endstylesheets %}
@@ -43,7 +43,7 @@
             </h1>
             <div id="paginatorTop" class="paginator"></div>
            <center> 
-            <table id="catalogTable">
+            <table id="catalogTable" cellspacing="0px">
                 {% if entity == "video" %}
                     <th colspan="2">Video</th>
                     <th>Summary</th>
@@ -88,6 +88,7 @@
                 lastLabel:">>",
                 firstLabel: "<<",
                 trailLinks: 3,
+                currentPageColor:"rgb(0,105,255)",
                 {% if entity == "video" %}
                     queryUrl:'{{ path("tdc_ws_video_list")}}',
                 {% else %}

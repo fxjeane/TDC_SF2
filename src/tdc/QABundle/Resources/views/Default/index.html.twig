@@ -1,11 +1,24 @@
 {% extends 'tdcQABundle:Default:layout.html.twig' %}
 
-{% block titleName %}Knowledge Base{% endblock %}
+{% block header_javascripts %}
+    {{ parent() }}
+    {% javascripts
+        debug=true
+        'public/js/jquery/jquery-ui-1.8.16.custom.min.js'
+        'public/js/tdc/tdc.js'
+        'public/js/tdc/tdc.paginator.js'
+    %}
+    <script src="{{ asset_url }}" type="text/javascript"  /></script>
+    {% endjavascripts %}
+{% endblock header_javascripts %}
+
+{% block titleName %}Q&A{% endblock %}
 
 {% block body %}
     <div id="paginatorTop" class="paginator"></div>
+    {% set i = 0 %}
     {% for item in questions %}
-        <div class='questionSummary'>
+        <div class='questionSummary row_{{ cycle(['0', '1'], i) }}'>
             <div class="questionTitle"><a href="{{path("tdc_qa_view",{'id': item.id}) }}">{{item.title}}</a></div>
             <div class="tags">
                 {% for tag in item.tags %}
@@ -23,6 +36,7 @@
             <div class="views">views: {{item.views}}</div>
             <div class="answers">answers: {{item.answers|length}}</div>
         </div>
+        {% set i = i + 1 %}
     {% endfor %}
     <div id="paginatorBottom" class="paginator"></div>
 {% endblock body%}

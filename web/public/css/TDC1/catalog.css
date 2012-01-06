@@ -1,0 +1,67 @@
+#catalogTable {
+    width:100%;
+    margin:1.0em 0.0em;
+}
+#catalogTable th {
+    background-color: rgb(131, 131, 131);
+    padding: 8px;
+    color: rgb(240, 240, 240);
+    text-shadow: 0px 1px 1px rgb(50, 50, 50);
+}
+#catalogTable th:first-child {
+    border-radius:10px 0px 0px 0px;
+}
+#catalogTable th:last-child {
+    border-radius:0px 10px 0px 0px;
+}
+#catalogTable tr:last-child td {
+    border-bottom: 1px solid rgb(131,131,131);
+}
+#catalogTable td {
+    padding:8px;
+    text-align:left;
+    border-bottom: 1px dotted rgb(150, 150, 150);
+}
+#catalogTable td:first-child {
+    border-left: 1px solid rgb(131, 131, 131)
+}
+#catalogTable td:last-child {
+    border-right: 1px solid rgb(131, 131, 131)
+}
+#catalogTable td.icon {
+    width:60px;
+    padding-left:20px;
+    padding-right:20px;
+}
+
+#catalogTable td.info {
+}
+
+#catalogTable td.summary {
+    text-align:justify;
+    width:35%;
+    font-size: 0.85em;
+}
+
+#catalogTable td.views,
+#catalogTable td.rating {
+    text-align:center;
+    width:50px;
+}
+#catalogTable td a.video {
+    font-size:1.5em;
+    margin-bottom:0.15em;
+    display:block;
+}
+
+#catalogTable td label.author,
+#catalogTable td label.trt {
+    font-size:0.8em;
+}
+
+#catalogTable td label.author {
+    display:block;
+}
+.paginator {
+    text-align:right;
+}
