@@ -133,7 +133,7 @@
                             </div>
                             
                             <div id="menuMarker_hldr">
-                                <div id="home_mrkr" class="currentMenuMarker">
+                                <div id="home_mrkr" class="menuMarker">
                                 </div><div id="catalog_mrkr" class="menuMarker">
                                 </div><div id="faq_mrkr" class="menuMarker">
                                 </div><div id="qa_mrkr" class="menuMarker">
@@ -142,7 +142,9 @@
                             </div>
                 </div><div id="navBarPost"></div>
             </div>
+
             <div id="headerSeparator"></div>
+            
             <div id="contentArea_hldr">
                 {% block contentArea %}{% endblock contentArea %}
             </div>
@@ -227,6 +229,26 @@
                 var target = src.attr('target');
                 if (target) document.location=target;
             });
+            
+            // handle menu bar
+            var page = String(document.location);
+            if (page.search("\/catalog") !== -1) {
+                $("#catalog_mrkr").addClass("currentMenuMarker");
+                $("#catalog_mrkr").toggleClass("menuMarker");
+            } else if (page.search("\/faq") !== -1) {
+                $("#faq_mrkr").addClass("currentMenuMarker");
+                $("#faq_mrkr").toggleClass("menuMarker");
+            } else if (page.search("\/qa") !== -1) {
+                $("#qa_mrkr").addClass("currentMenuMarker");
+                $("#qa_mrkr").toggleClass("menuMarker");
+            } else if (page.search("\/about") !== -1) {
+                $("#about_mrkr").addClass("currentMenuMarker");
+                $("#about_mrkr").toggleClass("menuMarker");
+            } else {
+                $("#home_mrkr").addClass("currentMenuMarker");
+                $("#home_mrkr").toggleClass("menuMarker");
+            }
+
             // scrollpanes
             $(".scrollPane").jScrollPane();
 

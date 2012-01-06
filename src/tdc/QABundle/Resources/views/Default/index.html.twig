@@ -28,9 +28,7 @@
 {% endblock body%}
 
 {% block sidebar %}
-{% include 'tdcQABundle:Default:sidebar.html.twig' with 
-    { 'mode':'index'} 
-%}
+{% render "tdcQABundle:Default:sideBar" with { 'mode':'index'} %}
 {% endblock sidebar %}
 
 {% block javascripts %}

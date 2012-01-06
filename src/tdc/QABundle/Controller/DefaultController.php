@@ -21,14 +21,10 @@ class DefaultController extends Controller
                      ->getQuery()
                      ->getResult(); 
         
-        $popularTags = $this->get('tdc.QAService')->getPopularTags();
-        $popularQuestions = $this->get('tdc.QAService')->getPopularQuestions();
         return $this->render('tdcQABundle:Default:index.html.twig',
                               array('questions'=> $questions,
-                                    'tags'=>$popularTags,
                                     'start'=>$start,
-                                    'max'=>$max,
-                                    'popularQuestions'=>$popularQuestions));
+                                    'max'=>$max));
     }
     
     public function viewAction($id)
@@ -193,5 +189,14 @@ class DefaultController extends Controller
         $popularTags = $this->get('tdc.QAService')->getPopularTags($limit);
         return $this->render(':TDC1:tagcloud.html.twig',
                             array('tags'=>$popularTags));
+    }
+    public function sideBarAction($mode) {
+        $popularTags = $this->get('tdc.QAService')->getPopularTags();
+        $popularQuestions = $this->get('tdc.QAService')->getPopularQuestions();
+        return $this->render('tdcQABundle:Default:sidebar.html.twig',
+                              array('tags'=>$popularTags,
+                                    'popularQuestions'=>$popularQuestions,
+                                    'mode'=>$mode));
+
     }
 }

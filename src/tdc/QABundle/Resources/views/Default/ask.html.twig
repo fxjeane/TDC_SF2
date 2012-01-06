@@ -62,10 +62,7 @@
 {% endblock %}
 
 {% block sidebar %}
-{% include 'tdcQABundle:Default:sidebar.html.twig' with
-    {'tags': tags,
-     'mode': 'ask'} 
-%}
+{% render "tdcQABundle:Default:sideBar" with { 'mode':'ask'} %}
 {% endblock sidebar %}
 
 {% block javascripts %}
