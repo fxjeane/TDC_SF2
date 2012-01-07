@@ -15,7 +15,6 @@
     width:665px;
     display:inline-block;
     min-height:470px;
-    background-color: rgba(255, 255, 255, 0.35);
 }
 
 .questionText, .answerText {
@@ -47,14 +46,15 @@
 span.tag,
 span.addedTag {
     font-size:0.85em;
-    background-color:rgb(0,102,255);
+    background-color:rgb(0,72,225);
     border-radius:5px;
     padding:4px 6px;
     box-shadow: 0px 1px 1px 0px rgb(40,40,40);
     margin:2px 4px;
 }
 .tags .tag a {
-    color: rgb(220,220,220);
+    color: rgb(240, 240, 240);
+    text-shadow: 0px -1px 1px rgb(50,50,50);
 }
 .questionArea .answerTitle {
     border-top:1px dotted rgb(194,194,194);
@@ -68,7 +68,8 @@ span.addedTag {
 .answerTitle {
     font-style:italic;
 }
-#paginatorBottom {
+#paginatorBottom,
+#paginatorTop {
     padding:15px 0px;
 }
 /***************
@@ -155,8 +156,20 @@ label.error{
     margin-left:20px;
     display:inline-block;
     vertical-align:top;
-}
 
+}
+#popularQuestions,
+#popularTags {
+    padding:7px;
+    border-radius:10px;
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.5)), color-stop(100%,rgba(255,255,255,0)));
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
+    background: -o-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
+    background: -ms-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
+    background: linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', endColorstr='#00ffffff',GradientType=0 );
+}
 .newQuestionBtn {
     margin-bottom:15px;
     width: 100%;
@@ -171,8 +184,6 @@ label.error{
 
 .tdcButtonDown {
     box-shadow: 0px 1px 0px 1px rgb(100,100,100),0px -1px 0px 1px rgb(100,100,100), inset 0px 0px 9px 0px rgb(70,70,70);
-    border-top: 1px solid #323232 !important;
-    border-bottom: 1px solid #C2C2C2;
 }
 .popularTags {
     font-size: 1.5em;
@@ -180,4 +191,8 @@ label.error{
     padding: 5px 0px;
     margin: 5px 0px;
     margin-bottom: 10px;
+    text-align:right;
+}
+.paginator {
+    text-align:right;
 }

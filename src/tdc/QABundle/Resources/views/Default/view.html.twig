@@ -1,6 +1,8 @@
 {% extends 'tdcQABundle:Default:layout.html.twig' %}
 {% block titleName %}{{question.title}}{% endblock %}
 
+{% block qaAction %}:View Question{%endblock%}
+
 {% block body %}
     > <a href="{{ path("tdc_qa_homepage")}}">Q & A</a>
         <div class="questionTitle">{{ question.title }}</div>

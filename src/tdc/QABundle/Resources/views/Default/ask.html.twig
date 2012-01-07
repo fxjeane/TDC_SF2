@@ -10,10 +10,8 @@
     %}
     <script src="{{ asset_url }}" type="text/javascript"  /></script>
     {% endjavascripts %}
-
-
-
 {% endblock header_javascripts %}
+
 
 {% block stylesheets %}
     {{ parent() }}
@@ -27,9 +25,9 @@
     {% endstylesheets %}
 {% endblock %}
 
-{% block body %}
-<h2>Ask Question</h2>
+{% block qaAction %}:New Question{%endblock%}
 
+{% block body %}
 <form action="{{ path('tdc_qa_ask') }}" method="post" {{ form_enctype(questionForm) }}
     id="questionForm" novalidate="novalidate" >
     <table>
@@ -65,9 +63,8 @@
 {% render "tdcQABundle:Default:sideBar" with { 'mode':'ask'} %}
 {% endblock sidebar %}
 
-{% block javascripts %}
+{% block javascript_post %}
     {{parent()}}
-    <script>
     $("#questionForm").validate({
         rules:{
             "form[tags]":{
@@ -176,5 +173,4 @@
         },
         minLength: 3
     });
-    </script>
 {% endblock %}

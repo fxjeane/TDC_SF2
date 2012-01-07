@@ -52,4 +52,12 @@
     $('#loginFormSubmit_btn').click(function(evt){
       document.tdcLogin.submit();
     });
+
+    $(document).keypress(function(e) {
+            if(e.which == 13) {
+                jQuery(this).blur();
+                jQuery('#loginFormSubmit_btn').focus().click();
+            }
+        });
+
 {% endblock %}

@@ -29,7 +29,7 @@
 
 {% block contentArea %}
 <div id="contentHolder">
-    <h1>Q&A</h1>
+    <h1>Q&A{% block qaAction %}{%endblock%}</h1>
     <div class="questionArea">
     {%block body %}{% endblock %}
     </div>
@@ -40,13 +40,8 @@
 </div>
 {% endblock contentArea %}
 
-{% block javascripts %}
+{% block javascript_post %}
     {{ parent() }}
-    <script >
-    $("#sidebarArea").css("position","relative");
-    $("#sidebarArea").css("top",-$(".questionArea").outerHeight());
-    $("#sidebarArea").css("left",$(".questionArea").outerWidth());
-    $("#contentHolder").height($("#contentHolder").height() - $("#sidebarArea").outerHeight());
 
    $(document).ready(function(){
        SyntaxHighlighter.all();
@@ -89,5 +84,4 @@
            external_image_list_url : "lists/image_list.js",
            media_external_list_url : "lists/media_list.js",
     });
-   </script>
-{% endblock javascripts %}
+{% endblock javascript_post %}

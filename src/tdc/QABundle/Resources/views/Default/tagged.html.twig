@@ -9,15 +9,16 @@
     {% endif %}
 {% endblock %}
 
+{% if num > 1 %}
+    {% block qaAction %}:{{tag.value|capitalize}}{%endblock%}
+{% endif %}
+
+
 {% block body %}
-<div class="questionArea">
+<div id="paginatorTop" class="paginator"></div>
     {% if num > 1 %}
     <div class="tagged">Tags</div>
-    <div id="paginatorTop" class="paginator"></div>
-    <div id="paginatorBottom" class="paginator"></div>
     {% else %}
-        <div class="tagged">{{tag.value }} </div>
-        <div id="paginatorTop" class="paginator"></div>
         {% for item in questions %}
         <div class='questionSummary'>
             <div class="questionTitle"><a href="{{path("tdc_qa_view",{'id': item.id}) }}">{{item.title}}</a></div>
@@ -40,9 +41,8 @@
             <div class="answers">answers: {{item.answers|length}}</div>
         </div>
         {% endfor %}
-        <div id="paginatorBottom" class="paginator"></div>
     {% endif %}
-</div>
+<div id="paginatorBottom" class="paginator"></div>
 {% endblock %}
 
 {% block sidebar %}
@@ -51,15 +51,15 @@
     {% endif %}
 {% endblock sidebar %}
 
-{% block javascripts %}
+{% block javascript_post %}
     {{ parent() }}
-    <script >
     $('.paginator').tdcPaginator({
                 start:{{start}},
                 max:{{max}},
                 lastLabel:">>",
                 firstLabel: "<<",
                 trailLinks: 3,
+                currentPageColor:"rgb(0,105,255)",
                 {% if num > 1 %}
                     queryUrl:'{{ path("tdc_ws_tagged_list",{'tag':"all"}) }}',
                     targetUrl:'{{ path("tdc_qa_tagged",{"tag":'all'}) }}'
@@ -68,5 +68,4 @@
                     targetUrl:'{{ path("tdc_qa_tagged",{"tag":tag.value}) }}'
                 {% endif %}
                 });
-   </script>
-{% endblock javascripts %}
+{% endblock javascript_post %}

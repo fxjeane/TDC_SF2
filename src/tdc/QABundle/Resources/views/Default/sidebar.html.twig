@@ -2,27 +2,33 @@
 <div class="newQuestionBtn tdcButton" >Ask Question</div>
 {% elseif mode =='view' %}
 <div class="newQuestionBtn tdcButton" >Answer Question</div>
+{% else %}
+<div class="newQuestionBtn tdcButton" >Ask Question</div>
 {% endif %}
 
-<div class="popularTags">Popular Questions</div>
-{% for item in popularQuestions %}
-<div class='tags'>
-        <a href="{{path("tdc_qa_view",{"id":item.id})}}">{{ item.title }}</a>
+<div id="popularQuestions">
+    <div class="popularTags">Popular Questions</div>
+    {% for item in popularQuestions %}
+    <div class='tags'>
+            <a href="{{path("tdc_qa_view",{"id":item.id})}}">{{ item.title }}</a>
+    </div>
+    {% endfor %}
 </div>
-{% endfor %}
 
-<div class="popularTags">Popular Tags</div>
-{% for item in tags %}
-<div class='tags'>
-    <span class="tag">
-        <a href="{{path("tdc_qa_tagged",{"tag":item.value})}}">{{ item.value }}</a>
-    </span> 
-    x {{item.tag_count}} 
+<div id="popularTags">
+    <div class="popularTags">Popular Tags</div>
+    {% for item in tags %}
+    <div class='tags'>
+        <span class="tag">
+            <a href="{{path("tdc_qa_tagged",{"tag":item.value})}}">{{ item.value }}</a>
+        </span> 
+        x {{item.tag_count}} 
+    </div>
+    {% endfor %}
 </div>
-{% endfor %}
 
-{% block javascripts %}
-    <script >
+{% block javascript_post %}
+    <script>
     $(".newQuestionBtn").mousedown(function(){
         $(this).addClass("tdcButtonDown");
     });
@@ -34,7 +40,9 @@
             window.location = "{{path("tdc_qa_ask")}}";
         {% elseif mode =='view' %}
             window.location = "{{path("tdc_qa_answer",{'id':question.id}) }}" 
+        {% else %}
+            window.location = "{{path("tdc_qa_ask")}}";
         {% endif %}
     });
-   </script>
-{% endblock javascripts %}
+    </script>
+{% endblock javascript_post %}

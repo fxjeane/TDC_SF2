@@ -45,17 +45,16 @@
 {% render "tdcQABundle:Default:sideBar" with { 'mode':'index'} %}
 {% endblock sidebar %}
 
-{% block javascripts %}
+{% block javascript_post %}
     {{ parent() }}
-    <script >
     $('.paginator').tdcPaginator({
                 start:{{start}},
                 max:{{max}},
                 lastLabel:">>",
                 firstLabel: "<<",
                 trailLinks: 3,
+                currentPageColor:"rgb(0,105,255)",
                 queryUrl:'{{ path("tdc_ws_question_list")}}',
                 targetUrl:'{{ path("tdc_qa_homepage") }}'
                 });
-   </script>
-{% endblock javascripts %}
+{% endblock javascript_post %}
