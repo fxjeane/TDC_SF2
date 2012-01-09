@@ -9,7 +9,6 @@ use tdc\QABundle\Entity\QuestionTag;
 
 class QAService extends ContainerAware
 {
-
     public function __construct($doctrine)
     {
         $this->doctrine = $doctrine;
@@ -41,4 +40,15 @@ class QAService extends ContainerAware
         return $tagval;
     }
 
+    public function getLatestQuestions($limit=5) {
+        $rep = $this->doctrine->getrepository('tdcQABundle:Question');
+        $tagval = $rep->createQueryBuilder('q')
+                     ->select('q')
+                     ->orderBy('q.created','DESC')
+                     ->setFirstResult(0)
+                     ->setMaxResults($limit)
+                     ->getQuery()
+                     ->getResult(); 
+        return $tagval;
+    }
 }

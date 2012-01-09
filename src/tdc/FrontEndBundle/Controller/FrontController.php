@@ -19,9 +19,14 @@ class FrontController extends Controller
             $photoData[] = $photo;
         }
 
-    
+        $videos = $this->get('tdc.FrontEndService')->getPopularVideos($limit=10);
+        $questions = $this->get('tdc.QAService')->getLatestQuestions($limit=10);
+
         return $this->render('tdcFrontEndBundle:Default:index.html.twig',
-                            array('bannerImages'=>json_encode($photoData)));
+                            array('bannerImages'=>json_encode($photoData),
+                                'videos'=>$videos,
+                                'questions'=>$questions
+                                ));
     }
 
     public function catalogListAction($entity,$start,$max)

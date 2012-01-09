@@ -176,6 +176,11 @@
                                 Register
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{path("tdc_qa_homepage")}}">
+                                Q&A
+                                </a>
+                            </li>
                         </td>
                         <td>
                             <li>
@@ -216,7 +221,7 @@
                 <img src="{{path("tdc_front_homepage")}}../public/images/TDC1/footervseparator.png" class="footerSeparator"/>
                 <div id="tagcloud_hldr">
                     <div class="footerBlurbTitle">Tag Cloud</div>
-                    {% render "tdcQABundle:Default:tagCloud" with {'limit': 15} %}
+                    {% render "tdcQABundle:Default:tagCloud" with {'limit': 20} %}
                 </div>
                 <div id="copyright">All content copyright (c) 2012 - Rudy Cortes </div>
             </div>

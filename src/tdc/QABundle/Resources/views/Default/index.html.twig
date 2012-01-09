@@ -16,6 +16,8 @@
 
 {% block body %}
     <div id="paginatorTop" class="paginator"></div>
+    
+    <div id="questions_hldr">
     {% set i = 0 %}
     {% for item in questions %}
         <div class='questionSummary row_{{ cycle(['0', '1'], i) }}'>
@@ -38,6 +40,8 @@
         </div>
         {% set i = i + 1 %}
     {% endfor %}
+    </div>
+
     <div id="paginatorBottom" class="paginator"></div>
 {% endblock body%}
 

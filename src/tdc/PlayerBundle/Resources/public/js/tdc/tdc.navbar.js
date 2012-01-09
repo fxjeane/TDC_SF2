@@ -38,9 +38,9 @@
         index.addClass("tdcTabBarBtnSelected widgetControlActive");
         index.css("float", "left");
         index.css("border-top-left-radius", o.cornerRadius);
-        index.css("line-height", (parseInt(o.tabHeight) - 1) + "px");
+        index.css("line-height", parseInt(o.tabHeight) + "px");
         index.css("text-align", "center");
-        index.width((e.width() * 0.5) - 1);
+        index.width(e.width() * 0.5);
         index.html("Index");
         tabBar.append(index);
         index.click(e, self.showIndex);
@@ -50,9 +50,9 @@
         notes.addClass("tdcTabBarBtn widgetControlGray");
         notes.css("float", "left");
         notes.css("border-top-right-radius", o.cornerRadius);
-        notes.css("line-height", (parseInt(o.tabHeight) - 1) + "px");
+        notes.css("line-height", parseInt(o.tabHeight) + "px");
         notes.css("text-align", "center");
-        notes.width((e.width() * 0.5) - 1);
+        notes.width((e.width() * 0.5)-1);
         notes.html("Notes");
         tabBar.append(notes);
         notes.click(e, self.showNotes);
@@ -149,7 +149,7 @@
             }
             topPad = parseInt(indexCnt.css("padding-top"));
             botPad = parseInt(indexCnt.css("padding-bottom"));
-            indexCnt.height(e.height() - tabBar.height() - topPad - botPad - 1);
+            indexCnt.height(e.height() - tabBar.height()  - topPad - botPad - 1);
             // compare against the size of the first link
             liTopPad = parseInt(li.css("padding-top"));
             liBotPad = parseInt(li.css("padding-top"));

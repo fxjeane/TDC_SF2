@@ -30,8 +30,8 @@
         {% block stylesheets %}
             {% stylesheets  
              debug=false
-            '@tdcFrontEndBundle/Resources/public/css/main.css' 
-            '@tdcPlayerBundle/Resources/public/css/player.css' 
+            'public/css/TDC1/main.css' 
+            'public/css/TDC1/player.css' 
             filter='cssrewrite'
             output='css/*.css'
             %}
@@ -44,14 +44,13 @@
             {% block headerBar %}
             {% endblock %}
 
-            <div id="contentFrame" class="grayGradient02">
+            <div id="contentFrame">
                 {% block contentArea%}{% endblock %}
             </div>
 
             {% block footerBar %}
             {% endblock %}
         </div>
-        <div id="console"></div>
         <script>
         {% block javascripts %}{% endblock %}
         </script>

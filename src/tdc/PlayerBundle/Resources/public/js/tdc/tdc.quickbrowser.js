@@ -14,6 +14,7 @@
         controlRadius: "0px",
         listButton: true,
         thumbnailButton: true,
+        pageRoot: "",
         searchBar: {
             show: true,
             width: "150px"
@@ -46,7 +47,9 @@
             if (o.listButton) {
                 var listButton = $('<div id="listBtn">');
                 listButton.addClass('button widgetControlActive');
-                listButton.html("li");
+                var img = $('<img>');
+                img.attr("src",o.pageRoot+"../public/images/TDC1/questions.png");
+                listButton.html(img);
                 dispModeButtons.append(listButton);
                 listButton.css("border-top-left-radius", o.controlRadius);
                 listButton.css("border-bottom-left-radius", o.controlRadius);
@@ -69,7 +72,9 @@
             if (o.thumbnailButton) {
                 var thumbButton = $('<div id="thumbnailBtn">');
                 thumbButton.addClass('button widgetControlGray');
-                thumbButton.html("th");
+                var img = $('<img>');
+                img.attr("src",o.pageRoot+"../public/images/TDC1/browser.png");
+                thumbButton.html(img);
                 dispModeButtons.append(thumbButton);
                 thumbButton.css("border-top-right-radius", o.controlRadius);
                 thumbButton.css("border-bottom-right-radius", o.controlRadius);
@@ -116,10 +121,11 @@
             searchBarIcon.addClass("widgetControlGray");
             searchBar.append(searchBarIcon);
             searchBarIcon.css("float", "left");
-            searchBarIcon.css("padding", "0px 4px");
             searchBarIcon.css("border-top-left-radius", o.controlRadius);
             searchBarIcon.css("border-bottom-left-radius", o.controlRadius);
-            searchBarIcon.html("IC");
+            var img = $('<img>');
+            img.attr("src",o.pageRoot+"../public/images/TDC1/searchIcon.png");
+            searchBarIcon.html(img);
             bl = parseInt(searchBarIcon.css("border-left-width"));
             br = parseInt(searchBarIcon.css("border-right-width"));
             searchBarIcon.height(searchBar.height() - bl - br );
@@ -128,7 +134,7 @@
             var searchForm = $('<form name="tdcBrowserSearch" id="searchForm">');
             searchBar.append(searchForm);
 
-            searchForm.width(searchBar.width() - searchBarIcon.width() - 17);
+            searchForm.width(searchBar.width() - searchBarIcon.width() - 39);
             searchForm.css("display", "inline");
 
             var searchField = $('<input name="tdcBrowserSearchValue" id="searchField" >');
@@ -147,7 +153,7 @@
         }
 
         // Resize the label
-        label.width(labelWidth - 12);
+        label.width(labelWidth - 85);
         },
     ////.
     // Functions
@@ -182,7 +188,7 @@
 $.widget("tdc.tdcBrowserContent", {
     options: {
         player:null,
-        height: "300px",
+        height: "400px",
         pageRoot:"",
         mode: "browse"
     },
@@ -210,7 +216,7 @@ $.widget("tdc.tdcBrowserContent", {
             var service = o.pageRoot+"ws/videolist/0/10";
             $.getJSON(service, function(data) {
                 if (data.length > 0) {
-                    var listTable = $("<table width='100%' id='itemsList'>");
+                    var listTable = $("<table width='100%' id='itemsList' cellspacing='0px'>");
                     listTable.css("position","relative");
                     listTable.css("z-index","10");
                     var rowclass = 0;

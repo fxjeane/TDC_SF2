@@ -3,8 +3,9 @@
 {% block titleName %}Player{% endblock %}
 
 {% block headerBar %}
-  <div id="headerBar" class="grayGradient01">
+  <div id="headerBar" >
     <span class="videoTitle">Now Playing: <span class="videoTitleName"></span></span>
+    <div id="closeButton">x</div>
     <div id="tdcVideoInfo"></div>
   </div>  
 {% endblock headerBar %}
@@ -23,10 +24,15 @@
 
 {% block javascripts %}
     $(document).ready(function() {
+        
+        $('#closeButton').click(function(ev){
+            document.location = "{{ path("tdc_front_homepage") }}";
+        });
+
         var player = $("#tdcPlayerRoot").tdcPlayer({
             pageRoot:"{{path("tdc_front_homepage")}}",
             videoId:{{videoId}},
-            cornerRadius:"10px"
+            cornerRadius:"0px"
         });
     });
 {% endblock %}

@@ -54,7 +54,7 @@
                         backgroundColor: '#000000',
                         backgroundGradient: 'none',
                         backgroundImage:rootUrl+"/"+o.splashImage,
-                        borderRadius:'20',
+                        borderRadius:'0',
                         border:'0px solid #000000' 
                     },
                     "clip":
@@ -78,7 +78,7 @@
                              url: 'flowplayer.controls-3.2.5.swf',
                              // display properties such as size, location and opacity
                              opacity: 0.8,
-                             borderRadius:15,
+                             borderRadius:0,
                              // styling properties (will be applied to all plugins)
                              backgroundGradient: 'low',
                              onHidden: function(){
@@ -137,7 +137,8 @@
                 spacer:o.spacer,
                 borderRadius:o.cornerRadius,
                 navbar:{
-                    controlRadius:o.cornerRadius
+                    controlRadius:o.cornerRadius,
+                    pageRoot:o.pageRoot
                 },
                 content:{
                     player:e,

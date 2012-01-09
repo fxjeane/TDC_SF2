@@ -52,8 +52,31 @@ class FrontEndService extends ContainerAware
         $connection->request('GET', 
                 $connection->url('1/statuses/user_timeline'), 
                 array('screen_name' => 'TDChannel'));
+        $user = json_decode($connection->response['response']);
+        $connection->request('GET', 
+                $connection->url('1/statuses/mentions'));
+        $mentions = json_decode($connection->response['response']);
+        $sa = array();
+        if (($user) and ($mentions)) {
+            $outArray = array_merge($user,$mentions);
+            foreach ($outArray as $arr) {
+                $sa[strtotime($arr->created_at)]= $arr;
+            }
+            ksort($sa);
+            $sa = array_reverse($sa);
+        }
+        return $sa;
+    }
 
-        return json_decode($connection->response['response']);
+    public function getPopularVideos($limit=5) {
+        $rep = $this->doctrine->getrepository('tdcVideoBundle:Video');
+        $videos = $rep->createQueryBuilder('p')
+                      ->setFirstResult(0)
+                      ->setMaxResults($limit)
+                      ->orderBy('p.views','DESC')
+                      ->getQuery()
+                      ->getResult();
+        return $videos;
     }
 }
 

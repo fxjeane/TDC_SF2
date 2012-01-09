@@ -87,6 +87,8 @@ body
     background: linear-gradient(top,  rgb(213,213,213) 0%,rgb(227,227,227) 59%,rgb(237,237,237) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d5d5d5', endColorstr='#ededed',GradientType=0 );
     position:relative;
+    background-image: url("../../public/images/TDC1/headerBG.jpg");
+
 }
 #nav_hldr {
     display:inline-block;
@@ -110,15 +112,6 @@ body
     display:inline-block;
     position:relative;
     z-index:10;
-
-    background: #5d5d5d;
-    background: -moz-linear-gradient(top,  #5d5d5d 0%, #555555 50%, #4a4a4a 51%, #5a5a5a 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5d5d5d), color-stop(50%,#555555), color-stop(51%,#4a4a4a), color-stop(100%,#5a5a5a));
-    background: -webkit-linear-gradient(top,  #5d5d5d 0%,#555555 50%,#4a4a4a 51%,#5a5a5a 100%);
-    background: -o-linear-gradient(top,  #5d5d5d 0%,#555555 50%,#4a4a4a 51%,#5a5a5a 100%);
-    background: -ms-linear-gradient(top,  #5d5d5d 0%,#555555 50%,#4a4a4a 51%,#5a5a5a 100%);
-    background: linear-gradient(top,  #5d5d5d 0%,#555555 50%,#4a4a4a 51%,#5a5a5a 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5d5d5d', endColorstr='#5a5a5a',GradientType=0 );
 
     background: #868686;
     background: -moz-linear-gradient(top,  #868686 0%, #808080 50%, #777777 51%, #838383 100%);
@@ -240,6 +233,9 @@ body
     z-index:11;
     border-bottom: 1px solid rgb(64,64,64);
 }
+#mainCarousel_hldr .agile_carousel {
+    box-shadow:none !important;
+}
 /**********************
 * Content Area
 **********************/
@@ -266,7 +262,7 @@ body
 * Footer
 **********************/
 #footer_hldr {
-    height:310px;
+    height:340px;
     padding:0px 10px;
     border-top: 1px solid rgb(220, 220, 220);
     color:rgb(220,220,220);
@@ -326,6 +322,9 @@ body
 #siteMapTable {
     width:100%;
 }
+#siteMapTable td {
+    vertical-align:top;
+}
 #siteMapTable li {
     font-size:0.9em;
 }
@@ -347,6 +346,7 @@ body
 #rss_hldr img {
     float:left;
     vertical-align:top;
+    margin:0px 3px;
 }
 .tagcloud {
     margin:0px 4px;
@@ -358,14 +358,14 @@ body
 #footer_hldr a,
 #footer_hldr a:visited {
     text-decoration:none;
-    color:rgb(255, 184, 51);
+    color: rgb(286, 207, 61);
     text-shadow: 0px 0px 4px black;
 }
 #copyright {
     font-size: 0.7em;
     font-style: italic;
-    position: relative;
-    margin-left: 720px;
+    text-align:right;
+    margin-top:15px;
 }
 /*********************
 * jScrollPane overrides
@@ -416,6 +416,12 @@ input[type='email'],
 input[type='password'] {
     height:30px;
     line-height:30px;
+    background-color: rgb(235,235,235);
+    border-radius: 10px;
+    border: 1px solid rgb(180, 180, 180);
+    padding: 2px 8px;
+    color: rgb(0, 102, 255);
+    outline: none;
 }
 .tdcButton {
     display:inline-block;
@@ -459,6 +465,9 @@ input[type='password'] {
     box-shadow: inset 0px 0px 0.9px 0px black;
     border-image: initial;
     border-color: rgb(150, 150, 150);
+}
+.paginator a:hover {
+    background-color: rgb(230, 230, 230);
 }
 .row_0 {
     background: rgba(246,246,246,0.75);

@@ -15,8 +15,8 @@
 {% block stylesheets %}
     {{ parent() }}
     {% stylesheets  
-    'public/css/TDC1/frontEnd.css'
     'public/css/agile_carousel.css'
+    'public/css/TDC1/frontEnd.css'
     %}
     <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
     {% endstylesheets %}
@@ -35,13 +35,29 @@
     </div>
     
     <div id="popularVideos_hldr">
-        <div class="contentBlurbTitle">Popular Videos</div>
+        <div class="contentBlurbTitle">Top 10 Videos</div>
+        <div id="topVideo_hldr" class="scrollPane">
+        {% for video in videos%}
+            <li>
+                <a>{{video.name}}</a>
+            </li>
+        {% endfor %}
+        </div>
     </div>
 
     <div id="latestQuestions">
         <div class="contentBlurbTitle">Latest Questions</div>
-
+        <div id="latestQuestions_hldr" class="scrollPane">
+        {% for question in questions%}
+            <li>
+                <a>{{question.title}}</a>
+            </li>
+        {% endfor %}
+        </div>
     </div>
+    <a href="{{path("tdc_user_subscribe")}}">
+        <img src="{{path("tdc_front_homepage")}}../public/images/TDC1/subscribeNow.png"/>
+    </a>
 {% endblock contentArea %}
 
 {% block javascript_post %}

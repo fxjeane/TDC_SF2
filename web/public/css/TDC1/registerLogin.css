@@ -4,66 +4,36 @@
     width: 325px;
     height: 435px;
     border-radius:10px;
-    
-}
-#helpBlurb_pointer {
-    width:30px;
-    height:20px;
-    display:inline-block;
-    background-image:url('../../public/images/TDC1/helpBaloonPointer.png');
-    position:absolute;
-    top:407px;
-    left:858px;
-}
-#helpBlurb_hldr {
-    width: 250px;
-    height: 250px;
-    background-color: rgb(0, 102, 255);
-    border-radius: 48px;
-    color: rgb(240, 240, 240);
-    padding: 14px;
-    border: 2px solid rgb(0, 51, 128);
-    font-family: cursive;
-    font-size: 1.5em;
-    display: inline-block;
-    vertical-align: top;
-    margin-left: 30px;
-    box-shadow: 4px 4px 10px 0px rgb(100,100,100);
 }
 #registerForm_hldr,
 #loginForm_hldr {
     background-color: rgb(210, 210, 210);
-    display: inline-block;
-    width: 500px;
-    padding: 10px;
-    padding-left: 80px;
-    margin-right: 20px;
+    width: 525px;
+    padding: 30px;
+    margin: 20px auto;
     vertical-align:top;
     border-radius:10px;
-
-    background: -moz-linear-gradient(top,  rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.5)), color-stop(100%,rgba(255,255,255,0)));
-    background: -webkit-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
-    background: -o-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
-    background: -ms-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
-    background: linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', endColorstr='#00ffffff',GradientType=0 );
-
+    text-shadow:0px 1px 0px rgb(245,245,245);
+    
+    background-color:rgb(217,217,217);
+    border:1px solid rgb(180,180,180);
+    box-shadow:0px 5px 15px 0px rgb(50,50,50);
 }
 #registerForm_hldr,
 #loginForm_hldr {
-    height: 415px;
-    padding-top:10px;
+    height: 260px;
 }
 #loginForm_hldr {
-    display:block;
     width: 300px;
-    padding: 15px 60px;
-    margin: 10px auto;
+    height:220px;
+    padding: 30px 60px;
+    margin: 40px auto;
 }
 #formButton_hldr {
-    margin-top:10px;
     text-align:right;
+}
+#registerForm_hldr #formButton_hldr {
+    margin-top:10px;
 }
 #registerFormSubmit_btn, 
 #loginFormSubmit_btn{

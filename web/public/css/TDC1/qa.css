@@ -1,3 +1,8 @@
+#questions_hldr {
+    border:1px solid rgb(180,180,180);
+    border-radius:10px;
+    box-shadow:0px 5px 15px 0px rgb(50,50,50);
+}
 .questionSummary,
 .questionArea .questionTitle {
     border-bottom:1px dotted rgb(194,194,194);
@@ -10,6 +15,12 @@
 
 .questionTitle, .answerTitle {
     color:rgb(0, 88, 235);
+}
+#questions_hldr .questionSummary:first-child {
+    border-radius: 10px 10px 0px 0px;
+}
+#questions_hldr .questionSummary:last-child {
+    border-radius: 0px 0px 10px 10px;
 }
 .questionArea {
     width:665px;
@@ -47,6 +58,7 @@ span.tag,
 span.addedTag {
     font-size:0.85em;
     background-color:rgb(0,72,225);
+    background-color:rgb(0,102,255);
     border-radius:5px;
     padding:4px 6px;
     box-shadow: 0px 1px 1px 0px rgb(40,40,40);
@@ -156,19 +168,14 @@ label.error{
     margin-left:20px;
     display:inline-block;
     vertical-align:top;
-
 }
 #popularQuestions,
 #popularTags {
     padding:7px;
     border-radius:10px;
-    background: -moz-linear-gradient(top,  rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.5)), color-stop(100%,rgba(255,255,255,0)));
-    background: -webkit-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
-    background: -o-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
-    background: -ms-linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
-    background: linear-gradient(top,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', endColorstr='#00ffffff',GradientType=0 );
+    border:1px solid rgb(180,180,180);
+    background-color:rgb(225,225,225);
+    margin-bottom:10px;
 }
 .newQuestionBtn {
     margin-bottom:15px;
