@@ -2,6 +2,10 @@
     border:1px solid rgb(180,180,180);
     border-radius:10px;
     box-shadow:0px 5px 15px 0px rgb(50,50,50);
+    background: rgb(219, 219, 219);
+    margin:10px;
+    margin-right:0px;
+    padding:10px;
 }
 .questionSummary,
 .questionArea .questionTitle {
@@ -45,15 +49,18 @@
     float:left;
     margin-right:30px;
     margin-left:15px;
+    margin-bottom:10px;
 }
 .tags {
     margin:5px 0px;
-    padding:4px 0px;
+    padding:10px;
     clear:both;
 }
-.questionArea .tags {
-    padding-top:10px;
+#popularQuestions .tags,
+#popularTags .tags{
+    padding:4px;
 }
+
 span.tag,
 span.addedTag {
     font-size:0.85em;
@@ -75,7 +82,15 @@ span.addedTag {
 .answerArea {
     padding: 4px;
     background-color:rgb(180,180,180);
-    padding-top:20px;
+    border-radius:10px;
+    margin-top:10px;
+}
+.answerArea .row_0:first-child {
+    border-radius:10px 10px 0px 0px;
+}
+.answerArea .row_0:last-child,
+.answerArea .row_1:last-child {
+    border-radius:0px 0px 10px 10px;
 }
 .answerTitle {
     font-style:italic;
@@ -89,6 +104,17 @@ span.addedTag {
 * Create Question
 *
 ***************/
+#questionForm,
+#answerForm {
+    background-color: rgb(210, 210, 210);
+    padding: 10px;
+    border: 1px solid rgb(180, 180, 180);
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px 0px rgb(50,50,50);
+    margin: 10px;
+    margin-bottom: 20px;
+    text-shadow:0px 1px 0px rgb(240,240,240); 
+}
 #questionForm table,
 #answerForm table{
     border-spacing:4px;
@@ -101,13 +127,10 @@ span.addedTag {
 #questionForm textarea,
 #answerForm input,
 #answerForm textarea {
-    background-color:rgb(80,80,80);
     border-radius:10px;
-    border-width:0px;
-    border-width: 0px;
-    box-shadow: 0px 1px 0px rgb(194,194,194), 0px -1px 0px rgb(40,40,40);
+    border:1px solid rgb(180,180,180);
     padding: 0px 5px;
-    color: rgb(194,194,194);
+    color: black;
     font-size: 1.0em;
 }
 
@@ -115,7 +138,7 @@ span.addedTag {
 #questionForm textarea,
 #answerForm input[type=text],
 #answerForm textarea{
-    width:500px;
+    width:540px;
     height:30px;
     line-height:30px;
     outline:none;
@@ -127,13 +150,22 @@ span.addedTag {
 }
 #questionForm .submitBtn,
 #answerForm .submitBtn {
-    width:585px;
+    width:590px;
     text-align:right;
     margin-top:5px;
 }
 #questionForm input[type=submit],
-#answerForm input[type=submit] {
-    padding:5px 10px;
+#answerForm input[type=submit],
+#questionForm input[type=button],
+#answerForm input[type=button] {
+    padding:10px 15px;
+    color:rgb(30,30,30);
+}
+#addTag_btn {
+    padding: 1px 15px;
+    border: 1px solid red;
+    border-image: initial;
+    color: red;
 }
 #questionForm button,
 #answerForm button {
@@ -142,7 +174,7 @@ span.addedTag {
 }
 #tagsField input[type=text],
 #tagsField input[type=text] {
-    width:400px;
+    width:435px;
 }
 #tagsRow {
     display:none;
@@ -157,7 +189,11 @@ label.error{
     display:block;
     margin:4px 0px;
 }
-
+#questionForm label,
+#answerForm label {
+    position: relative;
+    top: 7px;
+}
 /***************
 *
 * Side Bar
@@ -165,7 +201,7 @@ label.error{
 ***************/
 #sidebarArea {
     width:250px;
-    margin-left:20px;
+    margin-left:15px;
     display:inline-block;
     vertical-align:top;
 }

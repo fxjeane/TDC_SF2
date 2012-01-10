@@ -88,23 +88,24 @@
             <div id="header_hldr">
                 <div id="logo_hldr">
                     <img width="113px" id="headerLogo" 
-                        src="{{ path("tdc_front_homepage") }}../public/images/TDC1/tdcLogo_whiteBG.png"></img>
+                        src="{{ path("tdc_front_homepage") }}../public/images/TDC1/tdcLogo.png"></img>
                 </div>
 
                 <div id="nav_hldr">
                     <div id="userWelcome_hldr">
                         {% if app.user != "" %}
-                        <div class="contentBlurbTitle">Welcome {{app.user.name}}</div>
+                        <div class="headerBlurbTitle">Welcome {{app.user.name}}</div>
+                        {% else %}
+                        <div class="headerBlurbTitle">Welcome to TDChannel</div>
+
+
                         {% endif %}
                     </div>
 
-                    {% if app.user != "" %}
-                    <img src="{{path("tdc_front_homepage")}}../public/images/TDC1/vseparator.png" class="headerSeparator"/>
-                    {% endif %}
                     
-                    <div id="beSocial_hldr">
+                    <!-- div id="beSocial_hldr">
                         <div class="contentBlurbTitle">Lattest News</div>
-                    </div>
+                    </div -->
                 </div></br>
 
                 <div id="navBarPre">

@@ -41,7 +41,7 @@
         <tr>
             <td>{{ form_label(questionForm.text) }}</td>
             <td >
-                {{ form_widget(questionForm.text) }}<br/>
+                {{ form_widget(questionForm.text) }}
                 {{ form_errors(questionForm.text) }}
             </td>
         </tr>
@@ -51,7 +51,9 @@
         </tr>
         <tr>
             <td>{{ form_label(questionForm.tags) }}</td>
-            <td id="tagsField">{{ form_widget(questionForm.tags) }}</td>
+            <td id="tagsField">{{ form_widget(questionForm.tags) }}
+                <input type="button" class="tdcButton" value="Add Tag" id="addTag_btn" />
+            </td>
         </tr>
     </table>
     {{ form_rest(questionForm) }}

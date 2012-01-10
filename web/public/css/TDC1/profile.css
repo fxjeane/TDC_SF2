@@ -1,0 +1,62 @@
+#profile_hldr {
+    border-radius:10px;
+    box-shadow:0px 5px 10px 0px rgb(50,50,50);
+    margin: 15px;
+}
+#userNavBar {
+    display: inline-block;
+    vertical-align: top;
+    background-color: rgb(242, 242, 242);
+    border-radius: 10px 0px 0px 10px;
+    border: 1px solid rgb(180, 180, 180);
+    border-image: initial;
+    background-image:url("../../public/images/TDC1/verticalStripes.jpg");
+}
+#userNavBar ul {
+    margin: 0px;
+    padding: 0px;
+}
+#userNavBar li {
+    padding: 8px 30px;
+    margin: 0px;
+    border-bottom:1px solid rgb(180,180,180);
+    text-shadow:0px 1px 0px white;
+    background-color: rgb(230, 230, 230);
+    color: rgb(77, 77, 77);
+}
+#userNavBar li:first-child {
+    border-radius:10px 0px 0px 0px;
+}
+#userContent {
+    display: inline-block;
+    background-color: rgb(230, 230, 230);
+    border-radius: 0px 10px 10px 0px;
+    width: 714px;
+    padding: 10px;
+    border: 1px solid rgb(180, 180, 180);
+    border-left: 0px solid;
+    padding-left: 20px;
+    border-image: initial;
+    margin-left: -4px;
+}
+
+#userInfo_hldr,
+#subscription_hldr,
+#questions_hldr,
+#answers_hldr{
+    display:inline-block;
+    vertical-align:top;
+    background-color:rgb(240,240,240);
+    border:1px solid rgb(180,180,180);
+    padding:10px;
+    border-radius:10px;
+    width: 313px;
+    margin: 10px;
+}
+#userContent h2 {
+    border-bottom: 1px dotted;
+    margin: 0px;
+    margin-bottom: 10px;
+    font-size: 1.0em;
+    font-style: italic;
+}

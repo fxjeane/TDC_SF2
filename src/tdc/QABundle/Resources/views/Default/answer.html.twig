@@ -30,6 +30,26 @@
 
     <form action="{{ path('tdc_qa_answer',{'id':question.id}) }}" method="post" {{ form_enctype(answerForm) }}
         id="answerForm" novalidate="novalidate" >
+
+        <div class="originalQuestion">
+            <div class="questionTitle">{{ question.title|raw }}</div>
+            <div class="questionText">{{question.text|raw}}</div>
+            <div class="author">author: 
+                <i>{{question.user}}</i>
+            </div>
+            <div class="updated">updated: 
+                <i>{{ question.updated|date("m/d/Y H:i:s") }}</i>
+            </div>
+            <div class="views">views: {{question.views}}</div>
+            <div class="tags">
+                {% for tag in question.tags %}
+                <span class="tag">
+                    <a href="{{path("tdc_qa_tagged",{"tag":tag.value})}}">{{ tag.value }}</a>
+                </span>
+                {% endfor %}
+            </div>
+        </div>
+        
         <table>
             <tr>
                 <td>{{ form_label(answerForm.title) }}</td>
@@ -41,47 +61,32 @@
             <tr>
                 <td>{{ form_label(answerForm.text) }}</td>
                 <td >
-                    {{ form_widget(answerForm.text) }}<br/>
+                    {{ form_widget(answerForm.text) }}
                     {{ form_errors(answerForm.text) }}
                 </td>
             </tr>
         </table>
         {{ form_rest(answerForm) }}
+        
         <div class="submitBtn"><input type="submit" class="tdcButton" /></div>
+            <div class="answerArea">
+                {% set i = 0 %}
+                {% for ans in question.answers %}
+                <div class="row_{{ cycle(['0', '1'], i) }}">
+                    <div class="answerTitle">{{ans.title|raw}}</div>
+                    <div class="answerText">{{ans.text|raw}}</div>
+                    <div class="author">author: 
+                        <i>{{ans.user}}</i>
+                    </div>
+                    <div class="updated">updated: 
+                        <i>{{ ans.updated|date("m/d/Y H:i:s") }}</i>
+                    </div>
+                    <div class="questionEnd"></div>
+                </div>
+                {% set i = i + 1 %}
+                {% endfor %}
+            </div>
     </form>
-
-    <div class="questionArea">
-        <div class="questionTitle">{{ question.title|raw }}</div>
-        <div class="questionText">{{question.text|raw}}</div>
-        <div class="author">author: 
-            <i>{{question.user}}</i>
-        </div>
-        <div class="updated">updated: 
-            <i>{{ question.updated|date("m/d/Y H:i:s") }}</i>
-        </div>
-        <div class="views">views: {{question.views}}</div>
-        <div class="tags">
-            {% for tag in question.tags %}
-            <span class="tag">
-                <a href="{{path("tdc_qa_tagged",{"tag":tag.value})}}">{{ tag.value }}</a>
-            </span>
-            {% endfor %}
-        </div>
-        <div class="answerArea">
-            {% for ans in question.answers %}
-            <div class="answerTitle">{{ans.title|raw}}</div>
-            <div class="answerText">{{ans.text|raw}}</div>
-            <div class="author">author: 
-                <i>{{ans.user}}</i>
-            </div>
-            <div class="updated">updated: 
-                <i>{{ ans.updated|date("m/d/Y H:i:s") }}</i>
-            </div>
-            <div class="questionEnd"></div>
-            {% endfor %}
-        </div>
-    </div>
-
 {% endblock %}
 
 {% block sidebar %}

@@ -10,11 +10,14 @@
     {% endif %}        
 </h1>
 
-<h2>User Info</h2>
-Name: {{user.name|capitalize}} {{user.lastname|capitalize}}</br>
-Email: {{user.email}}</br>
-Joined: {{user.joined|date('m/d/Y')}}
-<h2>Subscription</h2>
+<div id="userInfo_hldr">
+    <h2>User Info</h2>
+    Name: {{user.name|capitalize}} {{user.lastname|capitalize}}</br>
+    Email: {{user.email}}</br>
+    Joined: {{user.joined|date('m/d/Y')}}
+</div>
+<div id="subscription_hldr">
+    <h2>Subscription</h2>
     {% if user.subscription %}
     You are currently on a
     {% if user.subscription.duration == "m1" %}
@@ -30,35 +33,36 @@ Joined: {{user.joined|date('m/d/Y')}}
 
     Created: {{user.subscription.created|date("m/d/Y")}}</br>
     Next Payment: {{user.subscription.expires|date("m/d/Y")}}</br>
-
     {% elseif justSubscribed %}
     You just subscribed. Wait 1 minute and refresh page
     {% else %}
     You have no current subscriptions. Go to the <a href="{{path("tdc_user_subscribe")}}"> subscription page </a> if you would like access t our video library.
     {% endif %}
-
+</div>
 {% if questions|length > 0 %}
-<h2> Your Questions </h2>
-    {% set row = 0 %}
-    {% for question in questions %}
-        <p><a href="{{path("tdc_qa_view",{'id':question.id})}}" >
-          {{question.title}}</a></br>
-            Views: <i>{{question.views}}</i>
-        </p>
-        {% set row = 1 - row %}
-    {% endfor %}
-{% endif %}
-
-{% if answers|length > 0 %}
-<h2> Your Answers </h2>
-    {% set row = 0 %}
-    {% for answer in answers %}
-        <p><a href="{{path("tdc_qa_view",{'id':answer.question.id})}}" >
-          {{answer.title}}</a></br>
-            Views: <i>{{answer.question.views}}</i>
-        </p>
-        {% set row = 1 - row %}
-    {% endfor %}
-{% endif %}
-
+<div id="questions_hldr">
+    <h2> Your Questions </h2>
+        {% set row = 0 %}
+        {% for question in questions %}
+            <p><a href="{{path("tdc_qa_view",{'id':question.id})}}" >
+              {{question.title}}</a></br>
+                Views: <i>{{question.views}}</i>
+            </p>
+            {% set row = 1 - row %}
+        {% endfor %}
+    {% endif %}
+</div>
+<div id="answers_hldr">
+    {% if answers|length > 0 %}
+    <h2> Your Answers </h2>
+        {% set row = 0 %}
+        {% for answer in answers %}
+            <p><a href="{{path("tdc_qa_view",{'id':answer.question.id})}}" >
+              {{answer.title}}</a></br>
+                Views: <i>{{answer.question.views}}</i>
+            </p>
+            {% set row = 1 - row %}
+        {% endfor %}
+    {% endif %}
+</div>
 {% endblock body %}

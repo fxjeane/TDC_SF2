@@ -76,7 +76,7 @@ body
 #header_hldr {
     height:218px;
     background-color:rgb(230,230,230);
-    border-top:1px solid rgb(235,235,235);
+    border-top:1px solid rgb(155,155,155);
 
     background: rgb(213,213,213);
     background: -moz-linear-gradient(top,  rgb(213,213,213) 0%, rgb(227,227,227) 59%, rgb(237,237,237) 100%);
@@ -203,12 +203,19 @@ body
 #beSocial_hldr {
     display:inline-block;
     margin-top:20px;
-    height: 120px;
+    height: 118px;
     width:350px;
     vertical-align:top;
 }
 #userWelcome_hldr {
-    margin-left:60px;
+    margin-left: 510px;
+    width:280px;
+    color:white;
+    /*
+    background-color: rgba(180, 180, 180, 0.3);
+    border-radius: 10px;
+    border: 1px solid rgb(140, 140, 140);
+    */
 }
 .headerSeparator {
     margin:0px 10px;
@@ -305,9 +312,12 @@ body
     border-radius: 0px 10px 10px 0px;
 }
 .footerBlurbTitle,
-.contentBlurbTitle {
+.contentBlurbTitle,
+.headerBlurbTitle,
+h1
+{
     font-family:arial;
-    text-align:right;
+    text-align:left;
     font-size: 1.4em;
     font-style:italic;
     border-bottom: 1px dotted;
@@ -315,7 +325,11 @@ body
     margin-top:10px;
     padding-bottom:2px;
 }
-.footerBlurbTitle {
+h1 {
+    font-size: 1.6em;
+}
+.footerBlurbTitle,
+.headerBlurbTitle {
     font-size: 1.0em;
     color:white;
 }
@@ -403,13 +417,6 @@ li {
 a, a:visited {
     color: rgb(0,102,255);
     text-decoration:none;
-}
-h1 {
-    text-align: right;
-    border-bottom: 1px dotted;
-    padding-bottom: 4px;
-    font-weight: normal;
-    font-style: italic;
 }
 input[type='text'],
 input[type='email'],

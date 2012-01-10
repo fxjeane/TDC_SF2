@@ -4,7 +4,7 @@
     {{ parent() }}
     {% stylesheets  
      debug=true
-    'public/css/logedIn.css' 
+    'public/css/TDC1/profile.css' 
     %}
     <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
     {% endstylesheets %}
@@ -13,7 +13,8 @@
 {% block titleName %}Account{% endblock %}
 
 {% block contentArea%}
-    <div id="userNavBar" class="grayGradient04" >
+<div id="profile_hldr">
+    <div id="userNavBar" >
         <ul>
             <li linkto="{{path("fos_user_profile_edit")}}">Edit Account</li>
             <li linkto="{{path("tdc_front_catalog_list")}}">Browse</li>
@@ -23,29 +24,28 @@
     <div id="userContent">
     {% block body %}{% endblock body %}
     </div>
+</div>
 {% endblock contentArea %}
 
-{% block javascripts %}
+{% block javascript_post %}
     {{ parent() }}
-    <script>
-        $(document).ready(function() {
-            var contentArea = $("#contentFrame");
-            var navBar = $("#userNavBar");
-            var userContent = $("#userContent");
-            var navLinks = $("#userNavBar li");
+    $(document).ready(function() {
+        var contentArea = $("#contentArea_hldr");
+        var navBar = $("#userNavBar");
+        var userContent = $("#userContent");
+        var navLinks = $("#userNavBar li");
 
-            navBar.height(contentArea.height());
-            userContent.height(contentArea.height() - 20);
-            userContent.width(contentArea.width() - navBar.width() - 22);
-            navLinks.first().css("border-top-width","0px");
-        });
-        
-        $('#userNavBar ul li').click(function(event){
-            var self = $(this);
-            var link = self.attr("linkto")
-            if (link) {
-                window.location = link;
-            }
-        });
-    </script>
+        navBar.height(userContent.outerHeight() - 2);
+        //userContent.outerHeight(navBar.outerHeight());
+        //userContent.width(contentArea.width() - navBar.width() - 22);
+        //navLinks.first().css("border-top-width","0px");
+    });
+    
+    $('#userNavBar ul li').click(function(event){
+        var self = $(this);
+        var link = self.attr("linkto")
+        if (link) {
+            window.location = link;
+        }
+    });
 {% endblock %}
