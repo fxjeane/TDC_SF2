@@ -95,17 +95,14 @@
                     <div id="userWelcome_hldr">
                         {% if app.user != "" %}
                         <div class="headerBlurbTitle">Welcome {{app.user.name}}</div>
+                        Last Login: {{app.user.lastLogin|date("m/d/Y")}}
                         {% else %}
                         <div class="headerBlurbTitle">Welcome to TDChannel</div>
 
 
                         {% endif %}
                     </div>
-
                     
-                    <!-- div id="beSocial_hldr">
-                        <div class="contentBlurbTitle">Lattest News</div>
-                    </div -->
                 </div></br>
 
                 <div id="navBarPre">

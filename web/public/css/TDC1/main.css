@@ -206,6 +206,7 @@ body
     height: 118px;
     width:350px;
     vertical-align:top;
+    font-size:0.9em;
 }
 #userWelcome_hldr {
     margin-left: 510px;
