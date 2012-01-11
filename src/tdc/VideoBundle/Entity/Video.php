@@ -348,4 +348,29 @@ class Video
     {
         return $this->answers;
     }
+    /**
+     * @var string $filepath
+     */
+    private $filepath;
+
+
+    /**
+     * Set filepath
+     *
+     * @param string $filepath
+     */
+    public function setFilepath($filepath)
+    {
+        $this->filepath = $filepath;
+    }
+
+    /**
+     * Get filepath
+     *
+     * @return string 
+     */
+    public function getFilepath()
+    {
+        return $this->filepath;
+    }
 }

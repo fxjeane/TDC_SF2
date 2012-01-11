@@ -59,9 +59,10 @@
                     },
                     "clip":
                     {
-                        "url":"http://vod01.netdna.com/vod/demo.flowplayer/Extremists.flv",
+                        "url":"mp4:videos/movie",
                         "scaling":"fit",
                         "autoPlay":false,
+                        "provider":"rtmp",
                         onStart: function() {
                            this.getPlugin("canvas").css({backgroundImage: ""}); 
                         }
@@ -70,7 +71,7 @@
                     {
                         "rtmp":
                         {
-                            "netConnectionUrl":"rtmp://rtmp01.hddn.com/fpplay",
+                            "netConnectionUrl":"rtmp://s7j5w70xvgg0d.cloudfront.net/cfx/st",
                             "url":"flowplayer.rtmp-3.2.3.swf"
                         },
                         "controls": {

@@ -16,6 +16,9 @@ tdc\VideoBundle\Entity\Video:
             type: string
             length: 250
             nullable: true
+        filepath:
+            type: string
+            length: 250
         description:
             type: text
             nullable: true
