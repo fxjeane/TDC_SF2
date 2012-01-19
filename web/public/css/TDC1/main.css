@@ -29,7 +29,7 @@ body
 #socialIcons_hldr {
     display: inline-block;
     height: 42px;
-    width: 730px;
+    width: 600px;
     padding-left: 20px;
     vertical-align: top;
     padding-top: 4px;
@@ -45,21 +45,23 @@ body
     height: 42px;
     position:relative;
     top:0px;
-    left:6px;
-    width: 200px
+    left:5px;
+    width: 330px;
+    text-align:right;
 }
 #login_btn, #register_btn,
-#profile_btn, #logout_btn {
+#profile_btn, #logout_btn,
+#player_btn{
     width:99px;
     line-height:42px;
 }
 #login_btn,
-#profile_btn {
+#player_btn {
     box-shadow:-5px 0px 20px 0px rgb(30,30,30);
     border-right:1px solid rgb(153,153,153);
 }
 #register_btn,
-#profile_btn{
+#player_btn{
     border-left: 1px solid rgb(249, 235, 210);
     background: #ffd997;
     background: -moz-linear-gradient(top,  #ffd997 0%, #fed576 50%, #fec146 51%, #ffdc8b 100%);
@@ -70,6 +72,13 @@ body
     background: linear-gradient(top,  #ffd997 0%,#fed576 50%,#fec146 51%,#ffdc8b 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd997', endColorstr='#ffdc8b',GradientType=0 );
 }
+#profile_btn {
+    border-right:1px solid rgb(153,153,153);
+}
+#player_btn {
+    width: 125px;
+}
+
 /******************
 * Header Holder
 ******************/
@@ -212,11 +221,6 @@ body
     margin-left: 510px;
     width:280px;
     color:white;
-    /*
-    background-color: rgba(180, 180, 180, 0.3);
-    border-radius: 10px;
-    border: 1px solid rgb(140, 140, 140);
-    */
 }
 .headerSeparator {
     margin:0px 10px;
@@ -477,9 +481,12 @@ input[type='password'] {
 .paginator a:hover {
     background-color: rgb(230, 230, 230);
 }
+.paginator li {
+    margin: 0px;
+}
 .row_0 {
-    background: rgba(246,246,246,0.75);
+    background: rgb(230,230,230);
 }
 .row_1 {
-background: rgba(239,239,239,0.75);
+    background: rgb(225,225,225);
 }

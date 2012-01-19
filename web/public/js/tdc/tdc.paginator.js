@@ -8,7 +8,8 @@
             trailLinks:2,
             firstLabel:"first",
             lastLabel:"last",
-            currentPageColor: "red"
+            currentPageColor: "red",
+            clickHandler:null
         },
         _create: function() { 
             var self = this,
@@ -26,17 +27,25 @@
                 if (curpage - o.trailLinks > 1) {
                     target = o.targetUrl+"/"+1+"/"+o.max;
                     num = $('<a href='+target+'>');
-                    li = num.append('<li>');
+                    if (o.clickHandler != null) {
+                        num.click(o.clickHandler);
+                    }
+                    li = $('<li>');
+                    num.append(li);
                     li.html(o.firstLabel);
                     el.append(num);
                     el.append(' ');
                 }
-                //alert(curpage + o.trailLinks);
                 for (i = Math.max(1,curpage - o.trailLinks); 
                      i <= Math.min(numpages,curpage + o.trailLinks); i +=1) {
                     target = o.targetUrl+"/"+i+"/"+o.max;
                     num = $('<a href='+target+'>');
-                    li = num.append('<li>');
+                    if (o.clickHandler != null) {
+                        num.click(o.clickHandler);
+                    }
+                    li = $('<li>');
+                    num.append(li);
+                    //li = num.append('<li>');
                     li.html(i);
                     if (i === curpage)
                         li.css("color",o.currentPageColor);
@@ -47,9 +56,14 @@
                 if ((numpages >> curpage + o.trainLinks) && (numpages !== i-1)) {
                     target = o.targetUrl+"/"+numpages+"/"+o.max;
                     num = $('<a href='+target+'>');
-                    li = num.append('<li>');
+                    if (o.clickHandler != null) {
+                        num.click(o.clickHandler);
+                    }
+                    li = $('<li>');
+                    num.append(li);
+                    //li = num.append('<li>');
                     li.html(o.lastLabel);
-                    el.append(li);
+                    el.append(num);
                 } 
                 // handle trailing page
                 else 
@@ -57,17 +71,30 @@
                     if (data.length % o.max !== 0) {
                     target = o.targetUrl+"/"+i+"/"+o.max;
                     num = $('<a href='+target+'>');
-                    li = num.append('<li>');
+                    if (o.clickHandler != null) {
+                        num.click(o.clickHandler);
+                    }
+                    li = $('<li>');
+                    num.append(li);
+                    //li = num.append('<li>');
                     li.html(i);
-                    el.append(li);
+                    el.append(num);
                     }
                 }
 
             });
 
+
         },
         destroy: function() {
             this.element.next().remove();
+       },
+       setCurrentPage: function(newpage) {
+            var el = this.element;
+            var o = this.options;
+            // clear all element colors
+            el.find("li").css("color","");
+            el.find("li:contains('"+newpage+"')").css("color",o.currentPageColor);
        }
     });
 

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/svn/!svn/ver/28/trunk/as3crypto
+END
+LICENSE.txt
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/4/trunk/as3crypto/LICENSE.txt
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/3/trunk/as3crypto/.project
+END
+RELEASENOTES.txt
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/5/trunk/as3crypto/RELEASENOTES.txt
+END
+build-swc.xml
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/28/trunk/as3crypto/build-swc.xml
+END
+.flexProperties
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/3/trunk/as3crypto/.flexProperties
+END
+rfc2459.txt
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/11/trunk/as3crypto/rfc2459.txt
+END
+.actionScriptProperties
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/5/trunk/as3crypto/.actionScriptProperties
+END

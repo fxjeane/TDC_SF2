@@ -1,5 +1,7 @@
 # all vim backup files
 *~
+*.swp
+*.psd 
 
 # Bootstrap
 app/bootstrap*

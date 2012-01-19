@@ -13,7 +13,7 @@
         borderRadius: "inherit",
         controlRadius: "0px",
         listButton: true,
-        thumbnailButton: true,
+        questionsButton: true,
         pageRoot: "",
         searchBar: {
             show: true,
@@ -35,7 +35,7 @@
         ///////////////
         // Display Mode Buttons
         ///////////////
-        if (o.listButton || o.thumbnailButton) {
+        if (o.listButton || o.questionsButton) {
             var dispModeButtons = $('<div id="tdcQBNBDisplayModeButtons">');
             dispModeButtons.addClass('gutter');
             dispModeButtons.height(e.height());
@@ -48,32 +48,31 @@
                 var listButton = $('<div id="listBtn">');
                 listButton.addClass('button widgetControlActive');
                 var img = $('<img>');
-                img.attr("src",o.pageRoot+"../public/images/TDC1/questions.png");
+                img.attr("src",o.pageRoot+"../public/images/TDC1/browser.png");
                 listButton.html(img);
                 dispModeButtons.append(listButton);
                 listButton.css("border-top-left-radius", o.controlRadius);
                 listButton.css("border-bottom-left-radius", o.controlRadius);
                 listButton.css("position", "relative");
                 listButton.css("float", "left");
-                if (!o.thumbnailButton) {
+                if (!o.questionsButton) {
                     listButton.css("border-top-right-radius", o.controlRadius);
                     listButton.css("border-bottom-right-radius", o.controlRadius);
                 } else {
                     listButton.addClass("leftEndBtn");
                 }
                 listButton.click({"root": e.parent() }, self._displayList);
-
                 bl = parseInt(listButton.css("border-top-width"));            
-                br = parseInt(listButton.css("border-bottom-width"));            
+                br = parseInt(listButton.css("border-top-width"));            
                 listButton.height(e.height() - bl - br);
                 listButton.css("line-height", listButton.height() + "px");
             }
-            // thumbnail button
-            if (o.thumbnailButton) {
-                var thumbButton = $('<div id="thumbnailBtn">');
+            // questions button
+            if (o.questionsButton) {
+                var thumbButton = $('<div id="questionsBtn">');
                 thumbButton.addClass('button widgetControlGray');
                 var img = $('<img>');
-                img.attr("src",o.pageRoot+"../public/images/TDC1/browser.png");
+                img.attr("src",o.pageRoot+"../public/images/TDC1/questions.png");
                 thumbButton.html(img);
                 dispModeButtons.append(thumbButton);
                 thumbButton.css("border-top-right-radius", o.controlRadius);
@@ -101,12 +100,12 @@
         label.addClass('label');
         label.css("line-height", (e.height() - 4) + "px");
         label.css("text-align", "center");
-        label.html(o.label);
         e.append(label);
         /////////////////
         // search bar
         ///////////////
         if (o.searchBar.show) {
+            label.html("Browser");
             var searchBar = $('<div id="tdcQBNBSearchBar">');
             e.append(searchBar);
             searchBar.height(e.height()).width(o.searchBar.width);
@@ -159,24 +158,22 @@
     // Functions
     ////
     _displayList: function(e) {
-        //var rootId = e.data.root.attr("id");
-        //var content = $("#" + rootId + " #content");
-        //content.html("foo");
-
         listButton = $("#listBtn");
         listButton.addClass("tdcButtonSelected widgetControlActive");
-        listButton.height(listButton.height() +1);
-        thumbButton = $("#thumbnailBtn");
+        listButton.height(listButton.height());
+        thumbButton = $("#questionsBtn");
         thumbButton.removeClass("tdcButtonSelected widgetControlActive");
-        thumbButton.height(thumbButton.height() - 1);
+        thumbButton.height(thumbButton.height());
+        $(".content").tdcBrowserContent("loadData");
     },
     _displayThumb: function(e) {
         listButton = $("#listBtn");
         listButton.removeClass("tdcButtonSelected widgetControlActive");
-        listButton.height(listButton.height() -1);
-        thumbButton = $("#thumbnailBtn");
+        listButton.height(listButton.height());
+        thumbButton = $("#questionsBtn");
         thumbButton.addClass("tdcButtonSelected widgetControlActive");
-        thumbButton.height(thumbButton.height() + 1);
+        thumbButton.height(thumbButton.height());
+        $(".content").tdcBrowserContent("loadData");
     }
 });
 
@@ -189,8 +186,7 @@ $.widget("tdc.tdcBrowserContent", {
     options: {
         player:null,
         height: "400px",
-        pageRoot:"",
-        mode: "browse"
+        pageRoot:""
     },
     // Set up the widget
     _create: function() {
@@ -202,19 +198,25 @@ $.widget("tdc.tdcBrowserContent", {
         e.width(o.width);
         e.addClass("content");
         e.height(o.height);
-        this.loadData(self);
+        this.loadData();
     },
-    loadData: function(data) {
-        var e = data.element;
-        var o = data.options;
+    loadData: function(start,max) {
+        var e = this.element;
+        var o = this.options;
 
-        if (o.mode === "browse") {
+        if (!start)
+            start = 1;
+        if (!max)
+            max = 10;
+        var mode = $('.tdcButtonSelected').attr("id");
+
+        if ((!mode) || (mode === "listBtn") ) {
             listButton = $("#listBtn");
-            listButton.addClass("tdcButtonSelected"); 
-            listButton.height(listButton.height()+1);
+            //listButton.addClass("tdcButtonSelected"); 
+            //listButton.height(listButton.height());
 
-            var service = o.pageRoot+"ws/videolist/0/10";
-            $.getJSON(service, function(data) {
+            var service = o.pageRoot+"ws/videolist/"+(start-1)*max+"/"+max;
+            var loadFunc = function(data) {
                 if (data.length > 0) {
                     var listTable = $("<table width='100%' id='itemsList' cellspacing='0px'>");
                     listTable.css("position","relative");
@@ -227,14 +229,17 @@ $.widget("tdc.tdcBrowserContent", {
                         td = $("<td >");
                         td.addClass("icon");
                         img = $("<img>");
-                        img.attr("src",o.pageRoot+"../public/images/icons/"+item.icon);
+                        img.attr("src",o.pageRoot+"../public/images/videos/"+item.filepath+"_"+item.icon);
                         td.append(img);
                         tr.append(td);
                         
                         td = $("<td>");
                         var aa = $("<a>");
+                        var vidname = item.name;
+                        if (item.subtitle !== "")
+                            vidname +=" - "+item.subtitle;
                         aa.addClass("videoName");
-                        aa.html(item.name);
+                        aa.html(vidname);
                         aa.click(item.id,function(ev){
                             $(o.player).tdcPlayer("loadVideo",ev.data)
                         });
@@ -265,14 +270,69 @@ $.widget("tdc.tdcBrowserContent", {
                         listTable.append(tr);
                         rowclass = 1 - rowclass;
                     }
-                    e.append(listTable);
-
-                    // do we need a scroll bar?
-                    if (tr.height() * data.length > e.height()) {
-                        $(listTable).tdcScrollBar({scrollSpeed:15});
+                    
+                    var api = e.data('jsp');
+                    if (!api) {
+                        e.append(listTable);
+                        e.jScrollPane({
+                           horizontalGutter:0,
+                           verticalGutter:0,
+                           autoReinitialise:true
+                        });
+                    } else {
+                        var pane = api.getContentPane();
+                        pane.html(listTable);
+                        api.reinitialise();
                     }
                 }
-            });
+            };
+
+            $.getJSON(service, loadFunc );
+        }
+        else //questionBtn
+        {
+            qBtn = $("#questionBtn");
+            var service = o.pageRoot+"ws/questionlist/"+(start-1)*max+"/"+max;
+            var loadFunc = function(data) {
+                if (data.length > 0) {
+                    var listTable = $("<table width='100%' id='itemsList' cellspacing='0px'>");
+                    listTable.css("position","relative");
+                    listTable.css("z-index","10");
+                    var rowclass = 0;
+                    for (i = 0; i < data.length; i += 1) {
+                        item = data[i];
+                        tr = $("<tr>");
+                        tr.addClass("row" + rowclass);
+                        td = $("<td >");
+
+                        var aa = $("<a>");
+                        var title = item.title;
+                        aa.addClass("questionTitle");
+                        aa.html(title);
+                        //aa.click(item.id,function(ev){
+                        //    $(o.player).tdcPlayer("loadVideo",ev.data)
+                        //});
+                        td.append(aa);
+                        tr.append(td);
+                        listTable.append(tr);
+                        rowclass = 1 - rowclass;
+                    }
+                    var api = e.data('jsp');
+                    if (!api) {
+                        e.append(listTable);
+                        e.jScrollPane({
+                           horizontalGutter:0,
+                           verticalGutter:0,
+                           autoReinitialise:true
+                        });
+                    } else {
+                        var pane = api.getContentPane();
+                        pane.html(listTable);
+                        api.reinitialise();
+                    }
+                }
+            };
+            $.getJSON(service, loadFunc );
         }
     }
 });
@@ -286,8 +346,11 @@ $.widget("tdc.tdcBrowserContent", {
 $.widget("tdc.tdcBrowserPaginator", {
     options: {
         show: true,
-        height: "15px",
-        borderRadius: "inherit"
+        height: "25px",
+        borderRadius: "inherit",
+        queryUrl: "",
+        start:0,
+        max:10
     },
     // Set up the widget
     _create: function() {
@@ -361,8 +424,26 @@ $.widget( "tdc.tdcQuickBrowser", {
         ///////////////////////
         if (o.paginator.show) {
             var paginator = $("<div id='tdcQuickBrowserPaginator'>");
+            paginator.addClass("paginator");
             e.append(paginator);
             $(paginator).tdcBrowserPaginator(o.paginator);
+
+            $('.paginator').tdcPaginator({
+                        start:o.paginator.start,
+                        max:o.paginator.max,
+                        lastLabel:">>",
+                        firstLabel: "<<",
+                        trailLinks: 3,
+                        currentPageColor:"white",
+                        queryUrl:o.paginator.queryUrl,
+                        clickHandler:function(ev){
+                                ev.preventDefault();
+                                var ele = $(this);
+                                var link = ele.attr("href").split("/");
+                                $(content).tdcBrowserContent("loadData",link[1],link[2]);
+                                $('.paginator').tdcPaginator("setCurrentPage",link[1]);
+                            }
+                        });
         }
     }
 });

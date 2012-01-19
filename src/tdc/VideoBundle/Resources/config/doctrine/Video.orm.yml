@@ -9,6 +9,9 @@ tdc\VideoBundle\Entity\Video:
         name:
             type: string
             length: 100
+        subtitle:
+            type: string
+            length: 100
         author:
             type: string
             length: 100

@@ -46,6 +46,15 @@
     border-radius: 0px 4px 4px 0px;
     border:1px solid rgb(180,180,180);
 }
+#topVideo_hldr a,
+#latestQuestions_hldr a {
+    font-size:1.2em;
+}
+#topVideo_hldr label,
+#latestQuestions_hldr label {
+    font-size:0.7em;
+    margin-right:10px;
+}
 #latestQuestions_hldr {
     height:250px;
 }

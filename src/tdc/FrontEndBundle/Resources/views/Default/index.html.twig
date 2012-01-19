@@ -39,7 +39,16 @@
         <div id="topVideo_hldr" class="scrollPane">
         {% for video in videos%}
             <li>
-                <a>{{video.name}}</a>
+                <a href="{{path("tdc_front_catalog_item",{"id":video.id,"entity":"video"})}}">{{video.name}}
+                {% if video.subtitle %}
+                - {{video.subtitle}}
+                {% endif %}
+                </a>
+                <div>
+                    <label class="author">Author: {{video.author}}</label>
+                    <label class="trt">Trt: {{video.trt}}</label>
+                    <label class="views">Views: {{video.views}}</label>
+                </div>
             </li>
         {% endfor %}
         </div>
@@ -51,12 +60,17 @@
         {% for question in questions%}
             <li>
                 <a>{{question.title}}</a>
+                <div>
+                    <label class="author">Author: {{question.user}}</label>
+                    <label class="views">Views: {{question.views}}</label>
+                    <label class="answers">Answers: {{question.answers|length}}</label>
+                </div>
             </li>
         {% endfor %}
         </div>
     </div>
     <a href="{{path("tdc_user_subscribe")}}">
-        <img src="{{path("tdc_front_homepage")}}../public/images/TDC1/subscribeNow.png"/>
+        <img style="margin-top:10px" src="{{path("tdc_front_homepage")}}../public/images/TDC1/subscribeNow.png"/>
     </a>
 {% endblock contentArea %}
 

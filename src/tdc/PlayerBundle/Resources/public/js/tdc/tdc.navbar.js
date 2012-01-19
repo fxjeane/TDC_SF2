@@ -118,6 +118,7 @@
         if (index != undefined) {
             var links = index;
             var row = 0;
+            linkHolder.html("");
             for (var i in links) {
                 var li = $("<li>");
                 li.addClass("row" + row);
@@ -125,6 +126,7 @@
                 row = 1 - row;
                 li.html(links[i].title);
                 linkHolder.append(li);
+
                 // index click event
                 li.click(links[i].link,function(e) {
                    state = $f().getState();
@@ -147,6 +149,7 @@
                     }
                 });
             }
+
             topPad = parseInt(indexCnt.css("padding-top"));
             botPad = parseInt(indexCnt.css("padding-bottom"));
             indexCnt.height(e.height() - tabBar.height()  - topPad - botPad - 1);

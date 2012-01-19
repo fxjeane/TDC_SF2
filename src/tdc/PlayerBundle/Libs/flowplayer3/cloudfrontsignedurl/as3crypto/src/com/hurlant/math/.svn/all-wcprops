@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/12/trunk/as3crypto/src/com/hurlant/math
+END
+MontgomeryReduction.as
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/4/trunk/as3crypto/src/com/hurlant/math/MontgomeryReduction.as
+END
+ClassicReduction.as
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/4/trunk/as3crypto/src/com/hurlant/math/ClassicReduction.as
+END
+BigInteger.as
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/12/trunk/as3crypto/src/com/hurlant/math/BigInteger.as
+END
+BarrettReduction.as
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/4/trunk/as3crypto/src/com/hurlant/math/BarrettReduction.as
+END
+IReduction.as
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/4/trunk/as3crypto/src/com/hurlant/math/IReduction.as
+END
+bi_internal.as
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/4/trunk/as3crypto/src/com/hurlant/math/bi_internal.as
+END
+NullReduction.as
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/4/trunk/as3crypto/src/com/hurlant/math/NullReduction.as
+END

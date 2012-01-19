@@ -10,13 +10,30 @@
         </title>
 
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        
+        {% block stylesheets %}
+            {% stylesheets  
+             debug=false
+            'public/css/jquery.jscrollpane.css'
+            'public/css/TDC1/main.css' 
+            'public/css/TDC1/player.css' 
+            filter='cssrewrite'
+            output='css/*.css'
+            %}
+            <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+            {% endstylesheets %}
+        {% endblock %}
+
+
         {% block header_javascripts %}
             {% javascripts
-                debug=false
+                debug=true
                 'public/js/jquery/jquery-1.7.min.js'
                 'public/js/jquery/jquery-ui-1.8.16.custom.min.js'
                 'public/js/jquery/jquery.mousewheel.js'
+                'public/js/jquery/jquery.jscrollpane.min.js'
                 'public/js/tdc/tdc.js'
+                'public/js/tdc/tdc.paginator.js'
                 '@tdcPlayerBundle/Resources/public/js/tdc/tdc.scrollbar.js'
                 '@tdcPlayerBundle/Resources/public/js/tdc/tdc.player.js'
                 '@tdcPlayerBundle/Resources/public/js/tdc/tdc.navbar.js'
@@ -27,17 +44,6 @@
             {% endjavascripts %}
         {% endblock header_javascripts %}
 
-        {% block stylesheets %}
-            {% stylesheets  
-             debug=false
-            'public/css/TDC1/main.css' 
-            'public/css/TDC1/player.css' 
-            filter='cssrewrite'
-            output='css/*.css'
-            %}
-            <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
-            {% endstylesheets %}
-        {% endblock %}
     </head>
     <body>
         <div id="mainFrame">

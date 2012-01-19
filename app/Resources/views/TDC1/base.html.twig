@@ -10,6 +10,15 @@
         </title>
 
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        {% block stylesheets %}
+            {% stylesheets  
+            'public/css/jquery.jscrollpane.css'
+            'public/css/TDC1/main.css'
+            %}
+            <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+            {% endstylesheets %}
+        {% endblock %}
+
         {% block header_javascripts %}
             {% javascripts
                 debug=false
@@ -20,16 +29,6 @@
             <script src="{{ asset_url }}" type="text/javascript"  /></script>
             {% endjavascripts %}
         {% endblock header_javascripts %}
-        
-        {% block stylesheets %}
-            {% stylesheets  
-            'public/css/jquery.jscrollpane.css'
-            'public/css/TDC1/main.css'
-            %}
-            <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
-            {% endstylesheets %}
-        {% endblock %}
-
 
     <body>
     <div id="fb-root"></div>
@@ -72,7 +71,9 @@
                         Register
                     </div>
                 {% else %}
-                    <div id="profile_btn" class='tdcButton'
+                    <div id="player_btn" class='tdcButton' target="{{path("tdc_player_home")}}">
+                        Launch Player
+                    </div><div id="profile_btn" class='tdcButton'
                      target="{{path("fos_user_profile_show")}}">
                         Profile
                     </div><div id="logout_btn" class='tdcButton'
@@ -257,7 +258,7 @@
             }
 
             // scrollpanes
-            $(".scrollPane").jScrollPane();
+            $(".scrollPane").jScrollPane({verticalGutter:0,horizontalGutter:0});
 
             // randomize tag cloud
             $(".tagcloud").each(function(key,value){

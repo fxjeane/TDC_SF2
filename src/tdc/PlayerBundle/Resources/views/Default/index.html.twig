@@ -6,8 +6,9 @@
   <div id="headerBar" >
     <span class="videoTitle">Now Playing: <span class="videoTitleName"></span></span>
     <div id="closeButton">x</div>
-    <div id="tdcVideoInfo"></div>
+    <div id="infoButton">i</div>
   </div>  
+  <div id="tdcVideoInfo"></div>
 {% endblock headerBar %}
 
 {% block contentArea %}
@@ -32,8 +33,15 @@
         var player = $("#tdcPlayerRoot").tdcPlayer({
             pageRoot:"{{path("tdc_front_homepage")}}",
             videoId:{{videoId}},
-            cornerRadius:"0px"
+            cornerRadius:"0px",
+            username:"{{app.user.username}}",
+            browser:{
+                start: 1,
+                max: 10,
+                queryUrl:'{{ path("tdc_ws_video_list")}}'
+            }
         });
+
     });
 {% endblock %}
 

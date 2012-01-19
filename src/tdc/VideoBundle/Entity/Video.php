@@ -373,4 +373,29 @@ class Video
     {
         return $this->filepath;
     }
+    /**
+     * @var string $subtitle
+     */
+    private $subtitle;
+
+
+    /**
+     * Set subtitle
+     *
+     * @param string $subtitle
+     */
+    public function setSubtitle($subtitle)
+    {
+        $this->subtitle = $subtitle;
+    }
+
+    /**
+     * Get subtitle
+     *
+     * @return string 
+     */
+    public function getSubtitle()
+    {
+        return $this->subtitle;
+    }
 }

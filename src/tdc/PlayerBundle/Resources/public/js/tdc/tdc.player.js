@@ -6,12 +6,18 @@
             pageRoot:"",
             spacer:5,
             cornerRadius:"5px",
+            username: "user",
             screen: {
                 height:"500px"
             },
             navBar: {
                 width:"200px"
-                }
+                },
+            browser: {
+                queryUrl:"foo",
+                start:0,
+                max:10
+            }
         },
         _create: function() {
             var self = this;
@@ -46,23 +52,23 @@
             flowplayer("tdcVideoScreen", 
                 {
                     src:rootUrl+"/flowplayer/flowplayer-3.2.7.swf",
-                    wmode:'transparent',
+                    wmode:'transparent'
                 },
                 {
                     "canvas":
                     {
-                        backgroundColor: '#000000',
+                        background:'#000000 url('+rootUrl+"/"+o.splashImage+') no-repeat 0 0',
                         backgroundGradient: 'none',
-                        backgroundImage:rootUrl+"/"+o.splashImage,
+                        backgroundColor:'#000000',
                         borderRadius:'0',
                         border:'0px solid #000000' 
                     },
                     "clip":
                     {
-                        "url":"mp4:videos/movie",
                         "scaling":"fit",
-                        "autoPlay":false,
                         "provider":"rtmp",
+                        "autoPlay":false,
+                        "urlrResolver": "cloudfront",
                         onStart: function() {
                            this.getPlugin("canvas").css({backgroundImage: ""}); 
                         }
@@ -71,8 +77,19 @@
                     {
                         "rtmp":
                         {
-                            "netConnectionUrl":"rtmp://s7j5w70xvgg0d.cloudfront.net/cfx/st",
+                            "netConnectionUrl":"rtmp://senhwy3svazum.cloudfront.net/cfx/st",
                             "url":"flowplayer.rtmp-3.2.3.swf"
+                        },
+                        "cloudfront": {
+                            "url": "flowplayer.cloudfrontsignedurl.swf"
+                        },
+                        "watermark": {
+                            "url": "tdc.watermark.swf",
+                            "userName":o.username,
+                            "copyrightName":'Copyright - TD Channel',
+                            "wmOpacity":0.25,
+                            "dropShadow":'true',
+                            "zIndex":2
                         },
                         "controls": {
                               // location of the controlbar plugin
@@ -82,13 +99,13 @@
                              borderRadius:0,
                              // styling properties (will be applied to all plugins)
                              backgroundGradient: 'low',
-                             onHidden: function(){
-                                var content = $f().getPlugin("myContent");
-                                content.animate({"opacity":0});
-                             },
-                             onShowed: function(){
+                            onShowed: function () {
                                 var content = $f().getPlugin("myContent");
                                 content.animate({"opacity":1});
+                            },
+                            onHidden: function(){
+                                var content = $f().getPlugin("myContent");
+                                content.animate({"opacity":0});
                              },
                              // tooltips (since 3.1)
                              tooltips: {
@@ -105,7 +122,7 @@
                             top: 0,
                             left: 0,
                             width:40,
-                            html:"<img src=\"https://www.activaterewards.com/img/icons/close-window-icon.png\" />",
+                            html:"<img src=\"../public/images/TDC1/playerCloseSidebar.png\" />",
                             borderRadius: 0,
                             // clicking on the plugin hides it (but you can do anything)
                             onClick: function() {
@@ -144,6 +161,11 @@
                 content:{
                     player:e,
                     pageRoot:o.pageRoot
+                },
+                paginator: {
+                    queryUrl:o.browser.queryUrl,
+                    start:o.browser.start,
+                    max:o.browser.max
                 }
             });
         },
@@ -154,21 +176,40 @@
             var navBar = e.children('#tdcNavBar');
             var nbBorderL = parseInt(navBar.css("border-left-width"));
             var nbBorderR = parseInt(navBar.css("border-right-width"));
+            // show navbar
             if (parseInt(videoScreen.css("margin-left")) === o.spacer) {
-            videoScreen.animate({
-                                "width":videoScreen.width() - navBar.width() - o.spacer,
-                                "margin-left":navBar.width() + (2 * o.spacer) + nbBorderL+ nbBorderR
-                                },500,function(){
-                                    navBar.fadeIn();
-                                });
+                videoScreen.animate({
+                                    "width":videoScreen.width() - navBar.width() - o.spacer,
+                                    "margin-left":navBar.width() + (2 * o.spacer) + nbBorderL+ nbBorderR
+                                    },500,function(){
+                                        navBar.fadeIn();
+                                        var content = $f().getPlugin("myContent");
+                                        if (content.setHtml) {
+                                            var html="<img src=\"../public/images/TDC1/playerCloseSidebar.png\" />";
+                                            content.setHtml(html);
+                                            var canvas = $f().getPlugin("canvas");
+                                            canvas.css({
+                                                    background:'#000000 url('+rootUrl+"/"+o.splashImage+') no-repeat 0 0'
+                                                });
+                                        }
+                                    });
             } else {
-            navBar.fadeOut(500,function(){
-                            videoScreen.animate({
-                                "width":videoScreen.width() + navBar.width() + o.spacer,
-                                "margin-left":o.spacer
-                                },500);
-                          });
-
+                // hide navbar
+                navBar.fadeOut(500,function(){
+                                videoScreen.animate({
+                                    "width":videoScreen.width() + navBar.width() + o.spacer,
+                                    "margin-left":o.spacer
+                                    },500,function(){
+                                        var content = $f().getPlugin("myContent");
+                                        var html="<img src=\"../public/images/TDC1/playerOpenSidebar.png\" />";
+                                        content.setHtml(html);
+                                        var canvas = $f().getPlugin("canvas");
+                                        canvas.css({
+                                                background:'#000000 url('+rootUrl+"/"+o.splashImage+') no-repeat 100 0',
+                                                backgroundColor:'#000000'
+                                            });
+                                    });
+                              });
 
             }
         },
@@ -191,10 +232,19 @@
 
             $.getJSON(service, function(data) {
                 // set the title of the video
-                $(".videoTitleName").html(data.name);
+                var videoname = data.name;
+                if (data.subtitle != "")
+                    videoname += " - "+data.subtitle;
+
+                $(".videoTitleName").html(videoname);
                 $(".videoTitleName").click(function(){
-                    self.toggleVideoInfo();
-                 });
+                    //self.toggleVideoInfo();
+                    $( "#tdcVideoInfo" ).toggle("blind", {} , 500 );
+                });
+                $("#infoButton").click(function(){
+                    //self.toggleVideoInfo();
+                    $( "#tdcVideoInfo" ).toggle("blind", {} , 500 );
+                });
                 // set the info of the video
                 var infoDiv = $("#tdcVideoInfo");
                 var infoTbl = $("<table>");
@@ -236,6 +286,17 @@
                 }
 
                 $("#tdcNavBar").tdcNavbar("loadData",navobj);
+                
+                // set the video stream
+                if ($f().isLoaded()) {
+                        $f().setClip({"url":"mp4:videos/"+data.filepath});
+                        $f().play();
+                } else {
+                    $f().onLoad(function(){
+                        $f().setClip(
+                            {"url":"mp4:videos/"+data.filepath});
+                    });
+                }
             });
         }
     });

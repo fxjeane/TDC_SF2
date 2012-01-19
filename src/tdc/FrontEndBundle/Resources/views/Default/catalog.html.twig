@@ -32,52 +32,49 @@
 {% endblock titleName %}
 
 {% block contentArea %}
-    {% block body %}
-        <div id="contentHolder">
-            <h1>
+    <div id="contentHolder">
+        <h1>
+        {% if entity == "video" %}
+            Videos
+        {% else %}
+            Categories
+        {% endif %}
+        </h1>
+        <div id="paginatorTop" class="paginator"></div>
+       <center> 
+        <table id="catalogTable" cellspacing="0px">
             {% if entity == "video" %}
-                Videos
+                {% set i = 0 %}
+                {% for item in values %}
+                    <tr class="row_{{ cycle(['0', '1'], i) }}">
+                        <td class="icon">
+                            <a href="{{path("tdc_player_home",{'id':item.id})}}">
+                                <img src={{path("tdc_front_homepage")}}../public/images/videos/{{item.filepath}}_{{ item.icon }} />
+                            </a>
+                        </td>
+                        <td class="info">
+                            <a class="video" href="{{path("tdc_front_catalog_item",{'entity':'video','id':item.id})}}">
+                                {{ item.name }} 
+                                {% if item.subtitle %} 
+                                    - {{item.subtitle}} 
+                                {% endif %}
+                            </a>
+                            <label class="author">Author: {{item.author}}</label>
+                            <label class="trt">Trt: {{item.trt}}</label>
+                            <label class="views">Views: {{item.views}}</label>
+                            <label class="rating">Rating: {{item.views}}</label>
+                            <div class="summary">{{item.summary}}</div>
+                        </td>
+                    </tr>
+                    {% set i = i + 1 %}
+                {% endfor %}
             {% else %}
-                Categories
+                
             {% endif %}
-            </h1>
-            <div id="paginatorTop" class="paginator"></div>
-           <center> 
-            <table id="catalogTable" cellspacing="0px">
-                {% if entity == "video" %}
-                    <th colspan="2">Video</th>
-                    <th>Summary</th>
-                    <th>Views</th>
-                    <th>Rating</th>
-                    {% set i = 0 %}
-                    {% for item in values %}
-                        <tr class="row_{{ cycle(['0', '1'], i) }}">
-                            <td class="icon">
-                                <a href="{{path("tdc_player_home",{'id':item.id})}}">
-                                    <img src={{path("tdc_front_homepage")}}../public/images/icons/{{ item.icon }} />
-                                </a>
-                            </td>
-                            <td class="info">
-                                <a class="video" href="{{path("tdc_front_catalog_item",{'entity':'video','id':item.id})}}">
-                                    {{ item.name }}
-                                </a>
-                                <label class="author">Author: {{item.author}}</label>
-                                <label class="trt">Trt: {{item.trt}}</label>
-                            </td>
-                            <td class="summary">{{ item.summary }}</td>
-                            <td class="views">{{ item.views }}</td>
-                            <td class="rating">{{ item.views }}</td>
-                        </tr>
-                        {% set i = i + 1 %}
-                    {% endfor %}
-                {% else %}
-                    
-                {% endif %}
-            </table>
-            </center>
-            <div id="paginatorBottom" class="paginator"></div>
-        </div>
-    {% endblock body %}
+        </table>
+        </center>
+        <div id="paginatorBottom" class="paginator"></div>
+    </div>
 {% endblock contentArea %}
 
 {% block javascript_post %}

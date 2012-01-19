@@ -13,7 +13,6 @@
 {% block titleName %}Subscribe{% endblock %}
 
 {% block contentArea %}
-<div id="contentHolder" >
     <h1>
     {% if app.session.hasFlash('expiredSubscription') %}
         {{ app.session.flash('expiredSubscription') }}
@@ -21,13 +20,12 @@
         Subscribe
     {% endif %}
     </h1>
-
-    {% block body %}
+    <div id="subscribe_hldr">
         {% if app.user != "" %}
             {% if app.session.hasFlash('expiredSubscription') %}
-                <p>Our records indicate that your previous subscription has expired. We are glad to know that you would like to regain access to our library. Please follow the links below to start a new subscription</p> 
+                <p>Our records indicate that your previous subscription has expired. We are glad to know that you would like to regain access to our library. Please follow the links below to start a new subscription.</p> 
             {% else %}
-            <p>We are glad you have decided to join our community of learners. Please select the subscription method that best fits your needs. If you have any questions about our service please visit the <a href="{{path("tdc_front_faq")}}">F.A.Q.</a>, specially the <a href="{{path("tdc_front_faq")}}#payments">payments</a> section</p>
+            <p>We are glad you have decided to join our community of learners. Please select the subscription method that best fits your needs. If you have any questions about our service please visit the <a href="{{path("tdc_front_faq")}}">F.A.Q.</a>, specially the <a href="{{path("tdc_front_faq")}}#payments">payments</a> section.</p>
             {% endif %}
 
                 <center>
@@ -94,7 +92,5 @@
                 <p> Before you can subscribe you need to <a href="{{path("fos_user_registration_register")}}">register</a> (Its free!)</p>
                 <p>or <a href="{{path("fos_user_security_login")}}">login</a></p>
         {% endif %}
-
-    {% endblock body %}
-</div>
+    </div>
 {% endblock contentArea %}
