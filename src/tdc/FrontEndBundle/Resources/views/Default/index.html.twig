@@ -28,10 +28,9 @@
     <div id="quote_hldr" >
         <div class="contentBlurbTitle">User Quotes</div>
         <div id="quotePicture_hldr"> 
-            <img src="{{ path('tdc_front_homepage') }}../public/images/quoters/omarGarcia.png"/ >
+            <img src="{{ path('tdc_front_homepage') }}../public/images/quoters/{{quoterImage}}"/ >
         </div>
-            It's a great feeling when you write a script for your own tasks, But when you do it at a major animation studio and it works ... what a great feeling! Thanks Rudy for being my teacher! I owe it all to you.
-            <div id="quoteSignature_hldr">Omar</div>
+        {{quote|raw}}
     </div>
     
     <div id="popularVideos_hldr">

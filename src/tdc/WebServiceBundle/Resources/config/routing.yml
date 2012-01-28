@@ -1,5 +1,5 @@
 tdc_ws_video_list:
-    pattern: /videolist/{start}/{max}/{category}.{_format}
+    pattern: /videolist/{category}/{start}/{max}.{_format}
     defaults:
         _controller: tdcWebServiceBundle:Default:videoList
         start: 0

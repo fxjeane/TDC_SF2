@@ -3,12 +3,16 @@ tdc_front_homepage:
     defaults: { _controller: tdcFrontEndBundle:Front:index }
 
 tdc_front_catalog_item:
-    pattern: /catalog/{entity}/{id}
+    pattern: /catalog/{entity}/{id}/{start}/{max}
     defaults:
         _controller: tdcFrontEndBundle:Front:catalogItem
         entity: "video"
+        start: 1
+        max: 10
     requirements:
         id: \d+
+        start: \d+
+        max: \d+
 
 tdc_front_catalog_list:
     pattern: /catalog/{entity}/{start}/{max}
@@ -29,16 +33,4 @@ tdc_front_about:
 tdc_front_faq:
     pattern: /faq
     defaults: { _controller: tdcFrontEndBundle:Front:faq }
-
-#tdc_logedin_home:
-#    pattern: /profile
-#    defaults: { _controller: tdcFrontEndBundle:Front:profile }
-
-#tdc_logedin_profile:
-#    pattern: /profile
-#    defaults: { _controller: tdcFrontEndBundle:Front:home }
-
-#tdc_logedin_edit:
-#    pattern: /profile/edit
-#    defaults: { _controller: tdcFrontEndBundle:Front:profileEdit }
 

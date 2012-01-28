@@ -5,10 +5,24 @@
     {% stylesheets  
      debug=true
     'public/css/TDC1/catalog.css' 
+    'public/css/TDC1/jquery.fancybox-1.3.4.css' 
     %}
     <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
     {% endstylesheets %}
 {% endblock %}
+
+{% block header_javascripts %}
+    {{ parent() }}
+    {% javascripts
+        debug=true
+        'public/js/jquery/jquery.fancybox-1.3.4.pack.js'
+        'public/js/jquery/jquery-ui-1.8.16.custom.min.js'
+        'public/js/tdc/tdc.js'
+        'public/js/tdc/tdc.paginator.js'
+    %}
+    <script src="{{ asset_url }}" type="text/javascript"  /></script>
+    {% endjavascripts %}
+{% endblock header_javascripts %}
 
 {% block titleName %}
     {% if entity == "video" %}
@@ -20,8 +34,8 @@
 {% endblock %}
 
 {% block contentArea %}
-    <div id="itemInfo_hldr">
     {% if entity == "video" %}
+    <div id="itemInfo_hldr">
         <div id="courseImage_hldr">
             <img id="courseLargeIcon" src="{{ path('tdc_front_homepage') }}../public/images/videos/{{item.filepath}}_{{item.icon}}" />
         </div>
@@ -56,38 +70,79 @@
         <div id="courseDescription_hldr">
             <h1>Description</h1>
             <td colspan="3">{{ item.description|raw }}</td>
-        </div>
-    {#% else %}
-        <td rowspan="4" width="150">
-            <img id="courseLargeIcon" src="{{ path('tdc_front_homepage') }}../public/images/tdcLogo.png" />
-        </td>
-        <tr>
-            <td>Name:</td>
-            <td>{{item.name}}</td>
-        </tr>
-        <tr>
-            <td>Description:</td>
-            <td>{{item.description}}</td>
-        </tr>
-        <tr>
-            {% if item.children|length > 0 %}
-                <td>Sub-Categories:</td>
-                <td>{% for cat in item.children %}
-                        <a href="{{ path('tdc_front_catalog_item',{"id":cat.id,"entity":"category"})}}">{{ cat.name }}</a></br>
-                    {% endfor %}
-                </td>
+            {% if screenshots|length > 0 %}
+                <h1>Screenshots</h1>
+                {% for item in screenshots %}
+                    <a class="screenshotLink" rel="group1" 
+                       href="{{path("tdc_front_homepage")}}..{{item}}">
+                        <img class="courseScreenshot" src="{{path("tdc_front_homepage")}}..{{item}}"/>
+                    </a>
+                {% endfor %}
             {% endif %}
-        </tr>
-        {% if item.videos|length > 0 %}
-            <tr>
-                <td>Videos</td>
-            </tr>
-            <tr>
-            {% for vid in item.videos %}
-                <td>{{vid.name}}</td>
-            </tr>
-            {% endfor %}
-        {% endif %#}
-    {% endif %}
+        </div>
     </div>
+
+    {% else %}
+    <div id="contentHolder">
+        <h1> 
+        {% if item.parent%}
+            <a href="{{ path('tdc_front_catalog_item',{"id":item.parent.id,"entity":"category"})}}">{{ item.parent.name }}</a> > 
+        {% endif %}
+        {{item.name}} </h1>
+
+        {% if item.children|length > 0 %}
+            <strong>Sub-Categories:</strong>
+            {% for cat in item.children %}
+                    <a href="{{ path('tdc_front_catalog_item',{"id":cat.id,"entity":"category"})}}">{{ cat.name }}</a> 
+            {% endfor %} 
+        {% endif %}
+        <div id="paginatorTop" class="paginator"></div>
+        <center> 
+        {% if videos|length > 0 %}
+            <table id="catalogTable" cellspacing="0px">
+                {% set i = 0 %}
+                {% for vid in videos %}
+                    <tr class="row_{{ cycle(['0', '1'], i) }}">
+                        <td class="icon">
+                            <a href="{{path("tdc_player_home",{'id':item.id})}}">
+                                <img src={{path("tdc_front_homepage")}}../public/images/videos/{{vid.filepath}}_{{ vid.icon }} />
+                            </a>
+                        </td>
+                        <td class="info">
+                            <a class="video" href="{{path("tdc_front_catalog_item",{'entity':'video','id':vid.id})}}">
+                                {{ vid.name }} 
+                            </a>
+                            <label class="author">Author: {{vid.author}}</label>
+                            <label class="trt">Trt: {{vid.trt}}</label>
+                            <label class="views">Views: {{vid.views}}</label>
+                            <label class="rating">Rating: {{vid.views}}</label>
+                            <div class="summary">{{vid.summary}}</div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            </table>
+        </center>
+        <div id="paginatorBottom" class="paginator"></div>
+    </div>
+    {% endif %}
+
 {% endblock contentArea %}
+
+
+{% block javascript_post %}
+    {{ parent() }}
+    $("a.screenshotLink").fancybox();
+    {% if entity == "category" %}
+        $('.paginator').tdcPaginator({
+                    start:{{start}},
+                    max:{{max}},
+                    lastLabel:">>",
+                    firstLabel: "<<",
+                    trailLinks: 3,
+                    currentPageColor:"rgb(0,105,255)",
+                    queryUrl:'{{ path("tdc_ws_video_list", { 'category': item.id } )}}',
+                    targetUrl:'{{ path("tdc_front_catalog_item",{"entity":entity,"id":item.id} )}}'
+                    });
+    {% endif %}
+{% endblock javascript_post %}

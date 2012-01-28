@@ -30,6 +30,13 @@
 #catalogTable tr:last-child td:last-child {
     border-radius:0px 0px 10px 0px
 }
+#catalogTable tr.category:first-child td:first-child {
+    border-radius: 10px 10px 0px 0px;
+}
+#catalogTable tr.category:last-child td:first-child {
+    border-radius: 0px 0px 10px 10px;
+}
+
 #catalogTable td {
     padding:8px;
     text-align:left;
@@ -107,4 +114,14 @@ label.views, label.rating {
 #courseDescription_hldr {
     padding: 20px;
     border-top: 1px solid rgb(240, 240, 240);
+}
+.courseScreenshot {
+    width: 260px;
+    margin: 12px;
+    border: 1px solid #06F;
+    box-shadow: 0px 0px 10px 0px rgb(50,50,50);
+    border-image: initial;
+}
+#contentHolder h1 {
+    font-size: 1.3em;
 }

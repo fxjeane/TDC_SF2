@@ -19,13 +19,21 @@ class FrontController extends Controller
             $photoData[] = $photo;
         }
 
+        $quoters = glob(getcwd()."/public/images/quoters/*.png");
+        $quoterFullPath = $quoters[array_rand($quoters)];
+        $quoterImg = substr($quoterFullPath,strripos($quoterFullPath,"/"));
+        $quoterPath = substr($quoterFullPath,0,strripos($quoterFullPath,"/"));
+        $quote = file_get_contents($quoterPath.substr($quoterImg,0,strripos($quoterImg,".")).".txt");
+
         $videos = $this->get('tdc.FrontEndService')->getPopularVideos($limit=10);
         $questions = $this->get('tdc.QAService')->getLatestQuestions($limit=10);
 
         return $this->render('tdcFrontEndBundle:Default:index.html.twig',
                             array('bannerImages'=>json_encode($photoData),
                                 'videos'=>$videos,
-                                'questions'=>$questions
+                                'questions'=>$questions,
+                                'quoterImage'=>$quoterImg,
+                                "quote"=>$quote
                                 ));
     }
 
@@ -44,16 +52,47 @@ class FrontController extends Controller
                                  array("entity"=>$entity,
                                        "start"=>$start,
                                        "max"=>$max,
-                                       "values"=>$values));
+                                       "values"=>$values)); 
     }
 
-    public function catalogItemAction($entity,$id)
+    public function catalogItemAction($entity,$id,$start,$max)
     {
         $item = $this->getdoctrine()->getrepository('tdcVideoBundle:'.
                                                     ucfirst($entity))
                      ->find($id);
+        $tempVars = array("item"=>$item,
+                          "entity"=>$entity);
+        
+        if ($entity == "video") {
+            $scdir = $item->getFilepath();
+            # get all files in the screenshot folder
+            $contents = glob(getcwd()."/public/images/videos/".$scdir."*");
+            $screenshots = array();
+            foreach ($contents as $sh) {
+                if (!strpos($sh,"_icon")){
+                    $screenshots[] = substr($sh,strlen(getcwd()));
+                    }
+            }
+            $tempVars["screenshots"] = $screenshots;
+        }
+        if ($entity == "category") {
+            $rep = $this->getdoctrine()->getrepository('tdcVideoBundle:Video');
+                
+            $videos = $rep->createQueryBuilder('p')
+                          ->innerJoin('p.categories','cat')
+                          ->where('cat.id = ?1')
+                          ->setParameter(1,$id)
+                          ->setFirstResult($max * ($start - 1))
+                          ->setMaxResults($max)
+                          ->getQuery()
+                          ->getResult();
+            $tempVars['videos'] = $videos;
+            $tempVars['start'] = $start;
+            $tempVars['max'] = $max;
+        }
+
         return $this->render('tdcFrontEndBundle:Default:item.html.twig',
-                             array("item"=>$item,"entity"=>$entity));
+                             $tempVars);
     }
 
 

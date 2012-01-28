@@ -69,7 +69,17 @@
                     {% set i = i + 1 %}
                 {% endfor %}
             {% else %}
-                
+                {% set i = 0 %}
+                {% for item in values %}
+                    <tr class="category row_{{ cycle(['0', '1'], i) }}">
+                        <td >
+                            <a class="video" href="{{path("tdc_front_catalog_item",{'entity':'category','id':item.id})}}">
+                            {{item.name}}
+                            </a>
+                        </td>
+                    </tr>
+                    {% set i = i + 1 %}
+                {% endfor %}
             {% endif %}
         </table>
         </center>

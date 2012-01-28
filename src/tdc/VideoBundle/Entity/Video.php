@@ -398,4 +398,29 @@ class Video
     {
         return $this->subtitle;
     }
+    /**
+     * @var string $screenshots
+     */
+    private $screenshots;
+
+
+    /**
+     * Set screenshots
+     *
+     * @param string $screenshots
+     */
+    public function setScreenshots($screenshots)
+    {
+        $this->screenshots = $screenshots;
+    }
+
+    /**
+     * Get screenshots
+     *
+     * @return string 
+     */
+    public function getScreenshots()
+    {
+        return $this->screenshots;
+    }
 }
