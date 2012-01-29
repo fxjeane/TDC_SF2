@@ -1,6 +1,7 @@
 # all vim backup files
 *~
 *.swp
+# phothoshop files
 *.psd 
 
 # Bootstrap
@@ -17,4 +18,4 @@ web/css/*
 web/js
 web/js/*
 # Configuration files
-app/config/parameters.ini
+#app/config/parameters.ini
