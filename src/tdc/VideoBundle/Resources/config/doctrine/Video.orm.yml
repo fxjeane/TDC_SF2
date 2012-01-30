@@ -36,10 +36,6 @@ tdc\VideoBundle\Entity\Video:
         views:
             type: integer
             nullable: true
-        icon:
-            type: string
-            nullable: true
-            length: 250
         trt:
             type: string
             nullable: true
