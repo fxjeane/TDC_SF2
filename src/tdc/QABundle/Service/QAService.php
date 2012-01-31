@@ -29,21 +29,13 @@ class QAService extends ContainerAware
     }
     
     public function getRandomTags($limit=5) {
-        $rep = $this->doctrine->getrepository('tdcQABundle:QuestiontTag');
-        #$tagcount = $rep->createQueryBuilder('q')
-        #             ->select('COUNT(q.id) as tag_count')
-        #             ->getQuery()
-        #             ->getResult(); 
-        #$radar = array();
-        #for ($i = 0, $i < $tagcount; $i++)
-            #$radar[]
+        $rep = $this->doctrine->getrepository('tdcQABundle:QuestionTag');
 
-        $tagval =  $rep->createQueryBuilder('q')
-                     ->orderBy('RAND()','DESC')
+        $tags = $rep->createQueryBuilder('q')
                      ->getQuery()
-                     ->getResult();            
-        
-        return $tagval;                 
+                     ->getResult();
+        shuffle($tags);
+        return array_slice($tags,0,$limit);
     }
 
     public function getPopularQuestions($limit=5) {
