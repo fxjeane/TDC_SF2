@@ -17,5 +17,6 @@ web/css
 web/css/*
 web/js
 web/js/*
+web/index.php
 # Configuration files
 #app/config/parameters.ini

@@ -187,6 +187,7 @@ class DefaultController extends Controller
     
     public function tagCloudAction($limit) {
         $popularTags = $this->get('tdc.QAService')->getPopularTags($limit);
+        $popularTags = $this->get('tdc.QAService')->getRandomTags($limit);
         return $this->render(':TDC1:tagcloud.html.twig',
                             array('tags'=>$popularTags));
     }
