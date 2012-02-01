@@ -52,7 +52,9 @@
         <tr>
             <td>{{ form_label(questionForm.tags) }}</td>
             <td id="tagsField">{{ form_widget(questionForm.tags) }}
-                <input type="button" class="tdcButton" value="Add Tag" id="addTag_btn" />
+                <img id="tagLoadIcon" src="{{ path("tdc_front_homepage") }}../public/images/TDC1/smallHSeparator.png" />
+                <!-- img id="tagLoadIcon" src="{{ path("tdc_front_homepage") }}../public/images/TDC1/spinner.gif" / -->
+                <input id="addTagBtn" type="button" class="tdcButton" value="Add Tag" id="addTag_btn" />
             </td>
         </tr>
     </table>
@@ -67,6 +69,7 @@
 
 {% block javascript_post %}
     {{parent()}}
+
     $("#questionForm").validate({
         rules:{
             "form[tags]":{
@@ -156,6 +159,13 @@
         }
     });
 
+    $("#addTagBtn").click(function(ev) {
+        insertVal = $('#form_tags').attr("value");
+        if (insertVal.length > 2){
+            addTag(insertVal);
+        }
+    });
+
     $("#form_tags").bind("keypress", function(e) {
         if (e.keyCode == 13) {
             insertVal = $('#form_tags').attr("value");
@@ -170,9 +180,14 @@
         source: function(request,response){
             var jsonpath ='{{path("tdc_ws_tags")}}'; 
             $.getJSON(jsonpath+"/"+request.term, function(data) {
-                response(data);
+                    response(data);
+                   $("#tagLoadIcon").attr("src","{{ path("tdc_front_homepage") }}../public/images/TDC1/smallHSeparator.png")
             });
         },
-        minLength: 3
+        minLength: 3,
+        delay: 200,
+        search: function(event,ui) {
+           $("#tagLoadIcon").attr("src","{{ path("tdc_front_homepage") }}../public/images/TDC1/spinner.gif")
+        }
     });
 {% endblock %}

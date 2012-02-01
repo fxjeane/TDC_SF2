@@ -64,14 +64,14 @@
 span.tag,
 span.addedTag {
     font-size:0.85em;
-    background-color:rgb(0,72,225);
     background-color:rgb(0,102,255);
     border-radius:5px;
     padding:4px 6px;
     box-shadow: 0px 1px 1px 0px rgb(40,40,40);
     margin:2px 4px;
 }
-.tags .tag a {
+.tags .tag a,
+span.tag, span.addedTag {
     color: rgb(240, 240, 240);
     text-shadow: 0px -1px 1px rgb(50,50,50);
 }
@@ -238,4 +238,16 @@ label.error{
 }
 .paginator {
     text-align:right;
+}
+#form_tags {
+    width:395px !important; 
+    position: relative;
+    top: -10px;
+}
+#addTagBtn {
+    position: relative;
+    top: -10px;
+}
+#tagLoadIcon {
+    width:32px;
 }
