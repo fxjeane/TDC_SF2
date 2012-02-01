@@ -28,6 +28,5 @@ tdc_qa_tagged:
         start: 1
         max: 10
     requirements:
-        tag: \w+
         start: \d+
         max: \d+
