@@ -38,6 +38,10 @@
     border-image: initial;
     border-radius: 10px;
 }
+.faqbox {
+    margin:15px;
+    text-align:justify;
+}
 .focusBox span {
     text-align: center;
     display: block;
@@ -47,5 +51,4 @@
 h3 {
     font-style:italic;
     border-bottom:1px dotted black;
-    text-align:right;
 }
